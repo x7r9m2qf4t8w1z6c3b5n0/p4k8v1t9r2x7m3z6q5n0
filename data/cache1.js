@@ -73,7 +73,7 @@ const subjectsData = [
                 color: "#54a0ff",
                 isPCMB: false,
                 lectures: [
-
+                    { title: "সংখ্যা পদ্ধতি ১", videoId: "iK-lo9RU6dA" },
                 ]
             }
         ];
