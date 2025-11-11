@@ -66,7 +66,7 @@ const subjectsData = [
         icon: "fas fa-laptop-code",
         color: "#54a0ff",
         pdfs: [
-
+            { title: "সংখ্যা পদ্ধতি ১", url: "https://pdf.bondipathshala.education/1762884933460.pdf" },
         ]
     }
 ];
