@@ -50,6 +50,7 @@ const subjectsData = [
         color: "#feca57",
         pdfs: [
             { title: "Modifier", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
+{ title: "Modifier (Practice Sheet)", url: "https://drive.google.com/file/d/1prcjly8i7N10JUE_q1rNMZa15o4D9OU_" },
         ]
     },
     {
@@ -66,7 +67,7 @@ const subjectsData = [
         icon: "fas fa-laptop-code",
         color: "#54a0ff",
         pdfs: [
-            { title: "সংখ্যা পদ্ধতি ১", url: "https://pdf.bondipathshala.education/1762884933460.pdf" },
+
         ]
     }
 ];
