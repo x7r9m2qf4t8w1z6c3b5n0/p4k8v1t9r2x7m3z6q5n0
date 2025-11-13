@@ -1,17 +1,4 @@
 const subjectsData = [
-            {
-                name: "Mentorship Session",
-                icon: "fas fa-chalkboard-teacher",
-                color: "#9b59b6",
-                isPCMB: false,
-                pdfs: [
-            { title: "Biology Mentorship Session", url: "https://pdf.bondipathshala.education/1762187871688.pdf" },
-            { title: "Chemistry Mentorship Session", url: "https://pdf.bondipathshala.education/1762367202708.pdf" },
-            { title: "Mathematics Mentorship Session", url: "https://pdf.bondipathshala.education/1762358963901.pdf" },
-            { title: "EBI Mentorship Session", url: "https://pdf.bondipathshala.education/1762496803180.pdf" },
-            { title: "Physics Mentorship Session", url: "https://pdf.bondipathshala.education/1762583681705.pdf" },
-                ]
-            },
     {
         name: "Physics",
         icon: "fas fa-atom",
@@ -70,5 +57,18 @@ const subjectsData = [
         pdfs: [
 
         ]
-    }
+    },
+            {
+                name: "Mentorship Session",
+                icon: "fas fa-chalkboard-teacher",
+                color: "#9b59b6",
+                isPCMB: false,
+                pdfs: [
+            { title: "Biology Mentorship Session", url: "https://pdf.bondipathshala.education/1762187871688.pdf" },
+            { title: "Chemistry Mentorship Session", url: "https://pdf.bondipathshala.education/1762367202708.pdf" },
+            { title: "Mathematics Mentorship Session", url: "https://pdf.bondipathshala.education/1762358963901.pdf" },
+            { title: "EBI Mentorship Session", url: "https://pdf.bondipathshala.education/1762496803180.pdf" },
+            { title: "Physics Mentorship Session", url: "https://pdf.bondipathshala.education/1762583681705.pdf" },
+                ]
+            }
 ];
