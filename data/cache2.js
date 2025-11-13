@@ -36,14 +36,9 @@ const subjectsData = [
         icon: "fas fa-book",
         color: "#feca57",
         pdfs: [
+            { title: "Practice Sheets (All)", url: "https://drive.google.com/drive/folders/1u-Ff0iuERR_9VGYxtkcaL0ciI13rskoM" },
             { title: "Modifier", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
             { title: "Completing Sentence 1", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
-            { title: "Modifier (Practice Sheet)", url: "https://drive.google.com/file/d/1prcjly8i7N10JUE_q1rNMZa15o4D9OU_" },
-            { title: "Completing Sentence (Practice Sheet)", url: "https://drive.google.com/file/d/1f8MrSyPx-Iyo1nZRxgzYt93cks2X9vXh" },
-            { title: "Use of Some Special Phrases & Words (Practice Sheet)", url: "https://drive.google.com/file/d/1TRiuCAl5KobqdK6hMIgUW3cHAPls2Ylz" },
-            { title: "Narration (Practice Sheet)", url: "https://drive.google.com/file/d/10EmL4v145yUOYV11t4KvdZa70c0cHT2b" },
-            { title: "Appropriate Preposition (Practice Sheet)", url: "https://drive.google.com/file/d/1kp1y6xeo6yDYHe026zahwujZT7dyLXi1" },
-            { title: "Preposition Board Question & Test Paper (Practice Sheet)", url: "https://drive.google.com/file/d/16oiF7OmcnyrrYN5DEYxxiRUYEMY6gMaW" },
         ]
     },
     {
