@@ -1,18 +1,5 @@
 const subjectsData = [
             {
-                name: "Mentorship Session",
-                icon: "fas fa-chalkboard-teacher",
-                color: "#9b59b6",
-                isPCMB: false,
-                lectures: [
-                    { title: "Biology Mentorship Session", videoId: "uPM53Lax6Xg" },
-                    { title: "Chemistry Mentorship Session", videoId: "JaWMEEB_iGc" },
-                    { title: "Mathematics Mentorship Session", videoId: "olV8M7xp_sI" },
-                    { title: "EBI Mentorship Session", videoId: "xPMUGXdgs1Y" },
-                    { title: "Physics Mentorship Session", videoId: "TkVrn8T-ZlU" },
-                ]
-            },
-            {
                 name: "Physics",
                 icon: "fas fa-atom",
                 color: "#ff6b6b",
@@ -75,6 +62,19 @@ const subjectsData = [
                 isPCMB: false,
                 lectures: [
                     { title: "সংখ্যা পদ্ধতি ১", videoId: "iK-lo9RU6dA" },
+                ]
+            },
+                        {
+                name: "Mentorship Session",
+                icon: "fas fa-chalkboard-teacher",
+                color: "#9b59b6",
+                isPCMB: false,
+                lectures: [
+                    { title: "Biology Mentorship Session", videoId: "uPM53Lax6Xg" },
+                    { title: "Chemistry Mentorship Session", videoId: "JaWMEEB_iGc" },
+                    { title: "Mathematics Mentorship Session", videoId: "olV8M7xp_sI" },
+                    { title: "EBI Mentorship Session", videoId: "xPMUGXdgs1Y" },
+                    { title: "Physics Mentorship Session", videoId: "TkVrn8T-ZlU" },
                 ]
             }
         ];
