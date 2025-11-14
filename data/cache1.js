@@ -54,6 +54,7 @@ const subjectsData = [
                 lectures: [
                     { title: "ব্যাকরণিক শব্দশ্রেণি ১ + তাহারেই পড়ে মনে", videoId: "PVcJjU8tdtY" },
                     { title: "ব্যাকরণিক শব্দশ্রেণি ২ + যৌবনের গান", videoId: "2jTgvYrtNgM" },
+                    { title: "অপপ্রয়োগ", videoId: "7GK3_s7RMMY" },
                 ]
             },
             {
