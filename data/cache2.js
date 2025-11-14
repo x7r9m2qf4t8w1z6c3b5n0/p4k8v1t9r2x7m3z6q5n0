@@ -4,7 +4,7 @@ const subjectsData = [
         icon: "fas fa-atom",
         color: "#ff6b6b",
         pdfs: [
-
+            { title: "	তাপগতিবিদ্যা ১", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
         ]
     },
     {
@@ -48,6 +48,7 @@ const subjectsData = [
         pdfs: [
             { title: "ব্যাকরণিক শব্দশ্রেণি ১ + তাহারেই পড়ে মনে", url: "https://pdf.bondipathshala.education/1762619703676.pdf" },
             { title: "ব্যাকরণিক শব্দশ্রেণি ২ + যৌবনের গান", url: "https://pdf.bondipathshala.education/1762707908751.pdf" },
+            { title: "অপপ্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
         ]
     },
     {
