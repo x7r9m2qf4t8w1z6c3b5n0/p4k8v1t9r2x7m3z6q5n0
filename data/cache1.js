@@ -5,7 +5,7 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
-                    { title: "তাপগতিবিদ্যা ২", videoId: "iKgoLAZdtZQ" },
+                    { title: "তাপগতিবিদ্যা ১", videoId: "nxVrNvcF1gg" },
 
                 ]
             },
