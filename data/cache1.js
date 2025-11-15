@@ -5,7 +5,7 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
-                    { title: "তাপগতিবিদ্যা ১", videoId: "nxVrNvcF1gg" },
+                    { title: "তাপগতিবিদ্যা ২", videoId: "iKgoLAZdtZQ" },
 
                 ]
             },
@@ -55,6 +55,7 @@ const subjectsData = [
                     { title: "ব্যাকরণিক শব্দশ্রেণি ১ + তাহারেই পড়ে মনে", videoId: "PVcJjU8tdtY" },
                     { title: "ব্যাকরণিক শব্দশ্রেণি ২ + যৌবনের গান", videoId: "2jTgvYrtNgM" },
                     { title: "অপপ্রয়োগ", videoId: "7GK3_s7RMMY" },
+                    { title: "বাক্য প্রকরণ ১ + আঠারো বছর বয়স + সোনার তরী", videoId: "KGlHm2zZQeA" },
                 ]
             },
             {
