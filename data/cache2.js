@@ -4,7 +4,8 @@ const subjectsData = [
         icon: "fas fa-atom",
         color: "#ff6b6b",
         pdfs: [
-            { title: "	তাপগতিবিদ্যা ১", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
+            { title: "তাপগতিবিদ্যা ১", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
+            { title: "তাপগতিবিদ্যা সাজেশন", url: "https://drive.google.com/file/d/1PjeUvTfKnPViTwB8nfwWaJliQdJhVSKl" },
         ]
     },
     {
