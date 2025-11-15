@@ -4,6 +4,7 @@ const subjectsData = [
         icon: "fas fa-atom",
         color: "#ff6b6b",
         pdfs: [
+            { title: "Practice Sheets and Suggestions (All)", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
             { title: "তাপগতিবিদ্যা ১", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
             { title: "তাপগতিবিদ্যা ২", url: "https://pdf.bondipathshala.education/1763188021935.pdf" },
             { title: "তাপগতিবিদ্যা (সাজেশন)", url: "https://drive.google.com/file/d/1PjeUvTfKnPViTwB8nfwWaJliQdJhVSKl" },
@@ -38,7 +39,7 @@ const subjectsData = [
         icon: "fas fa-book",
         color: "#feca57",
         pdfs: [
-            { title: "Practice Sheets (All)", url: "https://drive.google.com/drive/folders/1u-Ff0iuERR_9VGYxtkcaL0ciI13rskoM" },
+            { title: "Practice Sheets and Suggestions (All)", url: "https://drive.google.com/drive/folders/1u-Ff0iuERR_9VGYxtkcaL0ciI13rskoM" },
             { title: "Modifier", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
             { title: "Completing Sentence 1 + Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
         ]
