@@ -6,7 +6,7 @@ const subjectsData = [
         pdfs: [
             { title: "তাপগতিবিদ্যা ১", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
             { title: "তাপগতিবিদ্যা ২", url: "https://pdf.bondipathshala.education/1763188021935.pdf" },
-            { title: "তাপগতিবিদ্যা সাজেশন", url: "https://drive.google.com/file/d/1PjeUvTfKnPViTwB8nfwWaJliQdJhVSKl" },
+            { title: "তাপগতিবিদ্যা (সাজেশন)", url: "https://drive.google.com/file/d/1PjeUvTfKnPViTwB8nfwWaJliQdJhVSKl" },
         ]
     },
     {
@@ -40,7 +40,7 @@ const subjectsData = [
         pdfs: [
             { title: "Practice Sheets (All)", url: "https://drive.google.com/drive/folders/1u-Ff0iuERR_9VGYxtkcaL0ciI13rskoM" },
             { title: "Modifier", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
-            { title: "Completing Sentence 1", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
+            { title: "Completing Sentence 1 + Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
         ]
     },
     {
@@ -51,6 +51,7 @@ const subjectsData = [
             { title: "ব্যাকরণিক শব্দশ্রেণি ১ + তাহারেই পড়ে মনে", url: "https://pdf.bondipathshala.education/1762619703676.pdf" },
             { title: "ব্যাকরণিক শব্দশ্রেণি ২ + যৌবনের গান", url: "https://pdf.bondipathshala.education/1762707908751.pdf" },
             { title: "অপপ্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
+            { title: "বাক্য প্রকরণ ১ + আঠারো বছর বয়স + সোনার তরী", url: "https://pdf.bondipathshala.education/1763116435241.pdf" }
         ]
     },
     {
