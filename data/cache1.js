@@ -42,7 +42,7 @@ const subjectsData = [
                 isPCMB: false,
                 lectures: [
                     { title: "Modifier", videoId: "AWV1ro6RGs0" },
-                    { title: "Completing Sentence (পর্ব ১)", videoId: "Aqx-UhthZUc" },
+                    { title: "Completing Sentence (পর্ব ১) + Paragraph Writing", videoId: "Aqx-UhthZUc" },
                 ]
             },
             {
