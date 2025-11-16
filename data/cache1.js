@@ -42,7 +42,7 @@ const subjectsData = [
                 isPCMB: false,
                 lectures: [
                     { title: "Modifier", videoId: "AWV1ro6RGs0" },
-                    { title: "Completing Sentence 1", videoId: "Aqx-UhthZUc" },
+                    { title: "Completing Sentence (পর্ব ১)", videoId: "Aqx-UhthZUc" },
                 ]
             },
             {
@@ -51,10 +51,10 @@ const subjectsData = [
                 color: "#ff9ff3",
                 isPCMB: false,
                 lectures: [
-                    { title: "ব্যাকরণিক শব্দশ্রেণি ১ + তাহারেই পড়ে মনে", videoId: "PVcJjU8tdtY" },
-                    { title: "ব্যাকরণিক শব্দশ্রেণি ২ + যৌবনের গান", videoId: "2jTgvYrtNgM" },
+                    { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ১) + তাহারেই পড়ে মনে", videoId: "PVcJjU8tdtY" },
+                    { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", videoId: "2jTgvYrtNgM" },
                     { title: "অপপ্রয়োগ", videoId: "7GK3_s7RMMY" },
-                    { title: "বাক্য প্রকরণ ১ + আঠারো বছর বয়স + সোনার তরী", videoId: "KGlHm2zZQeA" },
+                    { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", videoId: "KGlHm2zZQeA" },
                 ]
             },
             {
@@ -63,7 +63,8 @@ const subjectsData = [
                 color: "#54a0ff",
                 isPCMB: false,
                 lectures: [
-                    { title: "সংখ্যা পদ্ধতি ১", videoId: "iK-lo9RU6dA" },
+                    { title: "সংখ্যা পদ্ধতি (পর্ব ১)", videoId: "iK-lo9RU6dA" },
+                    { title: "সংখ্যা পদ্ধতি (পর্ব ২)", videoId: "l75rI34jB_k" },
                 ]
             },
                         {
