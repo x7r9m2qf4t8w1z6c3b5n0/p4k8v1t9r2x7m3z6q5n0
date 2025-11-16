@@ -7,7 +7,6 @@ const subjectsData = [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
             { title: "তাপগতিবিদ্যা (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
             { title: "তাপগতিবিদ্যা (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763188021935.pdf" },
-            { title: "তাপগতিবিদ্যা (সাজেশন)", url: "https://drive.google.com/file/d/1PjeUvTfKnPViTwB8nfwWaJliQdJhVSKl" },
         ]
     },
     {
@@ -41,7 +40,7 @@ const subjectsData = [
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1u-Ff0iuERR_9VGYxtkcaL0ciI13rskoM" },
             { title: "Modifier", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
-            { title: "Completing Sentence 1 + Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
+            { title: "Completing Sentence (পর্ব ১) + Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
         ]
     },
     {
@@ -49,10 +48,10 @@ const subjectsData = [
         icon: "fas fa-language",
         color: "#ff9ff3",
         pdfs: [
-            { title: "ব্যাকরণিক শব্দশ্রেণি ১ + তাহারেই পড়ে মনে", url: "https://pdf.bondipathshala.education/1762619703676.pdf" },
-            { title: "ব্যাকরণিক শব্দশ্রেণি ২ + যৌবনের গান", url: "https://pdf.bondipathshala.education/1762707908751.pdf" },
+            { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ১) + তাহারেই পড়ে মনে", url: "https://pdf.bondipathshala.education/1762619703676.pdf" },
+            { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", url: "https://pdf.bondipathshala.education/1762707908751.pdf" },
             { title: "অপপ্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
-            { title: "বাক্য প্রকরণ ১ + আঠারো বছর বয়স + সোনার তরী", url: "https://pdf.bondipathshala.education/1763116435241.pdf" }
+            { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", url: "https://pdf.bondipathshala.education/1763116435241.pdf" }
         ]
     },
     {
@@ -60,7 +59,8 @@ const subjectsData = [
         icon: "fas fa-laptop-code",
         color: "#54a0ff",
         pdfs: [
-
+          { title: "সংখ্যা পদ্ধতি (পর্ব ১)", url: "https://pdf.bondipathshala.education/1762884933460.pdf" },
+          { title: "সংখ্যা পদ্ধতি (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763211271973.pdf" }
         ]
     },
             {
