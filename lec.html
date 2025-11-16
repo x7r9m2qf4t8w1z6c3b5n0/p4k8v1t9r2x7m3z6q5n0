@@ -996,10 +996,10 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 30; /* Higher than iframe-overlay */
+    z-index: 15; /* Keep below controls */
     display: flex;
     justify-content: space-between;
-    pointer-events: none;
+    pointer-events: none; /* Don't block any events by default */
 }
 
 .double-tap-section {
@@ -1010,7 +1010,17 @@ body::before {
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
-    pointer-events: auto; /* Enable touch events on sections */
+    pointer-events: none; /* Don't block by default */
+}
+
+/* Only enable pointer events when video is playing and not paused */
+.plyr--playing .double-tap-section {
+    pointer-events: auto; /* Enable only when video is playing */
+}
+
+.plyr--paused .double-tap-section,
+.plyr--stopped .double-tap-section {
+    pointer-events: none; /* Disable when paused/stopped */
 }
 
 .double-tap-section.left {
@@ -1037,7 +1047,7 @@ body::before {
     border: 1px solid rgba(255, 255, 255, 0.2);
     transform: scale(0.8);
     transition: transform 0.3s ease;
-    pointer-events: none; /* Don't block touches on indicators */
+    pointer-events: none; /* Indicators don't block clicks */
 }
 
 .double-tap-indicator.show {
@@ -1060,14 +1070,27 @@ body::before {
     animation: doubleTapPulse 0.4s ease-out;
 }
 
-/* Make sure double-tap overlay is above iframe-overlay */
+/* Make sure double-tap overlay is properly positioned */
 .plyr--fullscreen-active .double-tap-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 10000; /* Above iframe-overlay in fullscreen */
+    z-index: 15; /* Keep below controls in fullscreen too */
+}
+
+/* Ensure Plyr controls are always above everything */
+.plyr__controls {
+    z-index: 20 !important;
+}
+
+.plyr__control {
+    z-index: 21 !important;
+}
+
+.plyr__menu__container {
+    z-index: 25 !important;
 }
 </style>
 </head>
@@ -1163,27 +1186,12 @@ const SEEK_TIME = 10; // seconds
 function initializeDoubleTapDetection() {
     if (!isTouchDevice) return;
     
-    const doubleTapOverlay = document.getElementById('double-tap-overlay');
     const leftSection = document.getElementById('left-tap-section');
     const rightSection = document.getElementById('right-tap-section');
     
-    if (!doubleTapOverlay) {
-        console.error('Double tap overlay not found!');
+    if (!leftSection || !rightSection) {
+        console.error('Double tap sections not found!');
         return;
-    }
-    
-    // Enable pointer events on the overlay
-    doubleTapOverlay.style.pointerEvents = 'auto';
-    
-    // Add touch event listeners to the sections (not the overlay)
-    if (leftSection) {
-        leftSection.addEventListener('touchstart', handleTouchStart, { passive: true });
-        leftSection.addEventListener('touchend', handleTouchEnd, { passive: false });
-    }
-    
-    if (rightSection) {
-        rightSection.addEventListener('touchstart', handleTouchStart, { passive: true });
-        rightSection.addEventListener('touchend', handleTouchEnd, { passive: false });
     }
     
     console.log('Double tap detection initialized');
@@ -1191,14 +1199,12 @@ function initializeDoubleTapDetection() {
 
 // Handle Touch Start - FIXED
 function handleTouchStart(e) {
-    if (!isTouchDevice || !player) return;
+    if (!isTouchDevice || !player || !player.playing) return;
+    
+    // Only process if video is playing
+    if (player.paused) return;
     
     e.stopPropagation(); // Prevent event from bubbling to other overlays
-    
-    const touch = e.touches[0];
-    const videoRect = e.currentTarget.getBoundingClientRect();
-    const touchX = touch.clientX - videoRect.left;
-    const sectionWidth = videoRect.width;
     
     // Determine which section was tapped based on which element received the event
     if (e.currentTarget.id === 'left-tap-section') {
@@ -1212,7 +1218,10 @@ function handleTouchStart(e) {
 
 // Handle Touch End - Double Tap Detection - FIXED
 function handleTouchEnd(e) {
-    if (!isTouchDevice || !player || !currentTapSection) return;
+    if (!isTouchDevice || !player || !player.playing || !currentTapSection) return;
+    
+    // Only process if video is playing
+    if (player.paused) return;
     
     e.preventDefault();
     e.stopPropagation();
@@ -1231,8 +1240,10 @@ function handleTouchEnd(e) {
         lastTap = currentTime;
         tapTimeout = setTimeout(() => {
             tapCount = 0;
-            // Single tap - toggle controls
-            toggleTouchControls();
+            // Single tap - toggle controls (only if not double tap)
+            if (player && player.playing) {
+                toggleTouchControls();
+            }
         }, DOUBLE_TAP_DELAY);
     }
 }
@@ -1310,7 +1321,7 @@ function updateDoubleTapOverlay() {
         doubleTapOverlay.style.left = '0';
         doubleTapOverlay.style.width = '100vw';
         doubleTapOverlay.style.height = '100vh';
-        doubleTapOverlay.style.zIndex = '10000';
+        doubleTapOverlay.style.zIndex = '15';
     } else {
         // Not in fullscreen
         doubleTapOverlay.style.position = 'absolute';
@@ -1318,7 +1329,48 @@ function updateDoubleTapOverlay() {
         doubleTapOverlay.style.left = '0';
         doubleTapOverlay.style.width = '100%';
         doubleTapOverlay.style.height = '100%';
-        doubleTapOverlay.style.zIndex = '30';
+        doubleTapOverlay.style.zIndex = '15';
+    }
+}
+
+// Setup Double Tap Event Listeners - NEW FUNCTION
+function setupDoubleTapEventListeners() {
+    if (!isTouchDevice) return;
+    
+    const leftSection = document.getElementById('left-tap-section');
+    const rightSection = document.getElementById('right-tap-section');
+    
+    if (leftSection && rightSection) {
+        // Remove existing listeners first to avoid duplicates
+        leftSection.removeEventListener('touchstart', handleTouchStart);
+        leftSection.removeEventListener('touchend', handleTouchEnd);
+        rightSection.removeEventListener('touchstart', handleTouchStart);
+        rightSection.removeEventListener('touchend', handleTouchEnd);
+        
+        // Add new listeners
+        leftSection.addEventListener('touchstart', handleTouchStart, { passive: true });
+        leftSection.addEventListener('touchend', handleTouchEnd, { passive: false });
+        rightSection.addEventListener('touchstart', handleTouchStart, { passive: true });
+        rightSection.addEventListener('touchend', handleTouchEnd, { passive: false });
+        
+        console.log('Double tap event listeners setup');
+    }
+}
+
+// Remove Double Tap Event Listeners - NEW FUNCTION
+function removeDoubleTapEventListeners() {
+    if (!isTouchDevice) return;
+    
+    const leftSection = document.getElementById('left-tap-section');
+    const rightSection = document.getElementById('right-tap-section');
+    
+    if (leftSection && rightSection) {
+        leftSection.removeEventListener('touchstart', handleTouchStart);
+        leftSection.removeEventListener('touchend', handleTouchEnd);
+        rightSection.removeEventListener('touchstart', handleTouchStart);
+        rightSection.removeEventListener('touchend', handleTouchEnd);
+        
+        console.log('Double tap event listeners removed');
     }
 }
 
@@ -1389,7 +1441,7 @@ function updateOverlayPosition() {
         overlay.style.left = '0';
         overlay.style.width = '100vw';
         overlay.style.height = '100vh';
-        overlay.style.zIndex = '9999'; // Below double-tap overlay
+        overlay.style.zIndex = '10'; // Below double-tap overlay
     } else {
         // Not in fullscreen - reset to container
         overlay.style.position = 'absolute';
@@ -1761,6 +1813,9 @@ function loadVideo(videoId, lectureTitle) {
                     iframe.style.pointerEvents = 'none';
                 }
                 
+                // Enable double tap when playing
+                setupDoubleTapEventListeners();
+                
                 // Show controls when playing, then auto-hide
                 showTouchControls();
             });
@@ -1776,12 +1831,21 @@ function loadVideo(videoId, lectureTitle) {
                     iframe.style.pointerEvents = 'none';
                 }
                 
+                // Disable double tap when paused
+                removeDoubleTapEventListeners();
+                
                 // Keep controls visible when paused
                 showTouchControls();
                 // Clear auto-hide timeout when paused
                 if (touchControlsTimeout) {
                     clearTimeout(touchControlsTimeout);
                 }
+            });
+            
+            player.on('ended', () => {
+                console.log('Video ended - disabling double tap');
+                // Disable double tap when video ends
+                removeDoubleTapEventListeners();
             });
             
             // Add more event listeners for better touch control
@@ -1816,11 +1880,6 @@ function loadVideo(videoId, lectureTitle) {
                 // Initialize touch controls for mobile
                 initializeTouchControls();
                 
-                // Initialize double tap detection for mobile
-                if (isTouchDevice) {
-                    setTimeout(initializeDoubleTapDetection, 500);
-                }
-                
                 // Process any pending video request
                 if (pendingVideoRequest) {
                     const nextVideo = pendingVideoRequest;
@@ -1849,9 +1908,9 @@ function loadVideo(videoId, lectureTitle) {
                     setTimeout(initializeTouchControls, 100);
                 }
                 
-                // Initialize double tap detection in fullscreen
-                if (isTouchDevice) {
-                    setTimeout(initializeDoubleTapDetection, 200);
+                // Re-setup double tap in fullscreen if video is playing
+                if (player && player.playing) {
+                    setTimeout(setupDoubleTapEventListeners, 200);
                 }
                 
                 // Lock orientation to landscape when entering fullscreen
@@ -1871,9 +1930,9 @@ function loadVideo(videoId, lectureTitle) {
                     setTimeout(initializeTouchControls, 100);
                 }
                 
-                // Re-initialize double tap detection after exiting fullscreen
-                if (isTouchDevice) {
-                    setTimeout(initializeDoubleTapDetection, 200);
+                // Re-setup double tap after exiting fullscreen if video is playing
+                if (player && player.playing) {
+                    setTimeout(setupDoubleTapEventListeners, 200);
                 }
                 
                 // Unlock orientation when exiting fullscreen
