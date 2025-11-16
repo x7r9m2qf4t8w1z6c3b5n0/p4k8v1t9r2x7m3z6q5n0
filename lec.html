@@ -1000,74 +1000,184 @@ body::before {
 .plyr__menu__container .plyr__control {
     z-index: 26 !important;
 }
-/* Double Tap Visual Feedback */
+
+/* Double Tap Visual Feedback - FIXED */
 .double-tap-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 15; /* Keep below controls */
     display: flex;
     justify-content: space-between;
-    pointer-events: none; /* Don't block any events by default */
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
-.double-tap-section {
-    width: 30%;
+.double-tap-overlay.active {
+    opacity: 1;
+}
+
+.double-tap-overlay .seek-backward,
+.double-tap-overlay .seek-forward {
+    width: 50%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none; /* Don't block by default */
-}
-
-/* Only enable pointer events when video is playing and not paused */
-.plyr--playing .double-tap-section {
-    pointer-events: auto; /* Enable only when video is playing */
-}
-
-.plyr--paused .double-tap-section,
-.plyr--stopped .double-tap-section {
-    pointer-events: none; /* Disable when paused/stopped */
-}
-
-.double-tap-section.left {
-    justify-content: flex-start;
-    padding-left: 20px;
-}
-
-.double-tap-section.right {
-    justify-content: flex-end;
-    padding-right: 20px;
-}
-
-.double-tap-indicator {
-    background: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 12px 16px;
-    border-radius: 25px;
     font-size: 14px;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
     transform: scale(0.8);
-    transition: transform 0.3s ease;
-    pointer-events: none; /* Indicators don't block clicks */
+    transition: all 0.3s ease;
 }
 
-.double-tap-indicator.show {
+.double-tap-overlay.active .seek-backward.show,
+.double-tap-overlay.active .seek-forward.show {
     opacity: 1;
     transform: scale(1);
 }
 
-.double-tap-indicator i {
-    font-size: 16px;
+.double-tap-overlay .seek-backward svg,
+.double-tap-overlay .seek-forward svg {
+    margin-bottom: 8px;
+    width: 32px;
+    height: 32px;
+}
+
+/* Loading indicator */
+.video-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.video-loading.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Error state */
+.video-error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 30;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.video-error.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.error-content {
+    text-align: center;
+    color: white;
+    max-width: 80%;
+}
+
+.error-content svg {
+    margin-bottom: 16px;
+    color: #ff6b6b;
+}
+
+.error-content h3 {
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.error-content p {
+    margin-bottom: 20px;
+    opacity: 0.8;
+}
+
+.retry-button {
+    background: #4a90e2;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.retry-button:hover {
+    background: #3a7bc8;
+}
+
+/* Fullscreen adjustments */
+.plyr--fullscreen-active .double-tap-overlay,
+.plyr--fullscreen-active .video-loading,
+.plyr--fullscreen-active .video-error {
+    position: fixed;
+    z-index: 9999;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .double-tap-overlay .seek-backward,
+    .double-tap-overlay .seek-forward {
+        font-size: 12px;
+    }
+    
+    .double-tap-overlay .seek-backward svg,
+    .double-tap-overlay .seek-forward svg {
+        width: 24px;
+        height: 24px;
+    }
+    
+    /* Ensure touch targets are at least 44px for accessibility */
+    .plyr__control {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* Prevent YouTube controls from interfering */
+.plyr__video-embed iframe {
+    pointer-events: auto;
+}
+
+.plyr--playing .plyr__video-embed iframe {
+    pointer-events: none;
 }
 
 /* Double tap animation */
@@ -1133,19 +1243,40 @@ body::before {
                 <p>Select a lecture to begin</p>
             </div>
             <div id="player" class="plyr__video-embed" style="display: none;">
-                <!-- Double Tap Overlay for Mobile -->
+                <!-- Double Tap Overlay for Mobile - FIXED -->
                 <div class="double-tap-overlay" id="double-tap-overlay">
-                    <div class="double-tap-section left" id="left-tap-section">
-                        <div class="double-tap-indicator" id="left-indicator">
-                            <i class="fas fa-backward"></i>
-                            <span>10s</span>
-                        </div>
+                    <div class="seek-backward" id="seek-backward">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M11 9L8 12L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 9L13 12L16 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>10s</span>
                     </div>
-                    <div class="double-tap-section right" id="right-tap-section">
-                        <div class="double-tap-indicator" id="right-indicator">
-                            <i class="fas fa-forward"></i>
-                            <span>10s</span>
-                        </div>
+                    <div class="seek-forward" id="seek-forward">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M13 9L16 12L13 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8 9L11 12L8 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>10s</span>
+                    </div>
+                </div>
+                
+                <!-- Loading indicator -->
+                <div class="video-loading" id="video-loading">
+                    <div class="loading-spinner"></div>
+                </div>
+                
+                <!-- Error state -->
+                <div class="video-error" id="video-error">
+                    <div class="error-content">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 8V12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M12 16H12.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <h3>Video Failed to Load</h3>
+                        <p>Please check your connection and try again.</p>
+                        <button class="retry-button" id="retry-button">Retry</button>
                     </div>
                 </div>
                 
@@ -1185,197 +1316,800 @@ body::before {
     <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
     <script src="data/cache1.js"></script>
     <script>
-// Double Tap Variables
-let lastTap = 0;
-let tapTimeout;
-let tapCount = 0;
-let currentTapSection = null;
-const DOUBLE_TAP_DELAY = 300; // ms
-const SEEK_TIME = 10; // seconds
-
-// Initialize Double Tap Detection
-function initializeDoubleTapDetection() {
-    if (!isTouchDevice) return;
-    
-    const leftSection = document.getElementById('left-tap-section');
-    const rightSection = document.getElementById('right-tap-section');
-    
-    if (!leftSection || !rightSection) {
-        console.error('Double tap sections not found!');
-        return;
-    }
-    
-    console.log('Double tap detection initialized');
-}
-
-// Handle Touch Start
-function handleTouchStart(e) {
-    if (!isTouchDevice || !player) return;
-    
-    e.stopPropagation();
-    
-    // Determine which section was tapped
-    if (e.currentTarget.id === 'left-tap-section') {
-        currentTapSection = 'left';
-    } else if (e.currentTarget.id === 'right-tap-section') {
-        currentTapSection = 'right';
-    } else {
-        currentTapSection = null;
-    }
-}
-
-// Handle Touch End - Double Tap Detection
-function handleTouchEnd(e) {
-    if (!isTouchDevice || !player || !currentTapSection) return;
-    
-    e.preventDefault();
-    e.stopPropagation();
-    
-    const currentTime = new Date().getTime();
-    const timeSinceLastTap = currentTime - lastTap;
-    
-    if (timeSinceLastTap < DOUBLE_TAP_DELAY && timeSinceLastTap > 0) {
-        // Double tap detected
-        clearTimeout(tapTimeout);
-        tapCount = 0;
-        handleDoubleTap(currentTapSection);
-    } else {
-        // First tap
-        tapCount = 1;
-        lastTap = currentTime;
-        tapTimeout = setTimeout(() => {
-            tapCount = 0;
-        }, DOUBLE_TAP_DELAY);
-    }
-}
-
-// Handle Double Tap Action
-function handleDoubleTap(section) {
-    if (!player) return;
-    
-    const currentTime = player.currentTime;
-    let newTime = currentTime;
-    const wasPlaying = player.playing;
-    
-    if (section === 'left') {
-        // Rewind 10 seconds
-        newTime = Math.max(0, currentTime - SEEK_TIME);
-        player.currentTime = newTime;
-        showDoubleTapFeedback('left');
-        console.log(`Rewinded to ${newTime.toFixed(2)}s`);
-    } else if (section === 'right') {
-        // Forward 10 seconds
-        newTime = Math.min(player.duration, currentTime + SEEK_TIME);
-        player.currentTime = newTime;
-        showDoubleTapFeedback('right');
-        console.log(`Fast forwarded to ${newTime.toFixed(2)}s`);
-    }
-    
-    // If video was paused, keep it paused after seeking
-    if (!wasPlaying && player.playing) {
-        player.pause();
-    }
-    
-    // Show controls after double tap
-    showTouchControls();
-}
-
-// Show Double Tap Visual Feedback
-function showDoubleTapFeedback(section) {
-    const leftIndicator = document.getElementById('left-indicator');
-    const rightIndicator = document.getElementById('right-indicator');
-    const leftSection = document.getElementById('left-tap-section');
-    const rightSection = document.getElementById('right-tap-section');
-    
-    if (section === 'left' && leftIndicator && leftSection) {
-        leftSection.style.opacity = '1';
-        leftIndicator.classList.add('show', 'pulse');
+class CustomVideoPlayer {
+    constructor() {
+        this.player = null;
+        this.isInitialized = false;
+        this.isLoading = false;
+        this.hasError = false;
+        this.activeLecture = null;
+        this.pendingVideoRequest = null;
         
-        setTimeout(() => {
-            leftIndicator.classList.remove('pulse');
-        }, 400);
+        // Double-tap detection
+        this.lastTap = 0;
+        this.tapTimeout = null;
+        this.tapDelay = 300; // ms
         
-        setTimeout(() => {
-            leftSection.style.opacity = '0';
-            leftIndicator.classList.remove('show');
-        }, 1000);
-    } else if (section === 'right' && rightIndicator && rightSection) {
-        rightSection.style.opacity = '1';
-        rightIndicator.classList.add('show', 'pulse');
+        // Controls visibility
+        this.controlsTimeout = null;
+        this.controlsVisible = true;
+        this.controlsHideDelay = 3000; // ms
         
-        setTimeout(() => {
-            rightIndicator.classList.remove('pulse');
-        }, 400);
+        // Touch detection
+        this.isTouchDevice = this.detectTouchDevice();
         
-        setTimeout(() => {
-            rightSection.style.opacity = '0';
-            rightIndicator.classList.remove('show');
-        }, 1000);
+        // DOM Elements
+        this.elements = {
+            subjectsList: document.getElementById('subjects-list'),
+            videoFrame: document.getElementById('lecture-video'),
+            lectureNameElement: document.getElementById('lecture-name'),
+            pcmbTimerElement: document.getElementById('pcmb-timer'),
+            videoPlaceholder: document.getElementById('video-placeholder'),
+            playerContainer: document.getElementById('player'),
+            doubleTapOverlay: document.getElementById('double-tap-overlay'),
+            videoLoading: document.getElementById('video-loading'),
+            videoError: document.getElementById('video-error'),
+            retryButton: document.getElementById('retry-button')
+        };
+        
+        this.init();
     }
-}
-
-// Update Double Tap Overlay for Fullscreen
-function updateDoubleTapOverlay() {
-    const doubleTapOverlay = document.getElementById('double-tap-overlay');
-    if (!doubleTapOverlay) return;
     
-    const playerElement = document.querySelector('.plyr');
-    
-    if (playerElement && playerElement.classList.contains('plyr--fullscreen-active')) {
-        doubleTapOverlay.style.position = 'fixed';
-        doubleTapOverlay.style.top = '0';
-        doubleTapOverlay.style.left = '0';
-        doubleTapOverlay.style.width = '100vw';
-        doubleTapOverlay.style.height = '100vh';
-        doubleTapOverlay.style.zIndex = '15';
-    } else {
-        doubleTapOverlay.style.position = 'absolute';
-        doubleTapOverlay.style.top = '0';
-        doubleTapOverlay.style.left = '0';
-        doubleTapOverlay.style.width = '100%';
-        doubleTapOverlay.style.height = '100%';
-        doubleTapOverlay.style.zIndex = '15';
+    init() {
+        if (this.isInitialized) {
+            this.destroy();
+        }
+        
+        this.initializeNewLectureTracking();
+        this.populateSubjects();
+        this.updatePCMBTimer();
+        this.setupOverlayProtection();
+        this.setupEventListeners();
+        
+        setInterval(() => this.updatePCMBTimer(), 60000);
+        window.addEventListener('resize', () => this.updateOverlayPosition());
+        
+        if (this.isTouchDevice) {
+            setTimeout(() => this.initializeDoubleTapDetection(), 1000);
+        }
+        
+        this.isInitialized = true;
     }
-}
-
-// Setup Double Tap Event Listeners
-function setupDoubleTapEventListeners() {
-    if (!isTouchDevice) return;
     
-    const leftSection = document.getElementById('left-tap-section');
-    const rightSection = document.getElementById('right-tap-section');
+    // Touch device detection
+    detectTouchDevice() {
+        return (('ontouchstart' in window) || 
+                (navigator.maxTouchPoints > 0) || 
+                (navigator.msMaxTouchPoints > 0) ||
+                (window.DocumentTouch && document instanceof DocumentTouch));
+    }
     
-    if (leftSection && rightSection) {
+    // Double Tap Detection
+    initializeDoubleTapDetection() {
+        if (!this.isTouchDevice) return;
+        
+        console.log('Double tap detection initialized');
+        this.setupDoubleTapEventListeners();
+    }
+    
+    setupDoubleTapEventListeners() {
+        if (!this.isTouchDevice) return;
+        
+        const videoWrapper = document.querySelector('.plyr__video-wrapper');
+        if (!videoWrapper) return;
+        
         // Remove existing listeners first to avoid duplicates
-        leftSection.removeEventListener('touchstart', handleTouchStart);
-        leftSection.removeEventListener('touchend', handleTouchEnd);
-        rightSection.removeEventListener('touchstart', handleTouchStart);
-        rightSection.removeEventListener('touchend', handleTouchEnd);
+        videoWrapper.removeEventListener('touchstart', this.handleTap.bind(this));
+        videoWrapper.removeEventListener('touchend', this.handleTapEnd.bind(this));
         
         // Add new listeners
-        leftSection.addEventListener('touchstart', handleTouchStart, { passive: true });
-        leftSection.addEventListener('touchend', handleTouchEnd, { passive: false });
-        rightSection.addEventListener('touchstart', handleTouchStart, { passive: true });
-        rightSection.addEventListener('touchend', handleTouchEnd, { passive: false });
+        videoWrapper.addEventListener('touchstart', this.handleTap.bind(this), { passive: true });
+        videoWrapper.addEventListener('touchend', this.handleTapEnd.bind(this), { passive: false });
         
         console.log('Double tap event listeners setup');
     }
-}
-
-// Remove Double Tap Event Listeners
-function removeDoubleTapEventListeners() {
-    if (!isTouchDevice) return;
     
-    const leftSection = document.getElementById('left-tap-section');
-    const rightSection = document.getElementById('right-tap-section');
-    
-    if (leftSection && rightSection) {
-        leftSection.removeEventListener('touchstart', handleTouchStart);
-        leftSection.removeEventListener('touchend', handleTouchEnd);
-        rightSection.removeEventListener('touchstart', handleTouchStart);
-        rightSection.removeEventListener('touchend', handleTouchEnd);
+    handleTap(event) {
+        if (!this.isTouchDevice || !this.player) return;
         
-        console.log('Double tap event listeners removed');
+        event.stopPropagation();
+        
+        const rect = this.elements.playerContainer.getBoundingClientRect();
+        const tapX = event.changedTouches ? event.changedTouches[0].clientX : event.clientX;
+        const tapPosition = (tapX - rect.left) / rect.width;
+        
+        const currentTime = new Date().getTime();
+        const timeDiff = currentTime - this.lastTap;
+        
+        if (timeDiff < this.tapDelay && timeDiff > 0) {
+            // Double tap detected
+            event.preventDefault();
+            clearTimeout(this.tapTimeout);
+            this.lastTap = 0;
+            this.handleDoubleTap(tapPosition < 0.5 ? 'left' : 'right');
+        } else {
+            // Single tap - set timeout
+            this.tapTimeout = setTimeout(() => {
+                this.handleSingleTap();
+                this.lastTap = 0;
+            }, this.tapDelay);
+            this.lastTap = currentTime;
+        }
+        
+        // Show controls on any tap
+        this.showControls();
+    }
+    
+    handleTapEnd(event) {
+        if (!this.isTouchDevice) return;
+        event.preventDefault();
+    }
+    
+    handleSingleTap() {
+        // Toggle play/pause on single tap
+        if (this.player) {
+            if (this.player.playing) {
+                this.player.pause();
+            } else {
+                this.player.play();
+            }
+        }
+    }
+    
+    handleDoubleTap(section) {
+        if (!this.player || this.player.duration === 0) return;
+        
+        // Show visual feedback
+        this.showSeekFeedback(section === 'left');
+        
+        // Seek forward or backward
+        const currentTime = this.player.currentTime;
+        const seekAmount = 10; // seconds
+        
+        if (section === 'left') {
+            this.player.currentTime = Math.max(0, currentTime - seekAmount);
+        } else {
+            this.player.currentTime = Math.min(this.player.duration, currentTime + seekAmount);
+        }
+    }
+    
+    showSeekFeedback(isRewind) {
+        const overlay = this.elements.doubleTapOverlay;
+        const backward = document.getElementById('seek-backward');
+        const forward = document.getElementById('seek-forward');
+        
+        if (!overlay || !backward || !forward) return;
+        
+        // Reset classes
+        overlay.classList.remove('active');
+        backward.classList.remove('show');
+        forward.classList.remove('show');
+        
+        // Force reflow
+        void overlay.offsetWidth;
+        
+        // Show appropriate feedback
+        overlay.classList.add('active');
+        if (isRewind) {
+            backward.classList.add('show');
+        } else {
+            forward.classList.add('show');
+        }
+        
+        // Hide after animation completes
+        setTimeout(() => {
+            overlay.classList.remove('active');
+            backward.classList.remove('show');
+            forward.classList.remove('show');
+        }, 600);
+    }
+    
+    // Controls Management
+    showControls() {
+        if (this.controlsTimeout) {
+            clearTimeout(this.controlsTimeout);
+        }
+        
+        if (this.player && !this.controlsVisible) {
+            const controls = document.querySelector('.plyr__controls');
+            if (controls) {
+                controls.classList.remove('hidden');
+                this.controlsVisible = true;
+            }
+        }
+        
+        // Set timeout to hide controls
+        if (this.player && this.player.playing) {
+            this.controlsTimeout = setTimeout(() => {
+                this.hideControls();
+            }, this.controlsHideDelay);
+        }
+    }
+    
+    hideControls() {
+        if (this.player && this.controlsVisible && this.player.playing) {
+            const controls = document.querySelector('.plyr__controls');
+            if (controls) {
+                controls.classList.add('hidden');
+                this.controlsVisible = false;
+            }
+        }
+    }
+    
+    // Video Loading and Management
+    loadVideo(videoId, lectureTitle) {
+        if (this.isLoading) {
+            this.pendingVideoRequest = { videoId, lectureTitle };
+            return;
+        }
+        
+        console.log('Loading video:', videoId, lectureTitle);
+        this.isLoading = true;
+        
+        this.elements.lectureNameElement.textContent = `Loading: ${lectureTitle}`;
+        this.elements.videoPlaceholder.style.display = 'none';
+        this.elements.playerContainer.style.display = 'block';
+        
+        this.showLoading();
+        
+        if (this.player) {
+            this.player.destroy();
+            this.player = null;
+        }
+        
+        const newIframe = document.createElement('iframe');
+        newIframe.id = 'lecture-video';
+        newIframe.className = 'plyr__video-embed';
+        newIframe.src = `https://www.youtube.com/embed/${videoId}?origin=https://plyr.io&enablejsapi=1&widgetid=1`;
+        newIframe.frameBorder = '0';
+        newIframe.allowFullscreen = true;
+        newIframe.allow = 'autoplay';
+        newIframe.style.pointerEvents = 'none';
+        
+        const oldIframe = document.getElementById('lecture-video');
+        oldIframe.parentNode.replaceChild(newIframe, oldIframe);
+        
+        const videoInfo = document.querySelector('.video-info');
+        videoInfo.style.animation = 'slideIn 0.5s ease';
+        setTimeout(() => {
+            videoInfo.style.animation = '';
+        }, 500);
+        
+        setTimeout(() => {
+            try {
+                this.player = new Plyr('#player', {
+                    controls: [
+                        'play-large',
+                        'rewind',
+                        'play',
+                        'fast-forward',
+                        'progress',
+                        'current-time',
+                        'mute',
+                        'volume',
+                        'settings',
+                        'pip',
+                        'fullscreen'
+                    ],
+                    hideControls: false,
+                    clickToPlay: false,
+                    touch: true,
+                    youtube: {
+                        noCookie: true,
+                        rel: 0,
+                        showinfo: 0,
+                        iv_load_policy: 3,
+                        modestbranding: 1
+                    },
+                    i18n: {
+                        rewind: 'Rewind {seektime}s',
+                        fastForward: 'Forward {seektime}s'
+                    },
+                    seekTime: 10,
+                    fullscreen: {
+                        enabled: true,
+                        fallback: true,
+                        iosNative: false,
+                        container: null
+                    }
+                });
+                
+                this.setupPlayerEventListeners();
+                
+            } catch (error) {
+                console.error('Player initialization error:', error);
+                this.isLoading = false;
+                this.hideLoading();
+                this.elements.lectureNameElement.textContent = 'Error initializing player';
+                this.showError();
+            }
+        }, 800);
+    }
+    
+    setupPlayerEventListeners() {
+        if (!this.player) return;
+        
+        this.player.on('ready', () => {
+            console.log('Player ready');
+            this.isLoading = false;
+            this.hideLoading();
+            this.hideError();
+            
+            this.preventIframePointerEvents();
+            this.updateOverlayPosition();
+            this.initializeTouchControls();
+            
+            // Auto-show controls when video loads
+            this.showControls();
+            
+            if (this.pendingVideoRequest) {
+                const nextVideo = this.pendingVideoRequest;
+                this.pendingVideoRequest = null;
+                setTimeout(() => {
+                    this.loadVideo(nextVideo.videoId, nextVideo.lectureTitle);
+                }, 500);
+            }
+        });
+        
+        this.player.on('error', () => {
+            console.error('Player load error');
+            this.isLoading = false;
+            this.hideLoading();
+            this.elements.lectureNameElement.textContent = 'Error loading video';
+            this.showError();
+        });
+        
+        this.player.on('play', () => {
+            this.preventIframePointerEvents();
+            if (this.isTouchDevice) {
+                this.setupDoubleTapEventListeners();
+            }
+            this.hideControls();
+        });
+        
+        this.player.on('pause', () => {
+            this.preventIframePointerEvents();
+            this.showControls();
+        });
+        
+        this.player.on('enterfullscreen', () => {
+            this.updateOverlayPosition();
+            if (this.isTouchDevice) {
+                setTimeout(() => this.initializeTouchControls(), 100);
+                setTimeout(() => this.setupDoubleTapEventListeners(), 200);
+            }
+            
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('landscape').catch(() => {});
+            }
+        });
+        
+        this.player.on('exitfullscreen', () => {
+            this.updateOverlayPosition();
+            if (this.isTouchDevice) {
+                setTimeout(() => this.initializeTouchControls(), 100);
+                setTimeout(() => this.setupDoubleTapEventListeners(), 200);
+            }
+            
+            if (screen.orientation && screen.orientation.unlock) {
+                screen.orientation.unlock();
+            }
+        });
+    }
+    
+    preventIframePointerEvents() {
+        const iframe = document.getElementById('lecture-video');
+        if (iframe) {
+            // Allow pointer events when paused, block when playing
+            if (this.player && this.player.playing) {
+                iframe.style.pointerEvents = 'none';
+            } else {
+                iframe.style.pointerEvents = 'auto';
+            }
+        }
+    }
+    
+    initializeTouchControls() {
+        if (!this.isTouchDevice) return;
+        
+        console.log('Touch device detected - initializing touch controls');
+        
+        // Add touch class to player
+        const playerElement = document.querySelector('.plyr');
+        if (playerElement) {
+            playerElement.classList.add('plyr--touch');
+        }
+        
+        // Create touch overlay
+        let touchOverlay = document.getElementById('touch-overlay');
+        if (!touchOverlay) {
+            touchOverlay = document.createElement('div');
+            touchOverlay.className = 'touch-overlay';
+            touchOverlay.id = 'touch-overlay';
+            document.querySelector('.video-container').appendChild(touchOverlay);
+        }
+        
+        // Ensure touch overlay is properly configured
+        touchOverlay.style.display = 'block';
+        touchOverlay.style.pointerEvents = 'auto';
+        touchOverlay.style.zIndex = '16';
+        
+        // Remove existing event listeners
+        touchOverlay.removeEventListener('touchstart', this.handleTouchOverlayTap.bind(this));
+        touchOverlay.removeEventListener('click', this.handleTouchOverlayTap.bind(this));
+        
+        // Add new event listeners
+        touchOverlay.addEventListener('touchstart', this.handleTouchOverlayTap.bind(this), { passive: true });
+        touchOverlay.addEventListener('click', this.handleTouchOverlayTap.bind(this), { passive: true });
+        
+        console.log('Touch controls initialized');
+    }
+    
+    handleTouchOverlayTap(e) {
+        if (!this.isTouchDevice || !this.player) return;
+        
+        e.preventDefault();
+        e.stopPropagation();
+        
+        if (this.controlsVisible) {
+            this.hideControls();
+        } else {
+            this.showControls();
+        }
+    }
+    
+    // Loading and Error States
+    showLoading() {
+        this.isLoading = true;
+        if (this.elements.videoLoading) {
+            this.elements.videoLoading.classList.add('active');
+        }
+    }
+    
+    hideLoading() {
+        this.isLoading = false;
+        if (this.elements.videoLoading) {
+            this.elements.videoLoading.classList.remove('active');
+        }
+    }
+    
+    showError() {
+        this.hasError = true;
+        if (this.elements.videoError) {
+            this.elements.videoError.classList.add('active');
+        }
+    }
+    
+    hideError() {
+        this.hasError = false;
+        if (this.elements.videoError) {
+            this.elements.videoError.classList.remove('active');
+        }
+    }
+    
+    retryLoad() {
+        this.hideError();
+        this.showLoading();
+        if (this.activeLecture) {
+            // Reload current lecture
+            const subject = subjectsData.find(s => 
+                s.lectures.some(lecture => lecture.videoId === this.activeLecture.videoId)
+            );
+            if (subject) {
+                const lecture = subject.lectures.find(l => l.videoId === this.activeLecture.videoId);
+                if (lecture) {
+                    this.loadVideo(lecture.videoId, lecture.title);
+                }
+            }
+        }
+    }
+    
+    // Overlay and Fullscreen Management
+    setupOverlayProtection() {
+        const doubleTapOverlay = this.elements.doubleTapOverlay;
+        if (doubleTapOverlay) {
+            doubleTapOverlay.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                return false;
+            });
+        }
+        
+        document.addEventListener('fullscreenchange', () => this.updateOverlayPosition());
+        document.addEventListener('webkitfullscreenchange', () => this.updateOverlayPosition());
+        document.addEventListener('mozfullscreenchange', () => this.updateOverlayPosition());
+        document.addEventListener('MSFullscreenChange', () => this.updateOverlayPosition());
+    }
+    
+    updateOverlayPosition() {
+        const overlay = document.getElementById('iframe-overlay');
+        if (!overlay) return;
+        
+        const playerElement = document.querySelector('.plyr');
+        
+        if (playerElement && playerElement.classList.contains('plyr--fullscreen-active')) {
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100vw';
+            overlay.style.height = '100vh';
+            overlay.style.zIndex = '10';
+        } else {
+            overlay.style.position = 'absolute';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.zIndex = '10';
+        }
+        
+        this.updateDoubleTapOverlay();
+    }
+    
+    updateDoubleTapOverlay() {
+        const doubleTapOverlay = this.elements.doubleTapOverlay;
+        if (!doubleTapOverlay) return;
+        
+        const playerElement = document.querySelector('.plyr');
+        
+        if (playerElement && playerElement.classList.contains('plyr--fullscreen-active')) {
+            doubleTapOverlay.style.position = 'fixed';
+            doubleTapOverlay.style.top = '0';
+            doubleTapOverlay.style.left = '0';
+            doubleTapOverlay.style.width = '100vw';
+            doubleTapOverlay.style.height = '100vh';
+            doubleTapOverlay.style.zIndex = '15';
+        } else {
+            doubleTapOverlay.style.position = 'absolute';
+            doubleTapOverlay.style.top = '0';
+            doubleTapOverlay.style.left = '0';
+            doubleTapOverlay.style.width = '100%';
+            doubleTapOverlay.style.height = '100%';
+            doubleTapOverlay.style.zIndex = '15';
+        }
+    }
+    
+    // Subjects and Lectures Management
+    populateSubjects() {
+        if (!this.elements.subjectsList) return;
+        
+        this.elements.subjectsList.innerHTML = '';
+        
+        subjectsData.filter(subject => subject.lectures && subject.lectures.length > 0).forEach(subject => {
+            const subjectItem = document.createElement('div');
+            subjectItem.className = 'subject-item';
+            
+            const hasNewLectures = this.checkSubjectHasNewLectures(subject);
+            
+            const subjectHeader = document.createElement('div');
+            subjectHeader.className = 'subject-header';
+            subjectHeader.setAttribute('data-subject-name', subject.name);
+            subjectHeader.innerHTML = `
+                <i class="subject-icon ${subject.icon}" style="color: ${subject.color};"></i>
+                <span class="subject-title">${subject.name}</span>
+                <div class="badge-container">
+                    ${hasNewLectures ? '<span class="badge badge-new">New</span>' : ''}
+                </div>
+                <i class="dropdown-icon fas fa-chevron-down"></i>
+            `;
+            
+            const lecturesList = document.createElement('div');
+            lecturesList.className = 'lectures-list';
+            
+            subject.lectures.forEach((lecture, index) => {
+                const lectureItem = document.createElement('div');
+                lectureItem.className = 'lecture-item';
+                lectureItem.dataset.subject = subject.name;
+                lectureItem.dataset.lectureIndex = index;
+                
+                const isNewLecture = this.isLectureNew(lecture.videoId);
+                const showLimitedTimeIcon = subject.isPCMB && this.isWithin24hWindow();
+                
+                lectureItem.innerHTML = `
+                    <i class="lecture-icon fas fa-play-circle" style="color: ${subject.color};"></i>
+                    <span class="lecture-title">${lecture.title}</span>
+                    <div class="lecture-badges">
+                        ${isNewLecture ? '<span class="badge badge-new">New</span>' : ''}
+                        ${showLimitedTimeIcon ? '<i class="limited-time-icon fas fa-clock"></i>' : ''}
+                    </div>
+                `;
+                
+                lectureItem.addEventListener('click', () => {
+                    this.loadVideo(lecture.videoId, lecture.title);
+                    this.setActiveLecture(lectureItem, subject.name, index, lecture);
+                    this.markLectureAsWatched(lecture.videoId, subject.name, index);
+                    
+                    lectureItem.style.animation = 'scaleIn 0.3s ease';
+                    setTimeout(() => {
+                        lectureItem.style.animation = '';
+                    }, 300);
+                });
+                
+                lecturesList.appendChild(lectureItem);
+            });
+            
+            subjectHeader.addEventListener('click', () => {
+                const isOpen = lecturesList.classList.contains('open');
+                
+                document.querySelectorAll('.lectures-list.open').forEach(list => {
+                    if (list !== lecturesList) {
+                        list.classList.remove('open');
+                        const header = list.previousElementSibling;
+                        header.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-down';
+                    }
+                });
+                
+                if (isOpen) {
+                    lecturesList.classList.remove('open');
+                    subjectHeader.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-down';
+                } else {
+                    lecturesList.classList.add('open');
+                    subjectHeader.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-up';
+                }
+            });
+            
+            subjectItem.appendChild(subjectHeader);
+            subjectItem.appendChild(lecturesList);
+            this.elements.subjectsList.appendChild(subjectItem);
+        });
+    }
+    
+    setActiveLecture(lectureElement, subjectName, lectureIndex, lecture) {
+        document.querySelectorAll('.lecture-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        
+        lectureElement.classList.add('active');
+        
+        this.activeLecture = {
+            element: lectureElement,
+            subject: subjectName,
+            index: lectureIndex,
+            videoId: lecture.videoId,
+            title: lecture.title
+        };
+    }
+    
+    // Lecture Tracking
+    initializeNewLectureTracking() {
+        let watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
+        
+        const allVideoIds = [];
+        subjectsData.forEach(subject => {
+            subject.lectures.forEach(lecture => {
+                allVideoIds.push(lecture.videoId);
+            });
+        });
+        
+        watchedLectures = watchedLectures.filter(id => allVideoIds.includes(id));
+        localStorage.setItem('watchedLectures', JSON.stringify(watchedLectures));
+    }
+    
+    isLectureNew(videoId) {
+        const watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
+        return !watchedLectures.includes(videoId);
+    }
+    
+    checkSubjectHasNewLectures(subject) {
+        const watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
+        return subject.lectures.some(lecture => !watchedLectures.includes(lecture.videoId));
+    }
+    
+    markLectureAsWatched(videoId, subjectName, lectureIndex) {
+        let watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
+        
+        if (!watchedLectures.includes(videoId)) {
+            watchedLectures.push(videoId);
+            localStorage.setItem('watchedLectures', JSON.stringify(watchedLectures));
+            this.updateLectureBadge(subjectName, lectureIndex);
+            this.updateSubjectBadge(subjectName);
+        }
+    }
+    
+    updateLectureBadge(subjectName, lectureIndex) {
+        const lectureItem = document.querySelector(`.lecture-item[data-subject="${subjectName}"][data-lecture-index="${lectureIndex}"]`);
+        if (lectureItem) {
+            const newBadge = lectureItem.querySelector('.badge-new');
+            if (newBadge) {
+                newBadge.remove();
+            }
+        }
+    }
+    
+    updateSubjectBadge(subjectName) {
+        const subject = subjectsData.find(s => s.name === subjectName);
+        if (subject) {
+            const hasNewLectures = this.checkSubjectHasNewLectures(subject);
+            const subjectHeader = document.querySelector(`.subject-header[data-subject-name="${subjectName}"]`);
+            
+            if (subjectHeader) {
+                const badgeContainer = subjectHeader.querySelector('.badge-container');
+                const existingBadge = subjectHeader.querySelector('.badge-new');
+                
+                if (hasNewLectures && !existingBadge) {
+                    const newBadge = document.createElement('span');
+                    newBadge.className = 'badge badge-new';
+                    newBadge.textContent = 'New';
+                    badgeContainer.appendChild(newBadge);
+                } else if (!hasNewLectures && existingBadge) {
+                    existingBadge.remove();
+                }
+            }
+        }
+    }
+    
+    isWithin24hWindow() {
+        const now = new Date();
+        const today4_00 = new Date();
+        today4_00.setHours(16, 0, 0, 0);
+        
+        const startTime = now < today4_00 ? 
+            new Date(today4_00.getTime() - 24 * 60 * 60 * 1000) : 
+            today4_00;
+            
+        const endTime = new Date(startTime.getTime() + 24 * 60 * 60 * 1000);
+        
+        return now >= startTime && now < endTime;
+    }
+    
+    updatePCMBTimer() {
+        const now = new Date();
+        const today4_00 = new Date();
+        today4_00.setHours(16, 0, 0, 0);
+        
+        let nextReset;
+        
+        if (now < today4_00) {
+            nextReset = today4_00;
+        } else {
+            nextReset = new Date(today4_00.getTime() + 24 * 60 * 60 * 1000);
+        }
+        
+        const timeLeft = nextReset - now;
+        
+        if (timeLeft <= 0) {
+            this.elements.pcmbTimerElement.textContent = "PCMB Time Left: Reset!";
+            return;
+        }
+        
+        const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        
+        this.elements.pcmbTimerElement.textContent = `PCMB Time Left: ${hours} Hours ${minutes} Minutes`;
+    }
+    
+    // Event Listeners
+    setupEventListeners() {
+        // Retry button
+        if (this.elements.retryButton) {
+            this.elements.retryButton.addEventListener('click', () => this.retryLoad());
+        }
+        
+        // Orientation changes
+        window.addEventListener('orientationchange', () => {
+            if (this.isTouchDevice && this.player) {
+                setTimeout(() => this.initializeTouchControls(), 300);
+                setTimeout(() => this.updateDoubleTapOverlay(), 300);
+            }
+        });
+    }
+    
+    // Cleanup
+    destroy() {
+        // Clear timeouts
+        if (this.tapTimeout) {
+            clearTimeout(this.tapTimeout);
+        }
+        if (this.controlsTimeout) {
+            clearTimeout(this.controlsTimeout);
+        }
+        
+        // Destroy Plyr instance
+        if (this.player) {
+            this.player.destroy();
+            this.player = null;
+        }
+        
+        this.isInitialized = false;
     }
 }
 
@@ -1410,615 +2144,35 @@ function removeDoubleTapEventListeners() {
     }
 })();
 
-// Function to handle fullscreen changes and maintain overlay
-function setupOverlayProtection() {
-    const doubleTapOverlay = document.getElementById('double-tap-overlay');
-    if (doubleTapOverlay) {
-        doubleTapOverlay.addEventListener('contextmenu', (e) => {
-            e.preventDefault();
-            return false;
-        });
-    }
-    
-    document.addEventListener('fullscreenchange', updateOverlayPosition);
-    document.addEventListener('webkitfullscreenchange', updateOverlayPosition);
-    document.addEventListener('mozfullscreenchange', updateOverlayPosition);
-    document.addEventListener('MSFullscreenChange', updateOverlayPosition);
-}
+// Global variables
+let videoPlayer;
 
-function updateOverlayPosition() {
-    const overlay = document.getElementById('iframe-overlay');
-    if (!overlay) return;
-    
-    const playerElement = document.querySelector('.plyr');
-    
-    if (playerElement && playerElement.classList.contains('plyr--fullscreen-active')) {
-        overlay.style.position = 'fixed';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100vw';
-        overlay.style.height = '100vh';
-        overlay.style.zIndex = '10';
-    } else {
-        overlay.style.position = 'absolute';
-        overlay.style.top = '0';
-        overlay.style.left = '0';
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.zIndex = '10';
-    }
-    
-    updateDoubleTapOverlay();
-}
+// Initialize the page when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    videoPlayer = new CustomVideoPlayer();
+});
 
-// DOM Elements
-const subjectsList = document.getElementById('subjects-list');
-const videoFrame = document.getElementById('lecture-video');
-const lectureNameElement = document.getElementById('lecture-name');
-const pcmbTimerElement = document.getElementById('pcmb-timer');
-const videoPlaceholder = document.getElementById('video-placeholder');
-const playerContainer = document.getElementById('player');
-
-// Track currently active lecture
-let activeLecture = null;
-let player = null;
-let isPlayerLoading = false;
-let pendingVideoRequest = null;
-
-// Mobile touch controls variables
-let isTouchDevice = false;
-let isControlsVisible = true;
-
-// Function to detect touch device
-function detectTouchDevice() {
-    return (('ontouchstart' in window) || 
-            (navigator.maxTouchPoints > 0) || 
-            (navigator.msMaxTouchPoints > 0) ||
-            (window.DocumentTouch && document instanceof DocumentTouch));
-}
-
-// Function to show controls
-function showTouchControls() {
-    if (!player) return;
-    
-    const controls = document.querySelector('.plyr__controls');
-    if (controls) {
-        controls.classList.remove('hidden');
-        isControlsVisible = true;
-    }
-    
-    // Enable double tap when controls are visible
-    if (isTouchDevice) {
-        setupDoubleTapEventListeners();
-    }
-}
-
-// Function to hide controls
-function hideTouchControls() {
-    if (!player) return;
-    
-    const controls = document.querySelector('.plyr__controls');
-    if (controls && isControlsVisible) {
-        controls.classList.add('hidden');
-        isControlsVisible = false;
-    }
-    
-    // Keep double tap active even when controls are hidden
-    if (isTouchDevice) {
-        setupDoubleTapEventListeners();
-    }
-}
-
-// Function to toggle controls
-function toggleTouchControls() {
-    if (!player) return;
-    
-    if (isControlsVisible) {
-        hideTouchControls();
-    } else {
-        showTouchControls();
-    }
-}
-
-// Initialize mobile touch controls
-function initializeTouchControls() {
-    isTouchDevice = detectTouchDevice();
-    
-    if (isTouchDevice) {
-        console.log('Touch device detected - initializing touch controls');
-        
-        // Add touch class to player
-        const playerElement = document.querySelector('.plyr');
-        if (playerElement) {
-            playerElement.classList.add('plyr--touch');
-        }
-        
-        // Create touch overlay
-        let touchOverlay = document.getElementById('touch-overlay');
-        if (!touchOverlay) {
-            touchOverlay = document.createElement('div');
-            touchOverlay.className = 'touch-overlay';
-            touchOverlay.id = 'touch-overlay';
-            document.querySelector('.video-container').appendChild(touchOverlay);
-        }
-        
-        // Ensure touch overlay is properly configured
-        touchOverlay.style.display = 'block';
-        touchOverlay.style.pointerEvents = 'auto';
-        touchOverlay.style.zIndex = '16';
-        
-        // Remove existing event listeners
-        touchOverlay.removeEventListener('touchstart', handleTouchOverlayTap);
-        touchOverlay.removeEventListener('click', handleTouchOverlayTap);
-        
-        // Add new event listeners
-        touchOverlay.addEventListener('touchstart', handleTouchOverlayTap, { passive: true });
-        touchOverlay.addEventListener('click', handleTouchOverlayTap, { passive: true });
-        
-        console.log('Touch controls initialized');
-    }
-}
-
-// Handle touch overlay tap
-function handleTouchOverlayTap(e) {
-    if (!isTouchDevice || !player) return;
-    
-    e.preventDefault();
-    e.stopPropagation();
-    
-    toggleTouchControls();
-}
-
-// Initialize the page
-function initializePage() {
-    initializeNewLectureTracking();
-    populateSubjects();
-    updatePCMBTimer();
-    setInterval(updatePCMBTimer, 60000);
-    setupOverlayProtection();
-    window.addEventListener('resize', updateOverlayPosition);
-    
-    isTouchDevice = detectTouchDevice();
-    
-    if (isTouchDevice) {
-        setTimeout(initializeDoubleTapDetection, 1000);
-    }
-}
-
-// Populate subjects list with badges
-function populateSubjects() {
-    subjectsList.innerHTML = '';
-    
-    subjectsData.filter(subject => subject.lectures && subject.lectures.length > 0).forEach(subject => {
-        const subjectItem = document.createElement('div');
-        subjectItem.className = 'subject-item';
-        
-        const hasNewLectures = checkSubjectHasNewLectures(subject);
-        
-        const subjectHeader = document.createElement('div');
-        subjectHeader.className = 'subject-header';
-        subjectHeader.setAttribute('data-subject-name', subject.name);
-        subjectHeader.innerHTML = `
-            <i class="subject-icon ${subject.icon}" style="color: ${subject.color};"></i>
-            <span class="subject-title">${subject.name}</span>
-            <div class="badge-container">
-                ${hasNewLectures ? '<span class="badge badge-new">New</span>' : ''}
-            </div>
-            <i class="dropdown-icon fas fa-chevron-down"></i>
-        `;
-        
-        const lecturesList = document.createElement('div');
-        lecturesList.className = 'lectures-list';
-        
-        subject.lectures.forEach((lecture, index) => {
-            const lectureItem = document.createElement('div');
-            lectureItem.className = 'lecture-item';
-            lectureItem.dataset.subject = subject.name;
-            lectureItem.dataset.lectureIndex = index;
-            
-            const isNewLecture = isLectureNew(lecture.videoId);
-            const showLimitedTimeIcon = subject.isPCMB && isWithin24hWindow();
-            
-            lectureItem.innerHTML = `
-                <i class="lecture-icon fas fa-play-circle" style="color: ${subject.color};"></i>
-                <span class="lecture-title">${lecture.title}</span>
-                <div class="lecture-badges">
-                    ${isNewLecture ? '<span class="badge badge-new">New</span>' : ''}
-                    ${showLimitedTimeIcon ? '<i class="limited-time-icon fas fa-clock"></i>' : ''}
-                </div>
-            `;
-            
-            lectureItem.addEventListener('click', () => {
-                loadVideo(lecture.videoId, lecture.title);
-                setActiveLecture(lectureItem, subject.name, index);
-                markLectureAsWatched(lecture.videoId, subject.name, index);
-                
-                lectureItem.style.animation = 'scaleIn 0.3s ease';
-                setTimeout(() => {
-                    lectureItem.style.animation = '';
-                }, 300);
-            });
-            
-            lecturesList.appendChild(lectureItem);
-        });
-        
-        subjectHeader.addEventListener('click', () => {
-            const isOpen = lecturesList.classList.contains('open');
-            
-            document.querySelectorAll('.lectures-list.open').forEach(list => {
-                if (list !== lecturesList) {
-                    list.classList.remove('open');
-                    const header = list.previousElementSibling;
-                    header.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-down';
-                }
-            });
-            
-            if (isOpen) {
-                lecturesList.classList.remove('open');
-                subjectHeader.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-down';
-            } else {
-                lecturesList.classList.add('open');
-                subjectHeader.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-up';
-            }
-        });
-        
-        subjectItem.appendChild(subjectHeader);
-        subjectItem.appendChild(lecturesList);
-        subjectsList.appendChild(subjectItem);
-    });
-}
-
-// Load video into iframe
-function loadVideo(videoId, lectureTitle) {
-    if (isPlayerLoading) {
-        pendingVideoRequest = { videoId, lectureTitle };
-        return;
-    }
-    
-    console.log('Loading video:', videoId, lectureTitle);
-    isPlayerLoading = true;
-    
-    lectureNameElement.textContent = `Loading: ${lectureTitle}`;
-    videoPlaceholder.style.display = 'none';
-    playerContainer.style.display = 'block';
-    
-    showLoadingIndicator();
-    
-    if (player) {
-        player.destroy();
-        player = null;
-    }
-    
-    const newIframe = document.createElement('iframe');
-    newIframe.id = 'lecture-video';
-    newIframe.className = 'plyr__video-embed';
-    newIframe.src = `https://www.youtube.com/embed/${videoId}?origin=https://plyr.io&enablejsapi=1&widgetid=1`;
-    newIframe.frameBorder = '0';
-    newIframe.allowFullscreen = true;
-    newIframe.allow = 'autoplay';
-    newIframe.style.pointerEvents = 'none';
-    
-    const oldIframe = document.getElementById('lecture-video');
-    oldIframe.parentNode.replaceChild(newIframe, oldIframe);
-    
-    const videoInfo = document.querySelector('.video-info');
-    videoInfo.style.animation = 'slideIn 0.5s ease';
-    setTimeout(() => {
-        videoInfo.style.animation = '';
-    }, 500);
-    
-    setTimeout(() => {
-        try {
-            player = new Plyr('#player', {
-                controls: [
-                    'play-large',
-                    'rewind',
-                    'play',
-                    'fast-forward',
-                    'progress',
-                    'current-time',
-                    'mute',
-                    'volume',
-                    'settings',
-                    'pip',
-                    'fullscreen'
-                ],
-                hideControls: false,
-                clickToPlay: false,
-                touch: true,
-                hideControls: false,
-                youtube: {
-                    noCookie: true,
-                    rel: 0,
-                    showinfo: 0,
-                    iv_load_policy: 3,
-                    modestbranding: 1
-                },
-                i18n: {
-                    rewind: 'Rewind {seektime}s',
-                    fastForward: 'Forward {seektime}s'
-                },
-                seekTime: 10,
-                fullscreen: {
-                    enabled: true,
-                    fallback: true,
-                    iosNative: false,
-                    container: null
-                }
-            });
-            
-            player.on('play', () => {
-                const overlay = document.getElementById('iframe-overlay');
-                const iframe = document.getElementById('lecture-video');
-                if (overlay) overlay.style.pointerEvents = 'auto';
-                if (iframe) iframe.style.pointerEvents = 'none';
-                
-                if (isTouchDevice) {
-                    setupDoubleTapEventListeners();
-                }
-                
-                // Auto-show controls when video starts playing
-                showTouchControls();
-            });
-
-            player.on('pause', () => {
-                const overlay = document.getElementById('iframe-overlay');
-                const iframe = document.getElementById('lecture-video');
-                if (overlay) overlay.style.pointerEvents = 'auto';
-                if (iframe) iframe.style.pointerEvents = 'none';
-                
-                // Keep double tap active when paused
-                if (isTouchDevice) {
-                    setupDoubleTapEventListeners();
-                }
-                
-                // Auto-show controls when video is paused
-                showTouchControls();
-            });
-            
-            player.on('ready', () => {
-                console.log('Player ready');
-                isPlayerLoading = false;
-                hideLoadingIndicator();
-                lectureNameElement.textContent = lectureTitle;
-                
-                const overlay = document.getElementById('iframe-overlay');
-                const iframe = document.getElementById('lecture-video');
-                if (overlay) overlay.style.pointerEvents = 'auto';
-                if (iframe) iframe.style.pointerEvents = 'none';
-                
-                updateOverlayPosition();
-                initializeTouchControls();
-                
-                // AUTO-SHOW CONTROLS WHEN VIDEO LOADS - FEATURE 1
-                showTouchControls();
-                
-                if (pendingVideoRequest) {
-                    const nextVideo = pendingVideoRequest;
-                    pendingVideoRequest = null;
-                    setTimeout(() => {
-                        loadVideo(nextVideo.videoId, nextVideo.lectureTitle);
-                    }, 500);
-                }
-            });
-            
-            player.on('loaderror', () => {
-                console.error('Player load error');
-                isPlayerLoading = false;
-                hideLoadingIndicator();
-                lectureNameElement.textContent = 'Error loading video';
-            });
-            
-            player.on('enterfullscreen', () => {
-                updateOverlayPosition();
-                if (isTouchDevice) {
-                    setTimeout(initializeTouchControls, 100);
-                    setTimeout(setupDoubleTapEventListeners, 200);
-                }
-                
-                if (screen.orientation && screen.orientation.lock) {
-                    screen.orientation.lock('landscape').catch(() => {});
-                }
-            });
-            
-            player.on('exitfullscreen', () => {
-                updateOverlayPosition();
-                if (isTouchDevice) {
-                    setTimeout(initializeTouchControls, 100);
-                    setTimeout(setupDoubleTapEventListeners, 200);
-                }
-                
-                if (screen.orientation && screen.orientation.unlock) {
-                    screen.orientation.unlock();
-                }
-            });
-            
-        } catch (error) {
-            console.error('Player initialization error:', error);
-            isPlayerLoading = false;
-            hideLoadingIndicator();
-            lectureNameElement.textContent = 'Error initializing player';
-        }
-    }, 800);
-}
-
-// Loading indicator functions
-function showLoadingIndicator() {
-    let loadingEl = document.getElementById('video-loading');
-    if (!loadingEl) {
-        loadingEl = document.createElement('div');
-        loadingEl.id = 'video-loading';
-        loadingEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i><p>Loading video...</p>';
-        loadingEl.style.cssText = `
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-            z-index: 10;
-            color: white;
-            font-size: 18px;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-        `;
-        document.querySelector('.video-container').appendChild(loadingEl);
-    }
-    loadingEl.style.display = 'block';
-}
-
-function hideLoadingIndicator() {
-    const loadingEl = document.getElementById('video-loading');
-    if (loadingEl) {
-        loadingEl.style.display = 'none';
-    }
-}
-
-// Set active lecture
-function setActiveLecture(lectureElement, subjectName, lectureIndex) {
-    document.querySelectorAll('.lecture-item').forEach(item => {
-        item.classList.remove('active');
-    });
-    
-    lectureElement.classList.add('active');
-    
-    activeLecture = {
-        element: lectureElement,
-        subject: subjectName,
-        index: lectureIndex
-    };
-}
-
-// Initialize new lecture tracking
-function initializeNewLectureTracking() {
-    let watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
-    
-    const allVideoIds = [];
-    subjectsData.forEach(subject => {
-        subject.lectures.forEach(lecture => {
-            allVideoIds.push(lecture.videoId);
-        });
-    });
-    
-    watchedLectures = watchedLectures.filter(id => allVideoIds.includes(id));
-    localStorage.setItem('watchedLectures', JSON.stringify(watchedLectures));
-}
-
-// Check if a lecture is new
-function isLectureNew(videoId) {
-    const watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
-    return !watchedLectures.includes(videoId);
-}
-
-// Check if a subject has any new lectures
-function checkSubjectHasNewLectures(subject) {
-    const watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
-    return subject.lectures.some(lecture => !watchedLectures.includes(lecture.videoId));
-}
-
-// Mark a lecture as watched
-function markLectureAsWatched(videoId, subjectName, lectureIndex) {
-    let watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
-    
-    if (!watchedLectures.includes(videoId)) {
-        watchedLectures.push(videoId);
-        localStorage.setItem('watchedLectures', JSON.stringify(watchedLectures));
-        updateLectureBadge(subjectName, lectureIndex);
-        updateSubjectBadge(subjectName);
-    }
-}
-
-// Update a specific lecture badge
-function updateLectureBadge(subjectName, lectureIndex) {
-    const lectureItem = document.querySelector(`.lecture-item[data-subject="${subjectName}"][data-lecture-index="${lectureIndex}"]`);
-    if (lectureItem) {
-        const newBadge = lectureItem.querySelector('.badge-new');
-        if (newBadge) {
-            newBadge.remove();
+// Handle page visibility changes to prevent memory leaks
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden && videoPlayer && videoPlayer.player) {
+        // Page is hidden, pause video
+        if (videoPlayer.player.playing) {
+            videoPlayer.player.pause();
         }
     }
-}
+});
 
-// Update a subject badge
-function updateSubjectBadge(subjectName) {
-    const subject = subjectsData.find(s => s.name === subjectName);
-    if (subject) {
-        const hasNewLectures = checkSubjectHasNewLectures(subject);
-        const subjectHeader = document.querySelector(`.subject-header[data-subject-name="${subjectName}"]`);
-        
-        if (subjectHeader) {
-            const badgeContainer = subjectHeader.querySelector('.badge-container');
-            const existingBadge = subjectHeader.querySelector('.badge-new');
-            
-            if (hasNewLectures && !existingBadge) {
-                const newBadge = document.createElement('span');
-                newBadge.className = 'badge badge-new';
-                newBadge.textContent = 'New';
-                badgeContainer.appendChild(newBadge);
-            } else if (!hasNewLectures && existingBadge) {
-                existingBadge.remove();
-            }
-        }
+// Handle page unload to clean up
+window.addEventListener('beforeunload', function() {
+    if (videoPlayer) {
+        videoPlayer.destroy();
     }
-}
-
-// Check if current time is within 24h window
-function isWithin24hWindow() {
-    const now = new Date();
-    const today4_00 = new Date();
-    today4_00.setHours(16, 0, 0, 0);
-    
-    const startTime = now < today4_00 ? 
-        new Date(today4_00.getTime() - 24 * 60 * 60 * 1000) : 
-        today4_00;
-        
-    const endTime = new Date(startTime.getTime() + 24 * 60 * 60 * 1000);
-    
-    return now >= startTime && now < endTime;
-}
-
-// Update PCMB timer
-function updatePCMBTimer() {
-    const now = new Date();
-    const today4_00 = new Date();
-    today4_00.setHours(16, 0, 0, 0);
-    
-    let nextReset;
-    
-    if (now < today4_00) {
-        nextReset = today4_00;
-    } else {
-        nextReset = new Date(today4_00.getTime() + 24 * 60 * 60 * 1000);
-    }
-    
-    const timeLeft = nextReset - now;
-    
-    if (timeLeft <= 0) {
-        pcmbTimerElement.textContent = "PCMB Time Left: Reset!";
-        return;
-    }
-    
-    const hours = Math.floor(timeLeft / (1000 * 60 * 60));
-    const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    
-    pcmbTimerElement.textContent = `PCMB Time Left: ${hours} Hours ${minutes} Minutes`;
-}
+});
 
 // Navigate to home page
 function goToHome() {
     window.location.href = 'index.html';
 }
-
-// Handle orientation changes
-window.addEventListener('orientationchange', () => {
-    if (isTouchDevice && player) {
-        setTimeout(initializeTouchControls, 300);
-        setTimeout(updateDoubleTapOverlay, 300);
-    }
-});
-
-// Initialize the page when DOM is loaded
-document.addEventListener('DOMContentLoaded', initializePage);
 </script>
 </body>
 </html>
