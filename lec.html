@@ -1240,10 +1240,8 @@ function handleTouchEnd(e) {
         lastTap = currentTime;
         tapTimeout = setTimeout(() => {
             tapCount = 0;
-            // Single tap - toggle controls (only if not double tap)
-            if (player && player.playing) {
-                toggleTouchControls();
-            }
+            // Single tap - do NOT toggle controls for double tap areas
+            // Controls are now manually toggled only via the main touch overlay
         }, DOUBLE_TAP_DELAY);
     }
 }
@@ -1269,7 +1267,7 @@ function handleDoubleTap(section) {
         console.log(`Fast forwarded to ${newTime.toFixed(2)}s`);
     }
     
-    // Show controls after double tap
+    // Show controls after double tap (they should already be visible)
     showTouchControls();
 }
 
@@ -1483,7 +1481,7 @@ function detectTouchDevice() {
             (window.DocumentTouch && document instanceof DocumentTouch));
 }
 
-// Function to show controls - FIXED
+// Function to show controls - FIXED (No auto-hide)
 function showTouchControls() {
     if (!isTouchDevice || !player) return;
     
@@ -1493,20 +1491,14 @@ function showTouchControls() {
         isControlsVisible = true;
     }
     
-    // Clear existing timeout
+    // Clear any existing timeout to prevent auto-hiding
     if (touchControlsTimeout) {
         clearTimeout(touchControlsTimeout);
+        touchControlsTimeout = null;
     }
-    
-    // Set timeout to hide controls after 3 seconds of inactivity
-    touchControlsTimeout = setTimeout(() => {
-        if (!player.paused) { // Only hide if video is playing
-            hideTouchControls();
-        }
-    }, 3000);
 }
 
-// Function to hide controls - FIXED
+// Function to hide controls - FIXED (Manual hide only)
 function hideTouchControls() {
     if (!isTouchDevice || !player) return;
     
@@ -1515,9 +1507,15 @@ function hideTouchControls() {
         controls.classList.add('hidden');
         isControlsVisible = false;
     }
+    
+    // Clear any existing timeout
+    if (touchControlsTimeout) {
+        clearTimeout(touchControlsTimeout);
+        touchControlsTimeout = null;
+    }
 }
 
-// Function to toggle controls - FIXED
+// Function to toggle controls - FIXED (Manual toggle only)
 function toggleTouchControls() {
     if (!isTouchDevice || !player) return;
     
@@ -1526,12 +1524,6 @@ function toggleTouchControls() {
     } else {
         showTouchControls();
     }
-}
-
-// Reset controls timeout on any interaction
-function resetControlsTimeout() {
-    if (!isTouchDevice || !player) return;
-    showTouchControls();
 }
 
 // Initialize mobile touch controls
@@ -1556,7 +1548,7 @@ function initializeTouchControls() {
             document.querySelector('.video-container').appendChild(touchOverlay);
         }
         
-        // Add event listeners for touch overlay - FIXED
+        // Add event listeners for touch overlay - FIXED (Toggle on tap)
         touchOverlay.addEventListener('touchstart', (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -1569,7 +1561,8 @@ function initializeTouchControls() {
             videoContainer.addEventListener('touchstart', (e) => {
                 // Only handle touches on the video area, not controls
                 if (!e.target.closest('.plyr__controls')) {
-                    resetControlsTimeout();
+                    // Don't auto-hide, just ensure controls are visible
+                    showTouchControls();
                 }
             });
         }
@@ -1578,11 +1571,11 @@ function initializeTouchControls() {
         if (player) {
             player.on('play', showTouchControls);
             player.on('pause', showTouchControls);
-            player.on('controlsshown', resetControlsTimeout);
+            player.on('controlsshown', showTouchControls);
         }
         
-        // Hide controls initially after 3 seconds
-        touchControlsTimeout = setTimeout(hideTouchControls, 3000);
+        // Show controls initially and don't auto-hide
+        showTouchControls();
     }
 }
 
@@ -1816,7 +1809,7 @@ function loadVideo(videoId, lectureTitle) {
                 // Enable double tap when playing
                 setupDoubleTapEventListeners();
                 
-                // Show controls when playing, then auto-hide
+                // Show controls when playing (no auto-hide)
                 showTouchControls();
             });
 
@@ -1834,27 +1827,17 @@ function loadVideo(videoId, lectureTitle) {
                 // Disable double tap when paused
                 removeDoubleTapEventListeners();
                 
-                // Keep controls visible when paused
+                // Keep controls visible when paused (no auto-hide)
                 showTouchControls();
-                // Clear auto-hide timeout when paused
-                if (touchControlsTimeout) {
-                    clearTimeout(touchControlsTimeout);
-                }
             });
             
             player.on('ended', () => {
                 console.log('Video ended - disabling double tap');
                 // Disable double tap when video ends
                 removeDoubleTapEventListeners();
-            });
-            
-            // Add more event listeners for better touch control
-            player.on('controlsshown', () => {
-                resetControlsTimeout();
-            });
-
-            player.on('controlshidden', () => {
-                // Don't immediately hide, let timeout handle it
+                
+                // Keep controls visible when video ends
+                showTouchControls();
             });
             
             // When player is ready, clear loading state
@@ -2134,23 +2117,6 @@ function goToHome() {
     window.location.href = 'index.html';
 }
 
-// Global touch event listeners for better mobile experience
-document.addEventListener('touchstart', (e) => {
-    if (isTouchDevice) {
-        // Reset controls timeout on any touch interaction with controls
-        if (player && e.target.closest('.plyr__controls')) {
-            resetControlsTimeout();
-        }
-    }
-});
-
-// Prevent default touch behaviors that might interfere
-document.addEventListener('touchmove', (e) => {
-    if (e.target.closest('.plyr__video-embed') || e.target.closest('.touch-overlay')) {
-        e.preventDefault();
-    }
-}, { passive: false });
-
 // Handle orientation changes
 window.addEventListener('orientationchange', () => {
     if (isTouchDevice && player) {
@@ -2158,13 +2124,6 @@ window.addEventListener('orientationchange', () => {
         setTimeout(initializeTouchControls, 300);
         // Update double tap overlay
         setTimeout(updateDoubleTapOverlay, 300);
-    }
-});
-
-// Add event listener for touch events on controls to reset timeout
-document.addEventListener('touchstart', (e) => {
-    if (isTouchDevice && player && e.target.closest('.plyr__controls')) {
-        resetControlsTimeout();
     }
 });
 
