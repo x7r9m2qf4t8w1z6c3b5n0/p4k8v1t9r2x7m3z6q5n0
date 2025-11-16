@@ -14,7 +14,7 @@ const subjectsData = [
                 color: "#4ecdc4",
                 isPCMB: true,
                 lectures: [
-            { title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763227445862.pdf" }
+            { title: "পরিমাণগত রসায়ন (পর্ব ১)", videoId: "Qxmp4EeI6EU" }
                 ]
             },
             {
