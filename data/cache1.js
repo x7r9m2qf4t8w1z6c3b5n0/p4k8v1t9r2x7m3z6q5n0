@@ -5,7 +5,6 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
-                    { title: "তাপগতিবিদ্যা ২", videoId: "iKgoLAZdtZQ" },
 
                 ]
             },
@@ -15,7 +14,7 @@ const subjectsData = [
                 color: "#4ecdc4",
                 isPCMB: true,
                 lectures: [
-
+            { title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763227445862.pdf" }
                 ]
             },
             {
