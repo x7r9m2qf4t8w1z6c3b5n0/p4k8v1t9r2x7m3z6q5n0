@@ -15,7 +15,7 @@ const subjectsData = [
         icon: "fas fa-flask",
         color: "#4ecdc4",
         pdfs: [
-
+       { title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763227445862.pdf" },
         ]
     },
     {
