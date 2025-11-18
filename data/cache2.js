@@ -65,6 +65,7 @@ const subjectsData = [
           { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1QhkfOgtXv3AHbS5mGdBLiOzaam1AZfL7" },
           { title: "সংখ্যা পদ্ধতি (পর্ব ১)", url: "https://pdf.bondipathshala.education/1762884933460.pdf" },
           { title: "সংখ্যা পদ্ধতি (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763211271973.pdf" },
+          { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", url: "https://pdf.bondipathshala.education/1763382953989.pdf" }
         ]
     },
             {
