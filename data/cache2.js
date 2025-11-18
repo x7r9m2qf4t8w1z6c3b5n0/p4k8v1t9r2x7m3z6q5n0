@@ -25,6 +25,7 @@ const subjectsData = [
         color: "#45b7d1",
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
+            { title: "জটিল সংখ্যা", url: "https://pdf.bondipathshala.education/1763407233652.pdf" },
         ]
     },
     {
