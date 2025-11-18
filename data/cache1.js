@@ -65,7 +65,7 @@ const subjectsData = [
                 lectures: [
                     { title: "সংখ্যা পদ্ধতি (পর্ব ১)", videoId: "iK-lo9RU6dA" },
                     { title: "সংখ্যা পদ্ধতি (পর্ব ২)", videoId: "l75rI34jB_k" },
-                    { title: "সংখ্যাপদ্ধতি (পর্ব ৩)", videoId: "voSerxe4EAE" },
+                    { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", videoId: "voSerxe4EAE" },
                 ]
             },
                         {
