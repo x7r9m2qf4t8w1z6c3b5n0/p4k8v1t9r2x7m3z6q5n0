@@ -14,6 +14,7 @@ const subjectsData = [
         icon: "fas fa-flask",
         color: "#4ecdc4",
         pdfs: [
+            { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
             { title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763227445862.pdf" },
             { title: "পরিমাণগত রসায়ন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763322423543.pdf" },
         ]
@@ -23,7 +24,7 @@ const subjectsData = [
         icon: "fas fa-square-root-alt",
         color: "#45b7d1",
         pdfs: [
-
+            { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
         ]
     },
     {
@@ -31,7 +32,7 @@ const subjectsData = [
         icon: "fas fa-dna",
         color: "#96ceb4",
         pdfs: [
-
+            { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
         ]
     },
     {
@@ -60,6 +61,7 @@ const subjectsData = [
         icon: "fas fa-laptop-code",
         color: "#54a0ff",
         pdfs: [
+          { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1QhkfOgtXv3AHbS5mGdBLiOzaam1AZfL7" },
           { title: "সংখ্যা পদ্ধতি (পর্ব ১)", url: "https://pdf.bondipathshala.education/1762884933460.pdf" },
           { title: "সংখ্যা পদ্ধতি (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763211271973.pdf" },
         ]
