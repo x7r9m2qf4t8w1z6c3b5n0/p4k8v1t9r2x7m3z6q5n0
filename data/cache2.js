@@ -14,7 +14,7 @@ const subjectsData = [
         icon: "fas fa-flask",
         color: "#4ecdc4",
         pdfs: [
-            { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
+            { title: "Extra Materials", url: "" },
             { title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763227445862.pdf" },
             { title: "পরিমাণগত রসায়ন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763322423543.pdf" },
         ]
@@ -24,7 +24,7 @@ const subjectsData = [
         icon: "fas fa-square-root-alt",
         color: "#45b7d1",
         pdfs: [
-            { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
+            { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1eGYXAlqLyT3Cx1Gao0ALRClqlms8e9vR" },
             { title: "জটিল সংখ্যা", url: "https://pdf.bondipathshala.education/1763407233652.pdf" },
         ]
     },
@@ -33,7 +33,8 @@ const subjectsData = [
         icon: "fas fa-dna",
         color: "#96ceb4",
         pdfs: [
-            { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
+            { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1Ghs6FfGjpllcFGZR-1rM4fmzL--k7dnS" },
+            { title: "রক্ত ও সংবহন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763534808594.pdf" },
         ]
     },
     {
@@ -51,10 +52,12 @@ const subjectsData = [
         icon: "fas fa-language",
         color: "#ff9ff3",
         pdfs: [
+            { title: "Extra Materials", url: "" },
             { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ১) + তাহারেই পড়ে মনে", url: "https://pdf.bondipathshala.education/1762619703676.pdf" },
             { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", url: "https://pdf.bondipathshala.education/1762707908751.pdf" },
             { title: "অপপ্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
             { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", url: "https://pdf.bondipathshala.education/1763116435241.pdf" },
+            { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", url: "https://pdf.bondipathshala.education/1763460159824.pdf" },
         ]
     },
     {
