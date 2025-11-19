@@ -5,7 +5,6 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
-
                 ]
             },
             {
@@ -13,8 +12,7 @@ const subjectsData = [
                 icon: "fas fa-flask",
                 color: "#4ecdc4",
                 isPCMB: true,
-                lectures: [
-                     
+                lectures: [                
                 ]
             },
             {
@@ -23,7 +21,6 @@ const subjectsData = [
                 color: "#45b7d1",
                 isPCMB: true,
                 lectures: [
-                  { title: "জটিল সংখ্যা", videoId: "dtj4kGIKa2M" },
                 ]
             },
             {
@@ -32,7 +29,7 @@ const subjectsData = [
                 color: "#96ceb4",
                 isPCMB: true,
                 lectures: [
-
+                    { title: "রক্ত ও সংবহন (পর্ব ১)", videoId: "0s-K-wv1Ym8" }
                 ]
             },
             {
@@ -55,6 +52,7 @@ const subjectsData = [
                     { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", videoId: "2jTgvYrtNgM" },
                     { title: "অপপ্রয়োগ", videoId: "7GK3_s7RMMY" },
                     { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", videoId: "KGlHm2zZQeA" },
+                    { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", videoId: "G28XEYXk54I" },
                 ]
             },
             {
