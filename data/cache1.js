@@ -29,7 +29,7 @@ const subjectsData = [
                 color: "#96ceb4",
                 isPCMB: true,
                 lectures: [
-                    { title: "রক্ত ও সংবহন (পর্ব ১)", videoId: "0s-K-wv1Ym8" }
+                    { title: "রক্ত ও সংবহন (পর্ব ২)", videoId: "TnEeRzrx8jY" }
                 ]
             },
             {
