@@ -21,7 +21,7 @@ const routineData = [
   { date: '19/11/2025', subject: 'BIOLOGY', topic: 'রক্ত ও রক্ত সংবহন ১', instructor: 'HRIDOY VAIA' },
   { date: '19/11/2025', subject: 'BENGALI', topic: 'বাক্য প্রকরণ ২ + বিদ্রোহী', instructor: 'TANVIR VAIA' },
   { date: '20/11/2025', subject: 'BIOLOGY', topic: 'রক্ত ও রক্ত সংবহন ২', instructor: 'HAMIM VAIA' },
-  { date: '20/11/2025', subject: 'BENGALI', topic: 'মানব কল্যাণ + প্রতিদান', instructor: 'TANVIR VAIA' },
+  { date: '20/11/2025', subject: 'BENGALI', topic: 'বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান', instructor: 'TANVIR VAIA' },
   { date: '21/11/2025', subject: 'PHYSICS', topic: 'চল তড়িৎ ১', instructor: 'PROMIT VAIA' },
   { date: '21/11/2025', subject: 'ENGLISH', topic: 'Completing Sentence 2', instructor: 'MANIK VAIA' },
   { date: '22/11/2025', subject: 'PHYSICS', topic: 'চল তড়িৎ ২', instructor: 'PROMIT VAIA' },
