@@ -35,6 +35,7 @@ const subjectsData = [
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1Ghs6FfGjpllcFGZR-1rM4fmzL--k7dnS" },
             { title: "রক্ত ও সংবহন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763534808594.pdf" },
+            { title: "রক্ত ও সংবহন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763584843900.pdf" },
         ]
     },
     {
@@ -43,7 +44,7 @@ const subjectsData = [
         color: "#feca57",
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1u-Ff0iuERR_9VGYxtkcaL0ciI13rskoM" },
-            { title: "Modifier", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
+            { title: "Modifiers", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
             { title: "Completing Sentence (পর্ব ১) + Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
         ]
     },
@@ -55,9 +56,10 @@ const subjectsData = [
             { title: "Extra Materials", url: "" },
             { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ১) + তাহারেই পড়ে মনে", url: "https://pdf.bondipathshala.education/1762619703676.pdf" },
             { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", url: "https://pdf.bondipathshala.education/1762707908751.pdf" },
-            { title: "অপপ্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
+            { title: "বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধ প্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
             { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", url: "https://pdf.bondipathshala.education/1763116435241.pdf" },
             { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", url: "https://pdf.bondipathshala.education/1763460159824.pdf" },
+            { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", url: "https://pdf.bondipathshala.education/1763546936166.pdf" }
         ]
     },
     {
@@ -68,7 +70,7 @@ const subjectsData = [
           { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1QhkfOgtXv3AHbS5mGdBLiOzaam1AZfL7" },
           { title: "সংখ্যা পদ্ধতি (পর্ব ১)", url: "https://pdf.bondipathshala.education/1762884933460.pdf" },
           { title: "সংখ্যা পদ্ধতি (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763211271973.pdf" },
-          { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", url: "https://pdf.bondipathshala.education/1763382953989.pdf" }
+          { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", url: "https://pdf.bondipathshala.education/1763382953989.pdf" },
         ]
     },
             {
