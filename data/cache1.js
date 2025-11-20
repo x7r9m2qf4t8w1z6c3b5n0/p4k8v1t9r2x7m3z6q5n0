@@ -38,7 +38,7 @@ const subjectsData = [
                 color: "#feca57",
                 isPCMB: false,
                 lectures: [
-                    { title: "Modifier", videoId: "AWV1ro6RGs0" },
+                    { title: "Modifiers", videoId: "AWV1ro6RGs0" },
                     { title: "Completing Sentence (পর্ব ১) + Paragraph Writing", videoId: "Aqx-UhthZUc" },
                 ]
             },
