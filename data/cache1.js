@@ -53,6 +53,7 @@ const subjectsData = [
                     { title: "অপপ্রয়োগ", videoId: "7GK3_s7RMMY" },
                     { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", videoId: "KGlHm2zZQeA" },
                     { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", videoId: "G28XEYXk54I" },
+                    { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", videoId: "Cgzmqf3xu9s" },
                 ]
             },
             {
