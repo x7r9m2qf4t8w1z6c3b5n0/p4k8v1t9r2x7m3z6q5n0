@@ -7,6 +7,7 @@ const subjectsData = [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
             { title: "তাপগতিবিদ্যা (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
             { title: "তাপগতিবিদ্যা (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763188021935.pdf" },
+            { title: "চল তড়িৎ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763706662406.pdf" }
         ]
     },
     {
@@ -46,6 +47,7 @@ const subjectsData = [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1u-Ff0iuERR_9VGYxtkcaL0ciI13rskoM" },
             { title: "Modifiers", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
             { title: "Completing Sentence (পর্ব ১) + Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
+            { title: "Completing Sentence (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763464989155.pdf" }
         ]
     },
     {
