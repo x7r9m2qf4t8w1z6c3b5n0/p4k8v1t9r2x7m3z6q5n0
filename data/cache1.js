@@ -5,6 +5,7 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
+                          { title: "চল তড়িৎ (পর্ব ১)", videoId: "7xb15PjCKuw" },  
                 ]
             },
             {
@@ -29,7 +30,6 @@ const subjectsData = [
                 color: "#96ceb4",
                 isPCMB: true,
                 lectures: [
-                    { title: "রক্ত ও সংবহন (পর্ব ২)", videoId: "TnEeRzrx8jY" }
                 ]
             },
             {
@@ -40,6 +40,7 @@ const subjectsData = [
                 lectures: [
                     { title: "Modifiers", videoId: "AWV1ro6RGs0" },
                     { title: "Completing Sentence (পর্ব ১) + Paragraph Writing", videoId: "Aqx-UhthZUc" },
+                    { title: "Completing Sentence (পর্ব ২)", videoId: "OHuxXa1jA0U" },
                 ]
             },
             {
