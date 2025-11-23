@@ -5,9 +5,9 @@ const subjectsData = [
         color: "#ff6b6b",
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
-            { title: "তাপগতিবিদ্যা (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
-            { title: "তাপগতিবিদ্যা (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763188021935.pdf" },
-            { title: "চল তড়িৎ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763706662406.pdf" },
+            { title: "তাপগতিবিদ্যা (পর্ব ১)", url: "https://drive.google.com/file/d/15Vfrjtb4huhL3K0AeHZJEhbiSPWIc06v/view?usp=sharing" },
+            { title: "তাপগতিবিদ্যা (পর্ব ২)", url: "https://drive.google.com/file/d/1medv1fpuzkwEIGiPKLgxchWye8pl16jh/view?usp=sharing" },
+            { title: "চল তড়িৎ (পর্ব ১)", url: "https://drive.google.com/file/d/15n3TdCredxmPmPAVfPsOcCvA2YalKdkN/view?usp=sharing" },
             { title: "চল তড়িৎ (পর্ব ২)", url: "https://drive.google.com/file/d/1Hs753GXue2cTET7qcJZkWCAWrLsu1aJs/view?usp=sharing" },
         ]
     },
@@ -17,8 +17,8 @@ const subjectsData = [
         color: "#4ecdc4",
         pdfs: [
             { title: "Extra Materials", url: "" },
-            { title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763227445862.pdf" },
-            { title: "পরিমাণগত রসায়ন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763322423543.pdf" },
+            { title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://drive.google.com/file/d/1V1enru7OB7Olxg5P1SVVMoF5mPftmqei/view?usp=sharing" },
+            { title: "পরিমাণগত রসায়ন (পর্ব ২)", url: "https://drive.google.com/file/d/1hcpRhJ6aqgsCA5EjG3q3NOXGOlOkuVmc/view?usp=sharing" },
             { title: "পরিমাণগত রসায়ন (পর্ব ৩)", url: "https://drive.google.com/file/d/1dF58DMF8XaBMIf6bT8GXUQYgJNaaHO9r/view?usp=sharing" },
         ]
     },
