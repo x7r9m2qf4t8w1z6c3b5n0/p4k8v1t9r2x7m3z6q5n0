@@ -5,7 +5,7 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
-                          { title: "চল তড়িৎ (পর্ব ১)", videoId: "7xb15PjCKuw" },  
+                    { title: "চল তড়িৎ (পর্ব ২)", videoId: "NkjXvyaAh6s" },
                 ]
             },
             {
