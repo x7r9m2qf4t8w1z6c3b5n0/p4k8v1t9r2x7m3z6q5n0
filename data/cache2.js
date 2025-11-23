@@ -8,7 +8,7 @@ const subjectsData = [
             { title: "তাপগতিবিদ্যা (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
             { title: "তাপগতিবিদ্যা (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763188021935.pdf" },
             { title: "চল তড়িৎ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763706662406.pdf" },
-            { title: "চল তড়িৎ (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763752226049.pdf" },
+            { title: "চল তড়িৎ (পর্ব ২)", url: "https://drive.google.com/file/d/1Hs753GXue2cTET7qcJZkWCAWrLsu1aJs/view?usp=sharing" },
         ]
     },
     {
@@ -19,7 +19,7 @@ const subjectsData = [
             { title: "Extra Materials", url: "" },
             { title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763227445862.pdf" },
             { title: "পরিমাণগত রসায়ন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763322423543.pdf" },
-            { title: "পরিমাণগত রসায়ন (পর্ব ৩)", url: "https://pdf.bondipathshala.education/1763880211903.pdf" },
+            { title: "পরিমাণগত রসায়ন (পর্ব ৩)", url: "https://drive.google.com/file/d/1dF58DMF8XaBMIf6bT8GXUQYgJNaaHO9r/view?usp=sharing" },
         ]
     },
     {
@@ -37,8 +37,9 @@ const subjectsData = [
         color: "#96ceb4",
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1Ghs6FfGjpllcFGZR-1rM4fmzL--k7dnS" },
+            { title: "Marked Books", url: "https://drive.google.com/drive/folders/1z-9yAOmVYmIcB4RhtEnO1YatCBoXUYq6?usp=sharing" },
             { title: "রক্ত ও সংবহন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763534808594.pdf" },
-            { title: "রক্ত ও সংবহন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763584843900.pdf" },
+            { title: "রক্ত ও সংবহন (পর্ব ২)", url: "https://drive.google.com/file/d/1Zn2L2XlUkyG_BHKztX6s_HJtdvkrBeYL/view?usp=sharing" },
         ]
     },
     {
