@@ -38,7 +38,7 @@ const subjectsData = [
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1Ghs6FfGjpllcFGZR-1rM4fmzL--k7dnS" },
             { title: "Marked Books", url: "https://drive.google.com/drive/folders/1z-9yAOmVYmIcB4RhtEnO1YatCBoXUYq6?usp=sharing" },
-            { title: "রক্ত ও সংবহন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763534808594.pdf" },
+            { title: "রক্ত ও সংবহন (পর্ব ১)", url: "https://drive.google.com/file/d/1Kq2M73qvdWa2vGx9GSQUZZxOraxUnmNW/view?usp=sharing" },
             { title: "রক্ত ও সংবহন (পর্ব ২)", url: "https://drive.google.com/file/d/1Zn2L2XlUkyG_BHKztX6s_HJtdvkrBeYL/view?usp=sharing" },
         ]
     },
