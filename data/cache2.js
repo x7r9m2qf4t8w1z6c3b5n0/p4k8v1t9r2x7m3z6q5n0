@@ -7,7 +7,8 @@ const subjectsData = [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/151jDA055iJYF_Zbbiy-aEmhYsIwcgtKF" },
             { title: "তাপগতিবিদ্যা (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
             { title: "তাপগতিবিদ্যা (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763188021935.pdf" },
-            { title: "চল তড়িৎ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763706662406.pdf" }
+            { title: "চল তড়িৎ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763706662406.pdf" },
+            { title: "চল তড়িৎ (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763752226049.pdf" },
         ]
     },
     {
@@ -18,6 +19,7 @@ const subjectsData = [
             { title: "Extra Materials", url: "" },
             { title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763227445862.pdf" },
             { title: "পরিমাণগত রসায়ন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763322423543.pdf" },
+            { title: "পরিমাণগত রসায়ন (পর্ব ৩)", url: "https://pdf.bondipathshala.education/1763880211903.pdf" },
         ]
     },
     {
@@ -46,8 +48,9 @@ const subjectsData = [
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1u-Ff0iuERR_9VGYxtkcaL0ciI13rskoM" },
             { title: "Modifiers", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
-            { title: "Completing Sentence (পর্ব ১) + Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
-            { title: "Completing Sentence (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763464989155.pdf" }
+            { title: "Completing Sentence (Part 1) + Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
+            { title: "Completing Sentence (Part 2)", url: "https://pdf.bondipathshala.education/1763464989155.pdf" },
+            { title: "Right Forms of Verb (Part 1)", url: "https://pdf.bondipathshala.education/1763880535030.pdf" },
         ]
     },
     {
