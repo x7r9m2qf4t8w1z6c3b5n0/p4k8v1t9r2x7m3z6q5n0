@@ -48,10 +48,10 @@ const subjectsData = [
         color: "#feca57",
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1u-Ff0iuERR_9VGYxtkcaL0ciI13rskoM" },
-            { title: "Modifiers", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
-            { title: "Completing Sentence (Part 1) + Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
-            { title: "Completing Sentence (Part 2)", url: "https://pdf.bondipathshala.education/1763464989155.pdf" },
-            { title: "Right Forms of Verb (Part 1)", url: "https://pdf.bondipathshala.education/1763880535030.pdf" },
+            { title: "Modifiers", url: "https://drive.google.com/file/d/1b7qt4h_Yw0Xu0CIPCytnsl5SK0OLF4o8/view?usp=sharing" },
+            { title: "Completing Sentence (Part 1) + Paragraph Writing", url: "https://drive.google.com/file/d/1r7CfS4JlAvj9SzkreHFhgV03T7qXNHnb/view?usp=sharing" },
+            { title: "Completing Sentence (Part 2)", url: "https://drive.google.com/file/d/1yFd_7-MWScZnDpwfLsvVQNtR5J-LDIWN/view?usp=sharing" },
+            { title: "Right Forms of Verb (Part 1)", url: "https://drive.google.com/file/d/1OqilCwlF_HbH8yUm2rJhHQ24ihDlegps/view?usp=sharing" },
         ]
     },
     {
@@ -61,11 +61,11 @@ const subjectsData = [
         pdfs: [
             { title: "Extra Materials", url: "" },
             { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ১) + তাহারেই পড়ে মনে", url: "https://pdf.bondipathshala.education/1762619703676.pdf" },
-            { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", url: "https://pdf.bondipathshala.education/1762707908751.pdf" },
+            { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", url: "https://drive.google.com/file/d/1nAxQcK-MIZrfZTYdTe5qgXmTmxEIfHeI/view?usp=sharing" },
             { title: "বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধ প্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
-            { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", url: "https://pdf.bondipathshala.education/1763116435241.pdf" },
-            { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", url: "https://pdf.bondipathshala.education/1763460159824.pdf" },
-            { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", url: "https://pdf.bondipathshala.education/1763546936166.pdf" }
+            { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", url: "https://drive.google.com/file/d/1eAijbLArD39dmfGEyJ9STQE_s0SNOki4/view?usp=sharing" },
+            { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", url: "https://drive.google.com/file/d/1sURbllgb9vDL6b4icRVCQxjPNULAMXjy/view?usp=sharing" },
+            { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", url: "https://drive.google.com/file/d/1c1h5HN-OoyoTtAykNjtekI39GWzGIY5W/view?usp=sharing" }
         ]
     },
     {
@@ -74,9 +74,9 @@ const subjectsData = [
         color: "#54a0ff",
         pdfs: [
           { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1QhkfOgtXv3AHbS5mGdBLiOzaam1AZfL7" },
-          { title: "সংখ্যা পদ্ধতি (পর্ব ১)", url: "https://pdf.bondipathshala.education/1762884933460.pdf" },
-          { title: "সংখ্যা পদ্ধতি (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763211271973.pdf" },
-          { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", url: "https://pdf.bondipathshala.education/1763382953989.pdf" },
+          { title: "সংখ্যা পদ্ধতি (পর্ব ১)", url: "https://drive.google.com/file/d/1RjrslBfTwBj5iklQ0I_phF5s1Bdl9qnJ/view?usp=sharing" },
+          { title: "সংখ্যা পদ্ধতি (পর্ব ২)", url: "https://drive.google.com/file/d/1k1lSTHzeUQXVN2xtVaDertYymJOqQsYR/view?usp=sharing" },
+          { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", url: "https://drive.google.com/file/d/1rbGPIJ6VSOgc5PEBeabNYJly_eP1ah9I/view?usp=sharing" },
         ]
     },
             {
@@ -88,7 +88,7 @@ const subjectsData = [
             { title: "Biology Mentorship Session", url: "https://pdf.bondipathshala.education/1762187871688.pdf" },
             { title: "Chemistry Mentorship Session", url: "https://pdf.bondipathshala.education/1762367202708.pdf" },
             { title: "Mathematics Mentorship Session", url: "https://pdf.bondipathshala.education/1762358963901.pdf" },
-            { title: "EBI Mentorship Session", url: "https://pdf.bondipathshala.education/1762496803180.pdf" },
+            { title: "EBI Mentorship Session", url: "https://drive.google.com/file/d/17gsq81LE_n4ziQjIC5kyJSWrkuKVQYyX/view?usp=sharing" },
             { title: "Physics Mentorship Session", url: "https://pdf.bondipathshala.education/1762583681705.pdf" },
                 ]
             }
