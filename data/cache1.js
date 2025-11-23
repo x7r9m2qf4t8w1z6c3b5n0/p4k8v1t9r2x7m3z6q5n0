@@ -5,7 +5,6 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
-                    { title: "চল তড়িৎ (পর্ব ২)", videoId: "NkjXvyaAh6s" },
                 ]
             },
             {
@@ -13,7 +12,8 @@ const subjectsData = [
                 icon: "fas fa-flask",
                 color: "#4ecdc4",
                 isPCMB: true,
-                lectures: [                
+                lectures: [          
+                   { title: "পরিমাণগত রসায়ন (পর্ব ৩)", videoId: "8MLckn_SDE4" },
                 ]
             },
             {
@@ -39,8 +39,9 @@ const subjectsData = [
                 isPCMB: false,
                 lectures: [
                     { title: "Modifiers", videoId: "AWV1ro6RGs0" },
-                    { title: "Completing Sentence (পর্ব ১) + Paragraph Writing", videoId: "Aqx-UhthZUc" },
-                    { title: "Completing Sentence (পর্ব ২)", videoId: "OHuxXa1jA0U" },
+                    { title: "Completing Sentence (Part 1) + Paragraph Writing", videoId: "Aqx-UhthZUc" },
+                    { title: "Completing Sentence (Part 2)", videoId: "OHuxXa1jA0U" },
+                    { title: "Right Forms of Verb (Part 1)", videoId: "KStQbCt68Cc" },
                 ]
             },
             {
