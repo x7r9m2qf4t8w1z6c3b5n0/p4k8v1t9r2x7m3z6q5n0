@@ -20,6 +20,7 @@ const subjectsData = [
             { title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://drive.google.com/file/d/1V1enru7OB7Olxg5P1SVVMoF5mPftmqei/view?usp=sharing" },
             { title: "পরিমাণগত রসায়ন (পর্ব ২)", url: "https://drive.google.com/file/d/1hcpRhJ6aqgsCA5EjG3q3NOXGOlOkuVmc/view?usp=sharing" },
             { title: "পরিমাণগত রসায়ন (পর্ব ৩)", url: "https://drive.google.com/file/d/1dF58DMF8XaBMIf6bT8GXUQYgJNaaHO9r/view?usp=sharing" },
+            { title: "পরিমাণগত রসায়ন (পর্ব ৪)", url: "https://drive.google.com/file/d/1P3Gp7TSYKCYZO_duuU9jwweuYTCY4d3I/view?usp=sharing" },
         ]
     },
     {
@@ -28,7 +29,7 @@ const subjectsData = [
         color: "#45b7d1",
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1eGYXAlqLyT3Cx1Gao0ALRClqlms8e9vR" },
-            { title: "জটিল সংখ্যা", url: "https://pdf.bondipathshala.education/1763407233652.pdf" },
+            { title: "জটিল সংখ্যা", url: "https://drive.google.com/file/d/1CD7lRNuTV4UVyp-NARqa0NMaKnlyJlbY/view?usp=sharing" },
         ]
     },
     {
@@ -77,6 +78,7 @@ const subjectsData = [
           { title: "সংখ্যা পদ্ধতি (পর্ব ১)", url: "https://drive.google.com/file/d/1RjrslBfTwBj5iklQ0I_phF5s1Bdl9qnJ/view?usp=sharing" },
           { title: "সংখ্যা পদ্ধতি (পর্ব ২)", url: "https://drive.google.com/file/d/1k1lSTHzeUQXVN2xtVaDertYymJOqQsYR/view?usp=sharing" },
           { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", url: "https://drive.google.com/file/d/1rbGPIJ6VSOgc5PEBeabNYJly_eP1ah9I/view?usp=sharing" },
+          { title: "ডিজিটাল ডিভাইস (পর্ব ১)", url: "https://drive.google.com/file/d/1CyJzG-yw0npxDFndc-C8o7e3j_SMclnV/view?usp=sharing" },
         ]
     },
             {
