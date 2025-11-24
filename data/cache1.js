@@ -13,7 +13,7 @@ const subjectsData = [
                 color: "#4ecdc4",
                 isPCMB: true,
                 lectures: [          
-                   { title: "পরিমাণগত রসায়ন (পর্ব ৩)", videoId: "8MLckn_SDE4" },
+                   { title: "পরিমাণগত রসায়ন (পর্ব ৪)", videoId: "50vb9yZehiY" }
                 ]
             },
             {
