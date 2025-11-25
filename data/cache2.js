@@ -21,6 +21,7 @@ const subjectsData = [
             { title: "পরিমাণগত রসায়ন (পর্ব ২)", url: "https://drive.google.com/file/d/1hcpRhJ6aqgsCA5EjG3q3NOXGOlOkuVmc/view?usp=sharing" },
             { title: "পরিমাণগত রসায়ন (পর্ব ৩)", url: "https://drive.google.com/file/d/1dF58DMF8XaBMIf6bT8GXUQYgJNaaHO9r/view?usp=sharing" },
             { title: "পরিমাণগত রসায়ন (পর্ব ৪)", url: "https://drive.google.com/file/d/1P3Gp7TSYKCYZO_duuU9jwweuYTCY4d3I/view?usp=sharing" },
+            { title: "পরিবেশ রসায়ন (পর্ব ১)", url: "https://drive.google.com/file/d/1k_TiN4z4rGzcnW_jPb-T1C5J2PPR0rUj/view?usp=sharing" },
         ]
     },
     {
@@ -66,7 +67,8 @@ const subjectsData = [
             { title: "বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধ প্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
             { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", url: "https://drive.google.com/file/d/1eAijbLArD39dmfGEyJ9STQE_s0SNOki4/view?usp=sharing" },
             { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", url: "https://drive.google.com/file/d/1sURbllgb9vDL6b4icRVCQxjPNULAMXjy/view?usp=sharing" },
-            { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", url: "https://drive.google.com/file/d/1c1h5HN-OoyoTtAykNjtekI39GWzGIY5W/view?usp=sharing" }
+            { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", url: "https://drive.google.com/file/d/1c1h5HN-OoyoTtAykNjtekI39GWzGIY5W/view?usp=sharing" },
+            { title: "সমাস (পর্ব ১)", url: "https://drive.google.com/file/d/1lSALJ84ytxt0tcp5K7pCMq10lNch5-Xd/view?usp=sharing" },
         ]
     },
     {
@@ -79,6 +81,7 @@ const subjectsData = [
           { title: "সংখ্যা পদ্ধতি (পর্ব ২)", url: "https://drive.google.com/file/d/1k1lSTHzeUQXVN2xtVaDertYymJOqQsYR/view?usp=sharing" },
           { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", url: "https://drive.google.com/file/d/1rbGPIJ6VSOgc5PEBeabNYJly_eP1ah9I/view?usp=sharing" },
           { title: "ডিজিটাল ডিভাইস (পর্ব ১)", url: "https://drive.google.com/file/d/1CyJzG-yw0npxDFndc-C8o7e3j_SMclnV/view?usp=sharing" },
+          { title: "ডিজিটাল ডিভাইস (পর্ব ২)", url: "https://drive.google.com/file/d/18f4uLCrfmWWaAy03s-DEVVOhrbFC46SK/view?usp=sharing" },
         ]
     },
             {
