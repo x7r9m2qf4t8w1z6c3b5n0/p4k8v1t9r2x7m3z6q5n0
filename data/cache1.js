@@ -13,7 +13,8 @@ const subjectsData = [
                 color: "#4ecdc4",
                 isPCMB: true,
                 lectures: [          
-                   { title: "পরিমাণগত রসায়ন (পর্ব ৪)", videoId: "50vb9yZehiY" }
+                   { title: "পরিমাণগত রসায়ন (পর্ব ৪)", videoId: "0iXWs77tBkI" },
+                   { title: "পরিবেশ রসায়ন (পর্ব ১)", videoId: "BUOFpn7zKAk" },
                 ]
             },
             {
@@ -50,12 +51,13 @@ const subjectsData = [
                 color: "#ff9ff3",
                 isPCMB: false,
                 lectures: [
-                    { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ১) + তাহারেই পড়ে মনে", videoId: "PVcJjU8tdtY" },
-                    { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", videoId: "2jTgvYrtNgM" },
-                    { title: "বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধ প্রয়োগ", videoId: "7GK3_s7RMMY" },
-                    { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", videoId: "KGlHm2zZQeA" },
-                    { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", videoId: "G28XEYXk54I" },
-                    { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", videoId: "Cgzmqf3xu9s" },
+                            { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ১) + তাহারেই পড়ে মনে", videoId: "PVcJjU8tdtY" },
+                            { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", videoId: "2jTgvYrtNgM" },
+                            { title: "বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধ প্রয়োগ", videoId: "7GK3_s7RMMY" },
+                            { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", videoId: "KGlHm2zZQeA" },
+                            { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", videoId: "G28XEYXk54I" },
+                            { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", videoId: "Cgzmqf3xu9s" },
+                            { title: "সমাস (পর্ব ১)", videoId: "L_8SRL5_XNs" },
                 ]
             },
             {
