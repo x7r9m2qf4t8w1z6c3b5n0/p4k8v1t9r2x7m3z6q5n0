@@ -13,7 +13,7 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
-{ title: "তাপগতিবিদ্যা (পর্ব ১)", videoId: "nxVrNvcF1gg" }
+                   { title: "তাপগতিবিদ্যা (পর্ব ২)", videoId: "iKgoLAZdtZQ" }
                 ]
             },
             {
@@ -68,3 +68,4 @@ const subjectsData = [
                 ]
             }
         ];
+
