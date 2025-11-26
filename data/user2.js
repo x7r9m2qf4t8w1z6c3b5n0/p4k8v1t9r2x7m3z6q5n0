@@ -13,7 +13,6 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
-                   { title: "তাপগতিবিদ্যা (পর্ব ২)", videoId: "iKgoLAZdtZQ" }
                 ]
             },
             {
@@ -22,7 +21,12 @@ const subjectsData = [
                 color: "#4ecdc4",
                 isPCMB: true,
                 lectures: [
-
+                            { title: "পরিমাণগত রসায়ন (পর্ব ১)", videoId: "Qxmp4EeI6EU" },
+                            { title: "পরিমাণগত রসায়ন (পর্ব ২)", videoId: "NwVR9w0yzQQ" },
+                            { title: "পরিমাণগত রসায়ন (পর্ব ৩)", videoId: "8MLckn_SDE4" },
+                            { title: "পরিমাণগত রসায়ন (পর্ব ৪)", videoId: "0iXWs77tBkI" },
+                            { title: "পরিবেশ রসায়ন (পর্ব ১)", videoId: "JkUOau5paVw" },
+                            { title: "পরিবেশ রসায়ন (পর্ব ২)", videoId: "F7im_JADR-0" },              
                 ]
             },
             {
@@ -68,4 +72,5 @@ const subjectsData = [
                 ]
             }
         ];
+
 
