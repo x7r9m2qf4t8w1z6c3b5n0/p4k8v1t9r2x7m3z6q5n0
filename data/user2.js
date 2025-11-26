@@ -1,18 +1,16 @@
 const subjectsData = [
             {
-                name: "Mentorship Session",
-                icon: "fas fa-chalkboard-teacher",
-                color: "#9b59b6",
-                isPCMB: false,
-                lectures: [
-                ]
-            },
-            {
                 name: "Physics",
                 icon: "fas fa-atom",
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
+                            { title: "তাপগতিবিদ্যা (পর্ব ১)", videoId: "nxVrNvcF1gg" },
+                            { title: "তাপগতিবিদ্যা (পর্ব ২)", videoId: "iKgoLAZdtZQ" },
+                            { title: "চল তড়িৎ (পর্ব ১)", videoId: "7xb15PjCKuw" },
+                            { title: "চল তড়িৎ (পর্ব ২)", videoId: "NkjXvyaAh6s" },
+                            { title: "চল তড়িৎ(পর্ব ৩.১)", videoId: "Y6NMHXLkqsE" },
+                            { title: "চল তড়িৎ (পর্ব ৩.২)", videoId: "gJ83lRK2wrg" },
                 ]
             },
             {
@@ -35,7 +33,7 @@ const subjectsData = [
                 color: "#45b7d1",
                 isPCMB: true,
                 lectures: [
-
+                            { title: "জটিল সংখ্যা", videoId: "dtj4kGIKa2M" },
                 ]
             },
             {
@@ -44,7 +42,8 @@ const subjectsData = [
                 color: "#96ceb4",
                 isPCMB: true,
                 lectures: [
-
+                            { title: "রক্ত ও সংবহন (পর্ব ১)", videoId: "0s-K-wv1Ym8" },
+                            { title: "রক্ত ও সংবহন (পর্ব ২)", videoId: "TnEeRzrx8jY" },
                 ]
             },
             {
@@ -53,6 +52,10 @@ const subjectsData = [
                 color: "#feca57",
                 isPCMB: false,
                 lectures: [
+                            { title: "Modifiers", videoId: "AWV1ro6RGs0" },
+                            { title: "Completing Sentence (Part 1) + Paragraph Writing", videoId: "Aqx-UhthZUc" },
+                            { title: "Completing Sentence (Part 2)", videoId: "OHuxXa1jA0U" },
+                            { title: "Right Forms of Verb (Part 1)", videoId: "KStQbCt68Cc" },
                 ]
             },
             {
@@ -61,6 +64,13 @@ const subjectsData = [
                 color: "#ff9ff3",
                 isPCMB: false,
                 lectures: [
+                            { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ১) + তাহারেই পড়ে মনে", videoId: "PVcJjU8tdtY" },
+                            { title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", videoId: "2jTgvYrtNgM" },
+                            { title: "বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধ প্রয়োগ", videoId: "7GK3_s7RMMY" },
+                            { title: "বাক্য প্রকরণ (পর্ব ১) + আঠারো বছর বয়স + সোনার তরী", videoId: "KGlHm2zZQeA" },
+                            { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", videoId: "G28XEYXk54I" },
+                            { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", videoId: "Cgzmqf3xu9s" },
+                            { title: "সমাস (পর্ব ১)", videoId: "L_8SRL5_XNs" },
                 ]
             },
             {
@@ -69,8 +79,27 @@ const subjectsData = [
                 color: "#54a0ff",
                 isPCMB: false,
                 lectures: [
+                            { title: "সংখ্যা পদ্ধতি (পর্ব ১)", videoId: "iK-lo9RU6dA" },
+                            { title: "সংখ্যা পদ্ধতি (পর্ব ২)", videoId: "l75rI34jB_k" },
+                            { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", videoId: "voSerxe4EAE" },
+                            { title: "ডিজিটাল ডিভাইস (পর্ব ১)", videoId: "bARRLtrId7M" },
+                            { title: "ডিজিটাল ডিভাইস (পর্ব ২)", videoId: "UOaOIvt_czA" },
+                ]
+            },
+                        {
+                name: "Mentorship Session",
+                icon: "fas fa-chalkboard-teacher",
+                color: "#9b59b6",
+                isPCMB: false,
+                lectures: [
+                            { title: "Biology Mentorship Session", videoId: "uPM53Lax6Xg" },
+                            { title: "Chemistry Mentorship Session", videoId: "JaWMEEB_iGc" },
+                            { title: "Mathematics Mentorship Session", videoId: "olV8M7xp_sI" },
+                            { title: "EBI Mentorship Session", videoId: "xPMUGXdgs1Y" },
+                            { title: "Physics Mentorship Session", videoId: "TkVrn8T-ZlU" }
                 ]
             }
         ];
+
 
 
