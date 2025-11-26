@@ -22,6 +22,7 @@ const subjectsData = [
             { title: "পরিমাণগত রসায়ন (পর্ব ৩)", url: "https://drive.google.com/file/d/1dF58DMF8XaBMIf6bT8GXUQYgJNaaHO9r/view?usp=sharing" },
             { title: "পরিমাণগত রসায়ন (পর্ব ৪)", url: "https://drive.google.com/file/d/1P3Gp7TSYKCYZO_duuU9jwweuYTCY4d3I/view?usp=sharing" },
             { title: "পরিবেশ রসায়ন (পর্ব ১)", url: "https://drive.google.com/file/d/1k_TiN4z4rGzcnW_jPb-T1C5J2PPR0rUj/view?usp=sharing" },
+            { title: "পরিবেশ রসায়ন (পর্ব ২)", url: "https://drive.google.com/file/d/1nVh5K_E25c3_8Y_gfUYpHK8UY2ymiIal/view?usp=sharing" },
         ]
     },
     {
