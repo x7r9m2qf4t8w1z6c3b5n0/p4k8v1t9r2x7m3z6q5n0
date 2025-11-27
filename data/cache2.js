@@ -9,6 +9,7 @@ const subjectsData = [
             { title: "তাপগতিবিদ্যা (পর্ব ২)", url: "https://drive.google.com/file/d/1medv1fpuzkwEIGiPKLgxchWye8pl16jh/view?usp=sharing" },
             { title: "চল তড়িৎ (পর্ব ১)", url: "https://drive.google.com/file/d/15n3TdCredxmPmPAVfPsOcCvA2YalKdkN/view?usp=sharing" },
             { title: "চল তড়িৎ (পর্ব ২)", url: "https://drive.google.com/file/d/1Hs753GXue2cTET7qcJZkWCAWrLsu1aJs/view?usp=sharing" },
+            { title: "চল তড়িৎ (পর্ব ৩)", url: "https://drive.google.com/file/d/120ZcFfXsH04AemDGALwnGOOC0dv0fka9/view?usp=sharing" },
         ]
     },
     {
@@ -32,6 +33,7 @@ const subjectsData = [
         pdfs: [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1eGYXAlqLyT3Cx1Gao0ALRClqlms8e9vR" },
             { title: "জটিল সংখ্যা", url: "https://drive.google.com/file/d/1CD7lRNuTV4UVyp-NARqa0NMaKnlyJlbY/view?usp=sharing" },
+            { title: "বহুপদী ও বহুপদী সমীকরণ (পর্ব ১)", url: "https://drive.google.com/file/d/1w45S_DEgdwMRjp4jxNAABLxJqpd25F8a/view?usp=sharing" },
         ]
     },
     {
@@ -70,6 +72,7 @@ const subjectsData = [
             { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", url: "https://drive.google.com/file/d/1sURbllgb9vDL6b4icRVCQxjPNULAMXjy/view?usp=sharing" },
             { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", url: "https://drive.google.com/file/d/1c1h5HN-OoyoTtAykNjtekI39GWzGIY5W/view?usp=sharing" },
             { title: "সমাস (পর্ব ১)", url: "https://drive.google.com/file/d/1lSALJ84ytxt0tcp5K7pCMq10lNch5-Xd/view?usp=sharing" },
+            { title: "সমাস (পর্ব ২)", url: "https://pdf.bondipathshala.education/1764239717786.pdf" },
         ]
     },
     {
