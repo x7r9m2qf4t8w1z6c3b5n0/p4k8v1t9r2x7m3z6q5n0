@@ -35,6 +35,7 @@ const subjectsData = [
                 lectures: [
                             { title: "জটিল সংখ্যা", videoId: "dtj4kGIKa2M" },
                             { title: "বহুপদী ও বহুপদী সমীকরণ (পর্ব ১)", videoId: "csDRee8Tp_s" },
+                            { title: "বহুপদী ও বহুপদী সমীকরণ (পর্ব ২)", videoId: "IraIKpoDT9M" },
                 ]
             },
             {
