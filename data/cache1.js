@@ -5,6 +5,12 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 lectures: [
+                            { title: "তাপগতিবিদ্যা (পর্ব ১)", videoId: "nxVrNvcF1gg" },
+                            { title: "তাপগতিবিদ্যা (পর্ব ২)", videoId: "iKgoLAZdtZQ" },
+                            { title: "চল তড়িৎ (পর্ব ১)", videoId: "7xb15PjCKuw" },
+                            { title: "চল তড়িৎ (পর্ব ২)", videoId: "NkjXvyaAh6s" },
+                            { title: "চল তড়িৎ(পর্ব ৩.১)", videoId: "Y6NMHXLkqsE" },
+                            { title: "চল তড়িৎ (পর্ব ৩.২)", videoId: "gJ83lRK2wrg" },
                 ]
             },
             {
@@ -12,8 +18,13 @@ const subjectsData = [
                 icon: "fas fa-flask",
                 color: "#4ecdc4",
                 isPCMB: true,
-                lectures: [          
-                   { title: "পরিবেশ রসায়ন (পর্ব ২)", videoId: "F7im_JADR-0" },
+                lectures: [
+                            { title: "পরিমাণগত রসায়ন (পর্ব ১)", videoId: "Qxmp4EeI6EU" },
+                            { title: "পরিমাণগত রসায়ন (পর্ব ২)", videoId: "NwVR9w0yzQQ" },
+                            { title: "পরিমাণগত রসায়ন (পর্ব ৩)", videoId: "8MLckn_SDE4" },
+                            { title: "পরিমাণগত রসায়ন (পর্ব ৪)", videoId: "0iXWs77tBkI" },
+                            { title: "পরিবেশ রসায়ন (পর্ব ১)", videoId: "JkUOau5paVw" },
+                            { title: "পরিবেশ রসায়ন (পর্ব ২)", videoId: "F7im_JADR-0" },              
                 ]
             },
             {
@@ -22,6 +33,8 @@ const subjectsData = [
                 color: "#45b7d1",
                 isPCMB: true,
                 lectures: [
+                            { title: "জটিল সংখ্যা", videoId: "dtj4kGIKa2M" },
+                            { title: "বহুপদী ও বহুপদী সমীকরণ (পর্ব ১)", videoId: "csDRee8Tp_s" },
                 ]
             },
             {
@@ -30,6 +43,8 @@ const subjectsData = [
                 color: "#96ceb4",
                 isPCMB: true,
                 lectures: [
+                            { title: "রক্ত ও সংবহন (পর্ব ১)", videoId: "0s-K-wv1Ym8" },
+                            { title: "রক্ত ও সংবহন (পর্ব ২)", videoId: "TnEeRzrx8jY" },
                 ]
             },
             {
@@ -38,10 +53,10 @@ const subjectsData = [
                 color: "#feca57",
                 isPCMB: false,
                 lectures: [
-                    { title: "Modifiers", videoId: "AWV1ro6RGs0" },
-                    { title: "Completing Sentence (Part 1) + Paragraph Writing", videoId: "Aqx-UhthZUc" },
-                    { title: "Completing Sentence (Part 2)", videoId: "OHuxXa1jA0U" },
-                    { title: "Right Forms of Verb (Part 1)", videoId: "KStQbCt68Cc" },
+                            { title: "Modifiers", videoId: "AWV1ro6RGs0" },
+                            { title: "Completing Sentence (Part 1) + Paragraph Writing", videoId: "Aqx-UhthZUc" },
+                            { title: "Completing Sentence (Part 2)", videoId: "OHuxXa1jA0U" },
+                            { title: "Right Forms of Verb (Part 1)", videoId: "KStQbCt68Cc" },
                 ]
             },
             {
@@ -57,6 +72,7 @@ const subjectsData = [
                             { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", videoId: "G28XEYXk54I" },
                             { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", videoId: "Cgzmqf3xu9s" },
                             { title: "সমাস (পর্ব ১)", videoId: "L_8SRL5_XNs" },
+                            { title: "সমাস (পর্ব ২)", videoId: "01jMj-YH94I" }
                 ]
             },
             {
@@ -65,11 +81,11 @@ const subjectsData = [
                 color: "#54a0ff",
                 isPCMB: false,
                 lectures: [
-                    { title: "সংখ্যা পদ্ধতি (পর্ব ১)", videoId: "iK-lo9RU6dA" },
-                    { title: "সংখ্যা পদ্ধতি (পর্ব ২)", videoId: "l75rI34jB_k" },
-                    { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", videoId: "voSerxe4EAE" },
-                    { title: "ডিজিটাল ডিভাইস (পর্ব ১)", videoId: "bARRLtrId7M" },
-                    { title: "ডিজিটাল ডিভাইস (পর্ব ২)", videoId: "UOaOIvt_czA" },
+                            { title: "সংখ্যা পদ্ধতি (পর্ব ১)", videoId: "iK-lo9RU6dA" },
+                            { title: "সংখ্যা পদ্ধতি (পর্ব ২)", videoId: "l75rI34jB_k" },
+                            { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", videoId: "voSerxe4EAE" },
+                            { title: "ডিজিটাল ডিভাইস (পর্ব ১)", videoId: "bARRLtrId7M" },
+                            { title: "ডিজিটাল ডিভাইস (পর্ব ২)", videoId: "UOaOIvt_czA" },
                 ]
             },
                         {
@@ -78,11 +94,13 @@ const subjectsData = [
                 color: "#9b59b6",
                 isPCMB: false,
                 lectures: [
-                    { title: "Biology Mentorship Session", videoId: "uPM53Lax6Xg" },
-                    { title: "Chemistry Mentorship Session", videoId: "JaWMEEB_iGc" },
-                    { title: "Mathematics Mentorship Session", videoId: "olV8M7xp_sI" },
-                    { title: "EBI Mentorship Session", videoId: "xPMUGXdgs1Y" },
-                    { title: "Physics Mentorship Session", videoId: "TkVrn8T-ZlU" },
+                            { title: "Biology Mentorship Session", videoId: "uPM53Lax6Xg" },
+                            { title: "Chemistry Mentorship Session", videoId: "JaWMEEB_iGc" },
+                            { title: "Mathematics Mentorship Session", videoId: "olV8M7xp_sI" },
+                            { title: "EBI Mentorship Session", videoId: "xPMUGXdgs1Y" },
+                            { title: "Physics Mentorship Session", videoId: "TkVrn8T-ZlU" }
                 ]
             }
         ];
+
+
