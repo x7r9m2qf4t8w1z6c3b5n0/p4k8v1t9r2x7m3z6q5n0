@@ -46,8 +46,8 @@ const subjectsData = [
                 lectures: [
                             { title: "রক্ত ও সংবহন (পর্ব ১)", videoId: "0s-K-wv1Ym8" },
                             { title: "রক্ত ও সংবহন (পর্ব ২)", videoId: "TnEeRzrx8jY" },
-                            { title: "জিনতত্ত্ব ও বিবর্তন (পর্ব ১.১)", videoId: "OVEia2xzR1M" },
-                            { title: "জিনতত্ত্ব ও বিবর্তন (পর্ব ১.২)", videoId: "1qHmpY5yfh8" },
+                            { title: "জিনতত্ত্ব ও বিবর্তন (অংশ ১)", videoId: "OVEia2xzR1M" },
+                            { title: "জিনতত্ত্ব ও বিবর্তন (অংশ ২)", videoId: "1qHmpY5yfh8" },
                 ]
             },
             {
