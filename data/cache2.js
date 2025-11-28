@@ -45,6 +45,7 @@ const subjectsData = [
             { title: "Marked Books", url: "https://drive.google.com/drive/folders/1z-9yAOmVYmIcB4RhtEnO1YatCBoXUYq6?usp=sharing" },
             { title: "রক্ত ও সংবহন (পর্ব ১)", url: "https://drive.google.com/file/d/1Kq2M73qvdWa2vGx9GSQUZZxOraxUnmNW/view?usp=sharing" },
             { title: "রক্ত ও সংবহন (পর্ব ২)", url: "https://drive.google.com/file/d/1Zn2L2XlUkyG_BHKztX6s_HJtdvkrBeYL/view?usp=sharing" },
+            { title: "জীনতত্ত্ব ও বিবর্তন", url: "https://drive.google.com/file/d/1TK7uw1ooVOFXHjqq4sxJ04s_Bpm4xyyT/view?usp=sharing" },
         ]
     },
     {
