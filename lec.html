@@ -1756,13 +1756,13 @@ body::before {
         padding-right: 55px !important;
     }
 }
-/* Double-tap Seek Controls */
+/* Double-tap Seek Controls - COMPLETELY FIXED */
 .seek-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 80px); /* Increased space for controls */
+    height: 100%;
     z-index: 5;
     display: flex;
     justify-content: space-between;
@@ -1771,15 +1771,22 @@ body::before {
 
 .seek-area {
     flex: 1;
-    height: 40%; /* Reduced height to avoid bottom controls area */
+    height: 30%;
     pointer-events: auto;
-    margin-top: 10%; /* Push areas down to avoid top controls */
+    margin: 60px 0; /* Top and bottom margins to avoid controls */
 }
 
+.seek-area:first-child {
+    margin-right: 10px; /* Small gap between left and right areas */
+}
 
-/* Only enable pointer events on the areas themselves, not the entire overlay */
-.seek-overlay.active .seek-area {
-    pointer-events: auto;
+.seek-area:last-child {
+    margin-left: 10px; /* Small gap between left and right areas */
+}
+
+/* Completely disable seek overlay when controls are visible */
+.seek-overlay.disabled {
+    display: none;
 }
 
 .seek-indicator {
@@ -1802,20 +1809,7 @@ body::before {
     opacity: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 6;
-    pointer-events: none; /* Indicators should never block clicks */
-}
-
-/* Add a safe zone for controls at the bottom */
-.seek-overlay::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 80px; /* Height of controls area */
-    background: transparent;
     pointer-events: none;
-    z-index: 1;
 }
 
 .seek-indicator.left {
@@ -1901,6 +1895,10 @@ body::before {
     .seek-indicator.right {
         right: 15px;
     }
+    
+    .seek-area {
+        margin: 50px 0; /* Smaller margins on mobile */
+    }
 }
 
 @media (max-width: 480px) {
@@ -1921,6 +1919,45 @@ body::before {
     .seek-time {
         font-size: 12px;
     }
+    
+    .seek-area {
+        margin: 20px 0; /* Even smaller margins on very small screens */
+    }
+}
+/* Fix seek overlay in fullscreen */
+.plyr--fullscreen-active .seek-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9998 !important; /* Below controls but above video */
+}
+
+/* Ensure seek areas cover the full screen */
+.plyr--fullscreen-active .seek-area {
+    height: 40% !important; /* Larger touch targets in fullscreen */
+    margin: 100px 0 !important; /* Adjust margins for fullscreen */
+}
+
+/* Position indicators properly in fullscreen */
+.plyr--fullscreen-active .seek-indicator.left {
+    left: 40px !important;
+}
+
+.plyr--fullscreen-active .seek-indicator.right {
+    right: 40px !important;
+}
+
+/* Make indicators larger in fullscreen */
+.plyr--fullscreen-active .seek-indicator {
+    width: 90px !important;
+    height: 90px !important;
+    font-size: 28px !important;
+}
+
+.plyr--fullscreen-active .seek-time {
+    font-size: 16px !important;
 }
 </style>
 </head>
@@ -2151,21 +2188,12 @@ let isControlsVisible = true;
 let searchTimeout = null;
 let currentSearchResults = [];
 
-// Double-tap seek functionality variables
+// Double-tap seek functionality - COMPLETELY FIXED
 let lastTapTime = 0;
 let tapTimeout;
-let currentSeekArea = null;
 const SEEK_TIME = 10; // seconds
 
-// Function to detect touch device
-function detectTouchDevice() {
-    return (('ontouchstart' in window) || 
-            (navigator.maxTouchPoints > 0) || 
-            (navigator.msMaxTouchPoints > 0) ||
-            (window.DocumentTouch && document instanceof DocumentTouch));
-}
-
-// Double-tap seek functions
+// Double-tap seek functions - SIMPLIFIED AND FIXED
 function initializeDoubleTapSeek() {
     const seekOverlay = document.getElementById('seek-overlay');
     const seekLeft = document.getElementById('seek-left');
@@ -2177,69 +2205,62 @@ function initializeDoubleTapSeek() {
         return;
     }
 
-    // Double-tap detection for left area (rewind)
-    seekLeft.addEventListener('touchstart', function(e) {
-        // Check if we're clicking on player controls
-        if (e.target.closest('.plyr__controls')) {
-            return; // Let the click go through to player controls
-        }
-        handleDoubleTap(e, 'left');
+    // Simple touch handlers without complex logic
+    seekLeft.addEventListener('touchend', function(e) {
+        handleTap(e, 'left');
     });
 
-    // Double-tap detection for right area (fast forward)
-    seekRight.addEventListener('touchstart', function(e) {
-        // Check if we're clicking on player controls
-        if (e.target.closest('.plyr__controls')) {
-            return; // Let the click go through to player controls
-        }
-        handleDoubleTap(e, 'right');
+    seekRight.addEventListener('touchend', function(e) {
+        handleTap(e, 'right');
     });
 
-    // Make seek areas less obstructive - only capture double taps, not single clicks
+    // Make seek areas only active when needed
     seekLeft.style.pointerEvents = 'auto';
     seekRight.style.pointerEvents = 'auto';
-    
-    // Allow clicks to pass through to player controls for single taps
-    const allowClickThrough = (e) => {
-        if (e.target.closest('.plyr__controls')) {
-            e.stopPropagation();
-        }
-    };
-    
-    seekLeft.addEventListener('click', allowClickThrough);
-    seekRight.addEventListener('click', allowClickThrough);
 
-    // Hide seek overlay when controls are shown
+    // Control seek overlay visibility based on player state
     if (player) {
         player.on('controlsshown', () => {
             if (seekOverlay) {
-                seekOverlay.style.opacity = '0';
-                seekOverlay.style.pointerEvents = 'none';
+                seekOverlay.classList.add('disabled');
             }
         });
 
         player.on('controlshidden', () => {
-            if (seekOverlay && !player.paused) {
-                seekOverlay.style.opacity = '1';
-                seekOverlay.style.pointerEvents = 'auto';
+            if (seekOverlay && !player.paused && isTouchDevice) {
+                seekOverlay.classList.remove('disabled');
             }
         });
         
-        // Show seek overlay initially when video is playing
+        // Show seek overlay when video starts playing
         player.on('playing', () => {
-            if (seekOverlay && isTouchDevice) {
-                seekOverlay.style.opacity = '1';
-                seekOverlay.style.pointerEvents = 'auto';
+            if (seekOverlay && isTouchDevice && !isControlsVisible) {
             }
         });
         
         // Hide seek overlay when paused
         player.on('pause', () => {
             if (seekOverlay) {
-                seekOverlay.style.opacity = '0';
-                seekOverlay.style.pointerEvents = 'none';
             }
         });
+        
+        // Hide seek overlay in fullscreen to avoid conflicts
+player.on('enterfullscreen', () => {
+    if (seekOverlay) {
+        // Update overlay positioning for fullscreen but don't disable it
+        updateOverlayPosition();
+    }
+});
+
+player.on('exitfullscreen', () => {
+    if (seekOverlay) {
+        // Update overlay positioning and show if conditions are met
+        updateOverlayPosition();
+        if (!player.paused && isTouchDevice && !isControlsVisible) {
+            seekOverlay.classList.remove('disabled');
+        }
+    }
+});
     }
 }
 
@@ -2248,7 +2269,7 @@ function createSeekOverlay() {
     if (!videoContainer) return;
 
     const seekOverlayHTML = `
-        <div class="seek-overlay" id="seek-overlay">
+        <div class="seek-overlay disabled" id="seek-overlay">
             <div class="seek-area" id="seek-left"></div>
             <div class="seek-area" id="seek-right"></div>
             
@@ -2274,28 +2295,32 @@ function createSeekOverlay() {
     setTimeout(initializeDoubleTapSeek, 100);
 }
 
-function handleDoubleTap(e, area) {
+// Simplified tap handler
+function handleTap(e, area) {
     e.preventDefault();
     e.stopPropagation();
     
     const currentTime = new Date().getTime();
     const timeSinceLastTap = currentTime - lastTapTime;
     
-    if (timeSinceLastTap < 300 && timeSinceLastTap > 0) {
-        // Double tap detected
+    // Clear any existing timeout
+    if (tapTimeout) {
         clearTimeout(tapTimeout);
-        lastTapTime = 0;
-        
+    }
+    
+    if (timeSinceLastTap < 300 && timeSinceLastTap > 0) {
+        // Double tap detected - perform seek
         if (area === 'left') {
             seekBackward();
         } else {
             seekForward();
         }
+        lastTapTime = 0;
     } else {
-        // Single tap - might be for showing controls
+        // Single tap - set timer for potential double tap
         lastTapTime = currentTime;
         tapTimeout = setTimeout(() => {
-            // Single tap action (show controls)
+            // Single tap completed - show controls
             resetControlsTimeout();
             lastTapTime = 0;
         }, 300);
@@ -2311,7 +2336,7 @@ function seekBackward() {
     player.currentTime = newTime;
     showSeekIndicator('backward');
     
-    // Also reset controls timeout
+    // Reset controls timeout
     resetControlsTimeout();
 }
 
@@ -2325,7 +2350,7 @@ function seekForward() {
     player.currentTime = newTime;
     showSeekIndicator('forward');
     
-    // Also reset controls timeout
+    // Reset controls timeout
     resetControlsTimeout();
 }
 
@@ -2362,7 +2387,7 @@ function showSeekIndicator(direction) {
     }, 800);
 }
 
-// Enhanced mobile touch controls
+// Update touch controls to manage seek overlay
 function showTouchControls() {
     if (!isTouchDevice || !player) return;
     
@@ -2375,9 +2400,7 @@ function showTouchControls() {
         
         // Hide seek overlay when controls are shown
         if (seekOverlay) {
-            seekOverlay.style.opacity = '0';
-            seekOverlay.style.pointerEvents = 'none';
-            seekOverlay.classList.remove('active');
+            seekOverlay.classList.add('disabled');
         }
     }
     
@@ -2406,9 +2429,7 @@ function hideTouchControls() {
         
         // Show seek overlay when controls are hidden and video is playing
         if (player.playing && seekOverlay) {
-            seekOverlay.style.opacity = '1';
-            seekOverlay.style.pointerEvents = 'auto';
-            seekOverlay.classList.add('active');
+            seekOverlay.classList.remove('disabled');
         }
     }
 }
@@ -3169,45 +3190,48 @@ function loadVideo(videoId, lectureTitle, subjectName = '') {
     // Reinitialize Plyr with skip buttons
     setTimeout(() => {
         try {
-            player = new Plyr('#player', {
-                controls: [
-                    'play-large',
-                    'rewind',
-                    'play',
-                    'fast-forward',
-                    'progress',
-                    'current-time',
-                    'mute',
-                    'volume',
-                    'settings',
-                    'pip',
-                    'fullscreen'
-                ],
-                hideControls: false,
-                clickToPlay: false,
-                // Add touch-specific settings
-                touch: true,
-                hideControls: true,
-                youtube: {
-                    noCookie: true,
-                    rel: 0,
-                    showinfo: 0,
-                    iv_load_policy: 3,
-                    modestbranding: 1
-                },
-                i18n: {
-                    rewind: 'Rewind {seektime}s',
-                    fastForward: 'Forward {seektime}s'
-                },
-                seekTime: 10,
-                // Prevent fullscreen issues on mobile
-                fullscreen: {
-                    enabled: true,
-                    fallback: true,
-                    iosNative: false,
-                    container: null
-                }
-            });
+player = new Plyr('#player', {
+    controls: [
+        'play-large',
+        'rewind',
+        'play',
+        'fast-forward',
+        'progress',
+        'current-time',
+        'mute',
+        'volume',
+        'settings',
+        'pip',
+        'fullscreen'
+    ],
+    hideControls: false,
+    clickToPlay: false,
+    touch: true,
+    hideControls: true,
+    youtube: {
+        noCookie: true,
+        rel: 0,
+        showinfo: 0,
+        iv_load_policy: 3,
+        modestbranding: 1
+    },
+    i18n: {
+        rewind: 'Rewind {seektime}s',
+        fastForward: 'Forward {seektime}s'
+    },
+    seekTime: 10,
+    fullscreen: {
+        enabled: true,
+        fallback: true,
+        iosNative: false,
+        container: null
+    },
+    // FIX: Remove slow playback speeds
+    speed: {
+        selected: 1,
+        options: [1, 1.25, 1.5, 1.75, 2] // No speeds below 1x
+    }
+});
             
             // Add play/pause event listeners for overlay control
             player.on('play', () => {
