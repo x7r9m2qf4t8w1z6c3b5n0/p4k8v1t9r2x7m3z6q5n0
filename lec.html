@@ -1756,6 +1756,151 @@ body::before {
         padding-right: 55px !important;
     }
 }
+/* Double-tap Seek Controls */
+.seek-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.seek-area {
+    flex: 1;
+    height: 100%;
+    pointer-events: auto;
+}
+
+.seek-indicator {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 16;
+}
+
+.seek-indicator.left {
+    left: 20px;
+}
+
+.seek-indicator.right {
+    right: 20px;
+}
+
+.seek-indicator.show {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+}
+
+.seek-indicator.hide {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.8);
+}
+
+.seek-time {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 5px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Animation for seek indicator */
+@keyframes seekPulse {
+    0% {
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+    50% {
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+    }
+    100% {
+        transform: translateY(-50%) scale(1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+}
+
+.seek-indicator.show {
+    animation: seekPulse 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Progress animation */
+@keyframes seekProgress {
+    0% {
+        width: 0%;
+        opacity: 0.8;
+    }
+    100% {
+        width: 100%;
+        opacity: 0;
+    }
+}
+
+.seek-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2196F3, #21CBF3);
+    border-radius: 2px;
+    animation: seekProgress 0.4s ease-out;
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+    .seek-indicator {
+        width: 70px;
+        height: 70px;
+        font-size: 22px;
+    }
+    
+    .seek-indicator.left {
+        left: 15px;
+    }
+    
+    .seek-indicator.right {
+        right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .seek-indicator {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+    
+    .seek-indicator.left {
+        left: 10px;
+    }
+    
+    .seek-indicator.right {
+        right: 10px;
+    }
+    
+    .seek-time {
+        font-size: 12px;
+    }
+}
 </style>
 </head>
 <body>
@@ -1785,6 +1930,7 @@ body::before {
             <i class="fas fa-play-circle"></i>
             <p>Select a lecture to begin</p>
         </div>
+
         <div id="player" class="plyr__video-embed" style="display: none;">
             <!-- Transparent overlay to block iframe interaction -->
             <div class="iframe-overlay" id="iframe-overlay"></div>
@@ -1796,6 +1942,28 @@ body::before {
                 allow="autoplay"
             ></iframe>
         </div>
+    </div>
+</div>
+<!-- Double-tap Seek Overlay -->
+<div class="seek-overlay" id="seek-overlay">
+    <div class="seek-area" id="seek-left"></div>
+    <div class="seek-area" id="seek-right"></div>
+    
+    <!-- Seek Indicators -->
+    <div class="seek-indicator left" id="seek-backward">
+        <div>
+            <i class="fas fa-undo"></i>
+            <div class="seek-time">-10s</div>
+        </div>
+        <div class="seek-progress"></div>
+    </div>
+    
+    <div class="seek-indicator right" id="seek-forward">
+        <div>
+            <i class="fas fa-redo"></i>
+            <div class="seek-time">+10s</div>
+        </div>
+        <div class="seek-progress"></div>
     </div>
 </div>
 <div class="video-info">
@@ -1962,6 +2130,12 @@ let isControlsVisible = true;
 let searchTimeout = null;
 let currentSearchResults = [];
 
+// Double-tap seek functionality variables
+let lastTapTime = 0;
+let tapTimeout;
+let currentSeekArea = null;
+const SEEK_TIME = 10; // seconds
+
 // Function to detect touch device
 function detectTouchDevice() {
     return (('ontouchstart' in window) || 
@@ -1970,7 +2144,164 @@ function detectTouchDevice() {
             (window.DocumentTouch && document instanceof DocumentTouch));
 }
 
-// Function to show controls
+// Double-tap seek functions
+function initializeDoubleTapSeek() {
+    const seekOverlay = document.getElementById('seek-overlay');
+    const seekLeft = document.getElementById('seek-left');
+    const seekRight = document.getElementById('seek-right');
+
+    if (!seekLeft || !seekRight) {
+        console.log('Seek elements not found, creating them...');
+        createSeekOverlay();
+        return;
+    }
+
+    // Double-tap detection for left area (rewind)
+    seekLeft.addEventListener('touchstart', function(e) {
+        handleDoubleTap(e, 'left');
+    });
+
+    // Double-tap detection for right area (fast forward)
+    seekRight.addEventListener('touchstart', function(e) {
+        handleDoubleTap(e, 'right');
+    });
+
+    // Hide seek overlay when controls are shown
+    if (player) {
+        player.on('controlsshown', () => {
+            if (seekOverlay) {
+                seekOverlay.style.opacity = '0';
+            }
+        });
+
+        player.on('controlshidden', () => {
+            if (seekOverlay && !player.paused) {
+                seekOverlay.style.opacity = '1';
+            }
+        });
+    }
+}
+
+function createSeekOverlay() {
+    const videoContainer = document.querySelector('.video-container');
+    if (!videoContainer) return;
+
+    const seekOverlayHTML = `
+        <div class="seek-overlay" id="seek-overlay">
+            <div class="seek-area" id="seek-left"></div>
+            <div class="seek-area" id="seek-right"></div>
+            
+            <div class="seek-indicator left" id="seek-backward">
+                <div>
+                    <i class="fas fa-undo"></i>
+                    <div class="seek-time">-10s</div>
+                </div>
+            </div>
+            
+            <div class="seek-indicator right" id="seek-forward">
+                <div>
+                    <i class="fas fa-redo"></i>
+                    <div class="seek-time">+10s</div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    videoContainer.insertAdjacentHTML('beforeend', seekOverlayHTML);
+    
+    // Re-initialize with the new elements
+    setTimeout(initializeDoubleTapSeek, 100);
+}
+
+function handleDoubleTap(e, area) {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const currentTime = new Date().getTime();
+    const timeSinceLastTap = currentTime - lastTapTime;
+    
+    if (timeSinceLastTap < 300 && timeSinceLastTap > 0) {
+        // Double tap detected
+        clearTimeout(tapTimeout);
+        lastTapTime = 0;
+        
+        if (area === 'left') {
+            seekBackward();
+        } else {
+            seekForward();
+        }
+    } else {
+        // Single tap - might be for showing controls
+        lastTapTime = currentTime;
+        tapTimeout = setTimeout(() => {
+            // Single tap action (show controls)
+            resetControlsTimeout();
+            lastTapTime = 0;
+        }, 300);
+    }
+}
+
+function seekBackward() {
+    if (!player || !player.playing) return;
+    
+    const currentTime = player.currentTime;
+    const newTime = Math.max(0, currentTime - SEEK_TIME);
+    
+    player.currentTime = newTime;
+    showSeekIndicator('backward');
+    
+    // Also reset controls timeout
+    resetControlsTimeout();
+}
+
+function seekForward() {
+    if (!player || !player.playing) return;
+    
+    const currentTime = player.currentTime;
+    const duration = player.duration;
+    const newTime = Math.min(duration, currentTime + SEEK_TIME);
+    
+    player.currentTime = newTime;
+    showSeekIndicator('forward');
+    
+    // Also reset controls timeout
+    resetControlsTimeout();
+}
+
+function showSeekIndicator(direction) {
+    const seekIndicator = direction === 'forward' 
+        ? document.getElementById('seek-forward') 
+        : document.getElementById('seek-backward');
+    
+    if (!seekIndicator) return;
+    
+    // Remove existing progress bars
+    const existingProgress = seekIndicator.querySelector('.seek-progress');
+    if (existingProgress) {
+        existingProgress.remove();
+    }
+    
+    // Create new progress bar
+    const progressBar = document.createElement('div');
+    progressBar.className = 'seek-progress';
+    seekIndicator.appendChild(progressBar);
+    
+    // Show indicator
+    seekIndicator.classList.remove('hide');
+    seekIndicator.classList.add('show');
+    
+    // Hide indicator after animation
+    setTimeout(() => {
+        seekIndicator.classList.remove('show');
+        seekIndicator.classList.add('hide');
+        
+        setTimeout(() => {
+            seekIndicator.classList.remove('hide');
+        }, 300);
+    }, 800);
+}
+
+// Enhanced mobile touch controls
 function showTouchControls() {
     if (!isTouchDevice || !player) return;
     
@@ -1978,6 +2309,12 @@ function showTouchControls() {
     if (controls) {
         controls.classList.remove('hidden');
         isControlsVisible = true;
+        
+        // Hide seek overlay when controls are shown
+        const seekOverlay = document.getElementById('seek-overlay');
+        if (seekOverlay) {
+            seekOverlay.style.opacity = '0';
+        }
     }
     
     // Clear existing timeout
@@ -1993,7 +2330,6 @@ function showTouchControls() {
     }, 3000);
 }
 
-// Function to hide controls
 function hideTouchControls() {
     if (!isTouchDevice || !player) return;
     
@@ -2001,10 +2337,17 @@ function hideTouchControls() {
     if (controls && isControlsVisible) {
         controls.classList.add('hidden');
         isControlsVisible = false;
+        
+        // Show seek overlay when controls are hidden and video is playing
+        if (player.playing) {
+            const seekOverlay = document.getElementById('seek-overlay');
+            if (seekOverlay) {
+                seekOverlay.style.opacity = '1';
+            }
+        }
     }
 }
 
-// Function to toggle controls
 function toggleTouchControls() {
     if (!isTouchDevice || !player) return;
     
@@ -2015,13 +2358,11 @@ function toggleTouchControls() {
     }
 }
 
-// Reset controls timeout on any interaction
 function resetControlsTimeout() {
     if (!isTouchDevice || !player) return;
     showTouchControls();
 }
 
-// Initialize mobile touch controls
 function initializeTouchControls() {
     isTouchDevice = detectTouchDevice();
     
@@ -2033,6 +2374,9 @@ function initializeTouchControls() {
         if (playerElement) {
             playerElement.classList.add('plyr--touch');
         }
+        
+        // Initialize double-tap seek
+        initializeDoubleTapSeek();
         
         // Create touch overlay if it doesn't exist
         let touchOverlay = document.getElementById('touch-overlay');
@@ -2054,7 +2398,8 @@ function initializeTouchControls() {
         const videoContainer = document.querySelector('.video-container');
         if (videoContainer) {
             videoContainer.addEventListener('touchstart', (e) => {
-                if (!e.target.closest('.plyr__controls')) {
+                if (!e.target.closest('.plyr__controls') && 
+                    !e.target.closest('.seek-overlay')) {
                     resetControlsTimeout();
                 }
             });
@@ -2062,8 +2407,28 @@ function initializeTouchControls() {
         
         // Add event listeners to show controls on any player interaction
         if (player) {
-            player.on('play', showTouchControls);
-            player.on('pause', showTouchControls);
+            player.on('play', () => {
+                showTouchControls();
+                // Show seek overlay when playing
+                const seekOverlay = document.getElementById('seek-overlay');
+                if (seekOverlay) {
+                    seekOverlay.style.opacity = '1';
+                }
+            });
+            
+            player.on('pause', () => {
+                showTouchControls();
+                // Hide seek overlay when paused
+                const seekOverlay = document.getElementById('seek-overlay');
+                if (seekOverlay) {
+                    seekOverlay.style.opacity = '0';
+                }
+                // Clear auto-hide timeout when paused
+                if (touchControlsTimeout) {
+                    clearTimeout(touchControlsTimeout);
+                }
+            });
+            
             player.on('controlsshown', resetControlsTimeout);
         }
         
@@ -2097,6 +2462,13 @@ function initializePage() {
     
     // Initialize completion button events
     initializeCompletionEvents();
+    
+    // Initialize double-tap seek
+    if (isTouchDevice) {
+        setTimeout(() => {
+            initializeDoubleTapSeek();
+        }, 1000);
+    }
 }
 
 // Initialize search functionality
@@ -2838,6 +3210,15 @@ function loadVideo(videoId, lectureTitle, subjectName = '') {
                 
                 // Initialize touch controls for mobile
                 initializeTouchControls();
+                
+                // Prevent default double-tap behavior on video element
+                const videoElement = document.querySelector('.plyr__video-wrapper');
+                if (videoElement) {
+                    videoElement.addEventListener('dblclick', (e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    });
+                }
                 
                 // Process any pending video request
                 if (pendingVideoRequest) {
