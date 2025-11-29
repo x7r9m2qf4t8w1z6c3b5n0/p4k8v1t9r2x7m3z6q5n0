@@ -1762,8 +1762,8 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 60px); /* Subtract space for controls */
-    z-index: 15;
+    height: calc(100% - 80px); /* Increased space for controls */
+    z-index: 5;
     display: flex;
     justify-content: space-between;
     pointer-events: none;
@@ -1771,8 +1771,9 @@ body::before {
 
 .seek-area {
     flex: 1;
-    height: 60%;
+    height: 40%; /* Reduced height to avoid bottom controls area */
     pointer-events: auto;
+    margin-top: 10%; /* Push areas down to avoid top controls */
 }
 
 
@@ -1800,8 +1801,21 @@ body::before {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     opacity: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 16;
+    z-index: 6;
     pointer-events: none; /* Indicators should never block clicks */
+}
+
+/* Add a safe zone for controls at the bottom */
+.seek-overlay::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px; /* Height of controls area */
+    background: transparent;
+    pointer-events: none;
+    z-index: 1;
 }
 
 .seek-indicator.left {
