@@ -1,1 +1,2244 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lectures</title><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>"><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css"><style>*{margin:0;padding:0;box-sizing:border-box;font-family:'Hind Siliguri',sans-serif;-webkit-tap-highlight-color:transparent}body{background:#0a0a0a;color:#fff;line-height:1.6;min-height:100vh;padding-bottom:20px;position:relative;padding-top:120px}body::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 10% 20%,rgba(26,26,46,.5) 0,transparent 20%),radial-gradient(circle at 90% 80%,rgba(15,52,96,.4) 0,transparent 20%),radial-gradient(circle at 50% 50%,rgba(22,33,62,.3) 0,transparent 30%);z-index:-1}.container{max-width:1200px;margin:0 auto;padding:0 15px}.header{background:rgba(15,15,20,.9);color:#fff;padding:15px 0;box-shadow:0 4px 20px rgba(0,0,0,.5);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:fixed;top:0;left:0;width:100%;z-index:1000}.header-content{max-width:1200px;margin:0 auto;padding:0 15px;display:flex;align-items:center;justify-content:space-between}.header::before{content:'';position:absolute;bottom:-10px;left:5%;width:90%;height:10px;background:rgba(255,255,255,.05);filter:blur(10px);border-radius:50%}.back-button{background:rgba(255,255,255,.1);border:none;color:#fff;font-size:24px;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 10px rgba(0,0,0,.3)}.back-button:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}.logo-container{display:flex;align-items:center;justify-content:center;flex:1}.logo-text{font-size:42px;font-weight:700;color:#fff;text-shadow:1px 1px 3px rgba(0,0,0,.5);margin-left:15px;display:flex;align-items:center}.logo-text i{margin-right:15px;font-size:36px}.main-content{display:flex;gap:30px;margin-bottom:30px}.video-section{flex:2;background:rgba(20,20,30,.6);border-radius:20px;padding:25px;box-shadow:0 10px 25px rgba(0,0,0,.4);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);animation:fadeIn .5s ease;height:500px;display:flex;flex-direction:column}.video-section::before{content:'';position:absolute;bottom:-10px;left:5%;width:90%;height:10px;background:rgba(255,255,255,.05);filter:blur(10px);border-radius:50%}.video-container{position:relative;width:100%;height:0;padding-bottom:56.25%;overflow:hidden;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.5);background:#000;flex-shrink:0}#player-container{position:absolute;top:0;left:0;width:100%;height:100%}.video-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}.video-info{display:flex;align-items:center;margin-top:20px;padding:15px;background:rgba(255,255,255,.05);border-radius:10px;border-left:4px solid rgba(255,255,255,.3);animation:slideIn .5s ease;font-size:18px;font-weight:600;text-align:left;justify-content:flex-start}.subjects-section{flex:1;background:rgba(20,20,30,.6);border-radius:20px;padding:25px;box-shadow:0 10px 25px rgba(0,0,0,.4);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);height:500px;display:flex;flex-direction:column}.subjects-section::before{content:'';position:absolute;bottom:-10px;left:5%;width:90%;height:10px;background:rgba(255,255,255,.05);filter:blur(10px);border-radius:50%}.section-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:10px;text-align:center;position:relative;padding-bottom:10px;flex-shrink:0}.section-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100px;height:3px;background:linear-gradient(to right,rgba(255,255,255,.7),rgba(160,174,192,.7));border-radius:3px}.pcmb-timer{text-align:center;color:#ff4d4d;font-size:14px;font-weight:600;margin-bottom:15px;background:rgba(255,77,77,.1);padding:5px 10px;border-radius:5px;border:1px solid rgba(255,77,77,.3);flex-shrink:0}.subjects-container{flex:1;overflow-y:auto;padding-right:5px}.subjects-list{display:flex;flex-direction:column;gap:10px}.subject-item{background:rgba(255,255,255,.05);border-radius:10px;overflow:hidden;transition:all .3s ease;border:1px solid rgba(255,255,255,.1)}.subject-header{display:flex;align-items:center;padding:15px 20px;cursor:pointer;transition:all .3s ease;position:relative}.subject-header:hover{background:rgba(255,255,255,.08)}.subject-icon{font-size:24px;margin-right:15px;width:30px;text-align:center}.subject-title{font-size:20px;font-weight:600;flex-grow:1}.dropdown-icon{font-size:16px;transition:transform .3s ease}.limited-time-icon{color:#ff4d4d;font-size:16px;margin-left:5px;animation:pulse 2s infinite}@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.1)}100%{transform:scale(1)}}.lectures-list{max-height:0;overflow:hidden;transition:max-height .3s ease;background:rgba(10,10,15,.5)}.lectures-list.open{max-height:300px;overflow-y:auto}.lecture-item{display:flex;align-items:center;padding:12px 20px;cursor:pointer;transition:all .3s ease;border-bottom:1px solid rgba(255,255,255,.05);position:relative}.lecture-item:last-child{border-bottom:none}.lecture-item:hover{background:rgba(255,255,255,.08);transform:translateX(5px)}.lecture-item.active{background:rgba(76,175,80,.2);border-left:4px solid #4caf50}.lecture-icon{font-size:20px;margin-right:15px;width:25px;text-align:center}.lecture-title{font-size:16px;font-weight:500;flex-grow:1}.lecture-badges{display:flex;gap:5px;margin-left:10px;align-items:center}.plyr{border-radius:12px;overflow:hidden}.plyr--video{border-radius:12px}.plyr--fullscreen-active{border-radius:0!important}.plyr--fullscreen-active .plyr__video-wrapper{height:100vh!important;width:100vw!important}.plyr__controls button.plyr__control--fast-forward,.plyr__controls button.plyr__control--rewind{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:50%;color:#fff;transition:all .3s ease;backdrop-filter:blur(10px)}.plyr__controls button.plyr__control--fast-forward:hover,.plyr__controls button.plyr__control--rewind:hover{background:rgba(255,255,255,.2);transform:scale(1.1)}@media (max-width:768px){.plyr--video .plyr__controls{padding:10px 5px}.plyr__controls .plyr__control{margin:0 2px}.plyr__time{font-size:12px}.plyr__menu__container{bottom:60px}}.custom-player-container{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center}.custom-player{width:100%;height:100%;background:#000;border-radius:12px;overflow:hidden}@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes slideIn{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}@keyframes scaleIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}@media (max-width:992px){.main-content{flex-direction:column}.subjects-section,.video-section{height:auto}.subjects-section{max-height:500px}}@media (max-width:768px){body{padding-top:110px}.logo-text{font-size:36px}.logo-text i{font-size:30px}.video-info{font-size:16px}.section-title{font-size:24px}.subject-title{font-size:18px}.lecture-title{font-size:15px}}@media (max-width:480px){body{padding-top:100px}.logo-text{font-size:28px}.logo-text i{font-size:24px;margin-right:10px}.subjects-section,.video-section{padding:20px}.section-title{font-size:22px}.subject-header{padding:12px 15px}.subject-title{font-size:16px}.lecture-item{padding:10px 15px}.lecture-title{font-size:14px}.badge{font-size:9px;padding:1px 4px}}::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:rgba(20,20,30,.5);border-radius:10px}::-webkit-scrollbar-thumb{background:linear-gradient(135deg,rgba(255,255,255,.5),rgba(160,174,192,.5));border-radius:10px}::-webkit-scrollbar-thumb:hover{background:linear-gradient(135deg,rgba(160,174,192,.5),rgba(255,255,255,.5))}.video-placeholder{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#aaa;font-size:18px;background:#000;border-radius:12px;z-index:2}.video-placeholder i{font-size:48px;margin-bottom:15px}#player{width:100%;height:100%;position:absolute;top:0;left:0}.iframe-overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:10;background:0 0;cursor:default;pointer-events:none}.plyr--playing .iframe-overlay{pointer-events:auto}.plyr--fullscreen-active .iframe-overlay{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:9999}.plyr__controls{z-index:20!important;position:relative;pointer-events:auto!important}.plyr__control{z-index:21!important;position:relative;pointer-events:auto!important}@media (max-width:768px){.plyr__control{transform:scale(.9)}.plyr__control--overlaid{transform:scale(.8)}.plyr__controls button{padding:8px}.plyr__controls button svg{width:16px;height:16px}.plyr__control--fast-forward,.plyr__control--rewind{padding:6px}.plyr__control--fast-forward svg,.plyr__control--rewind svg{width:14px;height:14px}.plyr__menu__container .plyr__control svg{width:14px;height:14px}}@media (max-width:480px){.plyr__control{transform:scale(.8)}.plyr__control--overlaid{transform:scale(.7)}.plyr__controls button{padding:6px}.plyr__controls button svg{width:14px;height:14px}.plyr__control--fast-forward,.plyr__control--rewind{padding:5px}.plyr__control--fast-forward svg,.plyr__control--rewind svg{width:12px;height:12px}.plyr__time{font-size:11px}.plyr__menu__container .plyr__control svg{width:12px;height:12px}}@media (max-width:360px){.plyr__control{transform:scale(.75)}.plyr__control--overlaid{transform:scale(.65);padding:12px}.plyr__controls button{padding:5px}.plyr__controls button svg{width:13px;height:13px}.plyr__control--fast-forward,.plyr__control--rewind{padding:4px}.plyr__control--fast-forward svg,.plyr__control--rewind svg{width:11px;height:11px}.plyr__time{font-size:10px;margin:0 3px}.plyr__menu__container .plyr__control svg{width:11px;height:11px}.plyr__volume{min-width:60px}}@media (max-width:320px){.plyr__control{transform:scale(.7)}.plyr__control--overlaid{transform:scale(.6);padding:10px}.plyr__controls button{padding:4px}.plyr__controls button svg{width:12px;height:12px}.plyr__control--fast-forward,.plyr__control--rewind{padding:3px;margin:0 2px}.plyr__control--fast-forward svg,.plyr__control--rewind svg{width:10px;height:10px}.plyr__time{font-size:9px;margin:0 2px}.plyr__menu__container .plyr__control svg{width:10px;height:10px}.plyr__volume{min-width:50px}.plyr__controls__item{margin:0 2px}}@media (max-width:280px){.plyr__control{transform:scale(.65)}.plyr__control--overlaid{transform:scale(.55);padding:8px}.plyr__controls button{padding:3px}.plyr__controls button svg{width:11px;height:11px}.plyr__control--fast-forward,.plyr__control--rewind{padding:2px;margin:0 1px}.plyr__control--fast-forward svg,.plyr__control--rewind svg{width:9px;height:9px}.plyr__time{font-size:8px;margin:0 1px}.plyr__menu__container .plyr__control svg{width:9px;height:9px}.plyr__volume{min-width:45px;display:none}.plyr__controls__item{margin:0 1px}}.plyr--touch .plyr__controls{transition:all .3s ease;opacity:1;transform:translateY(0)}.plyr--touch .plyr__controls.hidden{opacity:0;transform:translateY(20px);pointer-events:none}.touch-overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:15;background:0 0;display:none;cursor:pointer}.plyr--touch .touch-overlay{display:block}@media (hover:hover){.subject-header:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}.lecture-item:hover{background:rgba(255,255,255,.1);transform:translateX(8px)}.back-button:hover{background:rgba(255,255,255,.2);transform:translateY(-2px) scale(1.05)}}@media (hover:none){.subject-header:active{background:rgba(255,255,255,.15);transform:scale(.98)}.lecture-item:active{background:rgba(255,255,255,.12);transform:scale(.98)}.back-button:active{background:rgba(255,255,255,.25);transform:scale(.95)}}.plyr__menu__container{z-index:25!important}.plyr__menu__container .plyr__control{z-index:26!important}</style></head><body><header class="header"><div class="header-content"><button class="back-button" onclick="goToHome()"><i class="fas fa-arrow-left"></i></button><div class="logo-container"><div class="logo-text"><i class="fas fa-chalkboard-teacher"></i>Classroom</div></div><div style="width:50px"></div></div></header><div class="container"><div class="main-content"><section class="video-section"><div class="video-container"><div id="player-container"><div id="video-placeholder" class="video-placeholder"><i class="fas fa-play-circle"></i><p>Select a lecture to begin</p></div><div id="player" class="plyr__video-embed" style="display:none"><div class="iframe-overlay" id="iframe-overlay"></div><iframe id="lecture-video" src="" frameborder="0" allowfullscreen allow="autoplay"></iframe></div></div></div><div class="video-info"><span id="lecture-name">Select a lecture to begin</span></div></section><section class="subjects-section"><h2 class="section-title">Subjects</h2><div class="pcmb-timer" id="pcmb-timer">.....</div><div class="subjects-container"><div class="subjects-list" id="subjects-list"></div></div></section></div></div><script src="https://cdn.plyr.io/3.7.8/plyr.js"></script><script src="data/cache1.js"></script><script>const _0x2ae78b=_0x274d;(function(_0x21cc39,_0x22f12d){const _0x15c36e=_0x274d,_0x4765a9=_0x21cc39();while(!![]){try{const _0x1fcd37=-parseInt(_0x15c36e(0x180))/0x1+parseInt(_0x15c36e(0x1ed))/0x2+-parseInt(_0x15c36e(0x16c))/0x3+-parseInt(_0x15c36e(0x1e1))/0x4+parseInt(_0x15c36e(0x162))/0x5*(-parseInt(_0x15c36e(0x1b0))/0x6)+-parseInt(_0x15c36e(0x174))/0x7*(parseInt(_0x15c36e(0x1ff))/0x8)+parseInt(_0x15c36e(0x1f6))/0x9;if(_0x1fcd37===_0x22f12d)break;else _0x4765a9['push'](_0x4765a9['shift']());}catch(_0x55e1a8){_0x4765a9['push'](_0x4765a9['shift']());}}}(_0x3cef,0x60940),(function(){const _0xe18670=_0x274d,_0x3ed8dd=['accessGranted','accessKey',_0xe18670(0x194),_0xe18670(0x19b),_0xe18670(0x1db),_0xe18670(0x1fe)];let _0xc45b17=!![];for(const _0x33874c of _0x3ed8dd){const _0x116e19=localStorage['getItem'](_0x33874c);if(!_0x116e19||_0x116e19[_0xe18670(0x189)]()===''||_0x116e19===_0xe18670(0x18b)||_0x116e19===_0xe18670(0x1e0)){_0xc45b17=![];break;}}localStorage[_0xe18670(0x1b6)]('accessGranted')!==_0xe18670(0x1ae)&&(_0xc45b17=![]),!_0xc45b17&&(window[_0xe18670(0x173)][_0xe18670(0x1ad)]=_0xe18670(0x1ec));}()));function setupOverlayProtection(){const _0x86a3d8=_0x274d,_0x3d1ab5=document['getElementById'](_0x86a3d8(0x1bb));_0x3d1ab5&&_0x3d1ab5['addEventListener'](_0x86a3d8(0x19f),_0x4661b4=>{const _0x186ab5=_0x86a3d8;return _0x4661b4[_0x186ab5(0x15c)](),![];}),document[_0x86a3d8(0x182)](_0x86a3d8(0x17d),updateOverlayPosition),document[_0x86a3d8(0x182)](_0x86a3d8(0x17b),updateOverlayPosition),document[_0x86a3d8(0x182)]('mozfullscreenchange',updateOverlayPosition),document['addEventListener'](_0x86a3d8(0x1d9),updateOverlayPosition);}function updateOverlayPosition(){const _0x4b0728=_0x274d,_0x2da13d=document[_0x4b0728(0x1d6)]('iframe-overlay');if(!_0x2da13d)return;const _0x5da320=document[_0x4b0728(0x1ac)]('.plyr');_0x5da320&&_0x5da320[_0x4b0728(0x191)][_0x4b0728(0x1da)](_0x4b0728(0x17a))?(_0x2da13d[_0x4b0728(0x200)][_0x4b0728(0x1fd)]=_0x4b0728(0x1e9),_0x2da13d[_0x4b0728(0x200)][_0x4b0728(0x158)]='0',_0x2da13d[_0x4b0728(0x200)][_0x4b0728(0x170)]='0',_0x2da13d[_0x4b0728(0x200)][_0x4b0728(0x176)]=_0x4b0728(0x196),_0x2da13d[_0x4b0728(0x200)]['height']=_0x4b0728(0x1a2),_0x2da13d[_0x4b0728(0x200)][_0x4b0728(0x1ee)]=_0x4b0728(0x1cf)):(_0x2da13d[_0x4b0728(0x200)][_0x4b0728(0x1fd)]=_0x4b0728(0x172),_0x2da13d[_0x4b0728(0x200)][_0x4b0728(0x158)]='0',_0x2da13d[_0x4b0728(0x200)][_0x4b0728(0x170)]='0',_0x2da13d[_0x4b0728(0x200)][_0x4b0728(0x176)]=_0x4b0728(0x18e),_0x2da13d[_0x4b0728(0x200)][_0x4b0728(0x154)]='100%',_0x2da13d['style'][_0x4b0728(0x1ee)]='10');}const subjectsList=document[_0x2ae78b(0x1d6)]('subjects-list'),videoFrame=document[_0x2ae78b(0x1d6)](_0x2ae78b(0x1ef)),lectureNameElement=document[_0x2ae78b(0x1d6)](_0x2ae78b(0x19a)),pcmbTimerElement=document[_0x2ae78b(0x1d6)](_0x2ae78b(0x168)),videoPlaceholder=document[_0x2ae78b(0x1d6)](_0x2ae78b(0x15e)),playerContainer=document['getElementById'](_0x2ae78b(0x159));let activeLecture=null,player=null,isPlayerLoading=![],pendingVideoRequest=null,touchControlsTimeout,isTouchDevice=![],isControlsVisible=!![];function detectTouchDevice(){const _0x5cb2e6=_0x2ae78b;return _0x5cb2e6(0x1fa)in window||navigator[_0x5cb2e6(0x1b5)]>0x0||navigator[_0x5cb2e6(0x1c3)]>0x0||window['DocumentTouch']&&document instanceof DocumentTouch;}function showTouchControls(){const _0x34d6e8=_0x2ae78b;if(!isTouchDevice||!player)return;const _0x410158=document[_0x34d6e8(0x1ac)](_0x34d6e8(0x17e));_0x410158&&(_0x410158[_0x34d6e8(0x191)][_0x34d6e8(0x1b7)](_0x34d6e8(0x199)),isControlsVisible=!![]),touchControlsTimeout&&clearTimeout(touchControlsTimeout),touchControlsTimeout=setTimeout(()=>{const _0x167331=_0x34d6e8;!player[_0x167331(0x1b1)]&&hideTouchControls();},0xbb8);}function hideTouchControls(){const _0x381e94=_0x2ae78b;if(!isTouchDevice||!player)return;const _0x5974e5=document[_0x381e94(0x1ac)](_0x381e94(0x17e));_0x5974e5&&isControlsVisible&&(_0x5974e5[_0x381e94(0x191)]['add'](_0x381e94(0x199)),isControlsVisible=![]);}function toggleTouchControls(){if(!isTouchDevice||!player)return;isControlsVisible?hideTouchControls():showTouchControls();}function resetControlsTimeout(){if(!isTouchDevice||!player)return;showTouchControls();}function initializeTouchControls(){const _0x1e6101=_0x2ae78b;isTouchDevice=detectTouchDevice();if(isTouchDevice){console[_0x1e6101(0x155)](_0x1e6101(0x1e3));const _0x2ee7ba=document[_0x1e6101(0x1ac)](_0x1e6101(0x171));_0x2ee7ba&&_0x2ee7ba[_0x1e6101(0x191)][_0x1e6101(0x1bf)](_0x1e6101(0x1a1));let _0x3999bf=document[_0x1e6101(0x1d6)]('touch-overlay');!_0x3999bf&&(_0x3999bf=document[_0x1e6101(0x1e7)]('div'),_0x3999bf[_0x1e6101(0x1b3)]=_0x1e6101(0x197),_0x3999bf['id']=_0x1e6101(0x197),document['querySelector'](_0x1e6101(0x1cd))[_0x1e6101(0x19d)](_0x3999bf));_0x3999bf[_0x1e6101(0x182)](_0x1e6101(0x198),_0x16cb51=>{const _0x15cc91=_0x1e6101;_0x16cb51[_0x15cc91(0x15c)](),_0x16cb51[_0x15cc91(0x15b)](),toggleTouchControls();});const _0x2ad965=document['querySelector'](_0x1e6101(0x1cd));_0x2ad965&&_0x2ad965[_0x1e6101(0x182)](_0x1e6101(0x198),_0x302015=>{const _0x3f0f63=_0x1e6101;!_0x302015[_0x3f0f63(0x183)][_0x3f0f63(0x1a0)](_0x3f0f63(0x1d0))&&resetControlsTimeout();}),player&&(player['on'](_0x1e6101(0x18a),showTouchControls),player['on']('pause',showTouchControls),player['on']('controlsshown',resetControlsTimeout)),touchControlsTimeout=setTimeout(hideTouchControls,0xbb8);}}function initializePage(){const _0x3bd018=_0x2ae78b;populateSubjects(),updatePCMBTimer(),setInterval(updatePCMBTimer,0xea60),setupOverlayProtection(),window[_0x3bd018(0x182)](_0x3bd018(0x1dd),updateOverlayPosition),isTouchDevice=detectTouchDevice();}function populateSubjects(){const _0x62a70e=_0x2ae78b;subjectsList['innerHTML']='',subjectsData[_0x62a70e(0x179)](_0x273078=>_0x273078[_0x62a70e(0x1e4)]&&_0x273078[_0x62a70e(0x1e4)][_0x62a70e(0x1df)]>0x0)[_0x62a70e(0x16f)](_0x465d8e=>{const _0x49e3da=_0x62a70e,_0x272e6b=document[_0x49e3da(0x1e7)](_0x49e3da(0x1a5));_0x272e6b[_0x49e3da(0x1b3)]=_0x49e3da(0x1e2);const _0x195bb7=document[_0x49e3da(0x1e7)](_0x49e3da(0x1a5));_0x195bb7[_0x49e3da(0x1b3)]='subject-header',_0x195bb7[_0x49e3da(0x156)](_0x49e3da(0x1d2),_0x465d8e['name']),_0x195bb7['innerHTML']=_0x49e3da(0x1af)+_0x465d8e[_0x49e3da(0x1b9)]+_0x49e3da(0x1b4)+_0x465d8e[_0x49e3da(0x1d5)]+';\x22></i>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22subject-title\x22>'+_0x465d8e[_0x49e3da(0x1c6)]+_0x49e3da(0x1e6);const _0x9b8e35=document[_0x49e3da(0x1e7)](_0x49e3da(0x1a5));_0x9b8e35[_0x49e3da(0x1b3)]=_0x49e3da(0x1ab),_0x465d8e[_0x49e3da(0x1e4)][_0x49e3da(0x16f)]((_0x294970,_0x13e4be)=>{const _0x2f87b0=_0x49e3da,_0x1d2de3=document[_0x2f87b0(0x1e7)]('div');_0x1d2de3[_0x2f87b0(0x1b3)]='lecture-item',_0x1d2de3[_0x2f87b0(0x1f9)][_0x2f87b0(0x1c5)]=_0x465d8e[_0x2f87b0(0x1c6)],_0x1d2de3[_0x2f87b0(0x1f9)][_0x2f87b0(0x202)]=_0x13e4be;const _0x12d3ce=_0x465d8e[_0x2f87b0(0x184)]&&isWithin24hWindow();_0x1d2de3[_0x2f87b0(0x1d4)]=_0x2f87b0(0x19e)+_0x465d8e[_0x2f87b0(0x1d5)]+';\x22></i>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22lecture-title\x22>'+_0x294970[_0x2f87b0(0x1f3)]+_0x2f87b0(0x153)+(_0x12d3ce?'<i\x20class=\x22limited-time-icon\x20fas\x20fa-clock\x22></i>':'')+_0x2f87b0(0x1a3),_0x1d2de3[_0x2f87b0(0x182)](_0x2f87b0(0x1d8),()=>{const _0x34d43f=_0x2f87b0;loadVideo(_0x294970[_0x34d43f(0x1d3)],_0x294970[_0x34d43f(0x1f3)]),setActiveLecture(_0x1d2de3,_0x465d8e[_0x34d43f(0x1c6)],_0x13e4be),_0x1d2de3[_0x34d43f(0x200)][_0x34d43f(0x16a)]='scaleIn\x200.3s\x20ease',setTimeout(()=>{const _0x54a02f=_0x34d43f;_0x1d2de3[_0x54a02f(0x200)][_0x54a02f(0x16a)]='';},0x12c);}),_0x9b8e35[_0x2f87b0(0x19d)](_0x1d2de3);}),_0x195bb7['addEventListener']('click',()=>{const _0x3d513f=_0x49e3da,_0x1f2692=_0x9b8e35[_0x3d513f(0x191)][_0x3d513f(0x1da)]('open');document[_0x3d513f(0x1ce)]('.lectures-list.open')['forEach'](_0x1eb937=>{const _0x5c5ca5=_0x3d513f;if(_0x1eb937!==_0x9b8e35){_0x1eb937['classList']['remove'](_0x5c5ca5(0x1c7));const _0x229195=_0x1eb937[_0x5c5ca5(0x15f)];_0x229195[_0x5c5ca5(0x1ac)]('.dropdown-icon')[_0x5c5ca5(0x1b3)]=_0x5c5ca5(0x16e);}}),_0x1f2692?(_0x9b8e35[_0x3d513f(0x191)][_0x3d513f(0x1b7)](_0x3d513f(0x1c7)),_0x195bb7[_0x3d513f(0x1ac)]('.dropdown-icon')[_0x3d513f(0x1b3)]=_0x3d513f(0x16e)):(_0x9b8e35[_0x3d513f(0x191)][_0x3d513f(0x1bf)](_0x3d513f(0x1c7)),_0x195bb7['querySelector'](_0x3d513f(0x18f))[_0x3d513f(0x1b3)]='dropdown-icon\x20fas\x20fa-chevron-up');}),_0x272e6b[_0x49e3da(0x19d)](_0x195bb7),_0x272e6b[_0x49e3da(0x19d)](_0x9b8e35),subjectsList['appendChild'](_0x272e6b);});}function loadVideo(_0x3a7211,_0x2a90b0){const _0x2db86a=_0x2ae78b;if(isPlayerLoading){pendingVideoRequest={'videoId':_0x3a7211,'lectureTitle':_0x2a90b0};return;}console[_0x2db86a(0x155)](_0x2db86a(0x192),_0x3a7211,_0x2a90b0),isPlayerLoading=!![],lectureNameElement[_0x2db86a(0x1f7)]=_0x2db86a(0x1c9)+_0x2a90b0,videoPlaceholder[_0x2db86a(0x200)][_0x2db86a(0x1c4)]=_0x2db86a(0x185),playerContainer[_0x2db86a(0x200)][_0x2db86a(0x1c4)]=_0x2db86a(0x1a8),showLoadingIndicator();player&&(player[_0x2db86a(0x1e8)](),player=null);const _0x5e23a3=document['createElement'](_0x2db86a(0x205));_0x5e23a3['id']=_0x2db86a(0x1ef),_0x5e23a3['className']='plyr__video-embed',_0x5e23a3['src']=_0x2db86a(0x193)+_0x3a7211+_0x2db86a(0x157),_0x5e23a3[_0x2db86a(0x1f8)]='0',_0x5e23a3[_0x2db86a(0x175)]=!![],_0x5e23a3[_0x2db86a(0x16b)]=_0x2db86a(0x1f0),_0x5e23a3[_0x2db86a(0x200)][_0x2db86a(0x1f2)]='none';const _0x3b95=document['getElementById']('lecture-video');_0x3b95[_0x2db86a(0x1bc)]['replaceChild'](_0x5e23a3,_0x3b95);const _0x41694a=document[_0x2db86a(0x1ac)](_0x2db86a(0x18d));_0x41694a[_0x2db86a(0x200)][_0x2db86a(0x16a)]=_0x2db86a(0x1a9),setTimeout(()=>{const _0x1ddc86=_0x2db86a;_0x41694a[_0x1ddc86(0x200)][_0x1ddc86(0x16a)]='';},0x1f4),setTimeout(()=>{const _0x5cf349=_0x2db86a;try{player=new Plyr('#player',{'controls':[_0x5cf349(0x17c),_0x5cf349(0x164),'play',_0x5cf349(0x1dc),_0x5cf349(0x1c1),_0x5cf349(0x1ea),_0x5cf349(0x1b8),_0x5cf349(0x206),_0x5cf349(0x1eb),_0x5cf349(0x166),_0x5cf349(0x201)],'hideControls':![],'clickToPlay':![],'touch':!![],'hideControls':!![],'youtube':{'noCookie':!![],'rel':0x0,'showinfo':0x0,'iv_load_policy':0x3,'modestbranding':0x1},'i18n':{'rewind':_0x5cf349(0x161),'fastForward':'Forward\x20{seektime}s'},'seekTime':0xa,'fullscreen':{'enabled':!![],'fallback':!![],'iosNative':![],'container':null}}),player['on'](_0x5cf349(0x18a),()=>{const _0x5140af=_0x5cf349;console[_0x5140af(0x155)](_0x5140af(0x1aa));const _0x1e2f8a=document[_0x5140af(0x1d6)](_0x5140af(0x1bb)),_0x139f5a=document[_0x5140af(0x1d6)](_0x5140af(0x1ef));_0x1e2f8a&&(_0x1e2f8a[_0x5140af(0x200)][_0x5140af(0x1f2)]='auto'),_0x139f5a&&(_0x139f5a['style'][_0x5140af(0x1f2)]=_0x5140af(0x185)),showTouchControls();}),player['on'](_0x5cf349(0x181),()=>{const _0x55975a=_0x5cf349;console[_0x55975a(0x155)](_0x55975a(0x1fb));const _0x38fc78=document[_0x55975a(0x1d6)](_0x55975a(0x1bb)),_0x38d8de=document[_0x55975a(0x1d6)](_0x55975a(0x1ef));_0x38fc78&&(_0x38fc78[_0x55975a(0x200)][_0x55975a(0x1f2)]='auto'),_0x38d8de&&(_0x38d8de[_0x55975a(0x200)][_0x55975a(0x1f2)]=_0x55975a(0x185)),showTouchControls(),touchControlsTimeout&&clearTimeout(touchControlsTimeout);}),player['on'](_0x5cf349(0x188),()=>{resetControlsTimeout();}),player['on']('controlshidden',()=>{}),player['on'](_0x5cf349(0x167),()=>{const _0xb805fb=_0x5cf349;console[_0xb805fb(0x155)](_0xb805fb(0x195)),isPlayerLoading=![],hideLoadingIndicator(),lectureNameElement[_0xb805fb(0x1f7)]=_0x2a90b0;const _0x3a5d30=document[_0xb805fb(0x1d6)](_0xb805fb(0x1bb)),_0x170f2e=document['getElementById'](_0xb805fb(0x1ef));_0x3a5d30&&(_0x3a5d30[_0xb805fb(0x200)][_0xb805fb(0x1f2)]='auto');_0x170f2e&&(_0x170f2e[_0xb805fb(0x200)]['pointerEvents']=_0xb805fb(0x185));updateOverlayPosition(),initializeTouchControls();if(pendingVideoRequest){const _0x3004a8=pendingVideoRequest;pendingVideoRequest=null,setTimeout(()=>{const _0x2b6cc8=_0xb805fb;loadVideo(_0x3004a8['videoId'],_0x3004a8[_0x2b6cc8(0x186)]);},0x1f4);}}),player['on']('loaderror',()=>{const _0x5c9fa7=_0x5cf349;console[_0x5c9fa7(0x1c0)](_0x5c9fa7(0x1b2)),isPlayerLoading=![],hideLoadingIndicator(),lectureNameElement[_0x5c9fa7(0x1f7)]=_0x5c9fa7(0x165);}),player['on'](_0x5cf349(0x18c),()=>{const _0x3d7d29=_0x5cf349;console[_0x3d7d29(0x155)](_0x3d7d29(0x1f4)),updateOverlayPosition(),isTouchDevice&&setTimeout(initializeTouchControls,0x64),screen[_0x3d7d29(0x1bd)]&&screen[_0x3d7d29(0x1bd)][_0x3d7d29(0x152)]&&screen['orientation']['lock'](_0x3d7d29(0x163))['catch'](()=>{});}),player['on'](_0x5cf349(0x1d7),()=>{const _0x15fd21=_0x5cf349;console[_0x15fd21(0x155)](_0x15fd21(0x169)),updateOverlayPosition(),isTouchDevice&&setTimeout(initializeTouchControls,0x64),screen[_0x15fd21(0x1bd)]&&screen[_0x15fd21(0x1bd)][_0x15fd21(0x1f1)]&&screen[_0x15fd21(0x1bd)][_0x15fd21(0x1f1)]();});}catch(_0x2105da){console[_0x5cf349(0x1c0)](_0x5cf349(0x1a4),_0x2105da),isPlayerLoading=![],hideLoadingIndicator(),lectureNameElement[_0x5cf349(0x1f7)]=_0x5cf349(0x1f5);}},0x320);}function showLoadingIndicator(){const _0x42c62c=_0x2ae78b;let _0x229c6e=document['getElementById'](_0x42c62c(0x1de));!_0x229c6e&&(_0x229c6e=document[_0x42c62c(0x1e7)](_0x42c62c(0x1a5)),_0x229c6e['id']=_0x42c62c(0x1de),_0x229c6e['innerHTML']='<i\x20class=\x22fas\x20fa-spinner\x20fa-spin\x22></i><p>Loading\x20video...</p>',_0x229c6e['style'][_0x42c62c(0x1a7)]=_0x42c62c(0x1c2),document[_0x42c62c(0x1ac)](_0x42c62c(0x1cd))[_0x42c62c(0x19d)](_0x229c6e)),_0x229c6e[_0x42c62c(0x200)][_0x42c62c(0x1c4)]='block';}function hideLoadingIndicator(){const _0x40601e=_0x2ae78b,_0x2edee0=document['getElementById'](_0x40601e(0x1de));_0x2edee0&&(_0x2edee0[_0x40601e(0x200)][_0x40601e(0x1c4)]=_0x40601e(0x185));}function setActiveLecture(_0x13566a,_0x21e07a,_0x1c43f1){const _0x12b5cd=_0x2ae78b;document['querySelectorAll'](_0x12b5cd(0x177))[_0x12b5cd(0x16f)](_0x4e99a3=>{const _0x9b4a11=_0x12b5cd;_0x4e99a3['classList'][_0x9b4a11(0x1b7)](_0x9b4a11(0x1fc));}),_0x13566a[_0x12b5cd(0x191)]['add']('active'),activeLecture={'element':_0x13566a,'subject':_0x21e07a,'index':_0x1c43f1};}function initializeNewLectureTracking(){const _0x4ee2da=_0x2ae78b;let _0x1ecd6b=JSON[_0x4ee2da(0x151)](localStorage[_0x4ee2da(0x1b6)](_0x4ee2da(0x1cc)))||[];const _0x29b408=[];subjectsData[_0x4ee2da(0x16f)](_0x4aa392=>{const _0x169507=_0x4ee2da;_0x4aa392[_0x169507(0x1e4)][_0x169507(0x16f)](_0x1974c8=>{const _0x458baa=_0x169507;_0x29b408['push'](_0x1974c8[_0x458baa(0x1d3)]);});}),_0x1ecd6b=_0x1ecd6b[_0x4ee2da(0x179)](_0x254ba8=>_0x29b408[_0x4ee2da(0x15a)](_0x254ba8)),localStorage[_0x4ee2da(0x19c)](_0x4ee2da(0x1cc),JSON[_0x4ee2da(0x1e5)](_0x1ecd6b));}function isLectureNew(_0x2e71f6){const _0x783635=_0x2ae78b,_0x2adb2c=JSON[_0x783635(0x151)](localStorage[_0x783635(0x1b6)]('watchedLectures'))||[];return!_0x2adb2c[_0x783635(0x15a)](_0x2e71f6);}function checkSubjectHasNewLectures(_0x45e2a3){const _0x59d207=_0x2ae78b,_0x53fcee=JSON[_0x59d207(0x151)](localStorage[_0x59d207(0x1b6)](_0x59d207(0x1cc)))||[];return _0x45e2a3[_0x59d207(0x1e4)][_0x59d207(0x15d)](_0x1b394c=>!_0x53fcee[_0x59d207(0x15a)](_0x1b394c[_0x59d207(0x1d3)]));}function markLectureAsWatched(_0x1ea494,_0x295a30,_0x285095){const _0x33f96e=_0x2ae78b;let _0x570968=JSON[_0x33f96e(0x151)](localStorage[_0x33f96e(0x1b6)](_0x33f96e(0x1cc)))||[];!_0x570968[_0x33f96e(0x15a)](_0x1ea494)&&(_0x570968[_0x33f96e(0x1c8)](_0x1ea494),localStorage[_0x33f96e(0x19c)](_0x33f96e(0x1cc),JSON[_0x33f96e(0x1e5)](_0x570968)),updateLectureBadge(_0x295a30,_0x285095),updateSubjectBadge(_0x295a30));}function updateLectureBadge(_0x8224ed,_0x5e9fb3){const _0x79cf92=_0x2ae78b,_0x4c86ef=document[_0x79cf92(0x1ac)](_0x79cf92(0x178)+_0x8224ed+'\x22][data-lecture-index=\x22'+_0x5e9fb3+'\x22]');if(_0x4c86ef){const _0xea2c87=_0x4c86ef['querySelector'](_0x79cf92(0x187));_0xea2c87&&_0xea2c87[_0x79cf92(0x1b7)]();}}function _0x274d(_0x4de4c0,_0x3fe8a4){const _0x3cef55=_0x3cef();return _0x274d=function(_0x274d1a,_0x7efff4){_0x274d1a=_0x274d1a-0x151;let _0x4a9c73=_0x3cef55[_0x274d1a];return _0x4a9c73;},_0x274d(_0x4de4c0,_0x3fe8a4);}function updateSubjectBadge(_0xb22268){const _0x41c93d=_0x2ae78b,_0x3a4200=subjectsData['find'](_0x427686=>_0x427686[_0x41c93d(0x1c6)]===_0xb22268);if(_0x3a4200){const _0x389b6b=checkSubjectHasNewLectures(_0x3a4200),_0x2a112b=document[_0x41c93d(0x1ac)](_0x41c93d(0x1ba)+_0xb22268+'\x22]');if(_0x2a112b){const _0x32705a=_0x2a112b[_0x41c93d(0x1ac)]('.badge-container'),_0xf930ce=_0x2a112b[_0x41c93d(0x1ac)](_0x41c93d(0x187));if(_0x389b6b&&!_0xf930ce){const _0x10ad59=document['createElement'](_0x41c93d(0x1be));_0x10ad59[_0x41c93d(0x1b3)]=_0x41c93d(0x1d1),_0x10ad59[_0x41c93d(0x1f7)]=_0x41c93d(0x203),_0x32705a['appendChild'](_0x10ad59);}else!_0x389b6b&&_0xf930ce&&_0xf930ce[_0x41c93d(0x1b7)]();}}}function _0x3cef(){const _0x338522=['true','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22subject-icon\x20','1835670qEbkSo','paused','Player\x20load\x20error','className','\x22\x20style=\x22color:\x20','maxTouchPoints','getItem','remove','mute','icon','.subject-header[data-subject-name=\x22','iframe-overlay','parentNode','orientation','span','add','error','progress','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20position:\x20absolute;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20top:\x2050%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20left:\x2050%;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20transform:\x20translate(-50%,\x20-50%);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20text-align:\x20center;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20z-index:\x2010;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20color:\x20white;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20font-size:\x2018px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20background:\x20rgba(0,\x200,\x200,\x200.7);\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20padding:\x2020px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20border-radius:\x2010px;\x0a\x20\x20\x20\x20\x20\x20\x20\x20','msMaxTouchPoints','display','subject','name','open','push','Loading:\x20','orientationchange','.plyr__video-embed','watchedLectures','.video-container','querySelectorAll','9999','.plyr__controls','badge\x20badge-new','data-subject-name','videoId','innerHTML','color','getElementById','exitfullscreen','click','MSFullscreenChange','contains','userName','fast-forward','resize','video-loading','length','undefined','3027444ejwQCs','subject-item','Touch\x20device\x20detected\x20-\x20initializing\x20touch\x20controls','lectures','stringify','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22dropdown-icon\x20fas\x20fa-chevron-down\x22></i>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','createElement','destroy','fixed','current-time','settings','log.html','1468006mugYFj','zIndex','lecture-video','autoplay','unlock','pointerEvents','title','Entered\x20fullscreen\x20-\x20updating\x20overlay','Error\x20initializing\x20player','19300689SPkSPS','textContent','frameBorder','dataset','ontouchstart','Video\x20paused\x20-\x20disabling\x20overlay\x20protection','active','position','verificationCode','2690568ulkCxw','style','fullscreen','lectureIndex','New','Next\x20Upload\x20In\x20','iframe','volume','parse','lock','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22lecture-badges\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','height','log','setAttribute','?origin=https://plyr.io&enablejsapi=1&widgetid=1','top','player','includes','stopPropagation','preventDefault','some','video-placeholder','previousElementSibling','Uploaded!','Rewind\x20{seektime}s','10GTUfbl','landscape','rewind','Error\x20loading\x20video','pip','ready','pcmb-timer','Exited\x20fullscreen\x20-\x20updating\x20overlay','animation','allow','25830AEeiuy','\x20Minutes','dropdown-icon\x20fas\x20fa-chevron-down','forEach','left','.plyr','absolute','location','7LIzBeK','allowFullscreen','width','.lecture-item','.lecture-item[data-subject=\x22','filter','plyr--fullscreen-active','webkitfullscreenchange','play-large','fullscreenchange','.plyr--touch\x20.plyr__controls','index.html','769258kNQGpZ','pause','addEventListener','target','isPCMB','none','lectureTitle','.badge-new','controlsshown','trim','play','null','enterfullscreen','.video-info','100%','.dropdown-icon','DOMContentLoaded','classList','Loading\x20video:','https://www.youtube.com/embed/','accessTime','Player\x20ready','100vw','touch-overlay','touchstart','hidden','lecture-name','userGmail','setItem','appendChild','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22lecture-icon\x20fas\x20fa-play-circle\x22\x20style=\x22color:\x20','contextmenu','closest','plyr--touch','100vh','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','Player\x20initialization\x20error:','div','setHours','cssText','block','slideIn\x200.5s\x20ease','Video\x20playing\x20-\x20enabling\x20overlay\x20protection','lectures-list','querySelector','href'];_0x3cef=function(){return _0x338522;};return _0x3cef();}function isWithin24hWindow(){const _0x3821c6=_0x2ae78b,_0x1582f6=new Date(),_0xfb6597=new Date();_0xfb6597[_0x3821c6(0x1a6)](0x14,0x0,0x0,0x0);const _0x23d0cf=_0x1582f6<_0xfb6597?new Date(_0xfb6597['getTime']()-0x18*0x3c*0x3c*0x3e8):_0xfb6597,_0x5d5b33=new Date(_0x23d0cf['getTime']()+0x18*0x3c*0x3c*0x3e8);return _0x1582f6>=_0x23d0cf&&_0x1582f6<_0x5d5b33;}function updatePCMBTimer(){const _0x2b3801=_0x2ae78b,_0x748f6b=new Date(),_0x3f4171=new Date();_0x3f4171[_0x2b3801(0x1a6)](0x14,0x0,0x0,0x0);let _0xc1a535;_0x748f6b<_0x3f4171?_0xc1a535=_0x3f4171:_0xc1a535=new Date(_0x3f4171['getTime']()+0x18*0x3c*0x3c*0x3e8);const _0x5adc36=_0xc1a535-_0x748f6b;if(_0x5adc36<=0x0){pcmbTimerElement[_0x2b3801(0x1f7)]=_0x2b3801(0x160);return;}const _0x1177fd=Math['floor'](_0x5adc36/(0x3e8*0x3c*0x3c)),_0x3d2e23=Math['floor'](_0x5adc36%(0x3e8*0x3c*0x3c)/(0x3e8*0x3c));pcmbTimerElement['textContent']=_0x2b3801(0x204)+_0x1177fd+'\x20Hours\x20'+_0x3d2e23+_0x2b3801(0x16d);}function goToHome(){const _0x4e87d5=_0x2ae78b;window['location']['href']=_0x4e87d5(0x17f);}document[_0x2ae78b(0x182)](_0x2ae78b(0x198),_0x4ea40a=>{const _0x2e1c77=_0x2ae78b;isTouchDevice&&(player&&_0x4ea40a[_0x2e1c77(0x183)][_0x2e1c77(0x1a0)]('.plyr__controls')&&resetControlsTimeout());}),document[_0x2ae78b(0x182)]('touchmove',_0x1eceaf=>{const _0x5e8bb3=_0x2ae78b;(_0x1eceaf[_0x5e8bb3(0x183)][_0x5e8bb3(0x1a0)](_0x5e8bb3(0x1cb))||_0x1eceaf[_0x5e8bb3(0x183)]['closest']('.touch-overlay'))&&_0x1eceaf[_0x5e8bb3(0x15c)]();},{'passive':![]}),window[_0x2ae78b(0x182)](_0x2ae78b(0x1ca),()=>{isTouchDevice&&player&&setTimeout(initializeTouchControls,0x12c);}),document['addEventListener']('touchstart',_0x1e94c6=>{const _0x4237ac=_0x2ae78b;isTouchDevice&&player&&_0x1e94c6[_0x4237ac(0x183)][_0x4237ac(0x1a0)](_0x4237ac(0x1d0))&&resetControlsTimeout();}),document[_0x2ae78b(0x182)](_0x2ae78b(0x190),initializePage);</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind Siliguri', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-bottom: 20px;
+    position: relative;
+    padding-top: 120px; /* Account for fixed header */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(26, 26, 46, 0.5) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(15, 52, 96, 0.4) 0%, transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(22, 33, 62, 0.3) 0%, transparent 30%);
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header Styles */
+.header {
+    background: rgba(15, 15, 20, 0.9);
+    color: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    width: 90%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    filter: blur(10px);
+    border-radius: 50%;
+}
+
+.back-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.logo-text {
+    font-size: 42px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-text i {
+    margin-right: 15px;
+    font-size: 36px;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.video-section {
+    flex: 2;
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.5s ease;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-section::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    width: 90%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    filter: blur(10px);
+    border-radius: 50%;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    background: #000;
+    flex-shrink: 0;
+}
+
+/* Fix video container for fullscreen */
+#player-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border-left: 4px solid rgba(255, 255, 255, 0.3);
+    animation: slideIn 0.5s ease;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: left;
+    justify-content: flex-start;
+}
+
+/* Subjects Section */
+.subjects-section {
+    flex: 1;
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.subjects-section::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    width: 90%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    filter: blur(10px);
+    border-radius: 50%;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(160, 174, 192, 0.7));
+    border-radius: 3px;
+}
+
+.subjects-container {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.subjects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subject-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subject-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.subject-header:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.subject-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    width: 30px;
+    text-align: center;
+}
+
+.subject-title {
+    font-size: 20px;
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.dropdown-icon {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.lectures-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: rgba(10, 10, 15, 0.5);
+}
+
+.lectures-list.open {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.lecture-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.lecture-item:last-child {
+    border-bottom: none;
+}
+
+.lecture-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.lecture-item.active {
+    background: rgba(76, 175, 80, 0.2);
+    border-left: 4px solid #4CAF50;
+}
+
+.lecture-icon {
+    font-size: 20px;
+    margin-right: 15px;
+    width: 25px;
+    text-align: center;
+}
+
+.lecture-title {
+    font-size: 16px;
+    font-weight: 500;
+    flex-grow: 1;
+}
+
+.lecture-badges {
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+    align-items: center;
+}
+
+/* Plyr Override Styles */
+.plyr {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.plyr--video {
+    border-radius: 12px;
+}
+
+/* Fix Plyr fullscreen styles */
+.plyr--fullscreen-active {
+    border-radius: 0 !important;
+}
+
+.plyr--fullscreen-active .plyr__video-wrapper {
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+/* Custom Plyr controls for skip buttons */
+.plyr__controls button.plyr__control--rewind,
+.plyr__controls button.plyr__control--fast-forward {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.plyr__controls button.plyr__control--rewind:hover,
+.plyr__controls button.plyr__control--fast-forward:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .plyr--video .plyr__controls {
+        padding: 10px 5px;
+    }
+    
+    .plyr__controls .plyr__control {
+        margin: 0 2px;
+    }
+    
+    .plyr__time {
+        font-size: 12px;
+    }
+    
+    .plyr__menu__container {
+        bottom: 60px;
+    }
+}
+
+/* Custom Video Player Styles */
+.custom-player-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-player {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .video-section, .subjects-section {
+        height: auto;
+    }
+    
+    .subjects-section {
+        max-height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 110px;
+    }
+    
+    .logo-text {
+        font-size: 36px;
+    }
+    
+    .logo-text i {
+        font-size: 30px;
+    }
+    
+    .video-info {
+        font-size: 16px;
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .subject-title {
+        font-size: 18px;
+    }
+    
+    .lecture-title {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 100px;
+    }
+    
+    .logo-text {
+        font-size: 28px;
+    }
+    
+    .logo-text i {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+    
+    .video-section, .subjects-section {
+        padding: 20px;
+    }
+    
+    .section-title {
+        font-size: 22px;
+    }
+    
+    .subject-header {
+        padding: 12px 15px;
+    }
+    
+    .subject-title {
+        font-size: 16px;
+    }
+    
+    .lecture-item {
+        padding: 10px 15px;
+    }
+    
+    .lecture-title {
+        font-size: 14px;
+    }
+    
+    .badge {
+        font-size: 9px;
+        padding: 1px 4px;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(20, 20, 30, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(160, 174, 192, 0.5));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(160, 174, 192, 0.5), rgba(255, 255, 255, 0.5));
+}
+
+/* Placeholder for empty video */
+.video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #aaa;
+    font-size: 18px;
+    background: #000;
+    border-radius: 12px;
+    z-index: 2;
+}
+
+.video-placeholder i {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+/* Hide player when placeholder is shown */
+#player {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Transparent overlay to block iframe interaction */
+.iframe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: transparent;
+    cursor: default;
+    pointer-events: none; /* Default: allow clicks to pass through */
+}
+
+/* Enable overlay blocking when video is playing */
+.plyr--playing .iframe-overlay {
+    pointer-events: auto; /* Block clicks when video is playing */
+}
+
+/* Fixed fullscreen overlay positioning */
+.plyr--fullscreen-active .iframe-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+}
+
+/* Make sure custom player controls are always accessible */
+.plyr__controls {
+    z-index: 20 !important;
+    position: relative;
+    pointer-events: auto !important;
+}
+
+.plyr__control {
+    z-index: 21 !important;
+    position: relative;
+    pointer-events: auto !important;
+}
+
+
+@media (max-width: 768px) {
+    /* Plyr Player Control Icons */
+    .plyr__control {
+        transform: scale(0.9);
+    }
+    
+    .plyr__control--overlaid {
+        transform: scale(0.8);
+    }
+    
+    .plyr__controls button {
+        padding: 8px;
+    }
+    
+    .plyr__controls button svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .plyr__control--rewind,
+    .plyr__control--fast-forward {
+        padding: 6px;
+    }
+    
+    .plyr__control--rewind svg,
+    .plyr__control--fast-forward svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .plyr__menu__container .plyr__control svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Smaller icons for small mobile screens */
+    .plyr__control {
+        transform: scale(0.8);
+    }
+    
+    .plyr__control--overlaid {
+        transform: scale(0.7);
+    }
+    
+    .plyr__controls button {
+        padding: 6px;
+    }
+    
+    .plyr__controls button svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .plyr__control--rewind,
+    .plyr__control--fast-forward {
+        padding: 5px;
+    }
+    
+    .plyr__control--rewind svg,
+    .plyr__control--fast-forward svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .plyr__time {
+        font-size: 11px;
+    }
+    
+    .plyr__menu__container .plyr__control svg {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Even smaller icons for compact mobile screens */
+    .plyr__control {
+        transform: scale(0.75);
+    }
+    
+    .plyr__control--overlaid {
+        transform: scale(0.65);
+        padding: 12px;
+    }
+    
+    .plyr__controls button {
+        padding: 5px;
+    }
+    
+    .plyr__controls button svg {
+        width: 13px;
+        height: 13px;
+    }
+    
+    .plyr__control--rewind,
+    .plyr__control--fast-forward {
+        padding: 4px;
+    }
+    
+    .plyr__control--rewind svg,
+    .plyr__control--fast-forward svg {
+        width: 11px;
+        height: 11px;
+    }
+    
+    .plyr__time {
+        font-size: 10px;
+        margin: 0 3px;
+    }
+    
+    .plyr__menu__container .plyr__control svg {
+        width: 11px;
+        height: 11px;
+    }
+    
+    .plyr__volume {
+        min-width: 60px;
+    }
+}
+
+@media (max-width: 320px) {
+    /* Minimal icons for very small screens (iPhone SE, etc.) */
+    .plyr__control {
+        transform: scale(0.7);
+    }
+    
+    .plyr__control--overlaid {
+        transform: scale(0.6);
+        padding: 10px;
+    }
+    
+    .plyr__controls button {
+        padding: 4px;
+    }
+    
+    .plyr__controls button svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .plyr__control--rewind,
+    .plyr__control--fast-forward {
+        padding: 3px;
+        margin: 0 2px;
+    }
+    
+    .plyr__control--rewind svg,
+    .plyr__control--fast-forward svg {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .plyr__time {
+        font-size: 9px;
+        margin: 0 2px;
+    }
+    
+    .plyr__menu__container .plyr__control svg {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .plyr__volume {
+        min-width: 50px;
+    }
+    
+    .plyr__controls__item {
+        margin: 0 2px;
+    }
+}
+
+@media (max-width: 280px) {
+    /* Ultra-compact for smallest devices */
+    .plyr__control {
+        transform: scale(0.65);
+    }
+    
+    .plyr__control--overlaid {
+        transform: scale(0.55);
+        padding: 8px;
+    }
+    
+    .plyr__controls button {
+        padding: 3px;
+    }
+    
+    .plyr__controls button svg {
+        width: 11px;
+        height: 11px;
+    }
+    
+    .plyr__control--rewind,
+    .plyr__control--fast-forward {
+        padding: 2px;
+        margin: 0 1px;
+    }
+    
+    .plyr__control--rewind svg,
+    .plyr__control--fast-forward svg {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .plyr__time {
+        font-size: 8px;
+        margin: 0 1px;
+    }
+    
+    .plyr__menu__container .plyr__control svg {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .plyr__volume {
+        min-width: 45px;
+        display: none; /* Hide volume on ultra-small screens */
+    }
+    
+    .plyr__controls__item {
+        margin: 0 1px;
+    }
+}
+/* Mobile Touch Controls - FIXED */
+.plyr--touch .plyr__controls {
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.plyr--touch .plyr__controls.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+/* Touch overlay for mobile - FIXED */
+.touch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    background: transparent;
+    display: none;
+    cursor: pointer;
+}
+
+.plyr--touch .touch-overlay {
+    display: block;
+}
+
+/* Improved hover effects for desktop */
+@media (hover: hover) {
+    .subject-header:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateY(-1px);
+    }
+    
+    .lecture-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(8px);
+    }
+    
+    .back-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px) scale(1.05);
+    }
+}
+
+/* Touch-specific styles */
+@media (hover: none) {
+    .subject-header:active {
+        background: rgba(255, 255, 255, 0.15);
+        transform: scale(0.98);
+    }
+    
+    .lecture-item:active {
+        background: rgba(255, 255, 255, 0.12);
+        transform: scale(0.98);
+    }
+    
+    .back-button:active {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(0.95);
+    }
+}
+
+/* Ensure controls are always accessible */
+.plyr__menu__container {
+    z-index: 25 !important;
+}
+
+.plyr__menu__container .plyr__control {
+    z-index: 26 !important;
+}
+/* Completion Status Styles - PROFESSIONAL */
+.video-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideIn 0.5s ease;
+    font-size: 18px;
+    font-weight: 600;
+    flex-wrap: wrap;
+    gap: 15px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.video-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #4CAF50, #2196F3);
+    border-radius: 2px;
+}
+
+.video-title {
+    flex: 1;
+    min-width: 200px;
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.completion-btn {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    padding: 12px 24px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    backdrop-filter: blur(15px);
+    white-space: nowrap;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.completion-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.completion-btn:hover::before {
+    left: 100%;
+}
+
+.completion-btn:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.09));
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.completion-btn:active {
+    transform: translateY(0);
+    transition: transform 0.1s;
+}
+
+.completion-btn.completed {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.25), rgba(76, 175, 80, 0.15));
+    border-color: rgba(76, 175, 80, 0.4);
+    color: #4CAF50;
+}
+
+.completion-btn.completed:hover {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.35), rgba(76, 175, 80, 0.2));
+    border-color: rgba(76, 175, 80, 0.6);
+}
+
+.completion-btn i {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.completion-btn:hover i {
+    transform: scale(1.1);
+}
+
+.completion-btn.completed i {
+    color: #4CAF50;
+}
+
+/* Lecture completion status - ENHANCED */
+.lecture-item.completed {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.08)) !important;
+    border-left: 4px solid #4CAF50;
+    position: relative;
+}
+
+.lecture-item.completed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lecture-item.completed:hover::before {
+    opacity: 1;
+}
+
+.completion-status {
+    color: #4CAF50;
+    font-size: 14px;
+    margin-left: 8px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lecture-item.completed .completion-status {
+    opacity: 1;
+    animation: fadeInScale 0.4s ease;
+}
+
+@keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Enhanced Confirmation Modal */
+.confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.confirmation-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, rgba(30, 30, 40, 0.98), rgba(20, 20, 30, 0.95));
+    padding: 35px;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, #4CAF50, #2196F3);
+}
+
+.confirmation-modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.modal-message {
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 1;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.modal-btn:hover::before {
+    left: 100%;
+}
+
+.modal-btn.proceed {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.25), rgba(76, 175, 80, 0.15));
+    color: #4CAF50;
+    border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.modal-btn.proceed:hover {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.35), rgba(76, 175, 80, 0.2));
+    border-color: rgba(76, 175, 80, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+}
+
+.modal-btn.cancel {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.15), rgba(244, 67, 54, 0.08));
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-btn.cancel:hover {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.25), rgba(244, 67, 54, 0.15));
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .video-info {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px;
+    }
+    
+    .completion-btn {
+        align-self: stretch;
+        justify-content: center;
+        margin-top: 12px;
+        padding: 14px 20px;
+    }
+    
+    .modal-content {
+        padding: 28px 22px;
+        margin: 20px;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .modal-btn {
+        padding: 14px 20px;
+    }
+}
+
+/* Enhanced animations */
+@keyframes checkmarkPop {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.lecture-item.completed .completion-status i {
+    animation: checkmarkPop 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth state transitions */
+.completion-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lecture-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes professionalSlideIn {
+    0% { 
+        opacity: 0; 
+        transform: translate(-50%, -40%) scale(0.9); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+}
+
+@keyframes professionalSlideOut {
+    0% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+    100% { 
+        opacity: 0; 
+        transform: translate(-50%, -60%) scale(0.9); 
+    }
+}
+
+@keyframes buttonPulse {
+    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}
+
+.completion-btn.completed {
+    animation: buttonPulse 1s ease;
+}
+</style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="header-content">
+            <button class="back-button" onclick="goToHome()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="logo-container">
+                <div class="logo-text">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    Classroom
+                </div>
+            </div>
+            <div style="width: 50px;"></div> <!-- Spacer for alignment -->
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Video Player Section -->
+            <section class="video-section">
+<div class="video-container">
+    <div id="player-container">
+        <div id="video-placeholder" class="video-placeholder">
+            <i class="fas fa-play-circle"></i>
+            <p>Select a lecture to begin</p>
+        </div>
+        <div id="player" class="plyr__video-embed" style="display: none;">
+            <!-- Transparent overlay to block iframe interaction -->
+            <div class="iframe-overlay" id="iframe-overlay"></div>
+            <iframe 
+                id="lecture-video" 
+                src="" 
+                frameborder="0" 
+                allowfullscreen
+                allow="autoplay"
+            ></iframe>
+        </div>
+    </div>
+</div>
+<div class="video-info">
+    <div class="video-title" id="lecture-name">Select a lecture to begin</div>
+    <button class="completion-btn" id="completion-btn" style="display: none;" title="Toggle completion status">
+        <i class="far fa-check-circle"></i>
+    </button>
+</div>
+            </section>
+
+            <!-- Subjects Section -->
+            <section class="subjects-section">
+                <h2 class="section-title">Subjects</h2>
+                <div class="subjects-container">
+                    <div class="subjects-list" id="subjects-list">
+                        <!-- Subjects will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+<!-- Confirmation Modal -->
+<div class="confirmation-modal" id="confirmation-modal">
+    <div class="modal-content">
+        <h3 class="modal-title" id="modal-title">Confirm Action</h3>
+        <p class="modal-message" id="modal-message">Are you sure you want to proceed?</p>
+        <div class="modal-buttons">
+            <button class="modal-btn cancel" id="modal-cancel">Cancel</button>
+            <button class="modal-btn proceed" id="modal-proceed">Proceed</button>
+        </div>
+    </div>
+</div>
+    <!-- Plyr JS -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="data/cache1.js"></script>
+    <script>
+// Access verification script
+(function() {
+    // Check if all required access fields exist and have values
+    const requiredFields = [
+        'accessGranted',
+        'accessKey', 
+        'accessTime',
+        'userGmail',
+        'userName',
+        'verificationCode'
+    ];
+    
+    let hasValidAccess = true;
+    
+    // Check each required field
+    for (const field of requiredFields) {
+        const value = localStorage.getItem(field);
+        
+        // If any field is missing, empty, or invalid
+        if (!value || value.trim() === '' || value === 'null' || value === 'undefined') {
+            hasValidAccess = false;
+            break;
+        }
+    }
+    
+    // Special check for accessGranted must be exactly "true"
+    if (localStorage.getItem('accessGranted') !== 'true') {
+        hasValidAccess = false;
+    }
+    
+    // Redirect to login if access is invalid
+    if (!hasValidAccess) {
+        window.location.href = 'log.html';
+    }
+})();
+
+// Function to handle fullscreen changes and maintain overlay
+function setupOverlayProtection() {
+    // Disable right-click context menu on the overlay
+    const overlay = document.getElementById('iframe-overlay');
+    if (overlay) {
+        overlay.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            return false;
+        });
+    }
+    
+    // Monitor for fullscreen changes
+    document.addEventListener('fullscreenchange', updateOverlayPosition);
+    document.addEventListener('webkitfullscreenchange', updateOverlayPosition);
+    document.addEventListener('mozfullscreenchange', updateOverlayPosition);
+    document.addEventListener('MSFullscreenChange', updateOverlayPosition);
+}
+
+function updateOverlayPosition() {
+    const overlay = document.getElementById('iframe-overlay');
+    if (!overlay) return;
+    
+    const playerElement = document.querySelector('.plyr');
+    
+    if (playerElement && playerElement.classList.contains('plyr--fullscreen-active')) {
+        // In fullscreen - make overlay cover entire screen
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100vw';
+        overlay.style.height = '100vh';
+        overlay.style.zIndex = '9999';
+    } else {
+        // Not in fullscreen - reset to container
+        overlay.style.position = 'absolute';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.zIndex = '10';
+    }
+}
+
+// DOM Elements - FIXED: Removed pcmbTimerElement
+const subjectsList = document.getElementById('subjects-list');
+const videoFrame = document.getElementById('lecture-video');
+const lectureNameElement = document.getElementById('lecture-name');
+const videoPlaceholder = document.getElementById('video-placeholder');
+const playerContainer = document.getElementById('player');
+
+// Track currently active lecture
+let activeLecture = null;
+let player = null;
+let isPlayerLoading = false;
+let pendingVideoRequest = null;
+
+// Completion tracking variables
+let completedLectures = JSON.parse(localStorage.getItem('completedLectures')) || [];
+let currentVideoId = null;
+let currentLectureElement = null;
+
+// Mobile touch controls variables - FIXED
+let touchControlsTimeout;
+let isTouchDevice = false;
+let isControlsVisible = true;
+
+// Function to detect touch device - IMPROVED
+function detectTouchDevice() {
+    return (('ontouchstart' in window) || 
+            (navigator.maxTouchPoints > 0) || 
+            (navigator.msMaxTouchPoints > 0) ||
+            (window.DocumentTouch && document instanceof DocumentTouch));
+}
+
+// Function to show controls - FIXED
+function showTouchControls() {
+    if (!isTouchDevice || !player) return;
+    
+    const controls = document.querySelector('.plyr--touch .plyr__controls');
+    if (controls) {
+        controls.classList.remove('hidden');
+        isControlsVisible = true;
+    }
+    
+    // Clear existing timeout
+    if (touchControlsTimeout) {
+        clearTimeout(touchControlsTimeout);
+    }
+    
+    // Set timeout to hide controls after 3 seconds of inactivity
+    touchControlsTimeout = setTimeout(() => {
+        if (!player.paused) { // Only hide if video is playing
+            hideTouchControls();
+        }
+    }, 3000);
+}
+
+// Function to hide controls - FIXED
+function hideTouchControls() {
+    if (!isTouchDevice || !player) return;
+    
+    const controls = document.querySelector('.plyr--touch .plyr__controls');
+    if (controls && isControlsVisible) {
+        controls.classList.add('hidden');
+        isControlsVisible = false;
+    }
+}
+
+// Function to toggle controls - FIXED
+function toggleTouchControls() {
+    if (!isTouchDevice || !player) return;
+    
+    if (isControlsVisible) {
+        hideTouchControls();
+    } else {
+        showTouchControls();
+    }
+}
+
+// Reset controls timeout on any interaction
+function resetControlsTimeout() {
+    if (!isTouchDevice || !player) return;
+    showTouchControls();
+}
+
+// Initialize mobile touch controls
+function initializeTouchControls() {
+    isTouchDevice = detectTouchDevice();
+    
+    if (isTouchDevice) {
+        console.log('Touch device detected - initializing touch controls');
+        
+        // Add touch class to player
+        const playerElement = document.querySelector('.plyr');
+        if (playerElement) {
+            playerElement.classList.add('plyr--touch');
+        }
+        
+        // Create touch overlay if it doesn't exist
+        let touchOverlay = document.getElementById('touch-overlay');
+        if (!touchOverlay) {
+            touchOverlay = document.createElement('div');
+            touchOverlay.className = 'touch-overlay';
+            touchOverlay.id = 'touch-overlay';
+            document.querySelector('.video-container').appendChild(touchOverlay);
+        }
+        
+        // Add event listeners for touch overlay - FIXED
+        touchOverlay.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleTouchControls();
+        });
+
+        // Add touch events to video container for better control
+        const videoContainer = document.querySelector('.video-container');
+        if (videoContainer) {
+            videoContainer.addEventListener('touchstart', (e) => {
+                // Only handle touches on the video area, not controls
+                if (!e.target.closest('.plyr__controls')) {
+                    resetControlsTimeout();
+                }
+            });
+        }
+        
+        // Add event listeners to show controls on any player interaction
+        if (player) {
+            player.on('play', showTouchControls);
+            player.on('pause', showTouchControls);
+            player.on('controlsshown', resetControlsTimeout);
+        }
+        
+        // Hide controls initially after 3 seconds
+        touchControlsTimeout = setTimeout(hideTouchControls, 3000);
+    }
+}
+
+// Initialize the page - FIXED: Removed timer initialization
+function initializePage() {
+    // Initialize new lecture tracking FIRST
+    initializeNewLectureTracking();
+    
+    // Populate subjects list
+    populateSubjects();
+    
+    // Initialize completion status
+    initializeCompletionStatus();
+    
+    // Setup overlay protection
+    setupOverlayProtection();
+    
+    // Add resize listener for overlay updates
+    window.addEventListener('resize', updateOverlayPosition);
+    
+    // Detect touch device early
+    isTouchDevice = detectTouchDevice();
+    
+    // Initialize completion button events
+    initializeCompletionEvents();
+}
+
+// Completion tracking functions
+function updateCompletionButton(videoId) {
+    const completionBtn = document.getElementById('completion-btn');
+    const btnIcon = completionBtn.querySelector('i');
+    
+    const isCompleted = completedLectures.includes(videoId);
+    
+    if (isCompleted) {
+        completionBtn.classList.add('completed');
+        btnIcon.className = 'fas fa-check-circle';
+        completionBtn.title = 'Mark as not completed';
+    } else {
+        completionBtn.classList.remove('completed');
+        btnIcon.className = 'far fa-check-circle';
+        completionBtn.title = 'Mark as completed';
+    }
+    
+    completionBtn.style.display = 'block';
+    
+    // Add subtle animation when updating
+    completionBtn.style.animation = 'none';
+    setTimeout(() => {
+        completionBtn.style.animation = 'scaleIn 0.3s ease';
+    }, 10);
+}
+
+function updateLectureCompletionStatus(subjectName, lectureIndex, videoId) {
+    const lectureItem = document.querySelector(`.lecture-item[data-subject="${subjectName}"][data-lecture-index="${lectureIndex}"]`);
+    
+    if (lectureItem) {
+        const isCompleted = completedLectures.includes(videoId);
+        
+        if (isCompleted) {
+            lectureItem.classList.add('completed');
+            // Add completion status icon if not exists
+            if (!lectureItem.querySelector('.completion-status')) {
+                const statusIcon = document.createElement('span');
+                statusIcon.className = 'completion-status';
+                statusIcon.innerHTML = '<i class="fas fa-check"></i>';
+                lectureItem.appendChild(statusIcon);
+            }
+        } else {
+            lectureItem.classList.remove('completed');
+            const statusIcon = lectureItem.querySelector('.completion-status');
+            if (statusIcon) {
+                statusIcon.remove();
+            }
+        }
+    }
+}
+
+function showConfirmationModal(isCompleting) {
+    const modal = document.getElementById('confirmation-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalMessage = document.getElementById('modal-message');
+    
+    if (isCompleting) {
+        modalTitle.textContent = 'Mark as Completed';
+        modalMessage.textContent = 'Do you want to mark this lecture as completed?';
+    } else {
+        modalTitle.textContent = 'Unmark Completion';
+        modalMessage.textContent = 'Do you want to unmark this lecture as completed?';
+    }
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function toggleLectureCompletion() {
+    if (!currentVideoId || !activeLecture) return;
+    
+    const isCurrentlyCompleted = completedLectures.includes(currentVideoId);
+    
+    if (!isCurrentlyCompleted) {
+        // Mark as completed
+        completedLectures.push(currentVideoId);
+        localStorage.setItem('completedLectures', JSON.stringify(completedLectures));
+        
+        // Update UI
+        updateCompletionButton(currentVideoId);
+        updateLectureCompletionStatus(activeLecture.subject, activeLecture.index, currentVideoId);
+        
+        // Show success feedback
+        showCompletionFeedback(true);
+    } else {
+        // Unmark completion
+        completedLectures = completedLectures.filter(id => id !== currentVideoId);
+        localStorage.setItem('completedLectures', JSON.stringify(completedLectures));
+        
+        // Update UI
+        updateCompletionButton(currentVideoId);
+        updateLectureCompletionStatus(activeLecture.subject, activeLecture.index, currentVideoId);
+        
+        // Show feedback
+        showCompletionFeedback(false);
+    }
+}
+
+function showCompletionFeedback(isCompleted) {
+    const completionBtn = document.getElementById('completion-btn');
+    
+    // Clean button animation only
+    completionBtn.style.transform = 'scale(1.1)';
+    setTimeout(() => {
+        completionBtn.style.transform = 'scale(1)';
+    }, 300);
+}
+
+// Initialize completion status for all lectures
+function initializeCompletionStatus() {
+    subjectsData.forEach(subject => {
+        subject.lectures.forEach((lecture, index) => {
+            updateLectureCompletionStatus(subject.name, index, lecture.videoId);
+        });
+    });
+}
+
+// Initialize completion button events
+function initializeCompletionEvents() {
+    // Completion button event listener
+    document.getElementById('completion-btn').addEventListener('click', function() {
+        const isCurrentlyCompleted = completedLectures.includes(currentVideoId);
+        showConfirmationModal(!isCurrentlyCompleted);
+    });
+
+    // Modal event listeners
+    document.getElementById('modal-proceed').addEventListener('click', function() {
+        document.getElementById('confirmation-modal').classList.remove('active');
+        document.body.style.overflow = '';
+        toggleLectureCompletion();
+    });
+
+    document.getElementById('modal-cancel').addEventListener('click', function() {
+        document.getElementById('confirmation-modal').classList.remove('active');
+        document.body.style.overflow = '';
+    });
+
+    // Close modal when clicking outside
+    document.getElementById('confirmation-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    });
+}
+
+// Populate subjects list with badges - FIXED: Removed timer icon logic
+function populateSubjects() {
+    subjectsList.innerHTML = ''; // Clear existing content
+    
+    // Filter out subjects without lectures
+    subjectsData.filter(subject => subject.lectures && subject.lectures.length > 0).forEach(subject => {
+        const subjectItem = document.createElement('div');
+        subjectItem.className = 'subject-item';
+        
+        const subjectHeader = document.createElement('div');
+        subjectHeader.className = 'subject-header';
+        subjectHeader.setAttribute('data-subject-name', subject.name);
+        subjectHeader.innerHTML = `
+            <i class="subject-icon ${subject.icon}" style="color: ${subject.color};"></i>
+            <span class="subject-title">${subject.name}</span>
+            <i class="dropdown-icon fas fa-chevron-down"></i>
+        `;
+        
+        const lecturesList = document.createElement('div');
+        lecturesList.className = 'lectures-list';
+        
+        subject.lectures.forEach((lecture, index) => {
+            const lectureItem = document.createElement('div');
+            lectureItem.className = 'lecture-item';
+            lectureItem.dataset.subject = subject.name;
+            lectureItem.dataset.lectureIndex = index;
+            
+            lectureItem.innerHTML = `
+                <i class="lecture-icon fas fa-play-circle" style="color: ${subject.color};"></i>
+                <span class="lecture-title">${lecture.title}</span>
+                <div class="lecture-badges">
+                </div>
+            `;
+            
+            // Add click event to load video
+            lectureItem.addEventListener('click', () => {
+                loadVideo(lecture.videoId, lecture.title);
+                
+                // Set active lecture - FIXED: Properly remove active class from previous lecture
+                setActiveLecture(lectureItem, subject.name, index);
+                
+                // Add animation effect
+                lectureItem.style.animation = 'scaleIn 0.3s ease';
+                setTimeout(() => {
+                    lectureItem.style.animation = '';
+                }, 300);
+            });
+            
+            lecturesList.appendChild(lectureItem);
+        });
+        
+        // Toggle lectures list on subject header click
+        subjectHeader.addEventListener('click', () => {
+            const isOpen = lecturesList.classList.contains('open');
+            
+            // Close all other open subjects immediately
+            document.querySelectorAll('.lectures-list.open').forEach(list => {
+                if (list !== lecturesList) {
+                    list.classList.remove('open');
+                    const header = list.previousElementSibling;
+                    header.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-down';
+                }
+            });
+            
+            // Toggle current subject
+            if (isOpen) {
+                lecturesList.classList.remove('open');
+                subjectHeader.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-down';
+            } else {
+                lecturesList.classList.add('open');
+                subjectHeader.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-up';
+            }
+        });
+        
+        subjectItem.appendChild(subjectHeader);
+        subjectItem.appendChild(lecturesList);
+        subjectsList.appendChild(subjectItem);
+    });
+}
+
+// Load video into iframe - FIXED VERSION WITH LOADING QUEUE
+function loadVideo(videoId, lectureTitle) {
+    // If player is currently loading, queue this request
+    if (isPlayerLoading) {
+        pendingVideoRequest = { videoId, lectureTitle };
+        return;
+    }
+    
+    console.log('Loading video:', videoId, lectureTitle);
+    
+    // Set loading state
+    isPlayerLoading = true;
+    
+    // Update UI to show loading state
+    lectureNameElement.textContent = `Loading: ${lectureTitle}`;
+    videoPlaceholder.style.display = 'none';
+    playerContainer.style.display = 'block';
+    
+    // Show loading indicator
+    showLoadingIndicator();
+    
+    // Destroy existing Plyr instance
+    if (player) {
+        player.destroy();
+        player = null;
+    }
+    
+    // Create a completely fresh iframe element
+    const newIframe = document.createElement('iframe');
+    newIframe.id = 'lecture-video';
+    newIframe.className = 'plyr__video-embed';
+    newIframe.src = `https://www.youtube.com/embed/${videoId}?origin=https://plyr.io&enablejsapi=1&widgetid=1`;
+    newIframe.frameBorder = '0';
+    newIframe.allowFullscreen = true;
+    newIframe.allow = 'autoplay';
+    newIframe.style.pointerEvents = 'none'; // CRITICAL: Always prevent iframe interaction
+    
+    // Replace the iframe
+    const oldIframe = document.getElementById('lecture-video');
+    oldIframe.parentNode.replaceChild(newIframe, oldIframe);
+    
+    // Update completion tracking
+    currentVideoId = videoId;
+    updateCompletionButton(videoId);
+    
+    // Add animation effect
+    const videoInfo = document.querySelector('.video-info');
+    videoInfo.style.animation = 'slideIn 0.5s ease';
+    setTimeout(() => {
+        videoInfo.style.animation = '';
+    }, 500);
+    
+    // Reinitialize Plyr with skip buttons - FIXED WITH PROPER ERROR HANDLING
+    setTimeout(() => {
+        try {
+            player = new Plyr('#player', {
+                controls: [
+                    'play-large',
+                    'rewind',
+                    'play',
+                    'fast-forward',
+                    'progress',
+                    'current-time',
+                    'mute',
+                    'volume',
+                    'settings',
+                    'pip',
+                    'fullscreen'
+                ],
+                hideControls: false,
+                clickToPlay: false,
+                // Add touch-specific settings
+                touch: true,
+                hideControls: true, // Allow hiding on touch devices
+                youtube: {
+                    noCookie: true,
+                    rel: 0,
+                    showinfo: 0,
+                    iv_load_policy: 3,
+                    modestbranding: 1
+                },
+                i18n: {
+                    rewind: 'Rewind {seektime}s',
+                    fastForward: 'Forward {seektime}s'
+                },
+                seekTime: 10, // Skip 10 seconds
+                // Prevent fullscreen issues on mobile
+                fullscreen: {
+                    enabled: true,
+                    fallback: true,
+                    iosNative: false, // CRITICAL: Disable iOS native fullscreen to prevent auto-rotate
+                    container: null // Let Plyr handle fullscreen container
+                }
+            });
+            
+            // Add play/pause event listeners for overlay control - IMPROVED
+            player.on('play', () => {
+                console.log('Video playing - enabling overlay protection');
+                const overlay = document.getElementById('iframe-overlay');
+                const iframe = document.getElementById('lecture-video');
+                if (overlay) {
+                    overlay.style.pointerEvents = 'auto';
+                }
+                if (iframe) {
+                    iframe.style.pointerEvents = 'none';
+                }
+                
+                // Show controls when playing, then auto-hide
+                showTouchControls();
+            });
+
+            player.on('pause', () => {
+                console.log('Video paused - disabling overlay protection');
+                const overlay = document.getElementById('iframe-overlay');
+                const iframe = document.getElementById('lecture-video');
+                if (overlay) {
+                    overlay.style.pointerEvents = 'auto';
+                }
+                if (iframe) {
+                    iframe.style.pointerEvents = 'none';
+                }
+                
+                // Keep controls visible when paused
+                showTouchControls();
+                // Clear auto-hide timeout when paused
+                if (touchControlsTimeout) {
+                    clearTimeout(touchControlsTimeout);
+                }
+            });
+            
+            // Add more event listeners for better touch control
+            player.on('controlsshown', () => {
+                resetControlsTimeout();
+            });
+
+            player.on('controlshidden', () => {
+                // Don't immediately hide, let timeout handle it
+            });
+            
+            // When player is ready, clear loading state
+            player.on('ready', () => {
+                console.log('Player ready');
+                isPlayerLoading = false;
+                hideLoadingIndicator();
+                lectureNameElement.textContent = lectureTitle;
+                
+                // ALWAYS BLOCK INTERACTION WITH YOUTUBE CONTROLS
+                const overlay = document.getElementById('iframe-overlay');
+                const iframe = document.getElementById('lecture-video');
+                if (overlay) {
+                    overlay.style.pointerEvents = 'auto'; // Always block clicks
+                }
+                if (iframe) {
+                    iframe.style.pointerEvents = 'none'; // Always disable iframe interaction
+                }
+                
+                // Update overlay protection for the new video
+                updateOverlayPosition();
+                
+                // Initialize touch controls for mobile
+                initializeTouchControls();
+                
+                // Process any pending video request
+                if (pendingVideoRequest) {
+                    const nextVideo = pendingVideoRequest;
+                    pendingVideoRequest = null;
+                    setTimeout(() => {
+                        loadVideo(nextVideo.videoId, nextVideo.lectureTitle);
+                    }, 500);
+                }
+            });
+            
+            // Handle player load errors
+            player.on('loaderror', () => {
+                console.error('Player load error');
+                isPlayerLoading = false;
+                hideLoadingIndicator();
+                lectureNameElement.textContent = 'Error loading video';
+            });
+            
+            // Handle fullscreen changes to prevent auto-rotate on mobile
+            player.on('enterfullscreen', () => {
+                console.log('Entered fullscreen - updating overlay');
+                updateOverlayPosition();
+                
+                // Re-initialize touch controls in fullscreen
+                if (isTouchDevice) {
+                    setTimeout(initializeTouchControls, 100);
+                }
+                
+                // Lock orientation to landscape when entering fullscreen
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(() => {
+                        // Ignore errors if orientation lock is not supported
+                    });
+                }
+            });
+            
+            player.on('exitfullscreen', () => {
+                console.log('Exited fullscreen - updating overlay');
+                updateOverlayPosition();
+                
+                // Re-initialize touch controls after exiting fullscreen
+                if (isTouchDevice) {
+                    setTimeout(initializeTouchControls, 100);
+                }
+                
+                // Unlock orientation when exiting fullscreen
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            });
+            
+        } catch (error) {
+            console.error('Player initialization error:', error);
+            isPlayerLoading = false;
+            hideLoadingIndicator();
+            lectureNameElement.textContent = 'Error initializing player';
+        }
+    }, 800); // Increased delay for better stability
+}
+
+// Loading indicator functions
+function showLoadingIndicator() {
+    let loadingEl = document.getElementById('video-loading');
+    if (!loadingEl) {
+        loadingEl = document.createElement('div');
+        loadingEl.id = 'video-loading';
+        loadingEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i><p>Loading video...</p>';
+        loadingEl.style.cssText = `
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 10;
+            color: white;
+            font-size: 18px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+        `;
+        document.querySelector('.video-container').appendChild(loadingEl);
+    }
+    loadingEl.style.display = 'block';
+}
+
+function hideLoadingIndicator() {
+    const loadingEl = document.getElementById('video-loading');
+    if (loadingEl) {
+        loadingEl.style.display = 'none';
+    }
+}
+
+// Set active lecture - FIXED: Properly remove active class from all lectures
+function setActiveLecture(lectureElement, subjectName, lectureIndex) {
+    // Remove active class from all lectures
+    document.querySelectorAll('.lecture-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Add active class to clicked lecture
+    lectureElement.classList.add('active');
+    
+    // Update active lecture tracking
+    activeLecture = {
+        element: lectureElement,
+        subject: subjectName,
+        index: lectureIndex
+    };
+    
+    // Store current lecture element for completion tracking
+    currentLectureElement = lectureElement;
+}
+
+// Initialize new lecture tracking - FIXED VERSION
+function initializeNewLectureTracking() {
+    // Get watched lectures from localStorage
+    let watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
+    
+    // Get all video IDs from current data
+    const allVideoIds = [];
+    subjectsData.forEach(subject => {
+        subject.lectures.forEach(lecture => {
+            allVideoIds.push(lecture.videoId);
+        });
+    });
+    
+    // Remove any watched lectures that no longer exist in current data
+    watchedLectures = watchedLectures.filter(id => allVideoIds.includes(id));
+    
+    // Save back to localStorage
+    localStorage.setItem('watchedLectures', JSON.stringify(watchedLectures));
+}
+
+// Check if a lecture is new (not watched) - FIXED VERSION
+function isLectureNew(videoId) {
+    const watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
+    return !watchedLectures.includes(videoId);
+}
+
+// Check if a subject has any new lectures - FIXED VERSION
+function checkSubjectHasNewLectures(subject) {
+    const watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
+    return subject.lectures.some(lecture => !watchedLectures.includes(lecture.videoId));
+}
+
+// Mark a lecture as watched - FIXED VERSION
+function markLectureAsWatched(videoId, subjectName, lectureIndex) {
+    let watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
+    
+    if (!watchedLectures.includes(videoId)) {
+        watchedLectures.push(videoId);
+        localStorage.setItem('watchedLectures', JSON.stringify(watchedLectures));
+        
+        // Update the specific lecture badge
+        updateLectureBadge(subjectName, lectureIndex);
+        
+        // Update the subject badge if needed
+        updateSubjectBadge(subjectName);
+    }
+}
+
+// Update a specific lecture badge - NEW FUNCTION
+function updateLectureBadge(subjectName, lectureIndex) {
+    const lectureItem = document.querySelector(`.lecture-item[data-subject="${subjectName}"][data-lecture-index="${lectureIndex}"]`);
+    if (lectureItem) {
+        const newBadge = lectureItem.querySelector('.badge-new');
+        if (newBadge) {
+            newBadge.remove();
+        }
+    }
+}
+
+// Update a subject badge - NEW FUNCTION
+function updateSubjectBadge(subjectName) {
+    const subject = subjectsData.find(s => s.name === subjectName);
+    if (subject) {
+        const hasNewLectures = checkSubjectHasNewLectures(subject);
+        const subjectHeader = document.querySelector(`.subject-header[data-subject-name="${subjectName}"]`);
+        
+        if (subjectHeader) {
+            const badgeContainer = subjectHeader.querySelector('.badge-container');
+            const existingBadge = subjectHeader.querySelector('.badge-new');
+            
+            if (hasNewLectures && !existingBadge) {
+                // Add new badge if subject has new lectures but no badge
+                const newBadge = document.createElement('span');
+                newBadge.className = 'badge badge-new';
+                newBadge.textContent = 'New';
+                badgeContainer.appendChild(newBadge);
+            } else if (!hasNewLectures && existingBadge) {
+                // Remove new badge if subject has no new lectures but has badge
+                existingBadge.remove();
+            }
+        }
+    }
+}
+
+// Navigate to home page
+function goToHome() {
+    window.location.href = 'index.html';
+}
+
+// Global touch event listeners for better mobile experience
+document.addEventListener('touchstart', (e) => {
+    if (isTouchDevice) {
+        // Reset controls timeout on any touch interaction with controls
+        if (player && e.target.closest('.plyr__controls')) {
+            resetControlsTimeout();
+        }
+    }
+});
+
+// Prevent default touch behaviors that might interfere
+document.addEventListener('touchmove', (e) => {
+    if (e.target.closest('.plyr__video-embed') || e.target.closest('.touch-overlay')) {
+        e.preventDefault();
+    }
+}, { passive: false });
+
+// Handle orientation changes
+window.addEventListener('orientationchange', () => {
+    if (isTouchDevice && player) {
+        // Re-initialize touch controls after orientation change
+        setTimeout(initializeTouchControls, 300);
+    }
+});
+
+// Add event listener for touch events on controls to reset timeout
+document.addEventListener('touchstart', (e) => {
+    if (isTouchDevice && player && e.target.closest('.plyr__controls')) {
+        resetControlsTimeout();
+    }
+});
+
+// Initialize the page when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializePage);
+</script>
+</body>
+</html>
