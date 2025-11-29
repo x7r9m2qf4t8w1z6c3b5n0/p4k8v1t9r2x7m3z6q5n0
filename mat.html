@@ -1,1 +1,1861 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Materials</title><link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>"><link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><style>*{margin:0;padding:0;box-sizing:border-box;font-family:'Hind Siliguri',sans-serif;-webkit-tap-highlight-color:transparent}body{background:#0a0a0a;color:#fff;line-height:1.6;min-height:100vh;padding-bottom:20px;position:relative;padding-top:120px}body::before{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle at 10% 20%,rgba(26,26,46,.5) 0,transparent 20%),radial-gradient(circle at 90% 80%,rgba(15,52,96,.4) 0,transparent 20%),radial-gradient(circle at 50% 50%,rgba(22,33,62,.3) 0,transparent 30%);z-index:-1}.container{max-width:1200px;margin:0 auto;padding:0 15px}.header{background:rgba(15,15,20,.9);color:#fff;padding:15px 0;box-shadow:0 4px 20px rgba(0,0,0,.5);border-bottom:1px solid rgba(255,255,255,.1);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:fixed;top:0;left:0;width:100%;z-index:1000}.header-content{max-width:1200px;margin:0 auto;padding:0 15px;display:flex;align-items:center;justify-content:space-between}.header::before{content:'';position:absolute;bottom:-10px;left:5%;width:90%;height:10px;background:rgba(255,255,255,.05);filter:blur(10px);border-radius:50%}.back-button{background:rgba(255,255,255,.1);border:none;color:#fff;font-size:24px;width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s ease;box-shadow:0 4px 10px rgba(0,0,0,.3)}.back-button:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}.logo-container{display:flex;align-items:center;justify-content:center;flex:1}.logo-text{font-size:42px;font-weight:700;color:#fff;text-shadow:1px 1px 3px rgba(0,0,0,.5);margin-left:15px;display:flex;align-items:center}.logo-text i{margin-right:15px;font-size:36px}.main-content{display:flex;justify-content:center;margin-bottom:30px}.materials-section{width:100%;max-width:800px;background:rgba(20,20,30,.6);border-radius:20px;padding:25px;box-shadow:0 10px 25px rgba(0,0,0,.4);backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1);animation:fadeIn .5s ease}.materials-section::before{content:'';position:absolute;bottom:-10px;left:5%;width:90%;height:10px;background:rgba(255,255,255,.05);filter:blur(10px);border-radius:50%}.section-title{font-size:28px;font-weight:700;color:#fff;margin-bottom:20px;text-align:center;position:relative;padding-bottom:10px}.section-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100px;height:3px;background:linear-gradient(to right,rgba(255,255,255,.7),rgba(160,174,192,.7));border-radius:3px}.subjects-container{max-height:70vh;overflow-y:auto;padding-right:5px}.subjects-list{display:flex;flex-direction:column;gap:10px}.subject-item{background:rgba(255,255,255,.05);border-radius:10px;overflow:hidden;transition:all .3s ease;border:1px solid rgba(255,255,255,.1)}.subject-header{display:flex;align-items:center;padding:15px 20px;cursor:pointer;transition:all .3s ease;position:relative}.subject-header:hover{background:rgba(255,255,255,.08)}.subject-icon{font-size:24px;margin-right:15px;width:30px;text-align:center}.subject-title{font-size:20px;font-weight:600;flex-grow:1}.dropdown-icon{font-size:16px;transition:transform .3s ease}.pdfs-list{max-height:0;overflow:hidden;transition:max-height .3s ease;background:rgba(10,10,15,.5)}.pdfs-list.open{max-height:300px;overflow-y:auto}.pdf-item{display:flex;align-items:center;padding:12px 20px;cursor:pointer;transition:all .3s ease;border-bottom:1px solid rgba(255,255,255,.05);position:relative;text-decoration:none;color:inherit}.pdf-item:last-child{border-bottom:none}.pdf-item:hover{background:rgba(255,255,255,.08);transform:translateX(5px)}.pdf-icon{font-size:20px;margin-right:15px;width:25px;text-align:center}.pdf-title{font-size:16px;font-weight:500;flex-grow:1}.pdf-modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.95);z-index:2000;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity .3s ease;align-items:center;justify-content:center;padding:20px;box-sizing:border-box}.pdf-modal.active{opacity:1}.pdf-modal-content{width:95%;height:95%;max-width:1200px;max-height:90vh;background:rgba(20,20,30,.98);border-radius:15px;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.8);border:1px solid rgba(255,255,255,.15);display:flex;flex-direction:column;transform:scale(.9);opacity:0;transition:all .3s ease;margin:0}.pdf-modal.active .pdf-modal-content{transform:scale(1);opacity:1}.pdf-modal-header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:rgba(15,15,20,.95);border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}.pdf-modal-title{font-size:18px;font-weight:600;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:70%}.pdf-modal-controls{display:flex;gap:10px}.pdf-modal-btn{background:rgba(255,255,255,.1);border:none;color:#fff;font-size:18px;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s ease}.pdf-modal-btn:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}.pdf-modal-body{flex:1;padding:0;position:relative;overflow:auto;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column}.pdf-iframe{width:100%;height:100%;border:none;background:#fff;flex:1;min-height:0;-webkit-overflow-scrolling:touch}@media (max-width:768px){.pdf-modal{padding:10px}.pdf-modal-content{width:100%;height:100%;max-height:100vh;border-radius:0}.pdf-modal-body{overflow:auto;-webkit-overflow-scrolling:touch}.pdf-iframe{height:auto;min-height:100%;overflow:auto}}.pdf-fallback{display:none;width:100%;height:100%;background:#f5f5f5;color:#333;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}.pdf-fallback.active{display:flex}.pdf-fallback-icon{font-size:64px;color:#e74c3c;margin-bottom:20px}.pdf-fallback-title{font-size:24px;font-weight:600;margin-bottom:10px;color:#2c3e50}.pdf-fallback-message{font-size:16px;margin-bottom:20px;color:#7f8c8d;max-width:500px}.pdf-fallback-btn{background:#3498db;color:#fff;border:none;padding:12px 24px;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;transition:all .3s ease;display:flex;align-items:center;gap:10px}.pdf-fallback-btn:hover{background:#2980b9;transform:translateY(-2px)}.pdf-loading{display:none;position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,.9);flex-direction:column;align-items:center;justify-content:center;z-index:10}.pdf-loading.active{display:flex}.pdf-loading-spinner{width:50px;height:50px;border:5px solid rgba(52,152,219,.3);border-top:5px solid #3498db;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:20px}.pdf-loading-text{font-size:18px;color:#2c3e50;font-weight:600}@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes slideIn{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}@keyframes scaleIn{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}@media (max-width:768px){body{padding-top:110px}.logo-text{font-size:36px}.logo-text i{font-size:30px}.section-title{font-size:24px}.subject-title{font-size:18px}.pdf-title{font-size:15px}.materials-section{padding:20px}}@media (max-width:480px){body{padding-top:100px}.logo-text{font-size:28px}.logo-text i{font-size:24px;margin-right:10px}.materials-section{padding:15px}.section-title{font-size:22px}.subject-header{padding:12px 15px}.subject-title{font-size:20px}.pdf-item{padding:10px 15px}.pdf-title{font-size:18px}.pdf-modal-title{font-size:16px}.pdf-modal-btn{width:35px;height:35px;font-size:16px}.pdf-fallback-icon{font-size:48px}.pdf-fallback-title{font-size:20px}.pdf-fallback-message{font-size:14px}}::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:rgba(20,20,30,.5);border-radius:10px}::-webkit-scrollbar-thumb{background:linear-gradient(135deg,rgba(255,255,255,.5),rgba(160,174,192,.5));border-radius:10px}::-webkit-scrollbar-thumb:hover{background:linear-gradient(135deg,rgba(160,174,192,.5),rgba(255,255,255,.5))}.search-container{margin:20px 0;position:relative;animation:fadeIn .6s ease;flex-shrink:0}.search-box{width:100%;padding:16px 70px 16px 20px!important;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.15);border-radius:15px;color:#fff;font-size:16px;font-weight:500;backdrop-filter:blur(15px);transition:all .3s cubic-bezier(.4,0,.2,1);outline:0;position:relative}.search-box:focus{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);box-shadow:0 8px 25px rgba(0,0,0,.4);transform:translateY(-2px)}.search-box::placeholder{color:rgba(255,255,255,.6);font-weight:400}.search-icon{position:absolute;right:20px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.7);font-size:18px;transition:all .3s ease;pointer-events:none}.search-box:focus+.search-icon{color:rgba(255,255,255,.9);transform:translateY(-50%) scale(1.1)}.search-results{display:none;flex-direction:column;gap:10px;margin-top:10px}.search-results.active{display:flex}.search-result-item{background:rgba(255,255,255,.05);border-radius:10px;overflow:hidden;transition:all .3s ease;border:1px solid rgba(255,255,255,.1);cursor:pointer;position:relative}.search-result-item:hover{background:rgba(255,255,255,.08);transform:translateX(5px)}.search-result-item.active{background:rgba(76,175,80,.2);border-left:4px solid #4caf50}.search-result-header{display:flex;align-items:center;padding:15px 20px;transition:all .3s ease;position:relative}.search-result-icon{font-size:24px;margin-right:15px;width:30px;text-align:center}.search-result-content{flex-grow:1}.search-result-title{font-size:18px;font-weight:600;margin-bottom:4px;color:#fff}.search-result-subject{font-size:14px;color:rgba(255,255,255,.7);font-weight:500}.no-results{padding:30px 20px;text-align:center;color:rgba(255,255,255,.6);font-size:16px;font-weight:500;background:rgba(255,255,255,.05);border-radius:10px}.no-results i{font-size:32px;margin-bottom:10px;display:block;opacity:.7}@keyframes highlightPulse{0%{background-color:rgba(76,175,80,.3)}50%{background-color:rgba(76,175,80,.1)}100%{background-color:transparent}}.search-highlight{animation:highlightPulse 1s ease}.search-controls{position:absolute;right:15px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:8px}.clear-search{background:rgba(255,255,255,.15);border:none;color:rgba(255,255,255,.8);width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s cubic-bezier(.4,0,.2,1);backdrop-filter:blur(10px);font-size:14px}.clear-search:hover{background:rgba(255,255,255,.25);color:rgba(255,255,255,1);transform:scale(1.1)}.clear-search:active{transform:scale(.95)}.search-controls .search-icon{position:static;transform:none;pointer-events:none}@media (max-width:768px){.search-container{margin:15px 0}.search-box{padding:14px 60px 14px 16px!important;font-size:15px}.search-controls{right:12px;gap:6px}.clear-search{width:26px;height:26px;font-size:13px}.search-icon{right:16px;font-size:16px}.search-result-header{padding:12px 16px}.search-result-title{font-size:16px}}@media (max-width:480px){.search-box{padding:12px 55px 12px 14px!important;font-size:14px}.search-controls{right:10px;gap:5px}.clear-search{width:24px;height:24px;font-size:12px}.search-icon{right:14px;font-size:15px}.search-result-header{padding:10px 14px}.search-result-title{font-size:15px}}.pdf-modal.fullscreen{padding:0!important}.pdf-modal.fullscreen .pdf-modal-content{width:100%;height:100%;max-width:none;max-height:none;border-radius:0;background:#000}.pdf-modal.fullscreen .pdf-modal-header{position:fixed;top:0;right:0;left:auto;background:0 0;border:none;padding:15px;z-index:100;width:auto}.pdf-modal.fullscreen .pdf-modal-title{display:none}.pdf-modal.fullscreen .pdf-modal-controls{gap:8px}.pdf-modal.fullscreen .pdf-modal-btn{background:rgba(0,0,0,.7);border:1px solid rgba(255,255,255,.3);backdrop-filter:blur(10px)}.pdf-modal.fullscreen .pdf-modal-btn:hover{background:rgba(0,0,0,.9);transform:scale(1.1)}.pdf-modal.fullscreen .pdf-download-btn,.pdf-modal.fullscreen .pdf-fullscreen-btn{display:none!important}.pdf-modal.fullscreen .pdf-modal-body{padding:0}.pdf-modal.fullscreen .pdf-iframe{background:#000}@media (max-width:768px){.pdf-modal.fullscreen .pdf-modal-header{opacity:1!important;pointer-events:auto!important}.pdf-modal.fullscreen .pdf-modal-controls{background:rgba(0,0,0,.8);border-radius:25px;padding:8px;margin-right:10px;margin-top:10px}.pdf-modal.fullscreen .pdf-modal-btn{width:44px;height:44px;font-size:18px}.pdf-modal.fullscreen::before{content:'';position:fixed;top:0;left:0;right:0;height:60px;z-index:99;background:0 0}}</style></head><body><header class="header"><div class="header-content"><button class="back-button" onclick="goToHome()"><i class="fas fa-arrow-left"></i></button><div class="logo-container"><div class="logo-text"><i class="fas fa-book"></i>Materials</div></div><div style="width:50px"></div></div></header><div class="container"><div class="main-content"><section class="materials-section"><h2 class="section-title">Study Materials</h2><div class="search-container"><input type="text" class="search-box" id="search-box" placeholder="Search"><div class="search-controls"><button class="clear-search" id="clear-search" style="display:none"><i class="fas fa-times"></i></button><i class="search-icon fas fa-search"></i></div></div><div class="subjects-container"><div class="search-results" id="search-results"></div><div class="subjects-list" id="subjects-list"></div></div></section></div></div><div class="pdf-modal" id="pdf-modal"><div class="pdf-modal-content"><div class="pdf-modal-header"><div class="pdf-modal-title" id="pdf-modal-title">PDF Document</div><div class="pdf-modal-controls"><button class="pdf-modal-btn pdf-fullscreen-btn" id="pdf-fullscreen-btn" title="Toggle Fullscreen"><i class="fas fa-expand"></i></button><button class="pdf-modal-btn" id="pdf-download-btn" title="Download PDF"><i class="fas fa-download"></i></button><button class="pdf-modal-btn" id="pdf-close-btn" title="Close"><i class="fas fa-times"></i></button></div></div><div class="pdf-modal-body"><div class="pdf-loading" id="pdf-loading"><div class="pdf-loading-spinner"></div><div class="pdf-loading-text">Loading PDF...</div></div><iframe class="pdf-iframe" id="pdf-iframe" src=""></iframe><div class="pdf-fallback" id="pdf-fallback"><i class="pdf-fallback-icon fas fa-file-pdf"></i><div class="pdf-fallback-title">PDF Not Displaying?</div><div class="pdf-fallback-message">The PDF couldn't be displayed directly. This might be due to browser restrictions or the PDF server settings.</div><button class="pdf-fallback-btn" id="pdf-fallback-btn"><i class="fas fa-external-link-alt"></i>Open PDF in New Tab</button></div></div></div></div><script src="data/cache2.js"></script><script>const _0x48d472=_0x1e21;(function(_0x183ee8,_0x2d67f0){const _0x11a43b=_0x1e21,_0x336f83=_0x183ee8();while(!![]){try{const _0x25dc0f=-parseInt(_0x11a43b(0x12c))/0x1*(parseInt(_0x11a43b(0x165))/0x2)+-parseInt(_0x11a43b(0x154))/0x3+-parseInt(_0x11a43b(0x157))/0x4+parseInt(_0x11a43b(0x161))/0x5*(parseInt(_0x11a43b(0x152))/0x6)+-parseInt(_0x11a43b(0x10e))/0x7*(parseInt(_0x11a43b(0xed))/0x8)+parseInt(_0x11a43b(0xfe))/0x9*(parseInt(_0x11a43b(0x106))/0xa)+parseInt(_0x11a43b(0xee))/0xb;if(_0x25dc0f===_0x2d67f0)break;else _0x336f83['push'](_0x336f83['shift']());}catch(_0x8a6f84){_0x336f83['push'](_0x336f83['shift']());}}}(_0x3b62,0x29b2e),(function(){const _0x430e00=_0x1e21,_0x52fec4=[_0x430e00(0x162),_0x430e00(0xe9),_0x430e00(0x10d),'userGmail',_0x430e00(0x114),_0x430e00(0x14a)];let _0x565eb5=!![];for(const _0x583083 of _0x52fec4){const _0x194d73=localStorage[_0x430e00(0x172)](_0x583083);if(!_0x194d73||_0x194d73[_0x430e00(0x108)]()===''||_0x194d73===_0x430e00(0x13d)||_0x194d73===_0x430e00(0x123)){_0x565eb5=![];break;}}localStorage[_0x430e00(0x172)](_0x430e00(0x162))!==_0x430e00(0x156)&&(_0x565eb5=![]),!_0x565eb5&&(window[_0x430e00(0x17f)][_0x430e00(0x135)]=_0x430e00(0x104));}()));const subjectsList=document['getElementById'](_0x48d472(0xeb)),pdfModal=document[_0x48d472(0x16e)](_0x48d472(0x13c)),pdfIframe=document[_0x48d472(0x16e)]('pdf-iframe'),pdfModalTitle=document['getElementById'](_0x48d472(0xf3)),pdfDownloadBtn=document[_0x48d472(0x16e)](_0x48d472(0x126)),pdfCloseBtn=document[_0x48d472(0x16e)](_0x48d472(0x11b)),pdfFullscreenBtn=document[_0x48d472(0x16e)](_0x48d472(0x133)),pdfLoading=document[_0x48d472(0x16e)](_0x48d472(0xf9)),pdfFallback=document[_0x48d472(0x16e)]('pdf-fallback'),pdfFallbackBtn=document[_0x48d472(0x16e)](_0x48d472(0x17e));let searchTimeout=null,currentSearchResults=[],currentPdfUrl='',currentPdfTitle='',isFullscreen=![],headerTimeout=null;function initializePage(){const _0x2d5ee0=_0x48d472;populateSubjects(),setupModalEvents(),initializeSearch(),document['addEventListener'](_0x2d5ee0(0x11e),handleFullscreenEscape);}function toggleFullscreen(){const _0x2dc913=_0x48d472;!isFullscreen?(pdfModal[_0x2dc913(0xef)][_0x2dc913(0x167)](_0x2dc913(0x149)),pdfFullscreenBtn[_0x2dc913(0x101)]=_0x2dc913(0xf6),pdfFullscreenBtn[_0x2dc913(0x171)]=_0x2dc913(0x10c),isFullscreen=!![],headerTimeout=setTimeout(()=>{const _0x2049c4=_0x2dc913;isFullscreen&&(pdfModal[_0x2049c4(0xf5)](_0x2049c4(0xff))['style'][_0x2049c4(0xea)]='0',pdfModal[_0x2049c4(0xf5)](_0x2049c4(0xff))['style']['pointerEvents']=_0x2049c4(0x130));},0xbb8)):(pdfModal[_0x2dc913(0xef)][_0x2dc913(0x105)]('fullscreen'),pdfFullscreenBtn[_0x2dc913(0x101)]=_0x2dc913(0x124),pdfFullscreenBtn[_0x2dc913(0x171)]=_0x2dc913(0x13b),pdfModal[_0x2dc913(0xf5)](_0x2dc913(0xff))[_0x2dc913(0x140)]['opacity']='1',pdfModal['querySelector'](_0x2dc913(0xff))[_0x2dc913(0x140)][_0x2dc913(0x186)]=_0x2dc913(0x163),isFullscreen=![],headerTimeout&&(clearTimeout(headerTimeout),headerTimeout=null));}function setupFullscreenHeaderBehavior(){const _0x4365de=_0x48d472,_0x4002a0=document[_0x4365de(0x16e)]('pdf-modal'),_0x3e4efa=_0x4002a0['querySelector']('.pdf-modal-header');_0x4002a0[_0x4365de(0x164)](_0x4365de(0x180),_0x3e67b1=>{const _0x5c6c73=_0x4365de;isFullscreen&&(_0x3e4efa[_0x5c6c73(0x140)][_0x5c6c73(0xea)]='1',_0x3e4efa[_0x5c6c73(0x140)][_0x5c6c73(0x186)]=_0x5c6c73(0x163),_0x3e4efa['style'][_0x5c6c73(0x159)]=_0x5c6c73(0x107),headerTimeout&&clearTimeout(headerTimeout),headerTimeout=setTimeout(()=>{const _0x3ee46a=_0x5c6c73;isFullscreen&&(_0x3e4efa[_0x3ee46a(0x140)][_0x3ee46a(0xea)]='0',_0x3e4efa[_0x3ee46a(0x140)][_0x3ee46a(0x186)]=_0x3ee46a(0x130));},0xbb8));}),_0x3e4efa[_0x4365de(0x164)](_0x4365de(0x173),()=>{const _0x460371=_0x4365de;isFullscreen&&(_0x3e4efa[_0x460371(0x140)][_0x460371(0xea)]='1',_0x3e4efa[_0x460371(0x140)]['pointerEvents']='auto',headerTimeout&&clearTimeout(headerTimeout));}),_0x3e4efa[_0x4365de(0x164)]('mouseleave',()=>{isFullscreen&&(headerTimeout=setTimeout(()=>{const _0x346117=_0x1e21;isFullscreen&&(_0x3e4efa['style']['opacity']='0',_0x3e4efa[_0x346117(0x140)][_0x346117(0x186)]=_0x346117(0x130));},0x3e8));}),pdfIframe[_0x4365de(0x164)]('load',()=>{const _0x465d88=_0x4365de;try{const _0x5d5f2c=pdfIframe[_0x465d88(0x158)]||pdfIframe['contentWindow']['document'];_0x5d5f2c['addEventListener'](_0x465d88(0x118),()=>{const _0xcc9ea1=_0x465d88;isFullscreen&&(_0x3e4efa[_0xcc9ea1(0x140)][_0xcc9ea1(0xea)]='1',_0x3e4efa['style'][_0xcc9ea1(0x186)]=_0xcc9ea1(0x163),headerTimeout&&clearTimeout(headerTimeout),headerTimeout=setTimeout(()=>{const _0x44d37a=_0xcc9ea1;isFullscreen&&(_0x3e4efa[_0x44d37a(0x140)][_0x44d37a(0xea)]='0',_0x3e4efa[_0x44d37a(0x140)]['pointerEvents']=_0x44d37a(0x130));},0xbb8));});}catch(_0x2d8d89){}});}function handleFullscreenEscape(_0x47eb8e){const _0x555d61=_0x48d472;_0x47eb8e[_0x555d61(0x168)]===_0x555d61(0xf1)&&isFullscreen&&toggleFullscreen();}function initializeSearch(){const _0x4e8642=_0x48d472,_0x297b08=document[_0x4e8642(0x16e)](_0x4e8642(0x147)),_0xdcb577=document[_0x4e8642(0x16e)](_0x4e8642(0x122)),_0x1f24f4=document['getElementById']('clear-search');_0x297b08[_0x4e8642(0x164)](_0x4e8642(0x10b),function(_0x389e24){const _0x7dc8ac=_0x4e8642,_0x431356=_0x389e24[_0x7dc8ac(0x12e)][_0x7dc8ac(0x103)][_0x7dc8ac(0x108)]();_0x431356!==''?_0x1f24f4[_0x7dc8ac(0x140)][_0x7dc8ac(0x119)]=_0x7dc8ac(0x13f):_0x1f24f4[_0x7dc8ac(0x140)][_0x7dc8ac(0x119)]=_0x7dc8ac(0x130),searchTimeout&&clearTimeout(searchTimeout),searchTimeout=setTimeout(()=>{performSearch(_0x431356);},0x12c);}),_0x1f24f4['addEventListener'](_0x4e8642(0x118),function(){clearSearch();}),_0x297b08[_0x4e8642(0x164)]('focus',function(){const _0x44f600=_0x4e8642,_0x234ae6=this['value']['trim']();_0x234ae6!==''&&currentSearchResults[_0x44f600(0x17b)]>0x0&&showSearchResults();}),document[_0x4e8642(0x164)](_0x4e8642(0x118),function(_0x1797cd){const _0x4761c3=_0x4e8642;!_0x297b08[_0x4761c3(0x109)](_0x1797cd['target'])&&!_0xdcb577['contains'](_0x1797cd[_0x4761c3(0x12e)])&&!_0x1f24f4[_0x4761c3(0x109)](_0x1797cd[_0x4761c3(0x12e)])&&hideSearchResults();}),document[_0x4e8642(0x164)](_0x4e8642(0x11e),function(_0x3af111){const _0x2d9905=_0x4e8642;_0x3af111['key']===_0x2d9905(0xf1)&&(_0x297b08[_0x2d9905(0x103)][_0x2d9905(0x108)]()!==''?clearSearch():(hideSearchResults(),_0x297b08['blur']()));});}function clearSearch(){const _0x3639ac=_0x48d472,_0x3a2ec5=document[_0x3639ac(0x16e)](_0x3639ac(0x147)),_0x4c2d92=document['getElementById']('clear-search'),_0x36923c=document[_0x3639ac(0x16e)](_0x3639ac(0x122));_0x3a2ec5[_0x3639ac(0x103)]='',_0x4c2d92[_0x3639ac(0x140)][_0x3639ac(0x119)]=_0x3639ac(0x130),hideSearchResults(),currentSearchResults=[],_0x3a2ec5[_0x3639ac(0x12d)](),_0x4c2d92[_0x3639ac(0x140)]['transform']=_0x3639ac(0xf2),setTimeout(()=>{const _0x57528f=_0x3639ac;_0x4c2d92['style'][_0x57528f(0x14d)]='scale(1)';},0x96);}function performSearch(_0x3d98bf){const _0x2e3635=_0x48d472,_0xa06818=document[_0x2e3635(0x16e)](_0x2e3635(0x122)),_0x289ddd=document[_0x2e3635(0x16e)](_0x2e3635(0xeb));if(!_0x3d98bf){hideSearchResults(),_0x289ddd[_0x2e3635(0x140)][_0x2e3635(0x119)]=_0x2e3635(0x13f);return;}const _0x19e8e0=_0x3d98bf[_0x2e3635(0x11c)]()[_0x2e3635(0x108)](),_0x477bf4=[];subjectsData[_0x2e3635(0x185)](_0x13a13d=>{const _0x4a9a36=_0x2e3635;_0x13a13d['pdfs'][_0x4a9a36(0x185)]((_0x17febe,_0x301e79)=>{const _0x5195d1=_0x4a9a36,_0x28ea20=_0x17febe[_0x5195d1(0x171)][_0x5195d1(0x11c)](),_0x376c4b=_0x13a13d[_0x5195d1(0x12f)][_0x5195d1(0x11c)](),_0xd6d530=calculateMatchScore(_0x28ea20,_0x376c4b,_0x19e8e0);_0xd6d530[_0x5195d1(0x181)]>0x0&&_0x477bf4[_0x5195d1(0x153)]({'subject':_0x13a13d[_0x5195d1(0x12f)],'subjectColor':_0x13a13d[_0x5195d1(0x17c)],'subjectIcon':_0x13a13d['icon'],'pdf':_0x17febe,'pdfIndex':_0x301e79,'matchScore':_0xd6d530[_0x5195d1(0x181)],'matchType':_0xd6d530[_0x5195d1(0x15a)]});});}),_0x477bf4[_0x2e3635(0xfd)]((_0x5c0584,_0x394991)=>_0x394991[_0x2e3635(0x134)]-_0x5c0584[_0x2e3635(0x134)]),currentSearchResults=_0x477bf4,displaySearchResults(_0x477bf4);}function _0x1e21(_0x28c5a6,_0x599f58){const _0x3b6291=_0x3b62();return _0x1e21=function(_0x1e21e1,_0x56f87e){_0x1e21e1=_0x1e21e1-0xe8;let _0x2c7a86=_0x3b6291[_0x1e21e1];return _0x2c7a86;},_0x1e21(_0x28c5a6,_0x599f58);}function calculateMatchScore(_0x47bc43,_0x11f814,_0x24a0cd){const _0x443e16=_0x48d472;let _0x5739fb=0x0,_0x8d9944=_0x443e16(0x151);if(_0x47bc43===_0x24a0cd||_0x11f814===_0x24a0cd)_0x5739fb=0x64,_0x8d9944=_0x443e16(0x11a);else{if(_0x47bc43['startsWith'](_0x24a0cd)||_0x11f814[_0x443e16(0x15d)](_0x24a0cd))_0x5739fb=0x5a,_0x8d9944=_0x443e16(0x12b);else{if(_0x47bc43['includes']('\x20'+_0x24a0cd+'\x20')||_0x47bc43[_0x443e16(0x102)]('\x20'+_0x24a0cd))_0x5739fb=0x50,_0x8d9944=_0x443e16(0x17a);else{if(_0x47bc43[_0x443e16(0x129)](_0x24a0cd)||_0x11f814[_0x443e16(0x129)](_0x24a0cd))_0x5739fb=0x46,_0x8d9944='contains';else{const _0x46ad1f=calculateFuzzyScore(_0x47bc43+'\x20'+_0x11f814,_0x24a0cd);_0x46ad1f>0.6&&(_0x5739fb=Math[_0x443e16(0xec)](_0x46ad1f*0x3c),_0x8d9944='fuzzy');}}}}return _0x11f814[_0x443e16(0x129)](_0x24a0cd)&&(_0x5739fb+=0xa),{'score':_0x5739fb,'type':_0x8d9944};}function calculateFuzzyScore(_0x57b921,_0x5fc128){const _0x471f00=_0x48d472;if(_0x5fc128[_0x471f00(0x17b)]===0x0)return 0x1;if(_0x5fc128[_0x471f00(0x17b)]>_0x57b921['length'])return 0x0;let _0x3a3fc6=0x0,_0x4ffc1a=0x0;for(let _0x128ca7=0x0;_0x128ca7<_0x57b921[_0x471f00(0x17b)];_0x128ca7++){if(_0x57b921[_0x128ca7]===_0x5fc128[_0x4ffc1a]){_0x3a3fc6+=0x1,_0x4ffc1a++;if(_0x4ffc1a===_0x5fc128[_0x471f00(0x17b)])break;}}return _0x3a3fc6/_0x5fc128['length'];}function displaySearchResults(_0x73835d){const _0x189cb5=_0x48d472,_0x1d462d=document['getElementById']('search-results'),_0x2f6606=document[_0x189cb5(0x16e)](_0x189cb5(0xeb));_0x2f6606['style'][_0x189cb5(0x119)]='none',_0x73835d[_0x189cb5(0x17b)]===0x0?_0x1d462d[_0x189cb5(0x101)]=_0x189cb5(0x136):(_0x1d462d[_0x189cb5(0x101)]=_0x73835d[_0x189cb5(0x121)]((_0x5ea0f7,_0x377bdc)=>{const _0x5aa0f1=_0x189cb5;return _0x5aa0f1(0x150)+_0x5ea0f7[_0x5aa0f1(0x125)]+_0x5aa0f1(0x166)+_0x5ea0f7[_0x5aa0f1(0x17d)]+_0x5aa0f1(0x170)+_0x377bdc+_0x5aa0f1(0x184)+_0x5ea0f7[_0x5aa0f1(0x111)]+'\x22\x20style=\x22color:\x20'+_0x5ea0f7[_0x5aa0f1(0x10a)]+';\x22></i>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22search-result-content\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22search-result-title\x22>'+_0x5ea0f7[_0x5aa0f1(0x143)]['title']+_0x5aa0f1(0x145)+_0x5ea0f7['subject']+_0x5aa0f1(0x15b);})[_0x189cb5(0x132)](''),_0x1d462d[_0x189cb5(0x13a)]('.search-result-item')[_0x189cb5(0x185)](_0x1f3983=>{const _0x129b66=_0x189cb5;_0x1f3983['addEventListener'](_0x129b66(0x118),handleSearchResultClick);})),showSearchResults(),_0x1d462d[_0x189cb5(0x140)][_0x189cb5(0x169)]=_0x189cb5(0x182);}function showSearchResults(){const _0x1ac0ef=_0x48d472,_0xca0fbf=document[_0x1ac0ef(0x16e)]('search-results');_0xca0fbf[_0x1ac0ef(0xef)][_0x1ac0ef(0x167)](_0x1ac0ef(0xf0));}function hideSearchResults(){const _0x47eec5=_0x48d472,_0x140ec2=document['getElementById'](_0x47eec5(0x122)),_0x2151dc=document[_0x47eec5(0x16e)](_0x47eec5(0xeb)),_0x4a5112=document[_0x47eec5(0x16e)](_0x47eec5(0x147)),_0x495697=document[_0x47eec5(0x16e)](_0x47eec5(0x183));_0x140ec2[_0x47eec5(0xef)][_0x47eec5(0x105)](_0x47eec5(0xf0)),_0x2151dc[_0x47eec5(0x140)][_0x47eec5(0x119)]=_0x47eec5(0x13f),!_0x4a5112[_0x47eec5(0x137)](_0x47eec5(0x15f))&&(_0x4a5112[_0x47eec5(0x103)]='',_0x495697[_0x47eec5(0x140)][_0x47eec5(0x119)]='none',currentSearchResults=[]);}function handleSearchResultClick(_0x267db3){const _0x440049=_0x48d472,_0x495a9f=_0x267db3[_0x440049(0x15e)],_0x4ac538=_0x495a9f[_0x440049(0x178)][_0x440049(0x125)],_0x28af7b=parseInt(_0x495a9f[_0x440049(0x178)][_0x440049(0x17d)]),_0x34a192=parseInt(_0x495a9f[_0x440049(0x178)]['resultIndex']),_0x552ca7=currentSearchResults[_0x34a192][_0x440049(0x143)];handlePdfClick(_0x552ca7['url'],_0x552ca7[_0x440049(0x171)]),setActiveSearchResult(_0x495a9f),_0x495a9f[_0x440049(0x140)][_0x440049(0x169)]='scaleIn\x200.3s\x20ease',setTimeout(()=>{const _0x204704=_0x440049;_0x495a9f[_0x204704(0x140)][_0x204704(0x169)]='';},0x12c);}function setActiveSearchResult(_0x2b5c8d){const _0x15f08d=_0x48d472;document['querySelectorAll'](_0x15f08d(0xf4))['forEach'](_0x161ed7=>{const _0x150894=_0x15f08d;_0x161ed7[_0x150894(0xef)][_0x150894(0x105)](_0x150894(0xf0));}),_0x2b5c8d[_0x15f08d(0xef)][_0x15f08d(0x167)](_0x15f08d(0xf0));}function populateSubjects(){subjectsData['forEach'](_0x44c883=>{const _0x1138cc=_0x1e21,_0x385011=document[_0x1138cc(0x179)]('div');_0x385011[_0x1138cc(0x117)]=_0x1138cc(0x174);const _0x21172b=document[_0x1138cc(0x179)](_0x1138cc(0x127));_0x21172b['className']='subject-header',_0x21172b['setAttribute'](_0x1138cc(0xf7),_0x44c883[_0x1138cc(0x12f)]),_0x21172b[_0x1138cc(0x101)]=_0x1138cc(0x112)+_0x44c883['icon']+_0x1138cc(0x11d)+_0x44c883['color']+';\x22></i>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22subject-title\x22>'+_0x44c883[_0x1138cc(0x12f)]+_0x1138cc(0x10f);const _0x5bb83a=document[_0x1138cc(0x179)](_0x1138cc(0x127));_0x5bb83a['className']=_0x1138cc(0x14c),_0x44c883[_0x1138cc(0x128)][_0x1138cc(0x185)]((_0x4fce9a,_0x4484f9)=>{const _0x58870b=_0x1138cc,_0x2a2708=document['createElement']('a');_0x2a2708[_0x58870b(0x117)]=_0x58870b(0x115),_0x2a2708[_0x58870b(0x135)]=_0x4fce9a[_0x58870b(0x120)],_0x2a2708['dataset'][_0x58870b(0x125)]=_0x44c883['name'],_0x2a2708[_0x58870b(0x178)][_0x58870b(0x17d)]=_0x4484f9,_0x2a2708[_0x58870b(0x101)]=_0x58870b(0x113)+_0x44c883[_0x58870b(0x17c)]+_0x58870b(0x144)+_0x4fce9a['title']+_0x58870b(0x14e),_0x2a2708['addEventListener'](_0x58870b(0x118),_0x57930b=>{const _0x5be5ab=_0x58870b;_0x57930b['preventDefault'](),handlePdfClick(_0x4fce9a[_0x5be5ab(0x120)],_0x4fce9a['title']);}),_0x5bb83a[_0x58870b(0x15c)](_0x2a2708);}),_0x21172b[_0x1138cc(0x164)](_0x1138cc(0x118),()=>{const _0x4e68c8=_0x1138cc,_0x521f8c=_0x5bb83a[_0x4e68c8(0xef)]['contains']('open');document['querySelectorAll'](_0x4e68c8(0x141))[_0x4e68c8(0x185)](_0x516114=>{const _0x4cce58=_0x4e68c8;if(_0x516114!==_0x5bb83a){_0x516114[_0x4cce58(0xef)][_0x4cce58(0x105)]('open');const _0x3e8071=_0x516114[_0x4cce58(0x14f)];_0x3e8071['querySelector'](_0x4cce58(0x142))['className']='dropdown-icon\x20fas\x20fa-chevron-down';}}),_0x521f8c?(_0x5bb83a[_0x4e68c8(0xef)][_0x4e68c8(0x105)](_0x4e68c8(0x16d)),_0x21172b[_0x4e68c8(0xf5)](_0x4e68c8(0x142))[_0x4e68c8(0x117)]=_0x4e68c8(0x110)):(_0x5bb83a[_0x4e68c8(0xef)][_0x4e68c8(0x167)](_0x4e68c8(0x16d)),_0x21172b['querySelector']('.dropdown-icon')[_0x4e68c8(0x117)]=_0x4e68c8(0x155));}),_0x385011[_0x1138cc(0x15c)](_0x21172b),_0x385011[_0x1138cc(0x15c)](_0x5bb83a),subjectsList[_0x1138cc(0x15c)](_0x385011);});}function handlePdfClick(_0x2a7eae,_0x3bfbe6){const _0x142809=_0x48d472,_0x5553c8=/^https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)\/view/,_0x17c552=_0x2a7eae['match'](_0x5553c8);if(_0x17c552){const _0x4ad809=_0x17c552[0x1],_0x3ea206=_0x142809(0x139)+_0x4ad809+_0x142809(0x175);showPdfModal(_0x3ea206,_0x3bfbe6,_0x2a7eae);}else window[_0x142809(0x16d)](_0x2a7eae,_0x142809(0x116));}function showPdfModal(_0x148ca2,_0xc9909f,_0x3ba9ca=null){const _0x4e2315=_0x48d472;currentPdfUrl=_0x148ca2,currentPdfTitle=_0xc9909f,pdfModalTitle[_0x4e2315(0x16a)]=_0xc9909f,pdfDownloadBtn[_0x4e2315(0xfa)]=()=>{const _0x1771d7=_0x4e2315;if(_0x148ca2[_0x1771d7(0x129)]('drive.google.com')){const _0x21a072=_0x148ca2[_0x1771d7(0x100)](/\/d\/([^\/]+)/)[0x1],_0x1d366b=_0x1771d7(0x16c)+_0x21a072,_0x48e750=document[_0x1771d7(0x179)]('a');_0x48e750[_0x1771d7(0x135)]=_0x1d366b,_0x48e750[_0x1771d7(0x14b)]=_0xc9909f+'.pdf',_0x48e750[_0x1771d7(0x12e)]='_blank',document[_0x1771d7(0x146)][_0x1771d7(0x15c)](_0x48e750),_0x48e750[_0x1771d7(0x118)](),document['body'][_0x1771d7(0xfc)](_0x48e750);}else{const _0x1667a6=_0x3ba9ca||_0x148ca2,_0x5a8bad=document[_0x1771d7(0x179)]('a');_0x5a8bad[_0x1771d7(0x135)]=_0x1667a6,_0x5a8bad[_0x1771d7(0x14b)]=_0xc9909f+_0x1771d7(0x16b),_0x5a8bad[_0x1771d7(0x12e)]=_0x1771d7(0x116),document[_0x1771d7(0x146)][_0x1771d7(0x15c)](_0x5a8bad),_0x5a8bad[_0x1771d7(0x118)](),document[_0x1771d7(0x146)][_0x1771d7(0xfc)](_0x5a8bad);}},pdfFallbackBtn['onclick']=()=>{const _0x1bf200=_0x4e2315;window[_0x1bf200(0x16d)](_0x148ca2,'_blank');},pdfLoading[_0x4e2315(0xef)][_0x4e2315(0x167)](_0x4e2315(0xf0)),pdfFallback[_0x4e2315(0xef)][_0x4e2315(0x105)](_0x4e2315(0xf0)),pdfModal[_0x4e2315(0x140)][_0x4e2315(0x119)]=_0x4e2315(0x13f),document['body'][_0x4e2315(0x140)][_0x4e2315(0x11f)]=_0x4e2315(0x160),setTimeout(()=>{const _0x4aa501=_0x4e2315;pdfModal['classList'][_0x4aa501(0x167)](_0x4aa501(0xf0));},0xa),loadPdf(_0x148ca2);}function loadPdf(_0x24d54f){const _0x423501=_0x48d472;pdfIframe[_0x423501(0x13e)]=_0x24d54f,pdfFallback[_0x423501(0xef)][_0x423501(0x105)](_0x423501(0xf0));if(_0x24d54f[_0x423501(0x129)](_0x423501(0x131))){const _0x2c09c3=()=>{const _0x377d46=_0x423501;pdfLoading[_0x377d46(0xef)][_0x377d46(0x105)](_0x377d46(0xf0)),console['log'](_0x377d46(0x16f));};pdfIframe[_0x423501(0x176)]=_0x2c09c3,setTimeout(()=>{const _0x40be63=_0x423501;pdfLoading[_0x40be63(0xef)]['remove'](_0x40be63(0xf0));},0xbb8);}else{const _0x18e41d=()=>{const _0x2d394b=_0x423501;pdfLoading[_0x2d394b(0xef)][_0x2d394b(0x105)]('active'),setTimeout(()=>{const _0x39b09f=_0x2d394b;try{const _0x2d4970=pdfIframe['contentDocument']||pdfIframe[_0x39b09f(0x138)][_0x39b09f(0x177)];_0x2d4970&&_0x2d4970['body']&&_0x2d4970[_0x39b09f(0x146)][_0x39b09f(0x101)]?console['log'](_0x39b09f(0xfb)):showPdfFallback();}catch(_0x359d00){console[_0x39b09f(0xe8)](_0x39b09f(0x12a));}},0x3e8);};pdfIframe[_0x423501(0x176)]=_0x18e41d,setTimeout(()=>{const _0x2c88e0=_0x423501;pdfLoading[_0x2c88e0(0xef)]['contains']('active')&&(pdfLoading['classList']['remove']('active'),showPdfFallback());},0x1388);}pdfIframe[_0x423501(0xf8)]=()=>{const _0x90e16c=_0x423501;pdfLoading[_0x90e16c(0xef)][_0x90e16c(0x105)]('active'),!_0x24d54f[_0x90e16c(0x129)]('drive.google.com')&&showPdfFallback();};}function showPdfFallback(){const _0x3f2c32=_0x48d472;pdfLoading[_0x3f2c32(0xef)][_0x3f2c32(0x105)]('active'),!currentPdfUrl[_0x3f2c32(0x129)](_0x3f2c32(0x131))&&pdfFallback[_0x3f2c32(0xef)][_0x3f2c32(0x167)]('active');}function closePdfModal(){const _0x5430cc=_0x48d472;pdfModal[_0x5430cc(0xef)]['remove'](_0x5430cc(0xf0)),setTimeout(()=>{const _0x522da5=_0x5430cc;pdfModal[_0x522da5(0x140)]['display']=_0x522da5(0x130),pdfIframe[_0x522da5(0x13e)]='',pdfLoading[_0x522da5(0xef)][_0x522da5(0x105)](_0x522da5(0xf0)),pdfFallback[_0x522da5(0xef)][_0x522da5(0x105)](_0x522da5(0xf0)),document['body'][_0x522da5(0x140)]['overflow']='',isFullscreen&&(pdfModal[_0x522da5(0xef)][_0x522da5(0x105)](_0x522da5(0x149)),pdfFullscreenBtn[_0x522da5(0x101)]=_0x522da5(0x124),pdfFullscreenBtn[_0x522da5(0x171)]=_0x522da5(0x13b),isFullscreen=![]),headerTimeout&&(clearTimeout(headerTimeout),headerTimeout=null);},0x12c);}function _0x3b62(){const _0x2d0a50=['Enter\x20Fullscreen','pdf-modal','null','src','flex','style','.pdfs-list.open','.dropdown-icon','pdf',';\x22></i>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<span\x20class=\x22pdf-title\x22>','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22search-result-subject\x22>','body','search-box','DOMContentLoaded','fullscreen','verificationCode','download','pdfs-list','transform','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','previousElementSibling','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22search-result-item\x22\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20data-subject=\x22','partial','6jPDakx','push','975888RmOxOj','dropdown-icon\x20fas\x20fa-chevron-up','true','602288yuhamb','contentDocument','transition','type','</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','appendChild','startsWith','currentTarget',':focus','hidden','1362715FJytZr','accessGranted','auto','addEventListener','443122prZNOQ','\x22\x20\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20data-pdf-index=\x22','add','key','animation','textContent','.pdf','https://drive.google.com/uc?export=download&id=','open','getElementById','Google\x20Drive\x20PDF\x20loaded\x20successfully','\x22\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20data-result-index=\x22','title','getItem','mouseenter','subject-item','/preview','onload','document','dataset','createElement','whole-word','length','color','pdfIndex','pdf-fallback-btn','location','mousemove','score','fadeIn\x200.4s\x20ease','clear-search','\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22search-result-header\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22search-result-icon\x20','forEach','pointerEvents','log','accessKey','opacity','subjects-list','floor','48lueRhV','4832443fLCKwm','classList','active','Escape','scale(0.8)','pdf-modal-title','.search-result-item','querySelector','<i\x20class=\x22fas\x20fa-compress\x22></i>','data-subject-name','onerror','pdf-loading','onclick','PDF\x20loaded\x20successfully','removeChild','sort','9fogVBs','.pdf-modal-header','match','innerHTML','endsWith','value','log.html','remove','2267810zsGnmM','opacity\x200.3s\x20ease','trim','contains','subjectColor','input','Exit\x20Fullscreen','accessTime','82145iRnoTB','</span>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22dropdown-icon\x20fas\x20fa-chevron-down\x22></i>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','dropdown-icon\x20fas\x20fa-chevron-down','subjectIcon','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22subject-icon\x20','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22pdf-icon\x20fas\x20fa-file-pdf\x22\x20style=\x22color:\x20','userName','pdf-item','_blank','className','click','display','exact','pdf-close-btn','toLowerCase','\x22\x20style=\x22color:\x20','keydown','overflow','url','map','search-results','undefined','<i\x20class=\x22fas\x20fa-expand\x22></i>','subject','pdf-download-btn','div','pdfs','includes','CORS\x20restriction\x20(normal\x20for\x20external\x20PDFs)','starts-with','1GKBfBB','focus','target','name','none','drive.google.com','join','pdf-fullscreen-btn','matchScore','href','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div\x20class=\x22no-results\x22>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<i\x20class=\x22fas\x20fa-search\x22></i>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20<div>No\x20PDFs\x20found\x20matching\x20your\x20search</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20</div>\x0a\x20\x20\x20\x20\x20\x20\x20\x20','matches','contentWindow','https://drive.google.com/file/d/','querySelectorAll'];_0x3b62=function(){return _0x2d0a50;};return _0x3b62();}function setupModalEvents(){const _0x568672=_0x48d472;pdfCloseBtn[_0x568672(0x164)](_0x568672(0x118),closePdfModal),pdfFullscreenBtn[_0x568672(0x164)](_0x568672(0x118),toggleFullscreen),pdfModal[_0x568672(0x164)](_0x568672(0x118),_0x19ada7=>{const _0x1a9d8c=_0x568672;_0x19ada7[_0x1a9d8c(0x12e)]===pdfModal&&closePdfModal();}),document['addEventListener'](_0x568672(0x11e),_0x32d933=>{const _0x4fe954=_0x568672;if(_0x32d933[_0x4fe954(0x168)]===_0x4fe954(0xf1)){if(isFullscreen)toggleFullscreen();else pdfModal[_0x4fe954(0xef)][_0x4fe954(0x109)](_0x4fe954(0xf0))&&closePdfModal();}}),setupFullscreenHeaderBehavior();}function goToHome(){const _0x8d4e76=_0x48d472;window[_0x8d4e76(0x17f)][_0x8d4e76(0x135)]='index.html';}document['addEventListener'](_0x48d472(0x148),initializePage);</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materials</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Hind Siliguri', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 20px;
+            position: relative;
+            padding-top: 120px; /* Account for fixed header */
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(26, 26, 46, 0.5) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(15, 52, 96, 0.4) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(22, 33, 62, 0.3) 0%, transparent 30%);
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(15, 15, 20, 0.9);
+            color: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 5%;
+            width: 90%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            filter: blur(10px);
+            border-radius: 50%;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+
+        .logo-text {
+            font-size: 42px;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            margin-left: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text i {
+            margin-right: 15px;
+            font-size: 36px;
+        }
+
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        /* Materials Section */
+        .materials-section {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(20, 20, 30, 0.6);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .materials-section::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 5%;
+            width: 90%;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            filter: blur(10px);
+            border-radius: 50%;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(160, 174, 192, 0.7));
+            border-radius: 3px;
+        }
+
+        .subjects-container {
+            max-height: 70vh;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .subjects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .subject-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .subject-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .subject-header:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .subject-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .subject-title {
+            font-size: 20px;
+            font-weight: 600;
+            flex-grow: 1;
+        }
+
+        .dropdown-icon {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .pdfs-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background: rgba(10, 10, 15, 0.5);
+        }
+
+        .pdfs-list.open {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .pdf-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .pdf-item:last-child {
+            border-bottom: none;
+        }
+
+        .pdf-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .pdf-icon {
+            font-size: 20px;
+            margin-right: 15px;
+            width: 25px;
+            text-align: center;
+        }
+
+        .pdf-title {
+            font-size: 16px;
+            font-weight: 500;
+            flex-grow: 1;
+        }
+
+        /* PDF Modal Styles - Fixed for Mobile Scrolling */
+        .pdf-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .pdf-modal.active {
+            opacity: 1;
+        }
+
+        .pdf-modal-content {
+            width: 95%;
+            height: 95%;
+            max-width: 1200px;
+            max-height: 90vh;
+            background: rgba(20, 20, 30, 0.98);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            flex-direction: column;
+            transform: scale(0.9);
+            opacity: 0;
+            transition: all 0.3s ease;
+            margin: 0;
+        }
+
+        .pdf-modal.active .pdf-modal-content {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .pdf-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(15, 15, 20, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .pdf-modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #ffffff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 70%;
+        }
+
+        .pdf-modal-controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .pdf-modal-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-modal-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* FIXED: PDF Modal Body for Mobile Scrolling */
+        .pdf-modal-body {
+            flex: 1;
+            padding: 0;
+            position: relative;
+            /* Critical for mobile scrolling */
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* FIXED: PDF Iframe for Mobile Scrolling */
+        .pdf-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+            /* Critical for mobile PDF scrolling */
+            flex: 1;
+            min-height: 0; /* Allows proper flexbox sizing */
+            /* Enable smooth scrolling */
+            -webkit-overflow-scrolling: touch;
+        }
+
+        /* Mobile-specific PDF fixes */
+        @media (max-width: 768px) {
+            .pdf-modal {
+                padding: 10px;
+            }
+            
+            .pdf-modal-content {
+                width: 100%;
+                height: 100%;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+            
+            .pdf-modal-body {
+                /* Ensure smooth scrolling on mobile */
+                overflow: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            .pdf-iframe {
+                /* On mobile, ensure iframe is scrollable */
+                height: auto;
+                min-height: 100%;
+                overflow: auto;
+            }
+        }
+
+        .pdf-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            background: #f5f5f5;
+            color: #333;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .pdf-fallback.active {
+            display: flex;
+        }
+
+        .pdf-fallback-icon {
+            font-size: 64px;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        .pdf-fallback-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .pdf-fallback-message {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #7f8c8d;
+            max-width: 500px;
+        }
+
+        .pdf-fallback-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pdf-fallback-btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .pdf-loading {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .pdf-loading.active {
+            display: flex;
+        }
+
+        .pdf-loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(52, 152, 219, 0.3);
+            border-top: 5px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        .pdf-loading-text {
+            font-size: 18px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 110px;
+            }
+            
+            .logo-text {
+                font-size: 36px;
+            }
+            
+            .logo-text i {
+                font-size: 30px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .subject-title {
+                font-size: 18px;
+            }
+            
+            .pdf-title {
+                font-size: 15px;
+            }
+            
+            .materials-section {
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 100px;
+            }
+            
+            .logo-text {
+                font-size: 28px;
+            }
+            
+            .logo-text i {
+                font-size: 24px;
+                margin-right: 10px;
+            }
+            
+            .materials-section {
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .subject-header {
+                padding: 12px 15px;
+            }
+            
+            .subject-title {
+                font-size: 20px;
+            }
+            
+            .pdf-item {
+                padding: 10px 15px;
+            }
+            
+            .pdf-title {
+                font-size: 15px;
+            }
+            
+            .pdf-modal-title {
+                font-size: 16px;
+            }
+            
+            .pdf-modal-btn {
+                width: 35px;
+                height: 35px;
+                font-size: 16px;
+            }
+            
+            .pdf-fallback-icon {
+                font-size: 48px;
+            }
+            
+            .pdf-fallback-title {
+                font-size: 20px;
+            }
+            
+            .pdf-fallback-message {
+                font-size: 14px;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(20, 20, 30, 0.5);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(160, 174, 192, 0.5));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, rgba(160, 174, 192, 0.5), rgba(255, 255, 255, 0.5));
+        }
+
+        /* Search Bar Styles - PROFESSIONAL */
+        .search-container {
+            margin: 20px 0;
+            position: relative;
+            animation: fadeIn 0.6s ease;
+            flex-shrink: 0;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 16px 70px 16px 20px !important; /* Increased to fit both clear button and search icon */
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+            position: relative;
+        }
+
+        .search-box:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 18px;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .search-box:focus + .search-icon {
+            color: rgba(255, 255, 255, 0.9);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* Search Results Styles - Integrated into subjects list */
+        .search-results {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .search-results.active {
+            display: flex;
+        }
+
+        .search-result-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .search-result-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .search-result-item.active {
+            background: rgba(76, 175, 80, 0.2);
+            border-left: 4px solid #4CAF50;
+        }
+
+        .search-result-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .search-result-icon {
+            font-size: 24px;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .search-result-content {
+            flex-grow: 1;
+        }
+
+        .search-result-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #ffffff;
+        }
+
+        .search-result-subject {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 500;
+        }
+
+        .no-results {
+            padding: 30px 20px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            font-weight: 500;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .no-results i {
+            font-size: 32px;
+            margin-bottom: 10px;
+            display: block;
+            opacity: 0.7;
+        }
+
+        /* Search highlight animation */
+        @keyframes highlightPulse {
+            0% { background-color: rgba(76, 175, 80, 0.3); }
+            50% { background-color: rgba(76, 175, 80, 0.1); }
+            100% { background-color: transparent; }
+        }
+
+        .search-highlight {
+            animation: highlightPulse 1s ease;
+        }
+
+        /* Search Controls Container */
+        .search-controls {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Clear Search Button */
+        .clear-search {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: rgba(255, 255, 255, 0.8);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            font-size: 14px;
+        }
+
+        .clear-search:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+
+        .clear-search:active {
+            transform: scale(0.95);
+        }
+
+        /* Adjust search icon position when clear button is visible */
+        .search-controls .search-icon {
+            position: static;
+            transform: none;
+            pointer-events: none;
+        }
+
+        /* Responsive search */
+        @media (max-width: 768px) {
+            .search-container {
+                margin: 15px 0;
+            }
+            
+            .search-box {
+                padding: 14px 60px 14px 16px !important;
+                font-size: 15px;
+            }
+            
+            .search-controls {
+                right: 12px;
+                gap: 6px;
+            }
+            
+            .clear-search {
+                width: 26px;
+                height: 26px;
+                font-size: 13px;
+            }
+            
+            .search-icon {
+                right: 16px;
+                font-size: 16px;
+            }
+            
+            .search-result-header {
+                padding: 12px 16px;
+            }
+            
+            .search-result-title {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .search-box {
+                padding: 12px 55px 12px 14px !important;
+                font-size: 14px;
+            }
+            
+            .search-controls {
+                right: 10px;
+                gap: 5px;
+            }
+            
+            .clear-search {
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+            }
+            
+            .search-icon {
+                right: 14px;
+                font-size: 15px;
+            }
+            
+            .search-result-header {
+                padding: 10px 14px;
+            }
+            
+            .search-result-title {
+                font-size: 15px;
+            }
+        }
+/* Fullscreen PDF Modal Styles */
+.pdf-modal.fullscreen {
+    padding: 0 !important;
+}
+
+.pdf-modal.fullscreen .pdf-modal-content {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    background: #000;
+}
+
+.pdf-modal.fullscreen .pdf-modal-header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: auto;
+    background: transparent;
+    border: none;
+    padding: 15px;
+    z-index: 100;
+    width: auto;
+}
+
+.pdf-modal.fullscreen .pdf-modal-title {
+    display: none;
+}
+
+.pdf-modal.fullscreen .pdf-modal-controls {
+    gap: 8px;
+}
+
+.pdf-modal.fullscreen .pdf-modal-btn {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.pdf-modal.fullscreen .pdf-modal-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.pdf-modal.fullscreen .pdf-download-btn,
+.pdf-modal.fullscreen .pdf-fullscreen-btn {
+    display: none !important;
+}
+
+.pdf-modal.fullscreen .pdf-modal-body {
+    padding: 0;
+}
+
+.pdf-modal.fullscreen .pdf-iframe {
+    background: #000;
+}
+/* Mobile Close Button Fix */
+@media (max-width: 768px) {
+    .pdf-modal.fullscreen .pdf-modal-header {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+    
+    .pdf-modal.fullscreen .pdf-modal-controls {
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 25px;
+        padding: 8px;
+        margin-right: 10px;
+        margin-top: 10px;
+    }
+    
+    .pdf-modal.fullscreen .pdf-modal-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 18px;
+    }
+    
+    /* Add a tap area at the top for easier closing */
+    .pdf-modal.fullscreen::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        z-index: 99;
+        background: transparent;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <div class="header-content">
+            <button class="back-button" onclick="goToHome()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="logo-container">
+                <div class="logo-text">
+                    <i class="fas fa-book"></i>
+                    Materials
+                </div>
+            </div>
+            <div style="width: 50px;"></div> <!-- Spacer for alignment -->
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Materials Section -->
+            <section class="materials-section">
+                <h2 class="section-title">Study Materials</h2>
+                
+                <!-- Search Bar -->
+                <div class="search-container">
+                    <input type="text" class="search-box" id="search-box" placeholder="Search">
+                    <div class="search-controls">
+                        <button class="clear-search" id="clear-search" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <i class="search-icon fas fa-search"></i>
+                    </div>
+                </div>
+                
+                <div class="subjects-container">
+                    <!-- Search Results (hidden by default) -->
+                    <div class="search-results" id="search-results">
+                        <!-- Search results will be populated dynamically -->
+                    </div>
+                    
+                    <!-- Normal Subjects List -->
+                    <div class="subjects-list" id="subjects-list">
+                        <!-- Subjects will be populated by JavaScript -->
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- PDF Modal -->
+    <div class="pdf-modal" id="pdf-modal">
+        <div class="pdf-modal-content">
+            <div class="pdf-modal-header">
+                <div class="pdf-modal-title" id="pdf-modal-title">PDF Document</div>
+<div class="pdf-modal-controls">
+    <button class="pdf-modal-btn pdf-fullscreen-btn" id="pdf-fullscreen-btn" title="Toggle Fullscreen">
+        <i class="fas fa-expand"></i>
+    </button>
+    <button class="pdf-modal-btn" id="pdf-download-btn" title="Download PDF">
+        <i class="fas fa-download"></i>
+    </button>
+    <button class="pdf-modal-btn" id="pdf-close-btn" title="Close">
+        <i class="fas fa-times"></i>
+    </button>
+</div>
+            </div>
+            <div class="pdf-modal-body">
+                <div class="pdf-loading" id="pdf-loading">
+                    <div class="pdf-loading-spinner"></div>
+                    <div class="pdf-loading-text">Loading PDF...</div>
+                </div>
+                <iframe class="pdf-iframe" id="pdf-iframe" src=""></iframe>
+                <div class="pdf-fallback" id="pdf-fallback">
+                    <i class="pdf-fallback-icon fas fa-file-pdf"></i>
+                    <div class="pdf-fallback-title">PDF Not Displaying?</div>
+                    <div class="pdf-fallback-message">
+                        The PDF couldn't be displayed directly. This might be due to browser restrictions or the PDF server settings.
+                    </div>
+                    <button class="pdf-fallback-btn" id="pdf-fallback-btn">
+                        <i class="fas fa-external-link-alt"></i>
+                        Open PDF in New Tab
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data/cache2.js"></script>
+    <script>
+// Access verification script
+(function() {
+    // Check if all required access fields exist and have values
+    const requiredFields = [
+        'accessGranted',
+        'accessKey', 
+        'accessTime',
+        'userGmail',
+        'userName',
+        'verificationCode'
+    ];
+    
+    let hasValidAccess = true;
+    
+    // Check each required field
+    for (const field of requiredFields) {
+        const value = localStorage.getItem(field);
+        
+        // If any field is missing, empty, or invalid
+        if (!value || value.trim() === '' || value === 'null' || value === 'undefined') {
+            hasValidAccess = false;
+            break;
+        }
+    }
+    
+    // Special check for accessGranted must be exactly "true"
+    if (localStorage.getItem('accessGranted') !== 'true') {
+        hasValidAccess = false;
+    }
+    
+    // Redirect to login if access is invalid
+    if (!hasValidAccess) {
+        window.location.href = 'log.html';
+    }
+})();
+
+// DOM Elements
+const subjectsList = document.getElementById('subjects-list');
+const pdfModal = document.getElementById('pdf-modal');
+const pdfIframe = document.getElementById('pdf-iframe');
+const pdfModalTitle = document.getElementById('pdf-modal-title');
+const pdfDownloadBtn = document.getElementById('pdf-download-btn');
+const pdfCloseBtn = document.getElementById('pdf-close-btn');
+const pdfFullscreenBtn = document.getElementById('pdf-fullscreen-btn');
+const pdfLoading = document.getElementById('pdf-loading');
+const pdfFallback = document.getElementById('pdf-fallback');
+const pdfFallbackBtn = document.getElementById('pdf-fallback-btn');
+
+// Search functionality variables
+let searchTimeout = null;
+let currentSearchResults = [];
+
+// Current PDF state
+let currentPdfUrl = '';
+let currentPdfTitle = '';
+
+// Fullscreen functionality variables
+let isFullscreen = false;
+let headerTimeout = null;
+
+function initializePage() {
+    // Populate subjects list
+    populateSubjects();
+    
+    // Set up modal event listeners
+    setupModalEvents();
+    
+    // Initialize search functionality
+    initializeSearch();
+    
+    // Setup fullscreen escape key handler
+    document.addEventListener('keydown', handleFullscreenEscape);
+}
+
+// Fullscreen functionality
+function toggleFullscreen() {
+    if (!isFullscreen) {
+        // Enter fullscreen - hide everything except PDF and close button
+        pdfModal.classList.add('fullscreen');
+        pdfFullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+        pdfFullscreenBtn.title = 'Exit Fullscreen';
+        isFullscreen = true;
+        
+        // Auto-hide controls after 3 seconds
+        headerTimeout = setTimeout(() => {
+            if (isFullscreen) {
+                pdfModal.querySelector('.pdf-modal-header').style.opacity = '0';
+                pdfModal.querySelector('.pdf-modal-header').style.pointerEvents = 'none';
+            }
+        }, 3000);
+    } else {
+        // Exit fullscreen - restore normal view
+        pdfModal.classList.remove('fullscreen');
+        pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+        pdfFullscreenBtn.title = 'Enter Fullscreen';
+        pdfModal.querySelector('.pdf-modal-header').style.opacity = '1';
+        pdfModal.querySelector('.pdf-modal-header').style.pointerEvents = 'auto';
+        isFullscreen = false;
+        
+        // Clear header timeout
+        if (headerTimeout) {
+            clearTimeout(headerTimeout);
+            headerTimeout = null;
+        }
+    }
+}
+
+// Show header on mouse move in fullscreen
+function setupFullscreenHeaderBehavior() {
+    const pdfModal = document.getElementById('pdf-modal');
+    const header = pdfModal.querySelector('.pdf-modal-header');
+    
+    pdfModal.addEventListener('mousemove', (e) => {
+        if (isFullscreen) {
+            // Show header
+            header.style.opacity = '1';
+            header.style.pointerEvents = 'auto';
+            header.style.transition = 'opacity 0.3s ease';
+            
+            // Clear previous timeout
+            if (headerTimeout) {
+                clearTimeout(headerTimeout);
+            }
+            
+            // Hide header after 3 seconds of inactivity
+            headerTimeout = setTimeout(() => {
+                if (isFullscreen) {
+                    header.style.opacity = '0';
+                    header.style.pointerEvents = 'none';
+                }
+            }, 3000);
+        }
+    });
+    
+    // Keep header visible when hovering over controls
+    header.addEventListener('mouseenter', () => {
+        if (isFullscreen) {
+            header.style.opacity = '1';
+            header.style.pointerEvents = 'auto';
+            if (headerTimeout) {
+                clearTimeout(headerTimeout);
+            }
+        }
+    });
+    
+    header.addEventListener('mouseleave', () => {
+        if (isFullscreen) {
+            headerTimeout = setTimeout(() => {
+                if (isFullscreen) {
+                    header.style.opacity = '0';
+                    header.style.pointerEvents = 'none';
+                }
+            }, 1000);
+        }
+    });
+    
+    // Also show header when PDF is clicked/tapped
+    pdfIframe.addEventListener('load', () => {
+        try {
+            const iframeDoc = pdfIframe.contentDocument || pdfIframe.contentWindow.document;
+            iframeDoc.addEventListener('click', () => {
+                if (isFullscreen) {
+                    header.style.opacity = '1';
+                    header.style.pointerEvents = 'auto';
+                    if (headerTimeout) {
+                        clearTimeout(headerTimeout);
+                    }
+                    headerTimeout = setTimeout(() => {
+                        if (isFullscreen) {
+                            header.style.opacity = '0';
+                            header.style.pointerEvents = 'none';
+                        }
+                    }, 3000);
+                }
+            });
+        } catch (e) {
+            // CORS error, can't access iframe document
+        }
+    });
+}
+
+// Handle Escape key for fullscreen
+function handleFullscreenEscape(e) {
+    if (e.key === 'Escape' && isFullscreen) {
+        toggleFullscreen();
+    }
+}
+
+// Initialize search functionality
+function initializeSearch() {
+    const searchBox = document.getElementById('search-box');
+    const searchResults = document.getElementById('search-results');
+    const clearSearchBtn = document.getElementById('clear-search');
+
+    // Search input event with debouncing
+    searchBox.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.trim();
+        
+        // Show/hide clear button based on search term
+        if (searchTerm !== '') {
+            clearSearchBtn.style.display = 'flex';
+        } else {
+            clearSearchBtn.style.display = 'none';
+        }
+        
+        // Clear previous timeout
+        if (searchTimeout) {
+            clearTimeout(searchTimeout);
+        }
+        
+        // Set timeout for search execution
+        searchTimeout = setTimeout(() => {
+            performSearch(searchTerm);
+        }, 300);
+    });
+    
+    // Clear search button event
+    clearSearchBtn.addEventListener('click', function() {
+        clearSearch();
+    });
+    
+    // Handle search box focus - show results if there's text
+    searchBox.addEventListener('focus', function() {
+        const searchTerm = this.value.trim();
+        if (searchTerm !== '' && currentSearchResults.length > 0) {
+            showSearchResults();
+        }
+    });
+    
+    // Handle clicks outside search to close results
+    document.addEventListener('click', function(e) {
+        if (!searchBox.contains(e.target) && !searchResults.contains(e.target) && !clearSearchBtn.contains(e.target)) {
+            hideSearchResults();
+        }
+    });
+    
+    // Handle escape key to clear search
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (searchBox.value.trim() !== '') {
+                clearSearch();
+            } else {
+                hideSearchResults();
+                searchBox.blur();
+            }
+        }
+    });
+}
+
+// Clear search function
+function clearSearch() {
+    const searchBox = document.getElementById('search-box');
+    const clearSearchBtn = document.getElementById('clear-search');
+    const searchResults = document.getElementById('search-results');
+    
+    // Clear search box
+    searchBox.value = '';
+    
+    // Hide clear button
+    clearSearchBtn.style.display = 'none';
+    
+    // Clear search results
+    hideSearchResults();
+    
+    // Clear search data
+    currentSearchResults = [];
+    
+    // Focus back on search box
+    searchBox.focus();
+    
+    // Add subtle animation to clear button
+    clearSearchBtn.style.transform = 'scale(0.8)';
+    setTimeout(() => {
+        clearSearchBtn.style.transform = 'scale(1)';
+    }, 150);
+}
+
+// Advanced search function with fuzzy matching
+function performSearch(searchTerm) {
+    const searchResults = document.getElementById('search-results');
+    const subjectsList = document.getElementById('subjects-list');
+    
+    if (!searchTerm) {
+        hideSearchResults();
+        subjectsList.style.display = 'flex';
+        return;
+    }
+    
+    const normalizedSearch = searchTerm.toLowerCase().trim();
+    const results = [];
+    
+    // Search through all PDFs with advanced matching
+    subjectsData.forEach(subject => {
+        subject.pdfs.forEach((pdf, index) => {
+            const pdfTitle = pdf.title.toLowerCase();
+            const subjectName = subject.name.toLowerCase();
+            
+            // Advanced matching criteria
+            const matches = calculateMatchScore(pdfTitle, subjectName, normalizedSearch);
+            
+            if (matches.score > 0) {
+                results.push({
+                    subject: subject.name,
+                    subjectColor: subject.color,
+                    subjectIcon: subject.icon,
+                    pdf: pdf,
+                    pdfIndex: index,
+                    matchScore: matches.score,
+                    matchType: matches.type
+                });
+            }
+        });
+    });
+    
+    // Sort by match score (highest first)
+    results.sort((a, b) => b.matchScore - a.matchScore);
+    
+    currentSearchResults = results;
+    displaySearchResults(results);
+}
+
+// Advanced matching algorithm
+function calculateMatchScore(pdfTitle, subjectName, searchTerm) {
+    let score = 0;
+    let type = 'partial';
+    
+    // Exact match (highest priority)
+    if (pdfTitle === searchTerm || subjectName === searchTerm) {
+        score = 100;
+        type = 'exact';
+    }
+    // Starts with search term
+    else if (pdfTitle.startsWith(searchTerm) || subjectName.startsWith(searchTerm)) {
+        score = 90;
+        type = 'starts-with';
+    }
+    // Contains search term as whole word
+    else if (pdfTitle.includes(` ${searchTerm} `) || pdfTitle.endsWith(` ${searchTerm}`)) {
+        score = 80;
+        type = 'whole-word';
+    }
+    // Contains search term anywhere
+    else if (pdfTitle.includes(searchTerm) || subjectName.includes(searchTerm)) {
+        score = 70;
+        type = 'contains';
+    }
+    // Fuzzy matching for Bangla/English variations
+    else {
+        const fuzzyScore = calculateFuzzyScore(pdfTitle + ' ' + subjectName, searchTerm);
+        if (fuzzyScore > 0.6) {
+            score = Math.floor(fuzzyScore * 60);
+            type = 'fuzzy';
+        }
+    }
+    
+    // Bonus for subject name matches
+    if (subjectName.includes(searchTerm)) {
+        score += 10;
+    }
+    
+    return { score, type };
+}
+
+// Fuzzy matching algorithm
+function calculateFuzzyScore(text, searchTerm) {
+    if (searchTerm.length === 0) return 1;
+    if (searchTerm.length > text.length) return 0;
+    
+    let runningScore = 0;
+    let searchIndex = 0;
+    
+    for (let i = 0; i < text.length; i++) {
+        if (text[i] === searchTerm[searchIndex]) {
+            runningScore += 1;
+            searchIndex++;
+            
+            if (searchIndex === searchTerm.length) break;
+        }
+    }
+    
+    return runningScore / searchTerm.length;
+}
+
+// Display search results in the subjects list area
+function displaySearchResults(results) {
+    const searchResults = document.getElementById('search-results');
+    const subjectsList = document.getElementById('subjects-list');
+    
+    // Hide the normal subjects list
+    subjectsList.style.display = 'none';
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-search"></i>
+                <div>No PDFs found matching your search</div>
+            </div>
+        `;
+    } else {
+        searchResults.innerHTML = results.map((result, index) => {
+            return `
+                <div class="search-result-item" 
+                     data-subject="${result.subject}" 
+                     data-pdf-index="${result.pdfIndex}"
+                     data-result-index="${index}">
+                    <div class="search-result-header">
+                        <i class="search-result-icon ${result.subjectIcon}" style="color: ${result.subjectColor};"></i>
+                        <div class="search-result-content">
+                            <div class="search-result-title">${result.pdf.title}</div>
+                            <div class="search-result-subject">${result.subject}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        // Add click events to search results
+        searchResults.querySelectorAll('.search-result-item').forEach(item => {
+            item.addEventListener('click', handleSearchResultClick);
+        });
+    }
+    
+    showSearchResults();
+    
+    // Add animation to results
+    searchResults.style.animation = 'fadeIn 0.4s ease';
+}
+
+// Show search results
+function showSearchResults() {
+    const searchResults = document.getElementById('search-results');
+    searchResults.classList.add('active');
+}
+
+// Hide search results and show normal subjects list
+function hideSearchResults() {
+    const searchResults = document.getElementById('search-results');
+    const subjectsList = document.getElementById('subjects-list');
+    const searchBox = document.getElementById('search-box');
+    const clearSearchBtn = document.getElementById('clear-search');
+    
+    searchResults.classList.remove('active');
+    subjectsList.style.display = 'flex';
+    
+    // Clear search box and hide clear button if we're hiding results
+    if (!searchBox.matches(':focus')) {
+        searchBox.value = '';
+        clearSearchBtn.style.display = 'none';
+        currentSearchResults = [];
+    }
+}
+
+// Handle search result click
+function handleSearchResultClick(e) {
+    const resultItem = e.currentTarget;
+    const subject = resultItem.dataset.subject;
+    const pdfIndex = parseInt(resultItem.dataset.pdfIndex);
+    const resultIndex = parseInt(resultItem.dataset.resultIndex);
+    
+    // Find the PDF data
+    const pdfData = currentSearchResults[resultIndex].pdf;
+    
+    // Handle the PDF click
+    handlePdfClick(pdfData.url, pdfData.title);
+    
+    // Update active states
+    setActiveSearchResult(resultItem);
+    
+    // Add selection animation
+    resultItem.style.animation = 'scaleIn 0.3s ease';
+    setTimeout(() => {
+        resultItem.style.animation = '';
+    }, 300);
+}
+
+// Set active search result
+function setActiveSearchResult(selectedItem) {
+    // Remove active class from all search results
+    document.querySelectorAll('.search-result-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Add active class to selected search result
+    selectedItem.classList.add('active');
+}
+
+// Populate subjects list
+function populateSubjects() {
+    subjectsData.forEach(subject => {
+        const subjectItem = document.createElement('div');
+        subjectItem.className = 'subject-item';
+        
+        const subjectHeader = document.createElement('div');
+        subjectHeader.className = 'subject-header';
+        subjectHeader.setAttribute('data-subject-name', subject.name);
+
+        subjectHeader.innerHTML = `
+            <i class="subject-icon ${subject.icon}" style="color: ${subject.color};"></i>
+            <span class="subject-title">${subject.name}</span>
+            <i class="dropdown-icon fas fa-chevron-down"></i>
+        `;
+        
+        const pdfsList = document.createElement('div');
+        pdfsList.className = 'pdfs-list';
+        
+        subject.pdfs.forEach((pdf, index) => {
+            const pdfItem = document.createElement('a');
+            pdfItem.className = 'pdf-item';
+            pdfItem.href = pdf.url;
+            pdfItem.dataset.subject = subject.name;
+            pdfItem.dataset.pdfIndex = index;
+
+            pdfItem.innerHTML = `
+                <i class="pdf-icon fas fa-file-pdf" style="color: ${subject.color};"></i>
+                <span class="pdf-title">${pdf.title}</span>
+            `;
+            
+            // Add click event listener for PDF handling
+            pdfItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                handlePdfClick(pdf.url, pdf.title);
+            });
+            
+            pdfsList.appendChild(pdfItem);
+        });
+        
+        // Toggle pdfs list on subject header click
+        subjectHeader.addEventListener('click', () => {
+            const isOpen = pdfsList.classList.contains('open');
+            
+            // Close all other open subjects immediately
+            document.querySelectorAll('.pdfs-list.open').forEach(list => {
+                if (list !== pdfsList) {
+                    list.classList.remove('open');
+                    const header = list.previousElementSibling;
+                    header.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-down';
+                }
+            });
+            
+            // Toggle current subject
+            if (isOpen) {
+                pdfsList.classList.remove('open');
+                subjectHeader.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-down';
+            } else {
+                pdfsList.classList.add('open');
+                subjectHeader.querySelector('.dropdown-icon').className = 'dropdown-icon fas fa-chevron-up';
+            }
+        });
+        
+        subjectItem.appendChild(subjectHeader);
+        subjectItem.appendChild(pdfsList);
+        subjectsList.appendChild(subjectItem);
+    });
+}
+
+// Handle PDF click
+function handlePdfClick(url, title) {
+    // Check if URL is a Google Drive link
+    const googleDriveRegex = /^https:\/\/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)\/view/;
+    const match = url.match(googleDriveRegex);
+    
+    if (match) {
+        // It's a Google Drive link - show embedded
+        const fileId = match[1];
+        const embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+        showPdfModal(embedUrl, title, url);
+    } else {
+        // Not a Google Drive link - open in new tab
+        window.open(url, '_blank');
+    }
+}
+
+// Show PDF modal with smooth animation
+function showPdfModal(url, title, downloadUrl = null) {
+    currentPdfUrl = url;
+    currentPdfTitle = title;
+    
+    // Set modal content
+    pdfModalTitle.textContent = title;
+    
+    // Set up download button
+    pdfDownloadBtn.onclick = () => {
+        // For Google Drive links, create proper download URL
+        if (url.includes('drive.google.com')) {
+            const fileId = url.match(/\/d\/([^\/]+)/)[1];
+            const downloadLink = `https://drive.google.com/uc?export=download&id=${fileId}`;
+            
+            // Create hidden download link
+            const link = document.createElement('a');
+            link.href = downloadLink;
+            link.download = title + '.pdf';
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        } else {
+            // For direct PDF links
+            const downloadLink = downloadUrl || url;
+            const link = document.createElement('a');
+            link.href = downloadLink;
+            link.download = title + '.pdf';
+            link.target = '_blank';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    };
+    
+    // Set up fallback button
+    pdfFallbackBtn.onclick = () => {
+        window.open(url, '_blank');
+    };
+    
+    // Show loading state first
+    pdfLoading.classList.add('active');
+    pdfFallback.classList.remove('active');
+    
+    // Show modal with animation
+    pdfModal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    
+    // Trigger animation after a small delay
+    setTimeout(() => {
+        pdfModal.classList.add('active');
+    }, 10);
+    
+    // Load the PDF
+    loadPdf(url);
+}
+
+// FIXED: Load PDF with better fallback handling
+function loadPdf(url) {
+    // Method 1: Direct iframe embedding
+    pdfIframe.src = url;
+    
+    // Reset fallback state
+    pdfFallback.classList.remove('active');
+    
+    // For Google Drive links, use simpler loading logic
+    if (url.includes('drive.google.com')) {
+        // Google Drive preview usually works fine
+        const iframeLoadHandler = () => {
+            pdfLoading.classList.remove('active');
+            console.log("Google Drive PDF loaded successfully");
+        };
+        
+        pdfIframe.onload = iframeLoadHandler;
+        
+        // Just remove loading after timeout for Google Drive
+        setTimeout(() => {
+            pdfLoading.classList.remove('active');
+        }, 3000);
+        
+    } else {
+        // For non-Google Drive PDFs, use more careful checking
+        const iframeLoadHandler = () => {
+            pdfLoading.classList.remove('active');
+            
+            // Check if PDF is actually displaying after a short delay
+            setTimeout(() => {
+                try {
+                    const iframeDoc = pdfIframe.contentDocument || pdfIframe.contentWindow.document;
+                    
+                    if (iframeDoc && iframeDoc.body && iframeDoc.body.innerHTML) {
+                        console.log("PDF loaded successfully");
+                    } else {
+                        showPdfFallback();
+                    }
+                } catch (e) {
+                    // CORS error - don't show fallback immediately
+                    console.log("CORS restriction (normal for external PDFs)");
+                    // PDF might still be loading, so don't show fallback yet
+                }
+            }, 1000);
+        };
+        
+        pdfIframe.onload = iframeLoadHandler;
+        
+        // Set timeout for non-Google Drive PDFs
+        setTimeout(() => {
+            if (pdfLoading.classList.contains('active')) {
+                pdfLoading.classList.remove('active');
+                showPdfFallback();
+            }
+        }, 5000);
+    }
+    
+    // Error handler for both cases
+    pdfIframe.onerror = () => {
+        pdfLoading.classList.remove('active');
+        // Only show fallback for actual errors, not for Google Drive
+        if (!url.includes('drive.google.com')) {
+            showPdfFallback();
+        }
+    };
+}
+
+// FIXED: Show PDF fallback options only when truly needed
+function showPdfFallback() {
+    pdfLoading.classList.remove('active');
+    
+    // Only show fallback for non-Google Drive links
+    if (!currentPdfUrl.includes('drive.google.com')) {
+        pdfFallback.classList.add('active');
+    }
+    // For Google Drive links, the PDF usually loads fine despite CORS errors
+}
+
+// Close PDF modal with smooth animation
+function closePdfModal() {
+    // Start closing animation
+    pdfModal.classList.remove('active');
+    
+    // Wait for animation to complete before hiding
+    setTimeout(() => {
+        pdfModal.style.display = 'none';
+        pdfIframe.src = '';
+        pdfLoading.classList.remove('active');
+        pdfFallback.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        // Reset fullscreen state when closing modal completely
+        if (isFullscreen) {
+            pdfModal.classList.remove('fullscreen');
+            pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
+            pdfFullscreenBtn.title = 'Enter Fullscreen';
+            isFullscreen = false;
+        }
+        
+        // Clear header timeout
+        if (headerTimeout) {
+            clearTimeout(headerTimeout);
+            headerTimeout = null;
+        }
+    }, 300);
+}
+
+// Set up modal event listeners
+function setupModalEvents() {
+    // Close modal when close button is clicked
+    pdfCloseBtn.addEventListener('click', closePdfModal);
+    
+    // Fullscreen button event
+    pdfFullscreenBtn.addEventListener('click', toggleFullscreen);
+    
+    // Close modal when clicking outside the content
+    pdfModal.addEventListener('click', (e) => {
+        if (e.target === pdfModal) {
+            closePdfModal();
+        }
+    });
+    
+    // Close modal with Escape key (but not when in fullscreen)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (isFullscreen) {
+                toggleFullscreen();
+            } else if (pdfModal.classList.contains('active')) {
+                closePdfModal();
+            }
+        }
+    });
+    
+    // Setup fullscreen header behavior
+    setupFullscreenHeaderBehavior();
+}
+
+// Navigate to home page
+function goToHome() {
+    window.location.href = 'index.html';
+}
+
+// Initialize the page when DOM is loaded
+document.addEventListener('DOMContentLoaded', initializePage);
+</script>
+</body>
+</html>
