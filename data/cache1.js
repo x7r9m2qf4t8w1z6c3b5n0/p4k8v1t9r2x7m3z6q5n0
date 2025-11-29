@@ -9,7 +9,7 @@ const subjectsData = [
                             { title: "তাপগতিবিদ্যা (পর্ব ২)", videoId: "iKgoLAZdtZQ" },
                             { title: "চল তড়িৎ (পর্ব ১)", videoId: "7xb15PjCKuw" },
                             { title: "চল তড়িৎ (পর্ব ২)", videoId: "NkjXvyaAh6s" },
-                            { title: "চল তড়িৎ(পর্ব ৩.১)", videoId: "Y6NMHXLkqsE" },
+                            { title: "চল তড়িৎ (পর্ব ৩.১)", videoId: "Y6NMHXLkqsE" },
                             { title: "চল তড়িৎ (পর্ব ৩.২)", videoId: "gJ83lRK2wrg" },
                 ]
             },
