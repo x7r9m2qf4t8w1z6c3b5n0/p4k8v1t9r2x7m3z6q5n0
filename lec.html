@@ -1762,7 +1762,7 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 60px); /* Subtract space for controls */
     z-index: 15;
     display: flex;
     justify-content: space-between;
@@ -1771,7 +1771,13 @@ body::before {
 
 .seek-area {
     flex: 1;
-    height: 100%;
+    height: 60%;
+    pointer-events: auto;
+}
+
+
+/* Only enable pointer events on the areas themselves, not the entire overlay */
+.seek-overlay.active .seek-area {
     pointer-events: auto;
 }
 
@@ -1795,6 +1801,7 @@ body::before {
     opacity: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 16;
+    pointer-events: none; /* Indicators should never block clicks */
 }
 
 .seek-indicator.left {
@@ -2158,25 +2165,65 @@ function initializeDoubleTapSeek() {
 
     // Double-tap detection for left area (rewind)
     seekLeft.addEventListener('touchstart', function(e) {
+        // Check if we're clicking on player controls
+        if (e.target.closest('.plyr__controls')) {
+            return; // Let the click go through to player controls
+        }
         handleDoubleTap(e, 'left');
     });
 
     // Double-tap detection for right area (fast forward)
     seekRight.addEventListener('touchstart', function(e) {
+        // Check if we're clicking on player controls
+        if (e.target.closest('.plyr__controls')) {
+            return; // Let the click go through to player controls
+        }
         handleDoubleTap(e, 'right');
     });
+
+    // Make seek areas less obstructive - only capture double taps, not single clicks
+    seekLeft.style.pointerEvents = 'auto';
+    seekRight.style.pointerEvents = 'auto';
+    
+    // Allow clicks to pass through to player controls for single taps
+    const allowClickThrough = (e) => {
+        if (e.target.closest('.plyr__controls')) {
+            e.stopPropagation();
+        }
+    };
+    
+    seekLeft.addEventListener('click', allowClickThrough);
+    seekRight.addEventListener('click', allowClickThrough);
 
     // Hide seek overlay when controls are shown
     if (player) {
         player.on('controlsshown', () => {
             if (seekOverlay) {
                 seekOverlay.style.opacity = '0';
+                seekOverlay.style.pointerEvents = 'none';
             }
         });
 
         player.on('controlshidden', () => {
             if (seekOverlay && !player.paused) {
                 seekOverlay.style.opacity = '1';
+                seekOverlay.style.pointerEvents = 'auto';
+            }
+        });
+        
+        // Show seek overlay initially when video is playing
+        player.on('playing', () => {
+            if (seekOverlay && isTouchDevice) {
+                seekOverlay.style.opacity = '1';
+                seekOverlay.style.pointerEvents = 'auto';
+            }
+        });
+        
+        // Hide seek overlay when paused
+        player.on('pause', () => {
+            if (seekOverlay) {
+                seekOverlay.style.opacity = '0';
+                seekOverlay.style.pointerEvents = 'none';
             }
         });
     }
@@ -2306,14 +2353,17 @@ function showTouchControls() {
     if (!isTouchDevice || !player) return;
     
     const controls = document.querySelector('.plyr--touch .plyr__controls');
+    const seekOverlay = document.getElementById('seek-overlay');
+    
     if (controls) {
         controls.classList.remove('hidden');
         isControlsVisible = true;
         
         // Hide seek overlay when controls are shown
-        const seekOverlay = document.getElementById('seek-overlay');
         if (seekOverlay) {
             seekOverlay.style.opacity = '0';
+            seekOverlay.style.pointerEvents = 'none';
+            seekOverlay.classList.remove('active');
         }
     }
     
@@ -2334,16 +2384,17 @@ function hideTouchControls() {
     if (!isTouchDevice || !player) return;
     
     const controls = document.querySelector('.plyr--touch .plyr__controls');
+    const seekOverlay = document.getElementById('seek-overlay');
+    
     if (controls && isControlsVisible) {
         controls.classList.add('hidden');
         isControlsVisible = false;
         
         // Show seek overlay when controls are hidden and video is playing
-        if (player.playing) {
-            const seekOverlay = document.getElementById('seek-overlay');
-            if (seekOverlay) {
-                seekOverlay.style.opacity = '1';
-            }
+        if (player.playing && seekOverlay) {
+            seekOverlay.style.opacity = '1';
+            seekOverlay.style.pointerEvents = 'auto';
+            seekOverlay.classList.add('active');
         }
     }
 }
