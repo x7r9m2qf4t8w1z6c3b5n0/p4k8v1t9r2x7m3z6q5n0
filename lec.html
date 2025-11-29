@@ -197,15 +197,18 @@ body::before {
     display: flex;
     align-items: center;
     margin-top: 20px;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    border-left: 4px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     animation: slideIn 0.5s ease;
     font-size: 18px;
     font-weight: 600;
-    text-align: left;
-    justify-content: flex-start;
+    flex-wrap: nowrap;
+    gap: 20px; /* Increased gap */
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
 }
 
 /* Subjects Section */
@@ -220,9 +223,26 @@ body::before {
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    height: 500px;
+    /* Remove height: 560px and add max-height for desktop */
+    max-height: 560px; /* For desktop */
     display: flex;
     flex-direction: column;
+}
+
+/* Add this media query for mobile */
+@media (max-width: 992px) {
+    .subjects-section {
+        max-height: 65vh; /* This will make it almost reach the screen end but not exactly */
+        height: auto; /* Allow it to grow naturally */
+        min-height: 400px; /* Minimum height so it doesn't get too small */
+    }
+}
+
+/* For very small mobile screens */
+@media (max-width: 480px) {
+    .subjects-section {
+        max-height: 60vh; /* Slightly smaller on very small screens */
+    }
 }
 
 .subjects-section::before {
@@ -344,7 +364,6 @@ body::before {
 
 .lecture-item.active {
     background: rgba(76, 175, 80, 0.2);
-    border-left: 4px solid #4CAF50;
 }
 
 .lecture-icon {
@@ -468,9 +487,7 @@ body::before {
         height: auto;
     }
     
-    .subjects-section {
-        max-height: 500px;
-    }
+    /* Remove the max-height: 500px line completely from here */
 }
 
 @media (max-width: 768px) {
@@ -488,6 +505,8 @@ body::before {
     
     .video-info {
         font-size: 16px;
+        padding: 16px; /* Slightly reduce padding */
+        flex-wrap: nowrap; /* Ensure it stays in one line */
     }
     
     .section-title {
@@ -500,6 +519,18 @@ body::before {
     
     .lecture-title {
         font-size: 15px;
+    }
+    
+    .completion-btn {
+        padding: 10px 18px; /* Slightly smaller on mobile */
+        font-size: 13px;
+    }
+    
+    /* Add subjects-section styling for tablet */
+    .subjects-section {
+        max-height: 65vh;
+        height: auto;
+        min-height: 450px;
     }
 }
 
@@ -526,7 +557,7 @@ body::before {
     }
     
     .subject-header {
-        padding: 12px 15px;
+        padding: 18px 20px;
     }
     
     .subject-title {
@@ -534,7 +565,7 @@ body::before {
     }
     
     .lecture-item {
-        padding: 10px 15px;
+        padding: 15px 20px;
     }
     
     .lecture-title {
@@ -545,8 +576,60 @@ body::before {
         font-size: 9px;
         padding: 1px 4px;
     }
+    
+    .video-info {
+        padding: 14px;
+        font-size: 15px;
+        gap: 12px; /* Smaller gap on very small screens */
+    }
+    
+    .completion-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+        flex-shrink: 0; /* Ensure button doesn't shrink */
+    }
+    
+    .video-title {
+        font-size: 20px; /* Even smaller font on very small screens */
+        line-height: 1.2; /* Even tighter line spacing */
+    }
+    
+    .completion-btn i {
+        font-size: 14px; /* Smaller icon */
+    }
+    
+    /* Add subjects-section styling for mobile */
+    .subjects-section {
+        max-height: 60vh;
+        height: auto;
+        min-height: 400px;
+    }
 }
-
+@media (max-width: 360px) {
+    .video-info {
+        padding: 12px;
+        gap: 10px; /* Minimal gap on compact screens */
+    }
+    
+    .video-title {
+        font-size: 20px; /* Smallest font size */
+    }
+    
+    .completion-btn {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .completion-btn i {
+        font-size: 12px;
+        margin-right: 0; /* Remove gap and use padding instead */
+    }
+    
+    .completion-btn span {
+        display: none; /* Hide text on very small screens, show only icon */
+    }
+}
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 8px;
@@ -941,8 +1024,7 @@ body::before {
 /* Completion Status Styles - PROFESSIONAL */
 .video-info {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start; /* Changed from center to flex-start */
     margin-top: 20px;
     padding: 20px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
@@ -951,8 +1033,8 @@ body::before {
     animation: slideIn 0.5s ease;
     font-size: 18px;
     font-weight: 600;
-    flex-wrap: wrap;
-    gap: 15px;
+    flex-wrap: nowrap;
+    gap: 20px;
     backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
@@ -965,29 +1047,35 @@ body::before {
     left: 0;
     width: 4px;
     height: 100%;
-    background: linear-gradient(to bottom, #4CAF50, #2196F3);
     border-radius: 2px;
 }
 
 .video-title {
     flex: 1;
-    min-width: 200px;
+    min-width: 0;
     color: #ffffff;
     font-weight: 600;
+    font-size: 25px;
     letter-spacing: 0.3px;
+    white-space: normal; /* Changed from nowrap to normal */
+    overflow: visible; /* Changed from hidden to visible */
+    text-overflow: unset; /* Remove ellipsis */
+    word-wrap: break-word; /* Allow text to wrap */
+    line-height: 1.4; /* Better line spacing */
 }
 
 .completion-btn {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
     border: 1px solid rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.9);
-    padding: 12px 24px;
-    border-radius: 12px;
+    width: 50px; /* Fixed width for circle */
+    height: 50px; /* Fixed height for circle */
+    border-radius: 50%; /* Makes it circular */
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: center; /* Center the icon */
     font-weight: 600;
     backdrop-filter: blur(15px);
     white-space: nowrap;
@@ -995,6 +1083,13 @@ body::before {
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
+    flex-shrink: 0;
+    padding: 0; /* Remove padding since we're using fixed dimensions */
+}
+
+/* Hide text, show only icon */
+.completion-btn span {
+    display: none;
 }
 
 .completion-btn::before {
@@ -1031,8 +1126,8 @@ body::before {
 }
 
 .completion-btn.completed:hover {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.35), rgba(76, 175, 80, 0.2));
-    border-color: rgba(76, 175, 80, 0.6);
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.35), rgba(33, 150, 243, 0.2));
+    border-color: rgba(33, 150, 243, 0.6);
 }
 
 .completion-btn i {
@@ -1045,13 +1140,12 @@ body::before {
 }
 
 .completion-btn.completed i {
-    color: #4CAF50;
+    color: #2196F3;
 }
 
 /* Lecture completion status - ENHANCED */
 .lecture-item.completed {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.15), rgba(76, 175, 80, 0.08)) !important;
-    border-left: 4px solid #4CAF50;
+    border-left: none; /* Remove the left border */
     position: relative;
 }
 
@@ -1062,7 +1156,6 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), transparent);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -1072,7 +1165,7 @@ body::before {
 }
 
 .completion-status {
-    color: #4CAF50;
+    color: #2196F3;
     font-size: 14px;
     margin-left: 8px;
     opacity: 0;
@@ -1138,7 +1231,6 @@ body::before {
     left: 0;
     width: 100%;
     height: 2px;
-    background: linear-gradient(to right, #4CAF50, #2196F3);
 }
 
 .confirmation-modal.active .modal-content {
@@ -1197,16 +1289,16 @@ body::before {
 }
 
 .modal-btn.proceed {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.25), rgba(76, 175, 80, 0.15));
-    color: #4CAF50;
-    border: 1px solid rgba(76, 175, 80, 0.4);
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.25), rgba(33, 150, 243, 0.15));
+    color: #2196F3;
+    border: 1px solid rgba(33, 150, 243, 0.4);
 }
 
 .modal-btn.proceed:hover {
-    background: linear-gradient(135deg, rgba(76, 175, 80, 0.35), rgba(76, 175, 80, 0.2));
-    border-color: rgba(76, 175, 80, 0.6);
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.35), rgba(33, 150, 243, 0.2));
+    border-color: rgba(33, 150, 243, 0.6);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
 }
 
 .modal-btn.cancel {
@@ -1225,16 +1317,23 @@ body::before {
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
     .video-info {
-        flex-direction: column;
-        align-items: flex-start;
+        flex-direction: row; /* Keep it in a row on mobile */
+        align-items: flex-start; /* Changed from center to flex-start */
         padding: 18px;
+        gap: 15px; /* Slightly smaller gap on mobile */
     }
     
     .completion-btn {
-        align-self: stretch;
-        justify-content: center;
-        margin-top: 12px;
-        padding: 14px 20px;
+        width: 45px;
+        height: 45px;
+        margin-top: 0;
+        align-self: flex-start; /* Align button to top */
+        flex-shrink: 0; /* Prevent button from shrinking */
+    }
+    
+    .video-title {
+        font-size: 25px; /* Slightly smaller font on mobile */
+        line-height: 1.3; /* Tighter line spacing on mobile */
     }
     
     .modal-content {
@@ -1294,13 +1393,368 @@ body::before {
 }
 
 @keyframes buttonPulse {
-    0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
-    70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(33, 150, 243, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0); }
 }
 
 .completion-btn.completed {
-    animation: buttonPulse 1s ease;
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.25), rgba(33, 150, 243, 0.15));
+    border-color: rgba(33, 150, 243, 0.4);
+    color: #2196F3;
+}
+/* Search Bar Styles - PROFESSIONAL */
+.search-container {
+    margin: 20px 0;
+    position: relative;
+    animation: fadeIn 0.6s ease;
+    flex-shrink: 0;
+}
+
+.search-box {
+    width: 100%;
+    padding: 16px 50px 16px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    backdrop-filter: blur(15px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    position: relative;
+}
+
+.search-box:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.search-box::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
+}
+
+.search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.search-box:focus + .search-icon {
+    color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Search Results Styles - Integrated into subjects list */
+.search-results {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.search-results.active {
+    display: flex;
+}
+
+.search-result-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    position: relative;
+}
+
+.search-result-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.search-result-item.active {
+    background: rgba(76, 175, 80, 0.2);
+    border-left: 4px solid #4CAF50;
+}
+
+.search-result-item.completed {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.08)) !important;
+    border-left: none; /* Remove the left border */
+}
+
+.search-result-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.search-result-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    width: 30px;
+    text-align: center;
+}
+
+.search-result-content {
+    flex-grow: 1;
+}
+
+.search-result-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+.search-result-subject {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.completion-status {
+    color: #4CAF50;
+    font-size: 14px;
+    margin-left: 8px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.search-result-item.completed .completion-status {
+    opacity: 1;
+    animation: fadeInScale 0.4s ease;
+}
+
+.no-results {
+    padding: 30px 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.no-results i {
+    font-size: 32px;
+    margin-bottom: 10px;
+    display: block;
+    opacity: 0.7;
+}
+
+/* Search highlight animation */
+@keyframes highlightPulse {
+    0% { background-color: rgba(76, 175, 80, 0.3); }
+    50% { background-color: rgba(76, 175, 80, 0.1); }
+    100% { background-color: transparent; }
+}
+
+.search-highlight {
+    animation: highlightPulse 1s ease;
+}
+
+/* Responsive search */
+@media (max-width: 768px) {
+    .search-container {
+        margin: 15px 0;
+    }
+    
+    .search-box {
+        padding: 14px 45px 14px 16px;
+        font-size: 15px;
+    }
+    
+    .search-icon {
+        right: 16px;
+        font-size: 16px;
+    }
+    
+    .search-result-header {
+        padding: 12px 16px;
+    }
+    
+    .search-result-title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-box {
+        padding: 12px 40px 12px 14px;
+        font-size: 14px;
+    }
+    
+    .search-icon {
+        right: 14px;
+        font-size: 15px;
+    }
+    
+    .search-result-header {
+        padding: 10px 14px;
+    }
+    
+    .search-result-title {
+        font-size: 15px;
+    }
+}
+/* Video Info Header Styles */
+.video-info-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    flex: 1;
+    min-width: 0;
+}
+
+.video-subject-icon {
+    font-size: 28px;
+    width: 35px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.video-info-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.video-subject-name {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .video-subject-icon {
+        font-size: 24px;
+        width: 30px;
+    }
+    
+    .video-subject-name {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-info-header {
+        gap: 12px;
+    }
+    
+    .video-subject-icon {
+        font-size: 22px;
+        width: 28px;
+    }
+    
+    .video-subject-name {
+        font-size: 13px;
+    }
+}
+/* Initially hide subject info when no video is selected */
+#video-subject-icon,
+#video-subject-name {
+    display: none;
+}
+/* Search Controls Container */
+.search-controls {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Clear Search Button */
+.clear-search {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    font-size: 14px;
+}
+
+.clear-search:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.clear-search:active {
+    transform: scale(0.95);
+}
+
+/* Adjust search icon position when clear button is visible */
+.search-controls .search-icon {
+    position: static;
+    transform: none;
+    pointer-events: none;
+}
+
+/* Adjust search box padding to accommodate both icons */
+.search-box {
+    padding-right: 70px !important; /* Increased to fit both clear button and search icon */
+}
+
+/* Mobile responsive adjustments for clear button */
+@media (max-width: 768px) {
+    .search-controls {
+        right: 12px;
+        gap: 6px;
+    }
+    
+    .clear-search {
+        width: 26px;
+        height: 26px;
+        font-size: 13px;
+    }
+    
+    .search-box {
+        padding-right: 60px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-controls {
+        right: 10px;
+        gap: 5px;
+    }
+    
+    .clear-search {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+    
+    .search-box {
+        padding-right: 55px !important;
+    }
 }
 </style>
 </head>
@@ -1345,7 +1799,13 @@ body::before {
     </div>
 </div>
 <div class="video-info">
-    <div class="video-title" id="lecture-name">Select a lecture to begin</div>
+    <div class="video-info-header">
+        <i class="video-subject-icon" id="video-subject-icon"></i>
+        <div class="video-info-content">
+            <div class="video-title" id="lecture-name">Select a lecture to begin</div>
+            <div class="video-subject-name" id="video-subject-name"></div>
+        </div>
+    </div>
     <button class="completion-btn" id="completion-btn" style="display: none;" title="Toggle completion status">
         <i class="far fa-check-circle"></i>
     </button>
@@ -1353,14 +1813,32 @@ body::before {
             </section>
 
             <!-- Subjects Section -->
-            <section class="subjects-section">
-                <h2 class="section-title">Subjects</h2>
-                <div class="subjects-container">
-                    <div class="subjects-list" id="subjects-list">
-                        <!-- Subjects will be populated by JavaScript -->
-                    </div>
-                </div>
-            </section>
+<section class="subjects-section">
+    <h2 class="section-title">Subjects</h2>
+    
+<!-- Search Bar -->
+<div class="search-container">
+    <input type="text" class="search-box" id="search-box" placeholder="Search">
+    <div class="search-controls">
+        <button class="clear-search" id="clear-search" style="display: none;">
+            <i class="fas fa-times"></i>
+        </button>
+        <i class="search-icon fas fa-search"></i>
+    </div>
+</div>
+    
+    <div class="subjects-container">
+        <!-- Search Results (hidden by default) -->
+        <div class="search-results" id="search-results">
+            <!-- Search results will be populated dynamically -->
+        </div>
+        
+        <!-- Normal Subjects List -->
+        <div class="subjects-list" id="subjects-list">
+            <!-- Subjects will be populated by JavaScript -->
+        </div>
+    </div>
+</section>
         </div>
     </div>
 <!-- Confirmation Modal -->
@@ -1457,7 +1935,7 @@ function updateOverlayPosition() {
     }
 }
 
-// DOM Elements - FIXED: Removed pcmbTimerElement
+// DOM Elements
 const subjectsList = document.getElementById('subjects-list');
 const videoFrame = document.getElementById('lecture-video');
 const lectureNameElement = document.getElementById('lecture-name');
@@ -1475,12 +1953,16 @@ let completedLectures = JSON.parse(localStorage.getItem('completedLectures')) ||
 let currentVideoId = null;
 let currentLectureElement = null;
 
-// Mobile touch controls variables - FIXED
+// Mobile touch controls variables
 let touchControlsTimeout;
 let isTouchDevice = false;
 let isControlsVisible = true;
 
-// Function to detect touch device - IMPROVED
+// Search functionality variables
+let searchTimeout = null;
+let currentSearchResults = [];
+
+// Function to detect touch device
 function detectTouchDevice() {
     return (('ontouchstart' in window) || 
             (navigator.maxTouchPoints > 0) || 
@@ -1488,7 +1970,7 @@ function detectTouchDevice() {
             (window.DocumentTouch && document instanceof DocumentTouch));
 }
 
-// Function to show controls - FIXED
+// Function to show controls
 function showTouchControls() {
     if (!isTouchDevice || !player) return;
     
@@ -1505,13 +1987,13 @@ function showTouchControls() {
     
     // Set timeout to hide controls after 3 seconds of inactivity
     touchControlsTimeout = setTimeout(() => {
-        if (!player.paused) { // Only hide if video is playing
+        if (!player.paused) {
             hideTouchControls();
         }
     }, 3000);
 }
 
-// Function to hide controls - FIXED
+// Function to hide controls
 function hideTouchControls() {
     if (!isTouchDevice || !player) return;
     
@@ -1522,7 +2004,7 @@ function hideTouchControls() {
     }
 }
 
-// Function to toggle controls - FIXED
+// Function to toggle controls
 function toggleTouchControls() {
     if (!isTouchDevice || !player) return;
     
@@ -1561,7 +2043,7 @@ function initializeTouchControls() {
             document.querySelector('.video-container').appendChild(touchOverlay);
         }
         
-        // Add event listeners for touch overlay - FIXED
+        // Add event listeners for touch overlay
         touchOverlay.addEventListener('touchstart', (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -1572,7 +2054,6 @@ function initializeTouchControls() {
         const videoContainer = document.querySelector('.video-container');
         if (videoContainer) {
             videoContainer.addEventListener('touchstart', (e) => {
-                // Only handle touches on the video area, not controls
                 if (!e.target.closest('.plyr__controls')) {
                     resetControlsTimeout();
                 }
@@ -1591,7 +2072,7 @@ function initializeTouchControls() {
     }
 }
 
-// Initialize the page - FIXED: Removed timer initialization
+// Initialize the page
 function initializePage() {
     // Initialize new lecture tracking FIRST
     initializeNewLectureTracking();
@@ -1601,6 +2082,9 @@ function initializePage() {
     
     // Initialize completion status
     initializeCompletionStatus();
+    
+    // Initialize search functionality
+    initializeSearch();
     
     // Setup overlay protection
     setupOverlayProtection();
@@ -1613,6 +2097,352 @@ function initializePage() {
     
     // Initialize completion button events
     initializeCompletionEvents();
+}
+
+// Initialize search functionality
+function initializeSearch() {
+    const searchBox = document.getElementById('search-box');
+    const searchResults = document.getElementById('search-results');
+    const clearSearchBtn = document.getElementById('clear-search');
+
+    // Search input event with debouncing
+    searchBox.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.trim();
+        
+        // Show/hide clear button based on search term
+        if (searchTerm !== '') {
+            clearSearchBtn.style.display = 'flex';
+        } else {
+            clearSearchBtn.style.display = 'none';
+        }
+        
+        // Clear previous timeout
+        if (searchTimeout) {
+            clearTimeout(searchTimeout);
+        }
+        
+        // Set timeout for search execution
+        searchTimeout = setTimeout(() => {
+            performSearch(searchTerm);
+        }, 300);
+    });
+    
+    // Clear search button event
+    clearSearchBtn.addEventListener('click', function() {
+        clearSearch();
+    });
+    
+    // Handle search box focus - show results if there's text
+    searchBox.addEventListener('focus', function() {
+        const searchTerm = this.value.trim();
+        if (searchTerm !== '' && currentSearchResults.length > 0) {
+            showSearchResults();
+        }
+    });
+    
+    // Handle clicks outside search to close results
+    document.addEventListener('click', function(e) {
+        if (!searchBox.contains(e.target) && !searchResults.contains(e.target) && !clearSearchBtn.contains(e.target)) {
+            hideSearchResults();
+        }
+    });
+    
+    // Handle escape key to clear search
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (searchBox.value.trim() !== '') {
+                clearSearch();
+            } else {
+                hideSearchResults();
+                searchBox.blur();
+            }
+        }
+    });
+}
+
+// Clear search function
+function clearSearch() {
+    const searchBox = document.getElementById('search-box');
+    const clearSearchBtn = document.getElementById('clear-search');
+    const searchResults = document.getElementById('search-results');
+    
+    // Clear search box
+    searchBox.value = '';
+    
+    // Hide clear button
+    clearSearchBtn.style.display = 'none';
+    
+    // Clear search results
+    hideSearchResults();
+    
+    // Clear search data
+    currentSearchResults = [];
+    
+    // Focus back on search box
+    searchBox.focus();
+    
+    // Add subtle animation to clear button
+    clearSearchBtn.style.transform = 'scale(0.8)';
+    setTimeout(() => {
+        clearSearchBtn.style.transform = 'scale(1)';
+    }, 150);
+}
+
+// Advanced search function with fuzzy matching
+function performSearch(searchTerm) {
+    const searchResults = document.getElementById('search-results');
+    const subjectsList = document.getElementById('subjects-list');
+    
+    if (!searchTerm) {
+        hideSearchResults();
+        subjectsList.style.display = 'flex';
+        return;
+    }
+    
+    const normalizedSearch = searchTerm.toLowerCase().trim();
+    const results = [];
+    
+    // Search through all lectures with advanced matching
+    subjectsData.forEach(subject => {
+        subject.lectures.forEach((lecture, index) => {
+            const lectureTitle = lecture.title.toLowerCase();
+            const subjectName = subject.name.toLowerCase();
+            
+            // Advanced matching criteria
+            const matches = calculateMatchScore(lectureTitle, subjectName, normalizedSearch);
+            
+            if (matches.score > 0) {
+                results.push({
+                    subject: subject.name,
+                    subjectColor: subject.color,
+                    subjectIcon: subject.icon,
+                    lecture: lecture,
+                    lectureIndex: index,
+                    matchScore: matches.score,
+                    matchType: matches.type
+                });
+            }
+        });
+    });
+    
+    // Sort by match score (highest first)
+    results.sort((a, b) => b.matchScore - a.matchScore);
+    
+    currentSearchResults = results;
+    displaySearchResults(results);
+}
+
+// Advanced matching algorithm
+function calculateMatchScore(lectureTitle, subjectName, searchTerm) {
+    let score = 0;
+    let type = 'partial';
+    
+    // Exact match (highest priority)
+    if (lectureTitle === searchTerm || subjectName === searchTerm) {
+        score = 100;
+        type = 'exact';
+    }
+    // Starts with search term
+    else if (lectureTitle.startsWith(searchTerm) || subjectName.startsWith(searchTerm)) {
+        score = 90;
+        type = 'starts-with';
+    }
+    // Contains search term as whole word
+    else if (lectureTitle.includes(` ${searchTerm} `) || lectureTitle.endsWith(` ${searchTerm}`)) {
+        score = 80;
+        type = 'whole-word';
+    }
+    // Contains search term anywhere
+    else if (lectureTitle.includes(searchTerm) || subjectName.includes(searchTerm)) {
+        score = 70;
+        type = 'contains';
+    }
+    // Fuzzy matching for Bangla/English variations
+    else {
+        const fuzzyScore = calculateFuzzyScore(lectureTitle + ' ' + subjectName, searchTerm);
+        if (fuzzyScore > 0.6) {
+            score = Math.floor(fuzzyScore * 60);
+            type = 'fuzzy';
+        }
+    }
+    
+    // Bonus for subject name matches
+    if (subjectName.includes(searchTerm)) {
+        score += 10;
+    }
+    
+    return { score, type };
+}
+
+// Fuzzy matching algorithm
+function calculateFuzzyScore(text, searchTerm) {
+    if (searchTerm.length === 0) return 1;
+    if (searchTerm.length > text.length) return 0;
+    
+    let runningScore = 0;
+    let searchIndex = 0;
+    
+    for (let i = 0; i < text.length; i++) {
+        if (text[i] === searchTerm[searchIndex]) {
+            runningScore += 1;
+            searchIndex++;
+            
+            if (searchIndex === searchTerm.length) break;
+        }
+    }
+    
+    return runningScore / searchTerm.length;
+}
+
+// Display search results in the subjects list area
+function displaySearchResults(results) {
+    const searchResults = document.getElementById('search-results');
+    const subjectsList = document.getElementById('subjects-list');
+    
+    // Hide the normal subjects list
+    subjectsList.style.display = 'none';
+    
+    if (results.length === 0) {
+        searchResults.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-search"></i>
+                <div>No lectures found matching your search</div>
+            </div>
+        `;
+    } else {
+        searchResults.innerHTML = results.map((result, index) => {
+            const isCompleted = completedLectures.includes(result.lecture.videoId);
+            const completedClass = isCompleted ? 'completed' : '';
+            
+            return `
+                <div class="search-result-item ${completedClass}" 
+                     data-subject="${result.subject}" 
+                     data-lecture-index="${result.lectureIndex}"
+                     data-video-id="${result.lecture.videoId}"
+                     data-result-index="${index}">
+                    <div class="search-result-header">
+                        <i class="search-result-icon ${result.subjectIcon}" style="color: ${result.subjectColor};"></i>
+                        <div class="search-result-content">
+                            <div class="search-result-title">${result.lecture.title}</div>
+                            <div class="search-result-subject">${result.subject}</div>
+                        </div>
+                        ${isCompleted ? '<span class="completion-status"><i class="fas fa-check"></i></span>' : ''}
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        // Add click events to search results
+        searchResults.querySelectorAll('.search-result-item').forEach(item => {
+            item.addEventListener('click', handleSearchResultClick);
+        });
+    }
+    
+    showSearchResults();
+    
+    // Add animation to results
+    searchResults.style.animation = 'fadeIn 0.4s ease';
+}
+
+// Show search results
+function showSearchResults() {
+    const searchResults = document.getElementById('search-results');
+    searchResults.classList.add('active');
+}
+
+// Hide search results and show normal subjects list
+function hideSearchResults() {
+    const searchResults = document.getElementById('search-results');
+    const subjectsList = document.getElementById('subjects-list');
+    const searchBox = document.getElementById('search-box');
+    const clearSearchBtn = document.getElementById('clear-search');
+    
+    searchResults.classList.remove('active');
+    subjectsList.style.display = 'flex';
+    
+    // Clear search box and hide clear button if we're hiding results
+    if (!searchBox.matches(':focus')) {
+        searchBox.value = '';
+        clearSearchBtn.style.display = 'none';
+        currentSearchResults = [];
+    }
+}
+
+// Handle search result click
+function handleSearchResultClick(e) {
+    const resultItem = e.currentTarget;
+    const subject = resultItem.dataset.subject;
+    const lectureIndex = parseInt(resultItem.dataset.lectureIndex);
+    const videoId = resultItem.dataset.videoId;
+    const resultIndex = parseInt(resultItem.dataset.resultIndex);
+    
+    // Find the lecture data
+    const lectureData = currentSearchResults[resultIndex].lecture;
+    
+    // Load the video
+    loadVideo(videoId, lectureData.title, subject);
+    
+    // Update active states
+    setActiveSearchResult(resultItem);
+    
+    // Add selection animation
+    resultItem.style.animation = 'scaleIn 0.3s ease';
+    setTimeout(() => {
+        resultItem.style.animation = '';
+    }, 300);
+}
+
+// Set active search result
+function setActiveSearchResult(selectedItem) {
+    // Remove active class from all search results
+    document.querySelectorAll('.search-result-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Also remove active class from all lecture items in subjects list
+    document.querySelectorAll('.lecture-item').forEach(item => {
+        item.classList.remove('active');
+    });
+    
+    // Add active class to selected search result
+    selectedItem.classList.add('active');
+}
+
+// Helper function to get subject name by video ID
+function getSubjectNameByVideoId(videoId) {
+    for (const subject of subjectsData) {
+        const lecture = subject.lectures.find(lect => lect.videoId === videoId);
+        if (lecture) {
+            return subject.name;
+        }
+    }
+    return '';
+}
+
+// Function to update video subject info in the header
+function updateVideoSubjectInfo(subjectName, lectureTitle) {
+    const subjectIcon = document.getElementById('video-subject-icon');
+    const subjectNameElement = document.getElementById('video-subject-name');
+    
+    // Find the subject data
+    const subjectData = subjectsData.find(subject => subject.name === subjectName);
+    
+    if (subjectData) {
+        // Set subject icon and color
+        subjectIcon.className = `video-subject-icon ${subjectData.icon}`;
+        subjectIcon.style.color = subjectData.color;
+        
+        // Set subject name
+        subjectNameElement.textContent = subjectName;
+        
+        // Show the subject info
+        subjectIcon.style.display = 'block';
+        subjectNameElement.style.display = 'block';
+    } else {
+        // Hide subject info if not found
+        subjectIcon.style.display = 'none';
+        subjectNameElement.style.display = 'none';
+    }
 }
 
 // Completion tracking functions
@@ -1761,7 +2591,7 @@ function initializeCompletionEvents() {
     });
 }
 
-// Populate subjects list with badges - FIXED: Removed timer icon logic
+// Populate subjects list with badges
 function populateSubjects() {
     subjectsList.innerHTML = ''; // Clear existing content
     
@@ -1797,9 +2627,9 @@ function populateSubjects() {
             
             // Add click event to load video
             lectureItem.addEventListener('click', () => {
-                loadVideo(lecture.videoId, lecture.title);
+                loadVideo(lecture.videoId, lecture.title, subject.name);
                 
-                // Set active lecture - FIXED: Properly remove active class from previous lecture
+                // Set active lecture
                 setActiveLecture(lectureItem, subject.name, index);
                 
                 // Add animation effect
@@ -1841,11 +2671,11 @@ function populateSubjects() {
     });
 }
 
-// Load video into iframe - FIXED VERSION WITH LOADING QUEUE
-function loadVideo(videoId, lectureTitle) {
+// Load video into iframe - UPDATED with subject info
+function loadVideo(videoId, lectureTitle, subjectName = '') {
     // If player is currently loading, queue this request
     if (isPlayerLoading) {
-        pendingVideoRequest = { videoId, lectureTitle };
+        pendingVideoRequest = { videoId, lectureTitle, subjectName };
         return;
     }
     
@@ -1855,7 +2685,7 @@ function loadVideo(videoId, lectureTitle) {
     isPlayerLoading = true;
     
     // Update UI to show loading state
-    lectureNameElement.textContent = `Loading: ${lectureTitle}`;
+    lectureNameElement.textContent = `${lectureTitle}`;
     videoPlaceholder.style.display = 'none';
     playerContainer.style.display = 'block';
     
@@ -1886,6 +2716,12 @@ function loadVideo(videoId, lectureTitle) {
     currentVideoId = videoId;
     updateCompletionButton(videoId);
     
+    // Update subject info in video header
+    if (!subjectName) {
+        subjectName = getSubjectNameByVideoId(videoId);
+    }
+    updateVideoSubjectInfo(subjectName, lectureTitle);
+    
     // Add animation effect
     const videoInfo = document.querySelector('.video-info');
     videoInfo.style.animation = 'slideIn 0.5s ease';
@@ -1893,7 +2729,7 @@ function loadVideo(videoId, lectureTitle) {
         videoInfo.style.animation = '';
     }, 500);
     
-    // Reinitialize Plyr with skip buttons - FIXED WITH PROPER ERROR HANDLING
+    // Reinitialize Plyr with skip buttons
     setTimeout(() => {
         try {
             player = new Plyr('#player', {
@@ -1914,7 +2750,7 @@ function loadVideo(videoId, lectureTitle) {
                 clickToPlay: false,
                 // Add touch-specific settings
                 touch: true,
-                hideControls: true, // Allow hiding on touch devices
+                hideControls: true,
                 youtube: {
                     noCookie: true,
                     rel: 0,
@@ -1926,17 +2762,17 @@ function loadVideo(videoId, lectureTitle) {
                     rewind: 'Rewind {seektime}s',
                     fastForward: 'Forward {seektime}s'
                 },
-                seekTime: 10, // Skip 10 seconds
+                seekTime: 10,
                 // Prevent fullscreen issues on mobile
                 fullscreen: {
                     enabled: true,
                     fallback: true,
-                    iosNative: false, // CRITICAL: Disable iOS native fullscreen to prevent auto-rotate
-                    container: null // Let Plyr handle fullscreen container
+                    iosNative: false,
+                    container: null
                 }
             });
             
-            // Add play/pause event listeners for overlay control - IMPROVED
+            // Add play/pause event listeners for overlay control
             player.on('play', () => {
                 console.log('Video playing - enabling overlay protection');
                 const overlay = document.getElementById('iframe-overlay');
@@ -1991,10 +2827,10 @@ function loadVideo(videoId, lectureTitle) {
                 const overlay = document.getElementById('iframe-overlay');
                 const iframe = document.getElementById('lecture-video');
                 if (overlay) {
-                    overlay.style.pointerEvents = 'auto'; // Always block clicks
+                    overlay.style.pointerEvents = 'auto';
                 }
                 if (iframe) {
-                    iframe.style.pointerEvents = 'none'; // Always disable iframe interaction
+                    iframe.style.pointerEvents = 'none';
                 }
                 
                 // Update overlay protection for the new video
@@ -2008,7 +2844,7 @@ function loadVideo(videoId, lectureTitle) {
                     const nextVideo = pendingVideoRequest;
                     pendingVideoRequest = null;
                     setTimeout(() => {
-                        loadVideo(nextVideo.videoId, nextVideo.lectureTitle);
+                        loadVideo(nextVideo.videoId, nextVideo.lectureTitle, nextVideo.subjectName);
                     }, 500);
                 }
             });
@@ -2060,7 +2896,7 @@ function loadVideo(videoId, lectureTitle) {
             hideLoadingIndicator();
             lectureNameElement.textContent = 'Error initializing player';
         }
-    }, 800); // Increased delay for better stability
+    }, 800);
 }
 
 // Loading indicator functions
@@ -2095,7 +2931,7 @@ function hideLoadingIndicator() {
     }
 }
 
-// Set active lecture - FIXED: Properly remove active class from all lectures
+// Set active lecture
 function setActiveLecture(lectureElement, subjectName, lectureIndex) {
     // Remove active class from all lectures
     document.querySelectorAll('.lecture-item').forEach(item => {
@@ -2116,7 +2952,7 @@ function setActiveLecture(lectureElement, subjectName, lectureIndex) {
     currentLectureElement = lectureElement;
 }
 
-// Initialize new lecture tracking - FIXED VERSION
+// Initialize new lecture tracking
 function initializeNewLectureTracking() {
     // Get watched lectures from localStorage
     let watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
@@ -2136,19 +2972,19 @@ function initializeNewLectureTracking() {
     localStorage.setItem('watchedLectures', JSON.stringify(watchedLectures));
 }
 
-// Check if a lecture is new (not watched) - FIXED VERSION
+// Check if a lecture is new (not watched)
 function isLectureNew(videoId) {
     const watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
     return !watchedLectures.includes(videoId);
 }
 
-// Check if a subject has any new lectures - FIXED VERSION
+// Check if a subject has any new lectures
 function checkSubjectHasNewLectures(subject) {
     const watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
     return subject.lectures.some(lecture => !watchedLectures.includes(lecture.videoId));
 }
 
-// Mark a lecture as watched - FIXED VERSION
+// Mark a lecture as watched
 function markLectureAsWatched(videoId, subjectName, lectureIndex) {
     let watchedLectures = JSON.parse(localStorage.getItem('watchedLectures')) || [];
     
@@ -2164,7 +3000,7 @@ function markLectureAsWatched(videoId, subjectName, lectureIndex) {
     }
 }
 
-// Update a specific lecture badge - NEW FUNCTION
+// Update a specific lecture badge
 function updateLectureBadge(subjectName, lectureIndex) {
     const lectureItem = document.querySelector(`.lecture-item[data-subject="${subjectName}"][data-lecture-index="${lectureIndex}"]`);
     if (lectureItem) {
@@ -2175,7 +3011,7 @@ function updateLectureBadge(subjectName, lectureIndex) {
     }
 }
 
-// Update a subject badge - NEW FUNCTION
+// Update a subject badge
 function updateSubjectBadge(subjectName) {
     const subject = subjectsData.find(s => s.name === subjectName);
     if (subject) {
