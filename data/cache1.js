@@ -37,7 +37,8 @@ const subjectsData = [
                             { title: "জটিল সংখ্যা", videoId: "dtj4kGIKa2M" },
                             { title: "বহুপদী ও বহুপদী সমীকরণ (পর্ব ১)", videoId: "csDRee8Tp_s" },
                             { title: "বহুপদী ও বহুপদী সমীকরণ (পর্ব ২)", videoId: "IraIKpoDT9M" },
-                            { title: "বিস্তার পরিমাপ ও সম্ভবনা (পর্ব ১)", videoId: "vvO2V2PvGRc" }
+                            { title: "বিস্তার পরিমাপ ও সম্ভবনা (পর্ব ১)", videoId: "vvO2V2PvGRc" },
+                            { title: "বিস্তার পরিমাপ ও সম্ভবনা(পর্ব ২)", videoId: "TRCXgal2ySk" },
                 ]
             },
             {
@@ -79,7 +80,8 @@ const subjectsData = [
                             { title: "বাক্য প্রকরণ (পর্ব ২) + বিদ্রোহী", videoId: "G28XEYXk54I" },
                             { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", videoId: "Cgzmqf3xu9s" },
                             { title: "সমাস (পর্ব ১)", videoId: "L_8SRL5_XNs" },
-                            { title: "সমাস (পর্ব ২)", videoId: "01jMj-YH94I" }
+                            { title: "সমাস (পর্ব ২)", videoId: "01jMj-YH94I" },
+                            { title: "লালসালু", videoId: "qIiUxsd5Rsg" }
                 ]
             },
             {
