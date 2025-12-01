@@ -11,6 +11,7 @@ const subjectsData = [
                             { title: "চল তড়িৎ (পর্ব ২)", videoId: "NkjXvyaAh6s" },
                             { title: "চল তড়িৎ (পর্ব ৩.১)", videoId: "Y6NMHXLkqsE" },
                             { title: "চল তড়িৎ (পর্ব ৩.২)", videoId: "gJ83lRK2wrg" },
+                            { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ", videoId: "Fzv2yjGdXT0" },
                 ]
             },
             {
@@ -36,6 +37,7 @@ const subjectsData = [
                             { title: "জটিল সংখ্যা", videoId: "dtj4kGIKa2M" },
                             { title: "বহুপদী ও বহুপদী সমীকরণ (পর্ব ১)", videoId: "csDRee8Tp_s" },
                             { title: "বহুপদী ও বহুপদী সমীকরণ (পর্ব ২)", videoId: "IraIKpoDT9M" },
+                            { title: "বিস্তার পরিমাপ ও সম্ভবনা (পর্ব ১)", videoId: "vvO2V2PvGRc" }
                 ]
             },
             {
@@ -60,6 +62,8 @@ const subjectsData = [
                             { title: "Completing Sentence (Part 1) + Paragraph Writing", videoId: "Aqx-UhthZUc" },
                             { title: "Completing Sentence (Part 2)", videoId: "OHuxXa1jA0U" },
                             { title: "Right Forms of Verb (Part 1)", videoId: "KStQbCt68Cc" },
+                            { title: "Right Forms of Verbs (Part 2)", videoId: "9w9vlPPuwDU" },
+                            { title: "Narration (Part 1)", videoId: "hQyBo-MVZqs" },
                 ]
             },
             {
@@ -89,6 +93,7 @@ const subjectsData = [
                             { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", videoId: "voSerxe4EAE" },
                             { title: "ডিজিটাল ডিভাইস (পর্ব ১)", videoId: "bARRLtrId7M" },
                             { title: "ডিজিটাল ডিভাইস (পর্ব ২)", videoId: "UOaOIvt_czA" },
+                            { title: "ডিজিটাল ডিভাইস (পর্ব ৩)", videoId: "iQ5edgbw-CU" },
                 ]
             },
                         {
