@@ -36,6 +36,7 @@ const subjectsData = [
             { title: "জটিল সংখ্যা", url: "https://drive.google.com/file/d/1CD7lRNuTV4UVyp-NARqa0NMaKnlyJlbY/view?usp=sharing" },
             { title: "বহুপদী ও বহুপদী সমীকরণ (পর্ব ১)", url: "https://drive.google.com/file/d/1w45S_DEgdwMRjp4jxNAABLxJqpd25F8a/view?usp=sharing" },
             { title: "বিস্তার পরিমাপ ও সম্ভবনা (পর্ব ১)", url: "https://drive.google.com/file/d/1FjKesBARVB5SSAcu69YDdRztH4_8wDnn/view?usp=sharing" },
+            { title: "বিস্তার পরিমাপ ও সম্ভবনা(পর্ব ২)", url: "https://drive.google.com/file/d/1EWRqTlI2mXw1rMfl6p-VIk_kmqoaFmXI/view?usp=sharing" },
         ]
     },
     {
@@ -78,6 +79,7 @@ const subjectsData = [
             { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", url: "https://drive.google.com/file/d/1c1h5HN-OoyoTtAykNjtekI39GWzGIY5W/view?usp=sharing" },
             { title: "সমাস (পর্ব ১)", url: "https://drive.google.com/file/d/1lSALJ84ytxt0tcp5K7pCMq10lNch5-Xd/view?usp=sharing" },
             { title: "সমাস (পর্ব ২)", url: "https://pdf.bondipathshala.education/1764239717786.pdf" },
+            { title: "লালসালু", url: "https://drive.google.com/file/d/1ZHAdHWkM1Ua8HMcsCcgl8ga-x1Cr4s7N/view?usp=sharing" }
         ]
     },
     {
