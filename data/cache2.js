@@ -10,6 +10,7 @@ const subjectsData = [
             { title: "চল তড়িৎ (পর্ব ১)", url: "https://drive.google.com/file/d/15n3TdCredxmPmPAVfPsOcCvA2YalKdkN/view?usp=sharing" },
             { title: "চল তড়িৎ (পর্ব ২)", url: "https://drive.google.com/file/d/1Hs753GXue2cTET7qcJZkWCAWrLsu1aJs/view?usp=sharing" },
             { title: "চল তড়িৎ (পর্ব ৩)", url: "https://drive.google.com/file/d/120ZcFfXsH04AemDGALwnGOOC0dv0fka9/view?usp=sharing" },
+            { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ", url: "https://drive.google.com/file/d/1dBOqwdFWnZ-fSmb-3Nd7uRT9ResjRjWw/view?usp=sharing" },
         ]
     },
     {
@@ -34,6 +35,7 @@ const subjectsData = [
             { title: "Extra Materials", url: "https://drive.google.com/drive/folders/1eGYXAlqLyT3Cx1Gao0ALRClqlms8e9vR" },
             { title: "জটিল সংখ্যা", url: "https://drive.google.com/file/d/1CD7lRNuTV4UVyp-NARqa0NMaKnlyJlbY/view?usp=sharing" },
             { title: "বহুপদী ও বহুপদী সমীকরণ (পর্ব ১)", url: "https://drive.google.com/file/d/1w45S_DEgdwMRjp4jxNAABLxJqpd25F8a/view?usp=sharing" },
+            { title: "বিস্তার পরিমাপ ও সম্ভবনা (পর্ব ১)", url: "https://drive.google.com/file/d/1FjKesBARVB5SSAcu69YDdRztH4_8wDnn/view?usp=sharing" },
         ]
     },
     {
@@ -58,6 +60,8 @@ const subjectsData = [
             { title: "Completing Sentence (Part 1) + Paragraph Writing", url: "https://drive.google.com/file/d/1r7CfS4JlAvj9SzkreHFhgV03T7qXNHnb/view?usp=sharing" },
             { title: "Completing Sentence (Part 2)", url: "https://drive.google.com/file/d/1yFd_7-MWScZnDpwfLsvVQNtR5J-LDIWN/view?usp=sharing" },
             { title: "Right Forms of Verb (Part 1)", url: "https://drive.google.com/file/d/1OqilCwlF_HbH8yUm2rJhHQ24ihDlegps/view?usp=sharing" },
+            { title: "Right Forms of Verbs (Part 2)", url: "https://drive.google.com/file/d/1kGGfLBKNzu6tmtJUM6Af3CvbCpaCZ3HR/view?usp=sharing" },
+            { title: "Narration (Part 1)", url: "https://drive.google.com/file/d/1PBEm8qlKJVTzZVxD0ef760xyRkyVIpPt/view?usp=sharing" },
         ]
     },
     {
@@ -87,6 +91,7 @@ const subjectsData = [
           { title: "সংখ্যা পদ্ধতি (পর্ব ৩)", url: "https://drive.google.com/file/d/1rbGPIJ6VSOgc5PEBeabNYJly_eP1ah9I/view?usp=sharing" },
           { title: "ডিজিটাল ডিভাইস (পর্ব ১)", url: "https://drive.google.com/file/d/1CyJzG-yw0npxDFndc-C8o7e3j_SMclnV/view?usp=sharing" },
           { title: "ডিজিটাল ডিভাইস (পর্ব ২)", url: "https://drive.google.com/file/d/18f4uLCrfmWWaAy03s-DEVVOhrbFC46SK/view?usp=sharing" },
+          { title: "ডিজিটাল ডিভাইস (পর্ব ৩)", url: "https://drive.google.com/file/d/1rymXTbQEfQ3Hc1c-tq6YlVLiktF1Iaa_/view?usp=sharing" },
         ]
     },
             {
