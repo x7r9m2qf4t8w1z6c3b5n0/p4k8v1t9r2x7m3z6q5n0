@@ -2393,6 +2393,14 @@ function handleSearchResultClick(e) {
     setTimeout(() => {
         resultItem.style.animation = '';
     }, 300);
+    
+    // Scroll to top on mobile
+    if (window.innerWidth <= 992) {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
 }
 
 // Set active search result
@@ -2628,19 +2636,27 @@ function populateSubjects() {
                 </div>
             `;
             
-            // Add click event to load video
-            lectureItem.addEventListener('click', () => {
-                loadVideo(lecture.videoId, lecture.title, subject.name);
-                
-                // Set active lecture
-                setActiveLecture(lectureItem, subject.name, index);
-                
-                // Add animation effect
-                lectureItem.style.animation = 'scaleIn 0.3s ease';
-                setTimeout(() => {
-                    lectureItem.style.animation = '';
-                }, 300);
-            });
+// Add click event to load video
+lectureItem.addEventListener('click', () => {
+    loadVideo(lecture.videoId, lecture.title, subject.name);
+    
+    // Set active lecture
+    setActiveLecture(lectureItem, subject.name, index);
+    
+    // Add animation effect
+    lectureItem.style.animation = 'scaleIn 0.3s ease';
+    setTimeout(() => {
+        lectureItem.style.animation = '';
+    }, 300);
+    
+    // Scroll to top on mobile
+    if (window.innerWidth <= 992) {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+});
             
             lecturesList.appendChild(lectureItem);
         });
@@ -2683,6 +2699,14 @@ function loadVideo(videoId, lectureTitle, subjectName = '') {
     }
     
     console.log('Loading video:', videoId, lectureTitle);
+    
+    // Scroll to top of page on mobile when video is selected
+    if (window.innerWidth <= 992) { // Mobile/tablet breakpoint
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
     
     // Set loading state
     isPlayerLoading = true;
