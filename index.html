@@ -884,14 +884,12 @@ th {
     font-weight: 700;
     padding: 15px 10px;
     text-align: left;
-    position: static;
+    position: sticky;  /* ← CHANGE THIS FROM 'static' TO 'sticky' */
     top: 0;
     z-index: 10;
-    /* Remove transparency effects */
     background-color: #2d2d3d;
     border-bottom: 2px solid rgba(255, 255, 255, 0.3);
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-    /* Remove backdrop filters */
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
 }
@@ -947,13 +945,16 @@ th {
             margin-bottom: 5px;
         }
 
-        .routine-card-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+.routine-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative; /* Add this */
+    z-index: 1; /* Add this */
+}
 
         .routine-date {
             font-weight: 700;
@@ -1330,7 +1331,7 @@ th {
             to { opacity: 0; }
         }
 
-        .modal-content {
+.modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -1340,8 +1341,8 @@ th {
     border-radius: 20px;
     width: 90%;
     max-width: 800px;
-    max-height: 80vh;
-    overflow: hidden; /* Change from auto to hidden */
+    max-height: 85vh; /* Increased from 80vh to 85vh */
+    overflow: hidden;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -1349,7 +1350,6 @@ th {
     display: flex;
     flex-direction: column;
 }
-
         .modal-content.scale-in {
             animation: scaleIn 0.3s ease;
         }
@@ -1370,9 +1370,8 @@ th {
 
 .modal-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 30px 15px 30px; /* Add padding directly to header */
+    flex-direction: column;
+    padding: 20px 30px 15px 30px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: sticky;
     top: 0;
@@ -1380,36 +1379,55 @@ th {
     z-index: 100;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    margin-bottom: 0; /* Remove any bottom margin */
+    margin-bottom: 0;
+    gap: 15px;
 }
 
-        .modal-title {
-            font-size: 24px;
-            font-weight: 700;
-            color: white;
-        }
+.modal-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
 
-        .close-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
+.modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
 
-        .close-btn:hover {
-            transform: scale(1.2);
-        }
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
 
-        .modal-routine-container {
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+/* Update modal-routine-container height calculation */
+.modal-routine-container {
     padding: 0 30px 30px 30px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 15px;
-    overflow-y: auto; /* Move scroll to container only */
-    flex-grow: 1; /* Take remaining space */
-    max-height: calc(80vh - 80px); /* Account for header height */
+    overflow-y: auto;
+    flex-grow: 1;
+    /* Increased height to account for search bar */
+    max-height: calc(80vh - 140px);
 }
 
         /* Custom scrollbar for mobile routine */
@@ -2401,6 +2419,420 @@ th {
     from { transform: translate(-50%, -50%) scale(1); opacity: 1; }
     to { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
 }
+/* New Routine Card Styles */
+.routine-classes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.class-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.class-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.class-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.subject-icon {
+    font-size: 28px;
+    width: 35px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.class-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.class-topic {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.class-subject {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.no-classes-message {
+    text-align: center;
+    padding: 30px 20px;
+    color: #a0aec0;
+}
+
+.no-classes-message i {
+    font-size: 40px;
+    margin-bottom: 10px;
+    display: block;
+    opacity: 0.7;
+}
+
+.no-classes-message p {
+    margin: 0;
+    font-size: 16px;
+}
+
+/* Status styles */
+.completed {
+    color: #48bb78;
+}
+
+.today {
+    color: #feca57;
+}
+
+.upcoming {
+    color: #ef4444;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .class-card {
+        padding: 12px;
+    }
+    
+    .subject-icon {
+        font-size: 24px;
+        width: 30px;
+    }
+    
+    .class-topic {
+        font-size: 15px;
+    }
+    
+    .class-subject {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .class-card {
+        padding: 10px;
+    }
+    
+    .subject-icon {
+        font-size: 22px;
+        width: 28px;
+    }
+    
+    .class-header {
+        gap: 12px;
+    }
+    
+    .class-topic {
+        font-size: 14px;
+    }
+    
+    .class-subject {
+        font-size: 12px;
+    }
+}
+/* Modal Search Styles */
+.modal-search-container {
+    margin: 10px 0 15px 0;
+    position: relative;
+    width: 100%;
+}
+
+.modal-search-box {
+    width: 100%;
+    padding: 14px 50px 14px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    backdrop-filter: blur(15px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+}
+
+.modal-search-box:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.modal-search-box::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.modal-search-controls {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-clear-search {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    font-size: 14px;
+}
+
+.modal-clear-search:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.modal-search-icon {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+}
+/* Fix modal header spacing */
+.modal-header {
+    padding: 20px 30px 15px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    background: rgba(20, 20, 30, 0.98);
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+/* Fix modal container height */
+.modal-routine-container {
+    padding: 15px 30px 30px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    max-height: calc(85vh - 150px);
+    height: auto;
+}
+
+/* Ensure routine cards are properly styled in modal */
+.routine-day-card {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+/* Fix search bar styling */
+.modal-search-container {
+    width: 100%;
+    position: relative;
+    margin: 0;
+}
+
+.modal-search-box {
+    width: 100%;
+    padding: 12px 50px 12px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    backdrop-filter: blur(15px);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.modal-search-box:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-search-controls {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-clear-search {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.modal-clear-search:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+}
+
+.modal-search-icon {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+}
+
+/* Fix close button */
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+/* Ensure class cards display properly */
+.class-card {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.class-topic {
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Fix for empty state */
+.no-classes-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .modal-header {
+        padding: 15px 20px 10px 20px;
+    }
+    
+    .modal-routine-container {
+        padding: 10px 20px 20px 20px;
+        max-height: calc(90vh - 130px);
+    }
+    
+    .modal-title {
+        font-size: 20px;
+    }
+    
+    .modal-search-box {
+        padding: 10px 45px 10px 15px;
+        font-size: 14px;
+    }
+    
+    .close-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 98%;
+        border-radius: 15px;
+    }
+    
+    .modal-header {
+        padding: 12px 15px 8px 15px;
+    }
+    
+    .modal-routine-container {
+        padding: 8px 15px 15px 15px;
+        max-height: calc(90vh - 110px);
+        gap: 15px;
+    }
+    
+    .modal-title {
+        font-size: 18px;
+    }
+    
+    .modal-search-box {
+        padding: 8px 40px 8px 12px;
+        font-size: 13px;
+    }
+    
+    .class-topic {
+        font-size: 14px;
+    }
+    
+    .class-subject {
+        font-size: 12px;
+    }
+}
+.logo-text i.fa-home {
+    color: #ff4444; /* Red color */
+}
 </style>
 </head>
 <body>
@@ -2408,11 +2840,11 @@ th {
 <header class="header">
     <div class="header-content">
         <div class="logo-container">
-    <div class="logo-text">
-        <i class="fas fa-home"></i>
-        Home
-    </div>
-</div>
+            <div class="logo-text">
+                <i class="fas fa-home"></i>
+                Home
+            </div>
+        </div>
     </div>
 </header>
 
@@ -2426,7 +2858,7 @@ th {
         <div class="user-profile">
             <div class="user-details">
                 <div class="user-name" id="userName">Student Name</div>
-                <div class="short-text">A student who never gave up.</div>
+                <div class="short-text">A student who never gave up.<br>Version 2.2</div>
             </div>
             <div class="profile-icon" id="profileIcon">
                 <div class="profile-icon-placeholder" id="profilePlaceholder">
@@ -2462,94 +2894,205 @@ th {
             <h2 class="confirmation-modal-title">Confirm Removal</h2>
             <p class="confirmation-modal-message">Are you sure you want to remove your profile picture?</p>
             <div class="confirmation-modal-buttons">
-                <button class="confirmation-modal-btn cancel" id="cancelRemoveBtn">Cancel</button>
                 <button class="confirmation-modal-btn proceed" id="proceedRemoveBtn">Proceed</button>
+                <button class="confirmation-modal-btn cancel" id="cancelRemoveBtn">Cancel</button>
             </div>
         </div>
     </div>
 
-<!-- PCMB Timer Section -->
+    <!-- PCMB Timer Section -->
     <div class="pcmb-timer" id="pcmbTimer">
         Loading...
     </div>
 
-<!-- Buttons Section -->
-<section class="buttons-section">
-    <div class="buttons-grid">
-        <a href="lec.html" class="cube-button" id="classroomBtn">
-            <div class="button-icon">
-                <i class="fas fa-play"></i>
-            </div>
-            <div class="button-name">Lectures</div>
-        </a>
-        
-        <a href="mat.html" class="cube-button" id="materialsBtn">
-            <div class="button-icon">
-                <i class="fas fa-file-pdf"></i>
-            </div>
-            <div class="button-name">Materials</div>
-        </a>
-        
-        <a href="arc.html" class="cube-button" id="archivesBtn">
-            <div class="button-icon">
-                <i class="fas fa-history"></i>
-            </div>
-            <div class="button-name">Archives</div>
-        </a>
-    </div>
-</section>
+    <!-- Buttons Section -->
+    <section class="buttons-section">
+        <div class="buttons-grid">
+            <a href="lec.html" class="cube-button" id="classroomBtn">
+                <div class="button-icon">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="button-name">Lectures</div>
+            </a>
+            
+            <a href="mat.html" class="cube-button" id="materialsBtn">
+                <div class="button-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="button-name">Materials</div>
+            </a>
+            
+            <a href="arc.html" class="cube-button" id="archivesBtn">
+                <div class="button-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div class="button-name">Archives</div>
+            </a>
+        </div>
+    </section>
 
-<!-- Routine Section -->
-<section class="routine-section">
-    <h2 class="section-title">Class Routine</h2>
-    
-    <!-- Routine Navigation -->
-    <div class="routine-navigation">
-        <button class="routine-nav-btn" id="prevDayBtn">
-            <i class="fas fa-chevron-left"></i>
-        </button>
+    <!-- Routine Section -->
+    <section class="routine-section">
+        <h2 class="section-title">Class Routine</h2>
         
-        <div class="routine-date-display">
-            <div class="routine-date-title" id="currentDayTitle">
-                <i class="far fa-clock"></i>
-                <span id="dayDisplay">Today</span>
+        <!-- Routine Navigation -->
+        <div class="routine-navigation">
+            <button class="routine-nav-btn" id="prevDayBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="routine-date-display">
+                <div class="routine-date-title" id="currentDayTitle">
+                    <i class="far fa-clock"></i>
+                    <span id="dayDisplay">Today</span>
+                </div>
+                <div class="routine-nav-dots" id="routineNavDots">
+                    <div class="routine-nav-dot active" data-day="0"></div>
+                    <div class="routine-nav-dot" data-day="1"></div>
+                </div>
             </div>
-            <div class="routine-nav-dots" id="routineNavDots">
-                <div class="routine-nav-dot active" data-day="0"></div>
-                <div class="routine-nav-dot" data-day="1"></div>
-            </div>
+            
+            <button class="routine-nav-btn" id="nextDayBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
         
-        <button class="routine-nav-btn" id="nextDayBtn">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
-    
-    <!-- Routine Cards Container -->
-    <div class="routine-cards-container" id="routineCardsContainer">
-        <!-- Today's classes will be inserted here by JavaScript -->
-    </div>
-    
-    <button class="expand-btn" id="expandRoutineBtn">Check Routine</button>
-</section>
+        <!-- Routine Cards Container -->
+        <div class="routine-cards-container" id="routineCardsContainer">
+            <!-- Today's classes will be inserted here by JavaScript -->
+        </div>
+        
+        <button class="expand-btn" id="expandRoutineBtn">Check Routine</button>
+    </section>
 
-    <!-- Modal for expanded routine view -->
-    <div class="modal" id="routineModal">
-        <div class="modal-content">
-            <div class="modal-header">
+<!-- Modal for expanded routine view -->
+<div class="modal" id="routineModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div class="modal-title-row">
                 <h2 class="modal-title">Class Routine</h2>
                 <button class="close-btn" id="closeModalBtn">&times;</button>
             </div>
-<div class="modal-routine-container" id="modalRoutineContainer">
-    <!-- Expanded routine cards will be inserted by JavaScript -->
-</div>
+            
+            <!-- SEARCH BAR - ADD THIS -->
+            <div class="modal-search-container">
+                <input type="text" class="modal-search-box" id="modalSearchBox" placeholder="Search by subject or topic...">
+                <div class="modal-search-controls">
+                    <button class="modal-clear-search" id="modalClearSearch" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <i class="modal-search-icon fas fa-search"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-routine-container" id="modalRoutineContainer">
+            <!-- Expanded routine cards will be inserted by JavaScript -->
         </div>
     </div>
+</div>
+
 <script src="data/cache1.js"></script>
 <script src="data/cache2.js"></script>
 <script src="data/cache3.js"></script>
 <script src="data/cache4.js"></script>
     <script>
+// Setup modal search functionality
+function setupModalSearch() {
+    const searchBox = document.getElementById('modalSearchBox');
+    const clearBtn = document.getElementById('modalClearSearch');
+    const modalContainer = document.getElementById('modalRoutineContainer');
+    
+    if (!searchBox || !modalContainer) return;
+    
+    searchBox.addEventListener('input', function(e) {
+        const searchTerm = e.target.value.trim().toLowerCase();
+        
+        // Show/hide clear button
+        if (clearBtn) {
+            clearBtn.style.display = searchTerm ? 'flex' : 'none';
+        }
+        
+        // Search through routine cards
+        const cards = modalContainer.querySelectorAll('.routine-day-card');
+        
+        cards.forEach(card => {
+            const subject = card.querySelector('.class-subject')?.textContent?.toLowerCase() || '';
+            const topic = card.querySelector('.class-topic')?.textContent?.toLowerCase() || '';
+            
+            if (searchTerm === '' || subject.includes(searchTerm) || topic.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+    
+    // Clear search
+    if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+            searchBox.value = '';
+            searchBox.focus();
+            
+            const cards = modalContainer.querySelectorAll('.routine-day-card');
+            cards.forEach(card => {
+                card.style.display = 'block';
+            });
+            
+            clearBtn.style.display = 'none';
+        });
+    }
+    
+    // Handle escape key
+    searchBox.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            searchBox.value = '';
+            const cards = modalContainer.querySelectorAll('.routine-day-card');
+            cards.forEach(card => {
+                card.style.display = 'block';
+            });
+            if (clearBtn) clearBtn.style.display = 'none';
+        }
+    });
+}
+// Function to auto-scroll to today's lecture in expanded modal
+function scrollToTodayInModal() {
+    const modalContainer = document.getElementById('modalRoutineContainer');
+    if (!modalContainer) return;
+    
+    const today = new Date();
+    const todayStr = `${today.getDate().toString().padStart(2, '0')}/${(today.getMonth() + 1).toString().padStart(2, '0')}/${today.getFullYear()}`;
+    
+    // Find today's card
+    const cards = modalContainer.querySelectorAll('.routine-day-card');
+    cards.forEach((card, index) => {
+        const cardDateElement = card.querySelector('.routine-card-date');
+        if (cardDateElement && cardDateElement.textContent.includes(todayStr)) {
+            // Scroll to this card
+            card.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Add highlight effect
+            card.style.animation = 'highlightPulse 2s ease';
+            setTimeout(() => {
+                card.style.animation = '';
+            }, 2000);
+        }
+    });
+}
+
+// Add highlight animation CSS
+const highlightStyle = document.createElement('style');
+highlightStyle.textContent = `
+    @keyframes highlightPulse {
+        0% { box-shadow: 0 0 0 0 rgba(255, 200, 87, 0.7); }
+        50% { box-shadow: 0 0 20px 10px rgba(255, 200, 87, 0.3); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 200, 87, 0); }
+    }
+`;
+document.head.appendChild(highlightStyle);
 // Image Modal Functionality
 function setupImageModal() {
     const noticeImage = document.getElementById('noticeImage');
@@ -3404,48 +3947,40 @@ function createRoutineCard(date, classes, isCompleted, isToday, isExpandedView) 
     const weekday = itemDate.toLocaleDateString('en-US', weekdayOptions);
     const displayDate = `${weekday}, ${date}`;
     
-    // Rest of the function remains the same...
-    let statusClass = '';
-    let statusText = '';
+    // Define subject icons and colors
+    const subjectStyles = {
+        'Physics': { icon: 'fas fa-atom', color: '#ff6b6b' },
+        'Chemistry': { icon: 'fas fa-flask', color: '#4ecdc4' },
+        'Mathematics': { icon: 'fas fa-square-root-alt', color: '#45b7d1' },
+        'Biology': { icon: 'fas fa-dna', color: '#96ceb4' },
+        'English': { icon: 'fas fa-book', color: '#feca57' },
+        'Bangla': { icon: 'fas fa-language', color: '#ff9ff3' },
+        'ICT': { icon: 'fas fa-laptop-code', color: '#54a0ff' },
+        'Mentorship Session': { icon: 'fas fa-chalkboard-teacher', color: '#9b59b6' }
+    };
     
-    if (isCompleted) {
-        statusClass = 'completed';
-        statusText = '✔';
-    } else if (isToday) {
-        statusClass = 'today';
-        statusText = 'Today';
-    } else {
-        statusClass = 'upcoming';
-        statusText = '✗';
-    }
-    
-    let tableContent = '';
+    // Create class cards
+    let classCardsContent = '';
     if (classes.length > 0) {
-        tableContent = `
-            <table class="routine-table">
-                <thead>
-                    <tr>
-                        <th>Subject</th>
-                        <th>Topic</th>
-                        <th>Instructor</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${classes.map(cls => `
-                        <tr>
-                            <td>${cls.subject}</td>
-                            <td>${cls.topic}</td>
-                            <td>${cls.instructor}</td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-        `;
+        classCardsContent = classes.map(cls => {
+            const subjectStyle = subjectStyles[cls.subject] || { icon: 'fas fa-book', color: '#ffffff' };
+            return `
+                <div class="class-card">
+                    <div class="class-header">
+                        <i class="subject-icon ${subjectStyle.icon}" style="color: ${subjectStyle.color};"></i>
+                        <div class="class-info">
+                            <div class="class-topic">${cls.topic}</div>
+                            <div class="class-subject">${cls.subject}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
     } else {
-        tableContent = `
-            <div style="text-align: center; padding: 20px; color: #a0aec0;">
-                <i class="fas fa-calendar-times" style="font-size: 40px; margin-bottom: 10px;"></i>
-                <p>Currently there no classes available!</p>
+        classCardsContent = `
+            <div class="no-classes-message">
+                <i class="fas fa-calendar-times"></i>
+                <p>Currently there are no classes available!</p>
             </div>
         `;
     }
@@ -3456,9 +3991,11 @@ function createRoutineCard(date, classes, isCompleted, isToday, isExpandedView) 
                 <i class="far fa-clock"></i>
                 ${displayDate}
             </div>
-            ${isExpandedView ? `<div class="routine-card-status ${statusClass}">${statusText}</div>` : ''}
+            ${isExpandedView ? `<div class="routine-card-status ${isCompleted ? 'status-completed' : 'status-incomplete'}">${isCompleted ? '✔' : '✖'}</div>` : ''}
         </div>
-        ${tableContent}
+        <div class="routine-classes-container">
+            ${classCardsContent}
+        </div>
     `;
     
     return card;
@@ -3485,15 +4022,18 @@ function setupModal() {
     const expandBtn = document.getElementById('expandRoutineBtn');
     const closeBtn = document.getElementById('closeModalBtn');
     
-    if (expandBtn) {
-        expandBtn.addEventListener('click', function() {
-            modal.classList.remove('fade-out');
-            if (modalContent) modalContent.classList.remove('scale-out');
-            modal.classList.add('fade-in');
-            if (modalContent) modalContent.classList.add('scale-in');
-            modal.style.display = 'block';
-        });
-    }
+if (expandBtn) {
+    expandBtn.addEventListener('click', function() {
+        modal.classList.remove('fade-out');
+        if (modalContent) modalContent.classList.remove('scale-out');
+        modal.classList.add('fade-in');
+        if (modalContent) modalContent.classList.add('scale-in');
+        modal.style.display = 'block';
+        
+        // Auto-scroll to today after modal opens
+        setTimeout(scrollToTodayInModal, 500);
+    });
+}
     
     if (closeBtn) {
         closeBtn.addEventListener('click', function() {
@@ -3832,6 +4372,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 setupButtonClickHandlers();
                 startContentChecking();
                 
+                // ADD setupModalSearch() HERE - LINE 1
+                setupModalSearch();
+                
                 console.log('All components initialized successfully');
             }, 200);
         }, 300);
@@ -3860,6 +4403,135 @@ style.textContent = `
         to {
             transform: scale(4);
             opacity: 0;
+        }
+    }
+    
+    /* New Routine Card Styles */
+    .routine-classes-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 15px;
+    }
+    
+    .class-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+    
+    .class-card:hover {
+        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .class-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .subject-icon {
+        font-size: 28px;
+        width: 35px;
+        text-align: center;
+        flex-shrink: 0;
+    }
+    
+    .class-info {
+        flex: 1;
+        min-width: 0;
+    }
+    
+    .class-topic {
+        font-size: 16px;
+        font-weight: 600;
+        color: #ffffff;
+        margin-bottom: 4px;
+        line-height: 1.4;
+    }
+    
+    .class-subject {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.7);
+        font-weight: 500;
+    }
+    
+    .no-classes-message {
+        text-align: center;
+        padding: 30px 20px;
+        color: #a0aec0;
+    }
+    
+    .no-classes-message i {
+        font-size: 40px;
+        margin-bottom: 10px;
+        display: block;
+        opacity: 0.7;
+    }
+    
+    .no-classes-message p {
+        margin: 0;
+        font-size: 16px;
+    }
+    
+    /* Status styles */
+    .completed {
+        color: #48bb78;
+    }
+    
+    .today {
+        color: #feca57;
+    }
+    
+    .upcoming {
+        color: #ef4444;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .class-card {
+            padding: 12px;
+        }
+        
+        .subject-icon {
+            font-size: 24px;
+            width: 30px;
+        }
+        
+        .class-topic {
+            font-size: 15px;
+        }
+        
+        .class-subject {
+            font-size: 13px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .class-card {
+            padding: 10px;
+        }
+        
+        .subject-icon {
+            font-size: 22px;
+            width: 28px;
+        }
+        
+        .class-header {
+            gap: 12px;
+        }
+        
+        .class-topic {
+            font-size: 14px;
+        }
+        
+        .class-subject {
+            font-size: 12px;
         }
     }
 `;
