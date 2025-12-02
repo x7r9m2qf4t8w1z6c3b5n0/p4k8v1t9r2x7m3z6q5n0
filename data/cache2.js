@@ -10,7 +10,8 @@ const subjectsData = [
             { title: "চল তড়িৎ (পর্ব ১)", url: "https://drive.google.com/file/d/15n3TdCredxmPmPAVfPsOcCvA2YalKdkN/view?usp=sharing" },
             { title: "চল তড়িৎ (পর্ব ২)", url: "https://drive.google.com/file/d/1Hs753GXue2cTET7qcJZkWCAWrLsu1aJs/view?usp=sharing" },
             { title: "চল তড়িৎ (পর্ব ৩)", url: "https://drive.google.com/file/d/120ZcFfXsH04AemDGALwnGOOC0dv0fka9/view?usp=sharing" },
-            { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ", url: "https://drive.google.com/file/d/1dBOqwdFWnZ-fSmb-3Nd7uRT9ResjRjWw/view?usp=sharing" },
+            { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ (পর্ব ১)", url: "https://drive.google.com/file/d/1dBOqwdFWnZ-fSmb-3Nd7uRT9ResjRjWw/view?usp=sharing" },
+            { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ (পর্ব ২)", url: "https://drive.google.com/file/d/1BkEtkJmvCMaFiRTqQ2Zb-17l8WcvdVQ6/view?usp=sharing" },
         ]
     },
     {
@@ -48,7 +49,8 @@ const subjectsData = [
             { title: "Marked Books", url: "https://drive.google.com/drive/folders/1z-9yAOmVYmIcB4RhtEnO1YatCBoXUYq6?usp=sharing" },
             { title: "রক্ত ও সংবহন (পর্ব ১)", url: "https://drive.google.com/file/d/1Kq2M73qvdWa2vGx9GSQUZZxOraxUnmNW/view?usp=sharing" },
             { title: "রক্ত ও সংবহন (পর্ব ২)", url: "https://drive.google.com/file/d/1Zn2L2XlUkyG_BHKztX6s_HJtdvkrBeYL/view?usp=sharing" },
-            { title: "জীনতত্ত্ব ও বিবর্তন", url: "https://drive.google.com/file/d/1TK7uw1ooVOFXHjqq4sxJ04s_Bpm4xyyT/view?usp=sharing" },
+            { title: "জিনতত্ত্ব ও বিবর্তন", url: "https://drive.google.com/file/d/1TK7uw1ooVOFXHjqq4sxJ04s_Bpm4xyyT/view?usp=sharing" },
+            { title: "শ্বসন ও শ্বাসক্রিয়া", url: "https://drive.google.com/file/d/11IgPX7UP-yWoWQeeV7xHm_oH1zxLcPmw/view?usp=sharing" },
         ]
     },
     {
