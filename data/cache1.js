@@ -11,8 +11,8 @@ const subjectsData = [
                             { title: "চল তড়িৎ (পর্ব ২)", videoId: "NkjXvyaAh6s" },
                             { title: "চল তড়িৎ (পর্ব ৩.১)", videoId: "Y6NMHXLkqsE" },
                             { title: "চল তড়িৎ (পর্ব ৩.২)", videoId: "gJ83lRK2wrg" },
-                            { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ (অংশ ১)", videoId: "Fzv2yjGdXT0" },
-                            { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ (অংশ ২)", videoId: "5b3moH1Cil8" },
+                            { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ (পর্ব ১)", videoId: "Fzv2yjGdXT0" },
+                            { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ (পর্ব ২)", videoId: "5b3moH1Cil8" },
                 ]
             },
             {
@@ -50,8 +50,8 @@ const subjectsData = [
                 lectures: [
                             { title: "রক্ত ও সংবহন (পর্ব ১)", videoId: "0s-K-wv1Ym8" },
                             { title: "রক্ত ও সংবহন (পর্ব ২)", videoId: "TnEeRzrx8jY" },
-                            { title: "জিনতত্ত্ব ও বিবর্তন (অংশ ১)", videoId: "OVEia2xzR1M" },
-                            { title: "জিনতত্ত্ব ও বিবর্তন (অংশ ২)", videoId: "1qHmpY5yfh8" },
+                            { title: "জিনতত্ত্ব ও বিবর্তন (পর্ব ১.১)", videoId: "OVEia2xzR1M" },
+                            { title: "জিনতত্ত্ব ও বিবর্তন (পর্ব ১.২)", videoId: "1qHmpY5yfh8" },
                             { title: "শ্বসন ও শ্বাসক্রিয়া", videoId: "suTJQaWwGBE" },
                 ]
             },
