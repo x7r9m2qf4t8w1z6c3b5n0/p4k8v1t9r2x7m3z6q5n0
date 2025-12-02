@@ -901,97 +901,96 @@
                 font-size: 15px;
             }
         }
-/* Fullscreen PDF Modal Styles */
-.pdf-modal.fullscreen {
-    padding: 0 !important;
-}
-
+/* Fullscreen PDF Modal Styles - UPDATED */
 .pdf-modal.fullscreen .pdf-modal-content {
-    width: 100%;
-    height: 100%;
-    max-width: none;
-    max-height: none;
-    border-radius: 0;
-    background: #000;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: none !important;
+    max-height: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    background: #000 !important;
 }
 
 .pdf-modal.fullscreen .pdf-modal-header {
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: auto;
-    background: transparent;
-    border: none;
-    padding: 15px;
-    z-index: 100;
-    width: auto;
+    position: fixed !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    border: none !important;
+    padding: 15px !important;
+    z-index: 1000 !important;
+    width: auto !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 0 0 0 15px !important;
 }
 
 .pdf-modal.fullscreen .pdf-modal-title {
-    display: none;
-}
-
-.pdf-modal.fullscreen .pdf-modal-controls {
-    gap: 8px;
-}
-
-.pdf-modal.fullscreen .pdf-modal-btn {
-    background: rgba(0, 0, 0, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    backdrop-filter: blur(10px);
-}
-
-.pdf-modal.fullscreen .pdf-modal-btn:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: scale(1.1);
-}
-
-.pdf-modal.fullscreen .pdf-download-btn,
-.pdf-modal.fullscreen .pdf-fullscreen-btn {
     display: none !important;
 }
 
+.pdf-modal.fullscreen .pdf-modal-controls {
+    gap: 0 !important;
+}
+
+.pdf-modal.fullscreen .pdf-modal-btn {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    backdrop-filter: blur(10px) !important;
+}
+
+.pdf-modal.fullscreen .pdf-modal-btn:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+    transform: scale(1.1) !important;
+}
+
+/* CRITICAL FIX: Hide download and close buttons in fullscreen mode */
+.pdf-modal.fullscreen .pdf-modal-controls .pdf-download-btn,
+.pdf-modal.fullscreen .pdf-modal-controls .pdf-close-btn {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    pointer-events: none !important;
+}
+
+/* Keep only the fullscreen toggle button visible */
+.pdf-modal.fullscreen .pdf-fullscreen-btn {
+    display: flex !important;
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 18px !important;
+}
+
 .pdf-modal.fullscreen .pdf-modal-body {
-    padding: 0;
+    padding: 0 !important;
+    height: 100vh !important;
 }
 
 .pdf-modal.fullscreen .pdf-iframe {
-    background: #000;
+    background: #000 !important;
+    height: 100vh !important;
 }
-/* Mobile Close Button Fix */
+
+/* Mobile Fullscreen Adjustments */
 @media (max-width: 768px) {
     .pdf-modal.fullscreen .pdf-modal-header {
-        opacity: 1 !important;
-        pointer-events: auto !important;
+        background: rgba(0, 0, 0, 0.9) !important;
+        border-radius: 0 0 0 25px !important;
+        padding: 10px !important;
     }
     
-    .pdf-modal.fullscreen .pdf-modal-controls {
-        background: rgba(0, 0, 0, 0.8);
-        border-radius: 25px;
-        padding: 8px;
-        margin-right: 10px;
-        margin-top: 10px;
-    }
-    
-    .pdf-modal.fullscreen .pdf-modal-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 18px;
-    }
-    
-    /* Add a tap area at the top for easier closing */
-    .pdf-modal.fullscreen::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 60px;
-        z-index: 99;
-        background: transparent;
+    .pdf-modal.fullscreen .pdf-fullscreen-btn {
+        width: 40px !important;
+        height: 40px !important;
+        font-size: 16px !important;
     }
 }
-    </style>
+</style>
 </head>
 <body>
     <!-- Fixed Header -->
@@ -1154,32 +1153,70 @@ function initializePage() {
     
     // Setup fullscreen escape key handler
     document.addEventListener('keydown', handleFullscreenEscape);
+    
+    // Listen for fullscreen change events
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+    document.addEventListener('msfullscreenchange', handleFullscreenChange);
 }
 
-// Fullscreen functionality
+// Fullscreen functionality using Fullscreen API
 function toggleFullscreen() {
+    const pdfModalContent = document.querySelector('.pdf-modal-content');
+    
     if (!isFullscreen) {
-        // Enter fullscreen - hide everything except PDF and close button
+        // Enter fullscreen
+        if (pdfModalContent.requestFullscreen) {
+            pdfModalContent.requestFullscreen();
+        } else if (pdfModalContent.webkitRequestFullscreen) { /* Safari */
+            pdfModalContent.webkitRequestFullscreen();
+        } else if (pdfModalContent.msRequestFullscreen) { /* IE11 */
+            pdfModalContent.msRequestFullscreen();
+        }
+        
+        // Add class for CSS styling
         pdfModal.classList.add('fullscreen');
         pdfFullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
         pdfFullscreenBtn.title = 'Exit Fullscreen';
-        isFullscreen = true;
+        
+        // FORCE HIDE DOWNLOAD AND CLOSE BUTTONS
+        forceHideButtonsInFullscreen();
         
         // Auto-hide controls after 3 seconds
         headerTimeout = setTimeout(() => {
             if (isFullscreen) {
-                pdfModal.querySelector('.pdf-modal-header').style.opacity = '0';
-                pdfModal.querySelector('.pdf-modal-header').style.pointerEvents = 'none';
+                const header = pdfModal.querySelector('.pdf-modal-header');
+                header.style.opacity = '0';
+                header.style.pointerEvents = 'none';
             }
         }, 3000);
     } else {
-        // Exit fullscreen - restore normal view
+        // Exit fullscreen
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+        }
+    }
+}
+
+// Handle fullscreen change events
+function handleFullscreenChange() {
+    const isCurrentlyFullscreen = !!(document.fullscreenElement || 
+                                    document.webkitFullscreenElement || 
+                                    document.msFullscreenElement);
+    
+    if (!isCurrentlyFullscreen && isFullscreen) {
+        // Exited fullscreen
         pdfModal.classList.remove('fullscreen');
         pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
         pdfFullscreenBtn.title = 'Enter Fullscreen';
-        pdfModal.querySelector('.pdf-modal-header').style.opacity = '1';
-        pdfModal.querySelector('.pdf-modal-header').style.pointerEvents = 'auto';
-        isFullscreen = false;
+        
+        const header = pdfModal.querySelector('.pdf-modal-header');
+        header.style.opacity = '1';
+        header.style.pointerEvents = 'auto';
         
         // Clear header timeout
         if (headerTimeout) {
@@ -1187,6 +1224,8 @@ function toggleFullscreen() {
             headerTimeout = null;
         }
     }
+    
+    isFullscreen = isCurrentlyFullscreen;
 }
 
 // Show header on mouse move in fullscreen
@@ -1194,9 +1233,10 @@ function setupFullscreenHeaderBehavior() {
     const pdfModal = document.getElementById('pdf-modal');
     const header = pdfModal.querySelector('.pdf-modal-header');
     
-    pdfModal.addEventListener('mousemove', (e) => {
-        if (isFullscreen) {
-            // Show header
+    // Show controls when moving mouse at top of screen in fullscreen
+    document.addEventListener('mousemove', (e) => {
+        if (isFullscreen && e.clientY < 100) {
+            // Show header when mouse is near top
             header.style.opacity = '1';
             header.style.pointerEvents = 'auto';
             header.style.transition = 'opacity 0.3s ease';
@@ -1227,8 +1267,9 @@ function setupFullscreenHeaderBehavior() {
         }
     });
     
-    header.addEventListener('mouseleave', () => {
-        if (isFullscreen) {
+    header.addEventListener('mouseleave', (e) => {
+        if (isFullscreen && e.clientY > 60) {
+            // Only hide if mouse leaves going downward (not towards top)
             headerTimeout = setTimeout(() => {
                 if (isFullscreen) {
                     header.style.opacity = '0';
@@ -1238,27 +1279,20 @@ function setupFullscreenHeaderBehavior() {
         }
     });
     
-    // Also show header when PDF is clicked/tapped
-    pdfIframe.addEventListener('load', () => {
-        try {
-            const iframeDoc = pdfIframe.contentDocument || pdfIframe.contentWindow.document;
-            iframeDoc.addEventListener('click', () => {
+    // Also show header when PDF is clicked/tapped on mobile
+    document.addEventListener('click', (e) => {
+        if (isFullscreen && e.target.closest('.pdf-modal-content')) {
+            header.style.opacity = '1';
+            header.style.pointerEvents = 'auto';
+            if (headerTimeout) {
+                clearTimeout(headerTimeout);
+            }
+            headerTimeout = setTimeout(() => {
                 if (isFullscreen) {
-                    header.style.opacity = '1';
-                    header.style.pointerEvents = 'auto';
-                    if (headerTimeout) {
-                        clearTimeout(headerTimeout);
-                    }
-                    headerTimeout = setTimeout(() => {
-                        if (isFullscreen) {
-                            header.style.opacity = '0';
-                            header.style.pointerEvents = 'none';
-                        }
-                    }, 3000);
+                    header.style.opacity = '0';
+                    header.style.pointerEvents = 'none';
                 }
-            });
-        } catch (e) {
-            // CORS error, can't access iframe document
+            }, 3000);
         }
     });
 }
@@ -1792,6 +1826,20 @@ function showPdfFallback() {
 
 // Close PDF modal with smooth animation
 function closePdfModal() {
+    // Exit fullscreen first if active
+    if (isFullscreen) {
+        toggleFullscreen();
+        
+        // Wait a bit for fullscreen to exit
+        setTimeout(() => {
+            closeModalAnimation();
+        }, 100);
+    } else {
+        closeModalAnimation();
+    }
+}
+
+function closeModalAnimation() {
     // Start closing animation
     pdfModal.classList.remove('active');
     
@@ -1802,14 +1850,6 @@ function closePdfModal() {
         pdfLoading.classList.remove('active');
         pdfFallback.classList.remove('active');
         document.body.style.overflow = '';
-        
-        // Reset fullscreen state when closing modal completely
-        if (isFullscreen) {
-            pdfModal.classList.remove('fullscreen');
-            pdfFullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
-            pdfFullscreenBtn.title = 'Enter Fullscreen';
-            isFullscreen = false;
-        }
         
         // Clear header timeout
         if (headerTimeout) {
@@ -1829,7 +1869,7 @@ function setupModalEvents() {
     
     // Close modal when clicking outside the content
     pdfModal.addEventListener('click', (e) => {
-        if (e.target === pdfModal) {
+        if (e.target === pdfModal && !isFullscreen) {
             closePdfModal();
         }
     });
@@ -1837,16 +1877,45 @@ function setupModalEvents() {
     // Close modal with Escape key (but not when in fullscreen)
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            if (isFullscreen) {
-                toggleFullscreen();
-            } else if (pdfModal.classList.contains('active')) {
-                closePdfModal();
+            if (pdfModal.classList.contains('active')) {
+                if (isFullscreen) {
+                    toggleFullscreen();
+                } else {
+                    closePdfModal();
+                }
             }
         }
     });
     
     // Setup fullscreen header behavior
     setupFullscreenHeaderBehavior();
+}
+
+// Force hide download and close buttons in fullscreen
+function forceHideButtonsInFullscreen() {
+    const checkButtons = () => {
+        if (isFullscreen) {
+            pdfDownloadBtn.style.display = 'none';
+            pdfCloseBtn.style.display = 'none';
+            pdfFullscreenBtn.style.display = 'flex';
+        } else {
+            pdfDownloadBtn.style.display = 'flex';
+            pdfCloseBtn.style.display = 'flex';
+            pdfFullscreenBtn.style.display = 'flex';
+        }
+    };
+    
+    // Check buttons every 100ms when in fullscreen
+    const interval = setInterval(() => {
+        if (isFullscreen) {
+            checkButtons();
+        } else {
+            clearInterval(interval);
+        }
+    }, 100);
+    
+    // Also check on mouse move in fullscreen
+    document.addEventListener('mousemove', checkButtons);
 }
 
 // Navigate to home page
