@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+<link rel="preconnect" href="https://img.icons8.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -172,24 +176,42 @@ body {
             border-radius: 50%;
         }
 
-        .time-date {
-            text-align: left;
-        }
+.time-date {
+    text-align: center;
+    position: relative;
+}
 
-        .big-time {
-            font-size: 48px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 5px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-        }
+.big-time {
+    font-size: 48px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 10px;
+}
 
-        .date {
-            font-size: 22px;
-            color: #e2e8f0;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
+.big-time i {
+    font-size: 40px;
+    color: #feca57; /* Golden color for clock icon */
+}
+
+.date {
+    font-size: 22px;
+    color: #e2e8f0;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.date i {
+    font-size: 20px;
+    color: #4ecdc4; /* Teal color for calendar icon */
+}
 
         .short-text {
             font-size: 16px;
@@ -207,23 +229,21 @@ body {
             margin-right: 15px;
         }
 
-        .user-name {
-            font-size: 30px;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 5px;
-        }
-
-        .user-email {
-            font-size: 22px;
-            color: #cbd5e0;
-            font-weight: 500;
-        }
+.user-name {
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Changed from center to flex-start */
+    gap: 6px !important; /* Reduced gap from 8px to 6px */
+}
 
 /* Updated Profile Icon Styles */
 .profile-icon {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(160, 174, 192, 0.8));
     border-radius: 50%;
     display: flex;
@@ -1633,7 +1653,7 @@ th {
             }
 
             .routine-section {
-                max-height: 500px; /* Even smaller on very small screens */
+                max-height: 10000px; /* Even smaller on very small screens */
             }
 
             .mobile-routine {
@@ -2833,6 +2853,71 @@ th {
 .logo-text i.fa-home {
     color: #ff4444; /* Red color */
 }
+.verified-badge {
+    width: 24px; /* Slightly smaller */
+    height: 24px; /* Slightly smaller */
+    margin-left: 8px !important;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 4px !important;
+    filter: none !important;
+    transition: transform 0.3s ease !important;
+    border-radius: 0 !important; /* Remove border-radius */
+    background: none !important; /* Remove white background */
+    padding: 0 !important; /* Remove padding */
+    box-shadow: none !important; /* Remove box-shadow */
+    position: relative !important;
+}
+
+.verified-badge:hover {
+    transform: scale(1.1) !important;
+    filter: brightness(1.1) !important;
+}
+
+/* Remove all animations */
+@keyframes none {
+    0%, 100% { transform: none; }
+}
+
+/* Ensure user-name displays properly */
+.user-name {
+    font-size: 30px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6px;
+    position: relative; /* Add this */
+}
+
+.user-name span {
+    display: inline-block !important;
+    vertical-align: middle !important;
+}
+
+
+/* Pre-load badge styles to prevent FOUC (Flash of Unstyled Content) */
+.user-name::after {
+    content: '';
+    display: none; /* Hidden by default, shown by JS */
+    width: 24px;
+    height: 24px;
+    background-image: url('https://img.icons8.com/fluency/48/instagram-verification-badge.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: 4px;
+}
+
+/* Force immediate display of badge */
+#userName .verified-badge {
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+}
 </style>
 </head>
 <body>
@@ -2849,25 +2934,38 @@ th {
 </header>
 
 <div class="container">
-    <!-- User Info Section -->
-    <section class="user-info-section">
-        <div class="time-date">
-            <div class="big-time" id="currentTime">10:30 AM</div>
-            <div class="date" id="currentDate">November 01, 2025</div>
+<!-- User Info Section -->
+<section class="user-info-section">
+    <div class="time-date">
+        <div class="big-time" id="currentTime">
+            <i class="fas fa-clock"></i>
+            <span>10:30 AM</span>
         </div>
-        <div class="user-profile">
-            <div class="user-details">
-                <div class="user-name" id="userName">Student Name</div>
-                <div class="short-text">A student who never gave up.<br>Version 2.2</div>
-            </div>
-            <div class="profile-icon" id="profileIcon">
-                <div class="profile-icon-placeholder" id="profilePlaceholder">
-                    <i class="fas fa-user"></i>
-                </div>
-                <input type="file" id="profilePictureInput" class="profile-picture-input" accept="image/*">
-            </div>
+        <div class="date" id="currentDate">
+            <i class="far fa-calendar-alt"></i>
+            <span>November 01, 2025</span>
         </div>
-    </section>
+    </div>
+    <div class="user-profile">
+        <div class="user-details">
+<div class="user-name" id="userName">
+    <span>Student Name</span>
+    <img src="https://img.icons8.com/fluency/48/instagram-verification-badge.png" 
+         class="verified-badge"
+         alt="Verified"
+         loading="eager" <!-- Add this -->
+         style="display: inline-block !important; opacity: 1 !important;">
+</div>
+            <div class="short-text">A student who never gave up.</div>
+        </div>
+        <div class="profile-icon" id="profileIcon">
+            <div class="profile-icon-placeholder" id="profilePlaceholder">
+                <i class="fas fa-user"></i>
+            </div>
+            <input type="file" id="profilePictureInput" class="profile-picture-input" accept="image/*">
+        </div>
+    </div>
+</section>
 
     <!-- Profile Picture Modal -->
     <div class="profile-modal" id="profileModal">
@@ -2943,7 +3041,7 @@ th {
             
             <div class="routine-date-display">
                 <div class="routine-date-title" id="currentDayTitle">
-                    <i class="far fa-clock"></i>
+                    <i class="far fa-calendar"></i>
                     <span id="dayDisplay">Today</span>
                 </div>
                 <div class="routine-nav-dots" id="routineNavDots">
@@ -2997,6 +3095,33 @@ th {
 <script src="data/cache3.js"></script>
 <script src="data/cache4.js"></script>
     <script>
+function ensureBadgeDisplay() {
+    const userNameElement = document.getElementById('userName');
+    if (userNameElement) {
+        // Check if badge exists
+        let badge = userNameElement.querySelector('.verified-badge');
+        
+        if (!badge) {
+            // Create and add badge
+            badge = document.createElement('img');
+            badge.className = 'verified-badge';
+            badge.src = 'https://img.icons8.com/fluency/96/instagram-verification-badge.png';
+            badge.alt = 'Verified';
+            badge.style.cssText = 'width: 32px; height: 32px; margin-left: 10px; vertical-align: middle; display: inline-block !important;';
+            userNameElement.appendChild(badge);
+            console.log('Badge added via JavaScript');
+        } else {
+            // Force display existing badge
+            badge.style.cssText = 'width: 32px !important; height: 32px !important; margin-left: 10px !important; vertical-align: middle !important; display: inline-block !important; opacity: 1 !important; visibility: visible !important;';
+            console.log('Badge display forced');
+        }
+    }
+}
+
+// Call this when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(ensureBadgeDisplay, 1000);
+});
 // Setup modal search functionality
 function setupModalSearch() {
     const searchBox = document.getElementById('modalSearchBox');
@@ -3055,6 +3180,7 @@ function setupModalSearch() {
         }
     });
 }
+
 // Function to auto-scroll to today's lecture in expanded modal
 function scrollToTodayInModal() {
     const modalContainer = document.getElementById('modalRoutineContainer');
@@ -3093,6 +3219,7 @@ highlightStyle.textContent = `
     }
 `;
 document.head.appendChild(highlightStyle);
+
 // Image Modal Functionality
 function setupImageModal() {
     const noticeImage = document.getElementById('noticeImage');
@@ -3792,8 +3919,23 @@ function updateTimeDate() {
     const currentTimeEl = document.getElementById('currentTime');
     const currentDateEl = document.getElementById('currentDate');
     
-    if (currentTimeEl) currentTimeEl.textContent = timeString;
-    if (currentDateEl) currentDateEl.textContent = `${weekdayString}, ${dateString}`;
+    if (currentTimeEl) {
+        const timeSpan = currentTimeEl.querySelector('span');
+        if (timeSpan) {
+            timeSpan.textContent = timeString;
+        } else {
+            currentTimeEl.innerHTML = `<i class="fas fa-clock"></i><span>${timeString}</span>`;
+        }
+    }
+    
+    if (currentDateEl) {
+        const dateSpan = currentDateEl.querySelector('span');
+        if (dateSpan) {
+            dateSpan.textContent = `${weekdayString}, ${dateString}`;
+        } else {
+            currentDateEl.innerHTML = `<i class="far fa-calendar-alt"></i><span>${weekdayString}, ${dateString}</span>`;
+        }
+    }
 }
 
 // Display user info
@@ -3814,7 +3956,6 @@ function displayUserInfo() {
 }
 
 // PCMB Timer Functions
-
 // Check if current time is within 24h window (8:00 PM to next day 8:00 PM)
 function isWithin24hWindow() {
     const now = new Date();
@@ -3860,7 +4001,7 @@ function updatePCMBTimer() {
     const hours = Math.floor(timeLeft / (1000 * 60 * 60));
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
     
-    pcmbTimerEl.innerHTML = `<span class="limited-time-icon"><i class="fas fa-clock"></i></span> ${hours} Hour${hours !== 1 ? 's' : ''} ${minutes} Minute${minutes !== 1 ? 's' : ''}`;
+    pcmbTimerEl.innerHTML = `<span class="limited-time-icon"><i class="fas fa-clock"></i></span> Friday`;
 }
 
 // Populate routine tables for both views
@@ -3898,21 +4039,36 @@ function populateRoutineTables() {
             routineContainer.appendChild(scrollerWrapper);
         }
         
-        // Populate main view (today and tomorrow)
-        for (let dayOffset = 0; dayOffset < 2; dayOffset++) {
-            const targetDate = new Date(today);
-            targetDate.setDate(today.getDate() + dayOffset);
-            
-            // Format date as DD/MM/YYYY to match routineData
-            const targetDateStr = `${targetDate.getDate().toString().padStart(2, '0')}/${(targetDate.getMonth() + 1).toString().padStart(2, '0')}/${targetDate.getFullYear()}`;
-            
-            const dayClasses = routineData.filter(item => item.date === targetDateStr);
-            
-            const isCompleted = isClassCompleted(targetDate);
-            const isToday = dayOffset === 0;
-            const card = createRoutineCard(targetDateStr, dayClasses, isCompleted, isToday, false);
-            scrollerWrapper.appendChild(card);
+        // Populate main view (upcoming Friday only)
+        const currentDay = today.getDay(); // 0 = Sunday, 5 = Friday
+
+        // Calculate days until next Friday
+        let daysUntilFriday;
+        if (currentDay < 5) {
+            daysUntilFriday = 5 - currentDay; // Friday is ahead this week
+        } else if (currentDay === 5) {
+            // Today is Friday - check if there are classes today
+            daysUntilFriday = 0;
+        } else {
+            // Today is Saturday, so next Friday is 6 days away
+            daysUntilFriday = 6; // (5 + 7) - currentDay
         }
+
+        const fridayDate = new Date(today);
+        fridayDate.setDate(today.getDate() + daysUntilFriday);
+
+        // Format date as DD/MM/YYYY to match routineData
+        const fridayDateStr = `${fridayDate.getDate().toString().padStart(2, '0')}/${(fridayDate.getMonth() + 1).toString().padStart(2, '0')}/${fridayDate.getFullYear()}`;
+
+        const fridayClasses = routineData.filter(item => item.date === fridayDateStr);
+
+        const isCompleted = isClassCompleted(fridayDate);
+        const isToday = daysUntilFriday === 0;
+        const card = createRoutineCard(fridayDateStr, fridayClasses, isCompleted, isToday, false);
+        scrollerWrapper.appendChild(card);
+
+        // Update the routine navigation to reflect only Friday
+        updateRoutineNavigationForFriday(daysUntilFriday);
     }
     
     // Populate modal view (all dates)
@@ -3932,6 +4088,40 @@ function populateRoutineTables() {
             const card = createRoutineCard(date, classesByDate[date], isCompleted, isToday, true);
             modalRoutineContainer.appendChild(card);
         });
+    }
+}
+
+// Update the routine navigation to reflect only Friday
+function updateRoutineNavigationForFriday(daysUntilFriday) {
+    const dayTitle = document.getElementById('dayDisplay');
+    const dots = document.querySelectorAll('.routine-nav-dot');
+    
+    if (dayTitle) {
+        if (daysUntilFriday === 0) {
+            dayTitle.textContent = "Today (Friday)";
+        } else if (daysUntilFriday === 1) {
+            dayTitle.textContent = "Tomorrow";
+        } else {
+            const today = new Date();
+            const fridayDate = new Date(today);
+            fridayDate.setDate(today.getDate() + daysUntilFriday);
+            
+            const weekdayOptions = { weekday: 'long' };
+            const weekday = fridayDate.toLocaleDateString('en-US', weekdayOptions);
+            
+            if (daysUntilFriday <= 6) {
+                dayTitle.textContent = `${weekday}`;
+            } else {
+                const dateOptions = { month: 'short', day: 'numeric' };
+                const dateStr = fridayDate.toLocaleDateString('en-US', dateOptions);
+                dayTitle.textContent = `${weekday}, ${dateStr}`;
+            }
+        }
+    }
+    
+    // Hide dots since we only show Friday
+    if (dots && dots.length > 0) {
+        dots.forEach(dot => dot.style.display = 'none');
     }
 }
 
@@ -3988,7 +4178,7 @@ function createRoutineCard(date, classes, isCompleted, isToday, isExpandedView) 
     card.innerHTML = `
         <div class="routine-card-header">
             <div class="routine-card-date">
-                <i class="far fa-clock"></i>
+                <i class="far fa-calendar"></i>
                 ${displayDate}
             </div>
             ${isExpandedView ? `<div class="routine-card-status ${isCompleted ? 'status-completed' : 'status-incomplete'}">${isCompleted ? '✔' : '✖'}</div>` : ''}
@@ -4022,18 +4212,18 @@ function setupModal() {
     const expandBtn = document.getElementById('expandRoutineBtn');
     const closeBtn = document.getElementById('closeModalBtn');
     
-if (expandBtn) {
-    expandBtn.addEventListener('click', function() {
-        modal.classList.remove('fade-out');
-        if (modalContent) modalContent.classList.remove('scale-out');
-        modal.classList.add('fade-in');
-        if (modalContent) modalContent.classList.add('scale-in');
-        modal.style.display = 'block';
-        
-        // Auto-scroll to today after modal opens
-        setTimeout(scrollToTodayInModal, 500);
-    });
-}
+    if (expandBtn) {
+        expandBtn.addEventListener('click', function() {
+            modal.classList.remove('fade-out');
+            if (modalContent) modalContent.classList.remove('scale-out');
+            modal.classList.add('fade-in');
+            if (modalContent) modalContent.classList.add('scale-in');
+            modal.style.display = 'block';
+            
+            // Auto-scroll to today after modal opens
+            setTimeout(scrollToTodayInModal, 500);
+        });
+    }
     
     if (closeBtn) {
         closeBtn.addEventListener('click', function() {
@@ -4243,110 +4433,21 @@ function setupRoutineScroller() {
         return;
     }
     
-    let currentDayIndex = 0;
-    const totalDays = 2; // Today and Tomorrow
-
-    // Create scroller wrapper if it doesn't exist
-    let scrollerWrapper = routineContainer.querySelector('.routine-cards-scroller');
-    if (!scrollerWrapper) {
-        scrollerWrapper = document.createElement('div');
-        scrollerWrapper.className = 'routine-cards-scroller';
-        
-        // Move existing cards to scroller wrapper
-        while (routineContainer.firstChild) {
-            scrollerWrapper.appendChild(routineContainer.firstChild);
-        }
-        routineContainer.appendChild(scrollerWrapper);
+    // Since we only show Friday, disable all navigation
+    prevDayBtn.style.display = 'none';
+    nextDayBtn.style.display = 'none';
+    
+    // Hide dots
+    if (dots && dots.length > 0) {
+        dots.forEach(dot => dot.style.display = 'none');
     }
-
-    // Show specific day with scroller animation
-    function showDay(dayIndex) {
-        if (dayIndex < 0 || dayIndex >= totalDays) return;
-        
-        // Calculate scroll position
-        const scrollPosition = -dayIndex * 100;
-        
-        // Apply transform for scroller animation
-        scrollerWrapper.style.transform = `translateX(${scrollPosition}%)`;
-        
-        // Update day display with weekday
-        const today = new Date();
-        const targetDate = new Date(today);
-        targetDate.setDate(today.getDate() + dayIndex);
-        
-        const weekdayOptions = { weekday: 'long' };
-        const weekday = targetDate.toLocaleDateString('en-US', weekdayOptions);
-        
-        if (dayIndex === 0) {
-            dayTitle.textContent = `Today`;
-        } else if (dayIndex === 1) {
-            dayTitle.textContent = `Tomorrow`;
-        }
-            
-        // Update active dot
-        dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === dayIndex);
-        });
-        
-        // Update current index
-        currentDayIndex = dayIndex;
-        
-        // Update button visibility
-        updateRoutineButtonVisibility();
-        
-        // Update container sizes after animation
-        setTimeout(updateContainerSizes, 50);
+    
+    // We don't need scroller functionality for single day
+    const scrollerWrapper = routineContainer.querySelector('.routine-cards-scroller');
+    if (scrollerWrapper) {
+        // Remove transform since we only have one card
+        scrollerWrapper.style.transform = 'translateX(0%)';
     }
-
-    // Update routine button visibility
-    function updateRoutineButtonVisibility() {
-        // Vanish left button when at first day
-        if (currentDayIndex === 0) {
-            prevDayBtn.style.opacity = '0';
-            prevDayBtn.style.visibility = 'hidden';
-            prevDayBtn.disabled = true;
-        } else {
-            prevDayBtn.style.opacity = '1';
-            prevDayBtn.style.visibility = 'visible';
-            prevDayBtn.disabled = false;
-        }
-        
-        // Vanish right button when at last day
-        if (currentDayIndex === totalDays - 1) {
-            nextDayBtn.style.opacity = '0';
-            nextDayBtn.style.visibility = 'hidden';
-            nextDayBtn.disabled = true;
-        } else {
-            nextDayBtn.style.opacity = '1';
-            nextDayBtn.style.visibility = 'visible';
-            nextDayBtn.disabled = false;
-        }
-    }
-
-    // Navigation button event listeners
-    prevDayBtn.addEventListener('click', () => {
-        if (currentDayIndex > 0) {
-            showDay(currentDayIndex - 1);
-        }
-    });
-
-    nextDayBtn.addEventListener('click', () => {
-        if (currentDayIndex < totalDays - 1) {
-            showDay(currentDayIndex + 1);
-        }
-    });
-
-    // Dot navigation
-    dots.forEach(dot => {
-        dot.addEventListener('click', function() {
-            const dayIndex = parseInt(this.getAttribute('data-day'));
-            showDay(dayIndex);
-        });
-    });
-
-    // Initialize
-    showDay(0);
-    updateRoutineButtonVisibility();
 }
 
 // Initialize everything when page loads
@@ -4380,7 +4481,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
         
         // Update time every minute
-        setInterval(updateTimeDate, 60000);
+        setInterval(updateTimeDate, 1000);
         
         // Update PCMB timer every minute
         setInterval(updatePCMBTimer, 60000);
