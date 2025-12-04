@@ -532,6 +532,7 @@ const subjectsData = [
   { "title": "ভেক্টর পর্ব ০৩", "pdfUrl": "https://pdf.bondipathshala.education/1763216599018.pdf" },
   { "title": "ভেক্টর পর্ব ০২", "pdfUrl": "https://pdf.bondipathshala.education/1763216552606.pdf" },
   { "title": "ভেক্টর পর্ব ০৪", "pdfUrl": "https://pdf.bondipathshala.education/1763216636027.pdf" },
+  { "title": "জৈব যৌগ - পর্ব ১০", "pdfUrl": "https://pdf.bondipathshala.education/1762096536482.pdf" }
         ]
     }
 ];
