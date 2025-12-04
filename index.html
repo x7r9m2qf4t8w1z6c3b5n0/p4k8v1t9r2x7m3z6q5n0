@@ -202,17 +202,18 @@ body {
 }
 
 .date {
-    font-size: 22px;
+    font-size: 15px;
     color: #e2e8f0;
     font-weight: 600;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
+    justify-content: center; 
     gap: 10px;
 }
 
 .date i {
-    font-size: 20px;
+    font-size: 15px;
     color: #4ecdc4; /* Teal color for calendar icon */
 }
 
@@ -1512,7 +1513,7 @@ th {
             }
             
             .date {
-                font-size: 18px;
+                font-size: 15px;
             }
             
             .buttons-grid {
@@ -1618,7 +1619,7 @@ th {
             }
             
             .logo-text {
-                font-size: 28px;
+                font-size: 30px;
             }
             
             .logo {
@@ -1627,11 +1628,11 @@ th {
             }
             
             .big-time {
-                font-size: 32px;
+                font-size: 40px;
             }
             
             .date {
-                font-size: 16px;
+                font-size: 12px;
             }
             
             .user-name {
@@ -1639,15 +1640,15 @@ th {
             }
             
             .button-icon {
-                font-size: 28px;
+                font-size: 40px;
             }
             
             .button-name {
-                font-size: 18px;
+                font-size: 14px;
             }
             
             .section-title {
-                font-size: 22px;
+                font-size: 30px;
             }
             
             th, td {
@@ -1993,7 +1994,7 @@ th {
 }
 
 .routine-date-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 600;
     color: #ffffff;
     margin-bottom: 5px;
@@ -3321,6 +3322,477 @@ th {
         font-size: 24px;
     }
 }
+/* Settings Icon Styles */
+.settings-container {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+}
+
+.settings-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 22px;
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.settings-icon:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    color: #ff4444;
+}
+
+.settings-icon:active {
+    transform: translateY(0) scale(0.95);
+}
+
+/* Settings Dropdown */
+.settings-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: rgba(20, 20, 30, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 15px;
+    min-width: 200px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1002;
+}
+
+.settings-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
+    font-weight: 500;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    padding-left: 25px;
+}
+
+.dropdown-item i {
+    font-size: 16px;
+    color: #ff4444;
+    width: 20px;
+    text-align: center;
+}
+
+/* My Profile Modal Styles */
+.profile-settings-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 3000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.profile-settings-modal.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.profile-settings-modal.fade-out {
+    animation: fadeOut 0.3s ease;
+}
+
+.profile-settings-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(20, 20, 30, 0.95);
+    padding: 0;
+    border-radius: 20px;
+    width: 95%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-settings-content.scale-in {
+    animation: scaleIn 0.3s ease;
+}
+
+.profile-settings-content.scale-out {
+    animation: scaleOut 0.3s ease;
+}
+
+.profile-settings-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(20, 20, 30, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.profile-settings-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+}
+
+.profile-settings-close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-settings-close-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.profile-settings-body {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+/* Profile Form Styles */
+.profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-label i {
+    color: #ff4444;
+    font-size: 16px;
+    width: 20px;
+}
+
+.edit-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 8px 15px;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.edit-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.edit-btn:active {
+    transform: translateY(0);
+}
+
+.form-input-group {
+    position: relative;
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    backdrop-filter: blur(15px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    line-height: 1.6;
+}
+
+.form-input:read-only, .form-textarea:read-only {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    cursor: default;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-input:focus, .form-textarea:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.field-status {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.verified-icon {
+    color: #48bb78;
+    font-size: 14px;
+}
+
+.status-text {
+    font-size: 12px;
+    color: #48bb78;
+    font-weight: 600;
+}
+
+/* Save Button */
+.save-btn-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.save-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 5px 15px rgba(255, 68, 68, 0.3);
+}
+
+.save-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 68, 68, 0.4);
+    background: linear-gradient(135deg, #ff5555, #dd0000);
+}
+
+.save-btn:active {
+    transform: translateY(0);
+}
+
+.save-btn i {
+    font-size: 18px;
+}
+
+/* Animation for editing mode */
+.editing .form-input:not(:read-only),
+.editing .form-textarea:not(:read-only) {
+    animation: inputFocusGlow 2s infinite alternate;
+}
+
+@keyframes inputFocusGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.4);
+    }
+    100% {
+        box-shadow: 0 0 0 5px rgba(255, 68, 68, 0.1);
+    }
+}
+
+/* Edit button active state */
+.edit-btn.editing {
+    background: rgba(255, 68, 68, 0.2);
+    border-color: rgba(255, 68, 68, 0.3);
+    color: #ff4444;
+}
+
+.edit-btn.editing .edit-text {
+    display: none;
+}
+
+.edit-btn.editing::after {
+    content: 'Editing';
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .settings-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        right: 15px;
+    }
+    
+    .settings-dropdown {
+        min-width: 180px;
+    }
+    
+    .profile-settings-content {
+        width: 90%;
+        max-height: 85vh;
+    }
+    
+    .profile-settings-header {
+        padding: 15px 20px;
+    }
+    
+    .profile-settings-body {
+        padding: 20px;
+    }
+    
+    .profile-settings-title {
+        font-size: 20px;
+    }
+    
+    .form-input, .form-textarea {
+        padding: 12px;
+        font-size: 15px;
+    }
+    
+    .save-btn {
+        padding: 16px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .settings-container {
+        right: 10px;
+    }
+    
+    .settings-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .profile-settings-content {
+        width: 95%;
+        border-radius: 15px;
+        max-height: 90vh;
+    }
+    
+    .profile-settings-header {
+        padding: 12px 15px;
+    }
+    
+    .profile-settings-body {
+        padding: 15px;
+    }
+    
+    .profile-settings-title {
+        font-size: 18px;
+    }
+    
+    .profile-settings-close-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 24px;
+    }
+    
+    .form-label {
+        font-size: 14px;
+    }
+    
+    .edit-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .form-input, .form-textarea {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    .save-btn {
+        padding: 14px;
+        font-size: 14px;
+    }
+}
 </style>
 </head>
 <body>
@@ -3332,6 +3804,19 @@ th {
                 <i class="fas fa-home"></i>
                 Home
             </div>
+<!-- Settings Icon -->
+<div class="settings-container">
+    <div class="settings-icon" id="settingsIcon">
+        <i class="fas fa-cog"></i>
+    </div>
+    <div class="settings-dropdown" id="settingsDropdown">
+        <div class="dropdown-item" id="myProfileBtn">
+            <i class="fas fa-user"></i>
+            <span>My Profile</span>
+        </div>
+        <!-- You can add more items here later -->
+    </div>
+</div>
         </div>
     </div>
 </header>
@@ -3356,7 +3841,6 @@ th {
     <img src="https://img.icons8.com/fluency/48/instagram-verification-badge.png" 
          class="verified-badge"
          loading="eager" <!-- Add this -->
-         style="display: inline-block !important; opacity: 1 !important;">
 </div>
             <div class="short-text">A student who never gave up.</div>
         </div>
@@ -3442,6 +3926,90 @@ th {
         </div>
         <div class="profile-viewer-body">
             <img id="fullProfilePicture" src="" alt="Profile Picture" class="full-profile-picture">
+        </div>
+    </div>
+</div>
+<!-- My Profile Modal -->
+<div class="profile-settings-modal" id="profileSettingsModal">
+    <div class="profile-settings-content">
+        <div class="profile-settings-header">
+            <h2 class="profile-settings-title">My Profile</h2>
+            <button class="profile-settings-close-btn" id="profileSettingsCloseBtn">&times;</button>
+        </div>
+        
+        <div class="profile-settings-body">
+            <div class="profile-form">
+                <!-- Name Field -->
+                <div class="form-group">
+                    <div class="form-label-row">
+                        <label class="form-label">
+                            <i class="fas fa-user"></i>
+                            Name
+                        </label>
+                        <button class="edit-btn" data-field="name">
+                            <i class="fas fa-edit"></i>
+                            <span class="edit-text">Edit</span>
+                        </button>
+                    </div>
+                    <div class="form-input-group">
+                        <input type="text" id="profileName" class="form-input" value="Student Name" readonly>
+                        <div class="field-status">
+                            <i class="fas fa-check-circle verified-icon"></i>
+                            <span class="status-text"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Email Field -->
+                <div class="form-group">
+                    <div class="form-label-row">
+                        <label class="form-label">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </label>
+                        <button class="edit-btn" data-field="email">
+                            <i class="fas fa-edit"></i>
+                            <span class="edit-text">Edit</span>
+                        </button>
+                    </div>
+                    <div class="form-input-group">
+                        <input type="email" id="profileEmail" class="form-input" value="student@example.com" readonly>
+                        <div class="field-status">
+                            <i class="fas fa-check-circle verified-icon"></i>
+                            <span class="status-text"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Motto Field -->
+                <div class="form-group">
+                    <div class="form-label-row">
+                        <label class="form-label">
+                            <i class="fas fa-quote-left"></i>
+                            Motto
+                        </label>
+                        <button class="edit-btn" data-field="motto">
+                            <i class="fas fa-edit"></i>
+                            <span class="edit-text">Edit</span>
+                        </button>
+                    </div>
+                    <div class="form-input-group">
+                        <textarea id="profileMotto" class="form-textarea" rows="3" readonly>A student who never gave up.</textarea>
+                        <div class="field-status">
+                            <i class="fas fa-check-circle verified-icon"></i>
+                            <span class="status-text"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Save Button (initially hidden) -->
+                <div class="save-btn-container" id="saveBtnContainer" style="display: none;">
+                    <button class="save-btn" id="saveProfileBtn">
+                        <i class="fas fa-save"></i>
+                        Save Changes
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -3540,6 +4108,422 @@ th {
 <script src="data/cache3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <script>
+// Settings Dropdown Functionality
+function setupSettingsDropdown() {
+    const settingsIcon = document.getElementById('settingsIcon');
+    const settingsDropdown = document.getElementById('settingsDropdown');
+    const myProfileBtn = document.getElementById('myProfileBtn');
+    
+    if (!settingsIcon || !settingsDropdown || !myProfileBtn) {
+        console.warn('Settings elements not found');
+        return;
+    }
+    
+    // Toggle dropdown when settings icon is clicked
+    settingsIcon.addEventListener('click', function(e) {
+        e.stopPropagation();
+        settingsDropdown.classList.toggle('show');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!settingsDropdown.contains(e.target) && !settingsIcon.contains(e.target)) {
+            settingsDropdown.classList.remove('show');
+        }
+    });
+    
+    // My Profile button click handler
+    myProfileBtn.addEventListener('click', function() {
+        settingsDropdown.classList.remove('show');
+        openProfileSettingsModal();
+    });
+}
+
+// My Profile Modal Functionality
+function setupProfileSettingsModal() {
+    const profileModal = document.getElementById('profileSettingsModal');
+    const profileContent = profileModal.querySelector('.profile-settings-content');
+    const closeBtn = document.getElementById('profileSettingsCloseBtn');
+    const editBtns = document.querySelectorAll('.edit-btn');
+    const saveBtnContainer = document.getElementById('saveBtnContainer');
+    const saveBtn = document.getElementById('saveProfileBtn');
+    const nameInput = document.getElementById('profileName');
+    const emailInput = document.getElementById('profileEmail');
+    const mottoInput = document.getElementById('profileMotto');
+    
+    if (!profileModal || !profileContent || !closeBtn) {
+        console.warn('Profile settings modal elements not found');
+        return;
+    }
+    
+    // Load saved profile data immediately
+    setTimeout(() => {
+        loadProfileData();
+    }, 100);
+    
+    // Close modal
+    closeBtn.addEventListener('click', function() {
+        closeProfileSettingsModal();
+    });
+    
+    // Close when clicking outside
+    profileModal.addEventListener('click', function(e) {
+        if (e.target === profileModal) {
+            closeProfileSettingsModal();
+        }
+    });
+    
+    // Close with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && profileModal.style.display === 'block') {
+            closeProfileSettingsModal();
+        }
+    });
+    
+    // Edit button functionality
+    editBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const field = this.dataset.field;
+            enableEditing(field);
+        });
+    });
+    
+    // Save button functionality
+    if (saveBtn) {
+        saveBtn.addEventListener('click', function() {
+            saveProfileData();
+        });
+    }
+    
+    function enableEditing(field) {
+        let input;
+        let editBtn;
+        
+        switch(field) {
+            case 'name':
+                input = nameInput;
+                editBtn = document.querySelector('.edit-btn[data-field="name"]');
+                break;
+            case 'email':
+                input = emailInput;
+                editBtn = document.querySelector('.edit-btn[data-field="email"]');
+                break;
+            case 'motto':
+                input = mottoInput;
+                editBtn = document.querySelector('.edit-btn[data-field="motto"]');
+                break;
+        }
+        
+        if (!input) return;
+        
+        // Toggle editing mode
+        const isEditing = input.hasAttribute('readonly');
+        
+        if (isEditing) {
+            // Enable editing
+            input.removeAttribute('readonly');
+            input.classList.add('editing');
+            editBtn.classList.add('editing');
+            editBtn.querySelector('.edit-text').textContent = 'Cancel';
+            
+            // Focus on input
+            input.focus();
+            
+            // Show save button
+            if (saveBtnContainer) {
+                saveBtnContainer.style.display = 'block';
+            }
+        } else {
+            // Cancel editing
+            input.setAttribute('readonly', true);
+            input.classList.remove('editing');
+            editBtn.classList.remove('editing');
+            editBtn.querySelector('.edit-text').textContent = 'Edit';
+            
+            // Revert to saved value
+            const savedData = getProfileData();
+            if (savedData) {
+                input.value = savedData[field] || input.defaultValue;
+            }
+            
+            // Hide save button if no fields are being edited
+            const anyEditing = document.querySelectorAll('.form-input:not([readonly]), .form-textarea:not([readonly])');
+            if (saveBtnContainer && anyEditing.length === 0) {
+                saveBtnContainer.style.display = 'none';
+            }
+        }
+    }
+    
+    // Auto-hide save button when all fields are readonly
+    function checkEditingState() {
+        const anyEditing = document.querySelectorAll('.form-input:not([readonly]), .form-textarea:not([readonly])');
+        if (saveBtnContainer) {
+            saveBtnContainer.style.display = anyEditing.length > 0 ? 'block' : 'none';
+        }
+    }
+    
+    // Listen for input changes to update save button state
+    [nameInput, emailInput, mottoInput].forEach(input => {
+        if (input) {
+            input.addEventListener('input', checkEditingState);
+        }
+    });
+}
+
+function openProfileSettingsModal() {
+    const modal = document.getElementById('profileSettingsModal');
+    const content = modal.querySelector('.profile-settings-content');
+    
+    if (!modal || !content) return;
+    
+    // Reset all fields to readonly
+    const inputs = document.querySelectorAll('.form-input, .form-textarea');
+    const editBtns = document.querySelectorAll('.edit-btn');
+    
+    inputs.forEach(input => {
+        input.setAttribute('readonly', true);
+        input.classList.remove('editing');
+    });
+    
+    editBtns.forEach(btn => {
+        btn.classList.remove('editing');
+        const editText = btn.querySelector('.edit-text');
+        if (editText) {
+            editText.textContent = 'Edit';
+        }
+    });
+    
+    // Hide save button
+    const saveBtnContainer = document.getElementById('saveBtnContainer');
+    if (saveBtnContainer) {
+        saveBtnContainer.style.display = 'none';
+    }
+    
+    // Load fresh data
+    loadProfileData();
+    
+    // Show modal with animation
+    modal.classList.remove('fade-out');
+    content.classList.remove('scale-out');
+    modal.style.display = 'block';
+    
+    void modal.offsetWidth;
+    
+    modal.classList.add('fade-in');
+    content.classList.add('scale-in');
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+function closeProfileSettingsModal() {
+    const modal = document.getElementById('profileSettingsModal');
+    const content = modal.querySelector('.profile-settings-content');
+    
+    if (!modal || !content) return;
+    
+    modal.classList.remove('fade-in');
+    content.classList.remove('scale-in');
+    modal.classList.add('fade-out');
+    content.classList.add('scale-out');
+    
+    setTimeout(() => {
+        if (modal.classList.contains('fade-out')) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }, 300);
+}
+
+// Profile Data Management
+function loadProfileData() {
+    const savedData = getProfileData();
+    
+    if (savedData) {
+        const nameInput = document.getElementById('profileName');
+        const emailInput = document.getElementById('profileEmail');
+        const mottoInput = document.getElementById('profileMotto');
+        const userNameElement = document.getElementById('userName')?.querySelector('span');
+        
+        // Load from localStorage first, then from saved profile data
+        const storedName = localStorage.getItem('userName') || savedData.name;
+        const storedEmail = localStorage.getItem('userGmail') || savedData.email;
+        const storedMotto = savedData.motto;
+        
+        if (nameInput && storedName) {
+            nameInput.value = storedName;
+            if (userNameElement) {
+                userNameElement.textContent = storedName;
+            }
+        }
+        
+        if (emailInput && storedEmail) {
+            emailInput.value = storedEmail;
+        }
+        
+        if (mottoInput && storedMotto) {
+            mottoInput.value = storedMotto;
+            // Update the motto in user info section
+            const userMottoElement = document.querySelector('.short-text');
+            if (userMottoElement) {
+                userMottoElement.textContent = storedMotto;
+            }
+        }
+    }
+}
+
+function getProfileData() {
+    try {
+        const storedData = localStorage.getItem('profileSettings');
+        if (storedData) {
+            return JSON.parse(storedData);
+        }
+        
+        // Return default values if no data exists
+        return {
+            name: localStorage.getItem('userName') || 'Student Name',
+            email: localStorage.getItem('userGmail') || 'student@example.com',
+            motto: 'A student who never gave up.'
+        };
+    } catch (error) {
+        console.error('Error loading profile data:', error);
+        return {
+            name: localStorage.getItem('userName') || 'Student Name',
+            email: localStorage.getItem('userGmail') || 'student@example.com',
+            motto: 'A student who never gave up.'
+        };
+    }
+}
+
+function saveProfileData() {
+    const nameInput = document.getElementById('profileName');
+    const emailInput = document.getElementById('profileEmail');
+    const mottoInput = document.getElementById('profileMotto');
+    
+    if (!nameInput || !emailInput || !mottoInput) return;
+    
+    const profileData = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        motto: mottoInput.value.trim()
+    };
+    
+    // Validate data
+    if (!profileData.name) {
+        showNotification('Please enter your name', 'error');
+        nameInput.focus();
+        return;
+    }
+    
+    if (!profileData.email || !isValidEmail(profileData.email)) {
+        showNotification('Please enter a valid email address', 'error');
+        emailInput.focus();
+        return;
+    }
+    
+    if (!profileData.motto) {
+        showNotification('Please enter your motto', 'error');
+        mottoInput.focus();
+        return;
+    }
+    
+    try {
+        // Save to localStorage
+        localStorage.setItem('profileSettings', JSON.stringify(profileData));
+        
+        // Update the main page display
+        const userNameElement = document.getElementById('userName')?.querySelector('span');
+        if (userNameElement) {
+            userNameElement.textContent = profileData.name;
+        }
+        
+        const userMottoElement = document.querySelector('.short-text');
+        if (userMottoElement) {
+            userMottoElement.textContent = profileData.motto;
+        }
+        
+        // Also update access verification data
+        localStorage.setItem('userName', profileData.name);
+        localStorage.setItem('userGmail', profileData.email);
+        
+        // Set all fields back to readonly
+        const inputs = document.querySelectorAll('.form-input, .form-textarea');
+        const editBtns = document.querySelectorAll('.edit-btn');
+        
+        inputs.forEach(input => {
+            input.setAttribute('readonly', true);
+            input.classList.remove('editing');
+        });
+        
+        editBtns.forEach(btn => {
+            btn.classList.remove('editing');
+            const editText = btn.querySelector('.edit-text');
+            if (editText) {
+                editText.textContent = 'Edit';
+            }
+        });
+        
+        // Hide save button
+        const saveBtnContainer = document.getElementById('saveBtnContainer');
+        if (saveBtnContainer) {
+            saveBtnContainer.style.display = 'none';
+        }
+        
+        // Show success notification
+        showNotification('Profile updated successfully!', 'success');
+        
+        // Close modal after a delay
+        setTimeout(() => {
+            closeProfileSettingsModal();
+        }, 1500);
+        
+    } catch (error) {
+        console.error('Error saving profile data:', error);
+        showNotification('Error saving profile data', 'error');
+    }
+}
+
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+function showNotification(message, type = 'info') {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => {
+        notification.remove();
+    });
+    
+    // Create notification element
+    const notification = document.createElement('div');
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
+    
+    // Add to body
+    document.body.appendChild(notification);
+    
+    // Show with animation
+    setTimeout(() => {
+        notification.classList.add('show');
+    }, 10);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 300);
+    }, 3000);
+}
+
 // Function to open profile picture viewer
 function openProfileViewer(imageSrc) {
     const viewerModal = document.getElementById('profileViewerModal');
@@ -3615,48 +4599,6 @@ function setupProfileViewer() {
     });
 }
 
-// Also update the applyCropBtn event listener to make the new preview clickable:
-if (applyCropBtn) {
-    applyCropBtn.addEventListener('click', function() {
-        if (cropper) {
-            // Get cropped canvas
-            const canvas = cropper.getCroppedCanvas({
-                width: 300,
-                height: 300,
-                imageSmoothingEnabled: true,
-                imageSmoothingQuality: 'high'
-            });
-            
-            // Convert to data URL
-            const croppedImage = canvas.toDataURL('image/jpeg', 0.9);
-            
-            // Update preview with clickable image
-            if (profilePreview) {
-                profilePreview.innerHTML = `
-                    <img src="${croppedImage}" 
-                         class="profile-preview-img" 
-                         alt="Profile Preview"
-                         style="cursor: pointer;"
-                         onclick="openProfileViewer('${croppedImage}')">
-                `;
-            }
-            
-            // Save to localStorage and update profile
-            saveProfilePicture(croppedImage);
-            updateProfilePicture(croppedImage);
-            
-            // Update button text and show remove button
-            if (choosePhotoBtn) choosePhotoBtn.textContent = 'Change Photo';
-            if (removePhotoBtn) {
-                removePhotoBtn.style.display = 'block';
-                removePhotoBtn.classList.add('remove');
-            }
-            
-            // Close cropping modal
-            closeModal(croppingModal, croppingModalContent);
-        }
-    });
-}
 // IMMEDIATE BADGE DISPLAY FUNCTION
 function ensureBadgeDisplay() {
     const userNameElement = document.getElementById('userName');
@@ -3682,15 +4624,15 @@ function ensureBadgeDisplay() {
     
     // Set inline styles for immediate display
     badge.style.cssText = `
-        width: 30px !important;
-        height: 30px !important;
-        margin-left: 8px !important;
-        vertical-align: middle !important;
-        display: inline-block !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        position: relative !important;
-        top: -2px !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-left: 8px !important;
+    vertical-align: middle !important;
+    display: inline-block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative !important;
+    top: 0px !important;
     `;
     
     // Add to DOM immediately
@@ -3703,21 +4645,6 @@ function ensureBadgeDisplay() {
         badge.style.visibility = 'visible';
         void badge.offsetWidth; // Trigger reflow
     }, 0);
-    
-    console.log('Badge added immediately via JavaScript');
-}
-
-// Call IMMEDIATELY (don't wait for DOMContentLoaded)
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-        ensureBadgeDisplay();
-        // Also call again after short delay for safety
-        setTimeout(ensureBadgeDisplay, 100);
-    });
-} else {
-    // DOM already loaded
-    ensureBadgeDisplay();
-    setTimeout(ensureBadgeDisplay, 100);
 }
 
 // Setup modal search functionality
@@ -3806,17 +4733,6 @@ function scrollToTodayInModal() {
         }
     });
 }
-
-// Add highlight animation CSS
-const highlightStyle = document.createElement('style');
-highlightStyle.textContent = `
-    @keyframes highlightPulse {
-        0% { box-shadow: 0 0 0 0 rgba(255, 200, 87, 0.7); }
-        50% { box-shadow: 0 0 20px 10px rgba(255, 200, 87, 0.3); }
-        100% { box-shadow: 0 0 0 0 rgba(255, 200, 87, 0); }
-    }
-`;
-document.head.appendChild(highlightStyle);
 
 // Image Modal Functionality
 function setupImageModal() {
@@ -3946,15 +4862,6 @@ function updateContainerSizes() {
     autoResizeContainers();
 }
 
-// Initialize and update on various events
-document.addEventListener('DOMContentLoaded', function() {
-    // Initial resize
-    setTimeout(updateContainerSizes, 100);
-    
-    // Resize when window changes
-    window.addEventListener('resize', updateContainerSizes);
-});
-
 // New Badge Management Functions
 function getStoredContentIds(storageKey) {
     try {
@@ -3976,8 +4883,6 @@ function setStoredContentIds(storageKey, ids) {
 // Check for new content in cache files
 async function checkForNewContent() {
     try {
-        console.log('Checking for new content...');
-        
         // Load cache files dynamically
         const cacheFiles = [
             { name: 'classroom', url: 'data/cache1.js' },
@@ -3998,7 +4903,6 @@ async function checkCacheFile(type, fileUrl) {
         // Add timestamp to avoid cache
         const response = await fetch(fileUrl + '?t=' + Date.now());
         if (!response.ok) {
-            console.warn(`Could not fetch ${fileUrl}: ${response.status}`);
             return;
         }
         
@@ -4045,8 +4949,6 @@ async function checkCacheFile(type, fileUrl) {
                 break;
         }
         
-        console.log(`${type} - Found ${currentIds.length} IDs`);
-        
         // Get stored IDs
         const storedIds = getStoredContentIds(storageKey);
         
@@ -4064,7 +4966,6 @@ async function checkCacheFile(type, fileUrl) {
 function updateButtonBadge(buttonType, hasNewContent) {
     const badgeContainer = document.getElementById(`${buttonType}BadgeContainer`);
     if (!badgeContainer) {
-        console.warn(`Badge container not found for ${buttonType}`);
         return;
     }
     
@@ -4075,10 +4976,8 @@ function updateButtonBadge(buttonType, hasNewContent) {
         newBadge.className = 'badge';
         newBadge.textContent = 'New';
         badgeContainer.appendChild(newBadge);
-        console.log(`Added badge to ${buttonType}`);
     } else if (!hasNewContent && existingBadge) {
         existingBadge.remove();
-        console.log(`Removed badge from ${buttonType}`);
     }
 }
 
@@ -4130,7 +5029,6 @@ async function markContentAsSeen(buttonType) {
         // Add timestamp to avoid cache
         const response = await fetch(fileUrl + '?t=' + Date.now());
         if (!response.ok) {
-            console.warn(`Could not fetch ${fileUrl}: ${response.status}`);
             return;
         }
         
@@ -4158,8 +5056,6 @@ async function markContentAsSeen(buttonType) {
             }
         }
         
-        console.log(`Marking ${buttonType} as seen - ${currentIds.length} IDs`);
-        
         // Save current IDs to localStorage
         setStoredContentIds(storageKey, currentIds);
         
@@ -4175,13 +5071,11 @@ async function markContentAsSeen(buttonType) {
 function startContentChecking() {
     // Check immediately after a short delay to ensure DOM is ready
     setTimeout(() => {
-        console.log('Starting initial content check...');
         checkForNewContent();
     }, 2000);
     
     // Check every 5 minutes
     setInterval(() => {
-        console.log('Running periodic content check...');
         checkForNewContent();
     }, 5 * 60 * 1000);
 }
@@ -4223,9 +5117,6 @@ function setupProfilePicture() {
     const cancelRemoveBtn = document.getElementById('cancelRemoveBtn');
     const proceedRemoveBtn = document.getElementById('proceedRemoveBtn');
 
-    // Load saved profile picture IMMEDIATELY
-    loadProfilePicture();
-
     // Open modal when profile icon is clicked
     profileIcon.addEventListener('click', function(e) {
         e.stopPropagation();
@@ -4233,30 +5124,30 @@ function setupProfilePicture() {
         
         // Update preview with current picture and button states
         const savedPicture = localStorage.getItem('userProfilePicture');
-if (profilePreview) {
-    if (savedPicture) {
-        // Make the preview image clickable
-        profilePreview.innerHTML = `
-            <img src="${savedPicture}" 
-                 class="profile-preview-img" 
-                 alt="Profile Preview"
-                 style="cursor: pointer;"
-                 onclick="openProfileViewer('${savedPicture}')">
-        `;
-        if (choosePhotoBtn) choosePhotoBtn.textContent = 'Change Photo';
-        if (removePhotoBtn) {
-            removePhotoBtn.style.display = 'block';
-            removePhotoBtn.classList.add('remove');
+        if (profilePreview) {
+            if (savedPicture) {
+                // Make the preview image clickable
+                profilePreview.innerHTML = `
+                    <img src="${savedPicture}" 
+                         class="profile-preview-img" 
+                         alt="Profile Preview"
+                         style="cursor: pointer;"
+                         onclick="openProfileViewer('${savedPicture}')">
+                `;
+                if (choosePhotoBtn) choosePhotoBtn.textContent = 'Change Photo';
+                if (removePhotoBtn) {
+                    removePhotoBtn.style.display = 'block';
+                    removePhotoBtn.classList.add('remove');
+                }
+            } else {
+                profilePreview.innerHTML = `<div class="profile-preview-placeholder"><i class="fas fa-upload"></i></div>`;
+                if (choosePhotoBtn) choosePhotoBtn.textContent = 'Choose Photo';
+                if (removePhotoBtn) {
+                    removePhotoBtn.style.display = 'none';
+                    removePhotoBtn.classList.remove('remove');
+                }
+            }
         }
-    } else {
-        profilePreview.innerHTML = `<div class="profile-preview-placeholder"><i class="fas fa-upload"></i></div>`;
-        if (choosePhotoBtn) choosePhotoBtn.textContent = 'Choose Photo';
-        if (removePhotoBtn) {
-            removePhotoBtn.style.display = 'none';
-            removePhotoBtn.classList.remove('remove');
-        }
-    }
-}
     });
 
     // Choose photo button
@@ -4274,13 +5165,13 @@ if (profilePreview) {
                 
                 // Validate file type
                 if (!file.type.match('image.*')) {
-                    alert('Please select a valid image file.');
+                    showNotification('Please select a valid image file.', 'error');
                     return;
                 }
                 
                 // Validate file size (max 5MB)
                 if (file.size > 5 * 1024 * 1024) {
-                    alert('Please select an image smaller than 5MB.');
+                    showNotification('Please select an image smaller than 5MB.', 'error');
                     return;
                 }
                 
@@ -4332,7 +5223,7 @@ if (profilePreview) {
             toggleDragModeOnDblclick: false,
             ready: function() {
                 // Set initial zoom
-                zoomSlider.value = 1;
+                if (zoomSlider) zoomSlider.value = 1;
             }
         });
     }
@@ -4397,9 +5288,15 @@ if (profilePreview) {
                 // Convert to data URL
                 const croppedImage = canvas.toDataURL('image/jpeg', 0.9);
                 
-                // Update preview
+                // Update preview with clickable image
                 if (profilePreview) {
-                    profilePreview.innerHTML = `<img src="${croppedImage}" class="profile-preview-img" alt="Profile Preview">`;
+                    profilePreview.innerHTML = `
+                        <img src="${croppedImage}" 
+                             class="profile-preview-img" 
+                             alt="Profile Preview"
+                             style="cursor: pointer;"
+                             onclick="openProfileViewer('${croppedImage}')">
+                    `;
                 }
                 
                 // Save to localStorage and update profile
@@ -4412,6 +5309,9 @@ if (profilePreview) {
                     removePhotoBtn.style.display = 'block';
                     removePhotoBtn.classList.add('remove');
                 }
+                
+                // Show success notification
+                showNotification('Profile picture updated successfully!', 'success');
                 
                 // Close cropping modal
                 closeModal(croppingModal, croppingModalContent);
@@ -4461,6 +5361,13 @@ if (profilePreview) {
                 removePhotoBtn.classList.remove('remove');
             }
             
+            // Clear session storage
+            sessionStorage.removeItem('profilePicture');
+            sessionStorage.removeItem('profilePictureURL');
+            
+            // Show notification
+            showNotification('Profile picture removed successfully!', 'success');
+            
             // Close both modals
             closeModal(confirmationModal, confirmationModalContent);
             closeModal(profileModal, profileModalContent);
@@ -4493,6 +5400,9 @@ if (profilePreview) {
         
         modal.classList.add('fade-in');
         content.classList.add('scale-in');
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
     }
     
     function closeModal(modal, content) {
@@ -4506,6 +5416,7 @@ if (profilePreview) {
         setTimeout(() => {
             if (modal.classList.contains('fade-out')) {
                 modal.style.display = 'none';
+                document.body.style.overflow = '';
                 
                 // Clean up cropper if closing cropping modal
                 if (modal === croppingModal && cropper) {
@@ -4538,6 +5449,8 @@ if (profilePreview) {
                 closeModal(croppingModal, croppingModalContent);
             } else if (confirmationModal && confirmationModal.style.display === 'block') {
                 closeModal(confirmationModal, confirmationModalContent);
+            } else if (profileModal.style.display === 'block') {
+                closeModal(profileModal, profileModalContent);
             }
         }
     });
@@ -4561,9 +5474,6 @@ function loadProfilePicture() {
     if (imageData || imageUrl) {
         // Use URL from sessionStorage if available
         updateProfilePicture(imageUrl || imageData);
-        console.log('Profile picture loaded from cache');
-    } else {
-        console.log('No profile picture found');
     }
 }
 
@@ -4624,7 +5534,14 @@ function updateProfilePicture(imageData) {
                 height: 100%;
                 object-fit: cover;
                 border-radius: 50%;
+                cursor: pointer;
             `;
+            
+            // Make image clickable to open viewer
+            profileImage.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openProfileViewer(imageData);
+            });
             
             profileIcon.insertBefore(profileImage, profileIcon.firstChild);
         }
@@ -4672,7 +5589,6 @@ function updateProfilePicture(imageData) {
     
     // Redirect to login if access is invalid
     if (!hasValidAccess) {
-        console.warn('Access verification failed, redirecting to login...');
         window.location.href = 'log.html';
     }
 })();
@@ -4724,14 +5640,14 @@ function displayUserInfo() {
     const userEmail = localStorage.getItem('userGmail');
     
     const userNameEl = document.getElementById('userName');
-    const userEmailEl = document.getElementById('userEmail');
     
     if (userName && userNameEl) {
-        userNameEl.textContent = userName;
-    }
-    
-    if (userEmail && userEmailEl) {
-        userEmailEl.textContent = userEmail;
+        const userNameSpan = userNameEl.querySelector('span');
+        if (userNameSpan) {
+            userNameSpan.textContent = userName;
+        } else {
+            userNameEl.innerHTML = `<span>${userName}</span>`;
+        }
     }
 }
 
@@ -4788,7 +5704,6 @@ function updatePCMBTimer() {
 function populateRoutineTables() {
     // Check if routineData exists
     if (typeof routineData === 'undefined') {
-        console.warn('routineData is not defined');
         return;
     }
     
@@ -4984,7 +5899,6 @@ function isClassCompleted(classDate) {
 function setupModal() {
     const modal = document.getElementById('routineModal');
     if (!modal) {
-        console.warn('Routine modal not found');
         return;
     }
     
@@ -5000,6 +5914,9 @@ function setupModal() {
             if (modalContent) modalContent.classList.add('scale-in');
             modal.style.display = 'block';
             
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            
             // Auto-scroll to today after modal opens
             setTimeout(scrollToTodayInModal, 500);
         });
@@ -5011,6 +5928,11 @@ function setupModal() {
             if (modalContent) modalContent.classList.remove('scale-in');
             modal.classList.add('fade-out');
             if (modalContent) modalContent.classList.add('scale-out');
+            
+            // Restore body scroll
+            setTimeout(() => {
+                document.body.style.overflow = '';
+            }, 300);
             
             // Hide modal after animation completes
             setTimeout(() => {
@@ -5025,6 +5947,11 @@ function setupModal() {
             if (modalContent) modalContent.classList.remove('scale-in');
             modal.classList.add('fade-out');
             if (modalContent) modalContent.classList.add('scale-out');
+            
+            // Restore body scroll
+            setTimeout(() => {
+                document.body.style.overflow = '';
+            }, 300);
             
             // Hide modal after animation completes
             setTimeout(() => {
@@ -5078,14 +6005,12 @@ function setupInstructionsScrolling() {
     const indicator = document.getElementById('instructionsIndicator');
     
     if (!scroller || !itemsWrapper || !scrollLeftBtn || !scrollRightBtn || !indicator) {
-        console.warn('Instructions scrolling elements not found');
         return;
     }
     
     const instructionItems = Array.from(itemsWrapper.querySelectorAll('.instruction-item'));
     
     if (instructionItems.length === 0) {
-        console.warn('No instruction items found');
         return;
     }
     
@@ -5209,7 +6134,6 @@ function setupRoutineScroller() {
     const dayTitle = document.getElementById('dayDisplay');
     
     if (!routineContainer || !prevDayBtn || !nextDayBtn || !dayTitle) {
-        console.warn('Routine scroller elements not found');
         return;
     }
     
@@ -5232,8 +6156,6 @@ function setupRoutineScroller() {
 
 // Initialize everything when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing application...');
-    
     try {
         // Load profile picture and badge FIRST
         loadProfilePicture();
@@ -5253,14 +6175,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 setupModal();
                 addButtonEffects();
                 setupProfilePicture();
-                setupProfileViewer(); // ADD THIS LINE
+                setupProfileViewer();
                 setupImageModal();
                 setupInstructionsScrolling();
                 setupButtonClickHandlers();
                 startContentChecking();
                 setupModalSearch();
+                setupSettingsDropdown();
+                setupProfileSettingsModal();
                 
-                console.log('All components initialized successfully');
+                // Force badge display again to ensure it's visible
+                setTimeout(ensureBadgeDisplay, 500);
             }, 200);
         }, 300);
         
@@ -5275,7 +6200,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Add CSS for hidden class if not already present
+// Add CSS for hidden class and animations
 const style = document.createElement('style');
 style.textContent = `
     .hidden {
@@ -5289,6 +6214,12 @@ style.textContent = `
             transform: scale(4);
             opacity: 0;
         }
+    }
+    
+    @keyframes highlightPulse {
+        0% { box-shadow: 0 0 0 0 rgba(255, 200, 87, 0.7); }
+        50% { box-shadow: 0 0 20px 10px rgba(255, 200, 87, 0.3); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 200, 87, 0); }
     }
     
     /* New Routine Card Styles */
@@ -5419,8 +6350,80 @@ style.textContent = `
             font-size: 12px;
         }
     }
+    
+    /* Notification Styles */
+    .notification {
+        position: fixed;
+        top: 100px;
+        right: 20px;
+        background: rgba(20, 20, 30, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 15px 20px;
+        min-width: 300px;
+        max-width: 400px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transform: translateX(120%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10000;
+    }
+    
+    .notification.show {
+        transform: translateX(0);
+    }
+    
+    .notification.success {
+        border-left: 4px solid #48bb78;
+    }
+    
+    .notification.error {
+        border-left: 4px solid #ef4444;
+    }
+    
+    .notification-content {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: white;
+        font-weight: 500;
+    }
+    
+    .notification-content i {
+        font-size: 18px;
+    }
+    
+    .notification.success .notification-content i {
+        color: #48bb78;
+    }
+    
+    .notification.error .notification-content i {
+        color: #ef4444;
+    }
+    
+    @media (max-width: 768px) {
+        .notification {
+            top: 80px;
+            right: 10px;
+            left: 10px;
+            min-width: auto;
+            max-width: none;
+        }
+    }
 `;
 document.head.appendChild(style);
+
+// Call badge display immediately
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+        ensureBadgeDisplay();
+        setTimeout(ensureBadgeDisplay, 100);
+    });
+} else {
+    ensureBadgeDisplay();
+    setTimeout(ensureBadgeDisplay, 100);
+}
 </script>
 </body>
 </html>
