@@ -1762,7 +1762,7 @@ th {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    z-index: 3000;
+    z-index: 4000;
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
 }
@@ -2856,6 +2856,7 @@ th {
 }
 .logo-text i.fa-home {
     color: #ff4444; /* Red color */
+    font-size: 28px;
 }
 .verified-badge {
     width: 26px;
@@ -3793,6 +3794,78 @@ th {
         font-size: 14px;
     }
 }
+/* Profile Picture Field Styles */
+.profile-picture-field {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.profile-picture-preview {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.profile-picture-preview:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+
+.profile-picture-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-preview-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-picture-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.profile-picture-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.profile-picture-btn.remove {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #ef4444;
+}
+
+.profile-picture-btn.remove:hover {
+    background: rgba(239, 68, 68, 0.2);
+}
 </style>
 </head>
 <body>
@@ -3827,22 +3900,22 @@ th {
     <div class="time-date">
         <div class="big-time" id="currentTime">
             <i class="fas fa-clock"></i>
-            <span>10:30 AM</span>
+            <span>Loading...</span>
         </div>
         <div class="date" id="currentDate">
             <i class="far fa-calendar-alt"></i>
-            <span>November 01, 2025</span>
+            <span>Loading...</span>
         </div>
     </div>
     <div class="user-profile">
         <div class="user-details">
 <div class="user-name" id="userName">
-    <span>Student Name</span>
+    <span>Loading...</span>
     <img src="https://img.icons8.com/fluency/48/instagram-verification-badge.png" 
          class="verified-badge"
          loading="eager" <!-- Add this -->
 </div>
-            <div class="short-text">A student who never gave up.</div>
+            <div class="short-text">Loading...</div>
         </div>
         <div class="profile-icon" id="profileIcon">
             <div class="profile-icon-placeholder" id="profilePlaceholder">
@@ -3939,6 +4012,33 @@ th {
         
         <div class="profile-settings-body">
             <div class="profile-form">
+<!-- Profile Picture Field -->
+<div class="form-group">
+    <div class="form-label-row">
+        <label class="form-label">
+            <i class="fas fa-camera"></i>
+            Profile Picture
+        </label>
+    </div>
+    <div class="profile-picture-field" style="display: flex; align-items: center; gap: 20px;">
+        <div class="profile-picture-preview" id="profileSettingsPreview" 
+             style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; cursor: pointer; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;">
+            <div class="profile-preview-placeholder" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                <i class="fas fa-user" style="font-size: 30px; color: rgba(255,255,255,0.5);"></i>
+            </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px; flex: 1;">
+            <button class="profile-picture-btn" id="changeProfilePictureBtn" 
+                    style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s ease;">
+                <i class="fas fa-edit"></i> Change Photo
+            </button>
+            <button class="profile-picture-btn remove" id="removeProfilePictureBtn"
+                    style="background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #ef4444; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s ease; display: none;">
+                <i class="fas fa-trash"></i> Remove Photo
+            </button>
+        </div>
+    </div>
+</div>
                 <!-- Name Field -->
                 <div class="form-group">
                     <div class="form-label-row">
@@ -4108,6 +4208,225 @@ th {
 <script src="data/cache3.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
     <script>
+// Function to update profile picture preview in settings modal
+function updateProfileSettingsPreview() {
+    const preview = document.getElementById('profileSettingsPreview');
+    const removeBtn = document.getElementById('removeProfilePictureBtn');
+    const savedPicture = localStorage.getItem('userProfilePicture');
+    
+    if (preview) {
+        if (savedPicture) {
+            // Check if image already exists in preview
+            let existingImg = preview.querySelector('img');
+            if (existingImg) {
+                existingImg.src = savedPicture;
+            } else {
+                // Create new image
+                preview.innerHTML = `<img src="${savedPicture}" alt="Profile Preview" style="width: 100%; height: 100%; object-fit: cover;">`;
+            }
+            
+            // Make preview clickable to open viewer
+            preview.onclick = function() {
+                openProfileViewer(savedPicture);
+            };
+            
+            // Show remove button
+            if (removeBtn) {
+                removeBtn.style.display = 'flex';
+            }
+        } else {
+            // Show placeholder
+            preview.innerHTML = `
+                <div class="profile-preview-placeholder">
+                    <i class="fas fa-user" style="font-size: 30px; color: rgba(255,255,255,0.5);"></i>
+                </div>
+            `;
+            
+            // Make preview clickable to open profile picture modal
+            preview.onclick = function() {
+                closeProfileSettingsModal();
+                setTimeout(() => {
+                    openProfileModal();
+                }, 300);
+            };
+            
+            // Hide remove button
+            if (removeBtn) {
+                removeBtn.style.display = 'none';
+            }
+        }
+    }
+}
+
+// Function to setup profile picture functionality in settings modal
+function setupProfilePictureInSettings() {
+    const changeBtn = document.getElementById('changeProfilePictureBtn');
+    const removeBtn = document.getElementById('removeProfilePictureBtn');
+    const preview = document.getElementById('profileSettingsPreview');
+    
+    if (!changeBtn || !removeBtn || !preview) return;
+    
+    // Change photo button
+    changeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeProfileSettingsModal();
+        setTimeout(() => {
+            openProfileModal();
+        }, 300);
+    });
+    
+    // Remove photo button
+    removeBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        
+        // Show confirmation modal
+        const confirmationModal = document.getElementById('confirmationModal');
+        const confirmationModalContent = confirmationModal.querySelector('.confirmation-modal-content');
+        
+        if (confirmationModal) {
+            // Open confirmation modal
+            confirmationModal.classList.remove('fade-out');
+            confirmationModalContent.classList.remove('scale-out');
+            confirmationModal.style.display = 'block';
+            
+            void confirmationModal.offsetWidth;
+            
+            confirmationModal.classList.add('fade-in');
+            confirmationModalContent.classList.add('scale-in');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+            
+            // Handle proceed button
+            const proceedBtn = document.getElementById('proceedRemoveBtn');
+            if (proceedBtn) {
+                const originalClickHandler = proceedBtn.onclick;
+                proceedBtn.onclick = function() {
+                    // Remove profile picture
+                    localStorage.removeItem('userProfilePicture');
+                    
+                    // Update main profile picture
+                    updateProfilePicture(null);
+                    
+                    // Update preview in settings modal
+                    updateProfileSettingsPreview();
+                    
+                    // Clear session storage
+                    sessionStorage.removeItem('profilePicture');
+                    sessionStorage.removeItem('profilePictureURL');
+                    
+                    // Show notification
+                    showNotification('Profile picture removed successfully!', 'success');
+                    
+                    // Close confirmation modal
+                    closeModal(confirmationModal, confirmationModalContent);
+                    
+                    // Reopen profile settings modal after delay
+                    setTimeout(() => {
+                        openProfileSettingsModal();
+                    }, 300);
+                };
+                
+                // Restore original handler after use
+                setTimeout(() => {
+                    proceedBtn.onclick = originalClickHandler;
+                }, 1000);
+            }
+        }
+    });
+    
+    // Preview click handler
+    preview.addEventListener('click', function() {
+        const savedPicture = localStorage.getItem('userProfilePicture');
+        if (savedPicture) {
+            // Open viewer if picture exists
+            openProfileViewer(savedPicture);
+        } else {
+            // Open profile modal if no picture
+            closeProfileSettingsModal();
+            setTimeout(() => {
+                openProfileModal();
+            }, 300);
+        }
+    });
+    
+    // Initialize preview
+    updateProfileSettingsPreview();
+}
+
+// Function to open profile picture modal
+function openProfileModal() {
+    const modal = document.getElementById('profileModal');
+    const content = modal.querySelector('.profile-modal-content');
+    const profilePreview = document.getElementById('profilePreview');
+    const choosePhotoBtn = document.getElementById('choosePhotoBtn');
+    const removePhotoBtn = document.getElementById('removePhotoBtn');
+    
+    if (!modal || !content) return;
+    
+    // Reset animation classes
+    modal.classList.remove('fade-out');
+    content.classList.remove('scale-out');
+    
+    // Show modal
+    modal.style.display = 'block';
+    
+    // Force reflow
+    void modal.offsetWidth;
+    
+    // Add animation classes
+    modal.classList.add('fade-in');
+    content.classList.add('scale-in');
+    
+    // Update preview with current picture
+    const savedPicture = localStorage.getItem('userProfilePicture');
+    if (profilePreview) {
+        if (savedPicture) {
+            profilePreview.innerHTML = `
+                <img src="${savedPicture}" 
+                     class="profile-preview-img" 
+                     alt="Profile Preview"
+                     style="cursor: pointer;"
+                     onclick="openProfileViewer('${savedPicture}')">
+            `;
+            if (choosePhotoBtn) choosePhotoBtn.textContent = 'Change Photo';
+            if (removePhotoBtn) {
+                removePhotoBtn.style.display = 'block';
+                removePhotoBtn.classList.add('remove');
+            }
+        } else {
+            profilePreview.innerHTML = `<div class="profile-preview-placeholder"><i class="fas fa-upload"></i></div>`;
+            if (choosePhotoBtn) choosePhotoBtn.textContent = 'Choose Photo';
+            if (removePhotoBtn) {
+                removePhotoBtn.style.display = 'none';
+                removePhotoBtn.classList.remove('remove');
+            }
+        }
+    }
+    
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+}
+
+// Function to close profile modal
+function closeProfileModal() {
+    const modal = document.getElementById('profileModal');
+    const content = modal.querySelector('.profile-modal-content');
+    
+    if (!modal || !content) return;
+    
+    modal.classList.remove('fade-in');
+    content.classList.remove('scale-in');
+    modal.classList.add('fade-out');
+    content.classList.add('scale-out');
+    
+    setTimeout(() => {
+        if (modal.classList.contains('fade-out')) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }, 300);
+}
 // Settings Dropdown Functionality
 function setupSettingsDropdown() {
     const settingsIcon = document.getElementById('settingsIcon');
@@ -4314,6 +4633,9 @@ function openProfileSettingsModal() {
     
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
+    
+    // ADD THIS LINE: Update profile picture preview
+    updateProfileSettingsPreview();
 }
 
 function closeProfileSettingsModal() {
@@ -5120,34 +5442,7 @@ function setupProfilePicture() {
     // Open modal when profile icon is clicked
     profileIcon.addEventListener('click', function(e) {
         e.stopPropagation();
-        openModal(profileModal, profileModalContent);
-        
-        // Update preview with current picture and button states
-        const savedPicture = localStorage.getItem('userProfilePicture');
-        if (profilePreview) {
-            if (savedPicture) {
-                // Make the preview image clickable
-                profilePreview.innerHTML = `
-                    <img src="${savedPicture}" 
-                         class="profile-preview-img" 
-                         alt="Profile Preview"
-                         style="cursor: pointer;"
-                         onclick="openProfileViewer('${savedPicture}')">
-                `;
-                if (choosePhotoBtn) choosePhotoBtn.textContent = 'Change Photo';
-                if (removePhotoBtn) {
-                    removePhotoBtn.style.display = 'block';
-                    removePhotoBtn.classList.add('remove');
-                }
-            } else {
-                profilePreview.innerHTML = `<div class="profile-preview-placeholder"><i class="fas fa-upload"></i></div>`;
-                if (choosePhotoBtn) choosePhotoBtn.textContent = 'Choose Photo';
-                if (removePhotoBtn) {
-                    removePhotoBtn.style.display = 'none';
-                    removePhotoBtn.classList.remove('remove');
-                }
-            }
-        }
+        openProfileModal();
     });
 
     // Choose photo button
@@ -5185,7 +5480,7 @@ function setupProfilePicture() {
                     cropperImage.src = e.target.result;
                     
                     // Close profile modal
-                    closeModal(profileModal, profileModalContent);
+                    closeProfileModal();
                     
                     // Open cropping modal after a short delay
                     setTimeout(() => {
@@ -5326,7 +5621,7 @@ function setupProfilePicture() {
             
             // Reopen profile modal after delay
             setTimeout(() => {
-                openModal(profileModal, profileModalContent);
+                openProfileModal(); // Changed from openModal to openProfileModal
             }, 300);
         });
     }
@@ -5370,7 +5665,7 @@ function setupProfilePicture() {
             
             // Close both modals
             closeModal(confirmationModal, confirmationModalContent);
-            closeModal(profileModal, profileModalContent);
+            closeProfileModal();
         });
     }
 
@@ -5384,7 +5679,7 @@ function setupProfilePicture() {
     // Cancel button (profile modal)
     if (cancelProfileBtn) {
         cancelProfileBtn.addEventListener('click', function() {
-            closeModal(profileModal, profileModalContent);
+            closeProfileModal();
         });
     }
 
@@ -5430,7 +5725,7 @@ function setupProfilePicture() {
     // Close modals when clicking outside
     window.addEventListener('click', function(e) {
         if (e.target === profileModal) {
-            closeModal(profileModal, profileModalContent);
+            closeProfileModal();
         }
         if (e.target === croppingModal) {
             closeModal(croppingModal, croppingModalContent);
@@ -5444,13 +5739,11 @@ function setupProfilePicture() {
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
             if (profileModal.style.display === 'block') {
-                closeModal(profileModal, profileModalContent);
+                closeProfileModal();
             } else if (croppingModal.style.display === 'block') {
                 closeModal(croppingModal, croppingModalContent);
             } else if (confirmationModal && confirmationModal.style.display === 'block') {
                 closeModal(confirmationModal, confirmationModalContent);
-            } else if (profileModal.style.display === 'block') {
-                closeModal(profileModal, profileModalContent);
             }
         }
     });
@@ -5458,38 +5751,45 @@ function setupProfilePicture() {
 
 // Load profile picture from localStorage IMMEDIATELY
 function loadProfilePicture() {
-    // First check sessionStorage for faster loading
-    let imageData = sessionStorage.getItem('profilePicture');
-    let imageUrl = sessionStorage.getItem('profilePictureURL');
-    
-    // If not in sessionStorage, check localStorage
-    if (!imageData) {
-        imageData = localStorage.getItem('userProfilePicture');
-        if (imageData) {
-            // Cache it for next time
-            sessionStorage.setItem('profilePicture', imageData);
+    try {
+        // Try to get from localStorage first
+        let imageData = localStorage.getItem('userProfilePicture');
+        
+        // If not in localStorage, try sessionStorage
+        if (!imageData) {
+            imageData = sessionStorage.getItem('profilePicture');
         }
-    }
-    
-    if (imageData || imageUrl) {
-        // Use URL from sessionStorage if available
-        updateProfilePicture(imageUrl || imageData);
-    }
-}
-
-// Save profile picture to localStorage
-function saveProfilePicture(imageData) {
-    // Save to localStorage for persistence
-    localStorage.setItem('userProfilePicture', imageData);
-    
-    // Also save to sessionStorage for faster access
-    sessionStorage.setItem('profilePicture', imageData);
-    
-    // Create a data URL blob for immediate use
-    if (imageData) {
-        const blob = dataURItoBlob(imageData);
-        const url = URL.createObjectURL(blob);
-        sessionStorage.setItem('profilePictureURL', url);
+        
+        console.log('Loading profile picture:', imageData ? 'Found' : 'Not found');
+        
+        if (imageData) {
+            // Verify it's a valid data URL
+            if (imageData.startsWith('data:image/')) {
+                // Update main profile picture display
+                updateProfilePicture(imageData);
+                
+                // Cache in sessionStorage for faster loading next time
+                sessionStorage.setItem('profilePicture', imageData);
+                
+                // Also update settings modal preview if it exists
+                updateProfileSettingsPreview();
+            } else {
+                console.warn('Invalid image data format');
+                // Clear invalid data
+                localStorage.removeItem('userProfilePicture');
+                sessionStorage.removeItem('profilePicture');
+                sessionStorage.removeItem('profilePictureURL');
+            }
+        } else {
+            // No picture found, ensure placeholder is shown
+            updateProfilePicture(null);
+            updateProfileSettingsPreview();
+        }
+    } catch (error) {
+        console.error('Error loading profile picture:', error);
+        // Fallback to showing placeholder
+        updateProfilePicture(null);
+        updateProfileSettingsPreview();
     }
 }
 
@@ -5555,6 +5855,9 @@ function updateProfilePicture(imageData) {
             profilePlaceholder.style.display = 'flex';
         }
     }
+    
+    // Update the settings modal preview
+    updateProfileSettingsPreview();
 }
 
 // Access verification script
@@ -5793,7 +6096,7 @@ function updateRoutineNavigationForFriday(daysUntilFriday) {
     
     if (dayTitle) {
         if (daysUntilFriday === 0) {
-            dayTitle.textContent = "Today (Friday)";
+            dayTitle.textContent = "Today";
         } else if (daysUntilFriday === 1) {
             dayTitle.textContent = "Tomorrow";
         } else {
@@ -6183,6 +6486,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 setupModalSearch();
                 setupSettingsDropdown();
                 setupProfileSettingsModal();
+                
+                // ADD THIS LINE: Setup profile picture in settings modal
+                setupProfilePictureInSettings();
                 
                 // Force badge display again to ensure it's visible
                 setTimeout(ensureBadgeDisplay, 500);
