@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -223,7 +224,6 @@ body::before {
     position: relative;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    /* Remove height: 560px and add max-height for desktop */
     max-height: 560px; /* For desktop */
     display: flex;
     flex-direction: column;
@@ -258,7 +258,7 @@ body::before {
 }
 
 .section-title {
-    font-size: 28px;
+    font-size: 40px;
     font-weight: 700;
     color: #ffffff;
     margin-bottom: 10px;
@@ -334,13 +334,24 @@ body::before {
 .lectures-list {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease;
-    background: rgba(10, 10, 15, 0.5);
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg, rgba(15, 15, 20, 0.8), rgba(20, 20, 30, 0.9));
+    position: relative;
 }
 
 .lectures-list.open {
-    max-height: 300px;
-    overflow-y: auto;
+    max-height: 5000px; /* Very large value to accommodate all lectures */
+    /* REMOVE this line: overflow-y: auto; */
+}
+
+/* Also remove the scrollbar styling for this specific element */
+.lectures-list::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Webkit browsers */
+}
+
+.lectures-list {
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
 }
 
 .lecture-item {
@@ -553,7 +564,7 @@ body::before {
     }
     
     .section-title {
-        font-size: 26px;
+        font-size: 35px;
     }
     
     .subject-header {
@@ -561,7 +572,7 @@ body::before {
     }
     
     .subject-title {
-        font-size: 20px;
+        font-size: 22px;
     }
     
     .lecture-item {
@@ -569,7 +580,7 @@ body::before {
     }
     
     .lecture-title {
-        font-size: 15px;
+        font-size: 22px;
     }
     
     .badge {
@@ -601,7 +612,7 @@ body::before {
     
     /* Add subjects-section styling for mobile */
     .subjects-section {
-        max-height: 60vh;
+        max-height: 1000vh;
         height: auto;
         min-height: 400px;
     }
