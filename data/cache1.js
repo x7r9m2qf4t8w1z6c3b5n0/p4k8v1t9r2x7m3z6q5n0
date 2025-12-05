@@ -13,6 +13,10 @@ const subjectsData = [
                             { title: "চল তড়িৎ (পর্ব ৩.২)", videoId: "gJ83lRK2wrg" },
                             { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ (পর্ব ১)", videoId: "Fzv2yjGdXT0" },
                             { title: "তড়িৎ চৌম্বক আবেশ ও দিক পরিবর্তি প্রবাহ (পর্ব ২)", videoId: "5b3moH1Cil8" },
+                            { title: "স্থির তড়িৎ (পর্ব ১.১)", videoId: "N4R7sFlMHlc" },
+                            { title: "স্থির তড়িৎ (পর্ব ১.২)", videoId: "B0fAqaBE6XM" },
+                            { title: "স্থির তড়িৎ (পর্ব ১.৩)", videoId: "tkuMsIO0c0E" },
+                            { title: "স্থির তড়িৎ (পর্ব ২)", videoId: "9ip85af8gJk" },
                 ]
             },
             {
@@ -83,7 +87,8 @@ const subjectsData = [
                             { title: "বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন + প্রতিদান", videoId: "Cgzmqf3xu9s" },
                             { title: "সমাস (পর্ব ১)", videoId: "L_8SRL5_XNs" },
                             { title: "সমাস (পর্ব ২)", videoId: "01jMj-YH94I" },
-                            { title: "লালসালু", videoId: "qIiUxsd5Rsg" }
+                            { title: "লালসালু", videoId: "qIiUxsd5Rsg" },
+                            { title: "আমি কিংবদন্তির কথা বলছি + মাসি পিসি", videoId: "vAjQ_iG8D0c" }
                 ]
             },
             {
@@ -98,6 +103,8 @@ const subjectsData = [
                             { title: "ডিজিটাল ডিভাইস (পর্ব ১)", videoId: "bARRLtrId7M" },
                             { title: "ডিজিটাল ডিভাইস (পর্ব ২)", videoId: "UOaOIvt_czA" },
                             { title: "ডিজিটাল ডিভাইস (পর্ব ৩)", videoId: "iQ5edgbw-CU" },
+                            { title: "ডিজিটাল ডিভাইস (পর্ব ৪)", videoId: "lgP2WTpAWIU" },
+                            { title: "বিশ্ব ও বাংলাদেশ প্রেক্ষিত", videoId: "c2tWGo6n4E8" },
                 ]
             },
                         {
