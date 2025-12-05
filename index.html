@@ -2855,8 +2855,8 @@ th {
     }
 }
 .logo-text i.fa-home {
-    color: #ff4444;
-    font-size: 28px;
+    color: #ff4444; /* Red color */
+    font-size: 38px;
 }
 .verified-badge {
     width: 26px;
@@ -3866,6 +3866,28 @@ th {
 .profile-picture-btn.remove:hover {
     background: rgba(239, 68, 68, 0.2);
 }
+    .profile-viewer-body .default-placeholder {
+        width: 300px !important;
+        height: 300px !important;
+        border-radius: 50% !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        padding: 20px !important;
+        object-fit: contain !important;
+    }
+    
+    @media (max-width: 768px) {
+        .profile-viewer-body .default-placeholder {
+            width: 250px !important;
+            height: 250px !important;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .profile-viewer-body .default-placeholder {
+            width: 200px !important;
+            height: 200px !important;
+        }
+    }
 </style>
 </head>
 <body>
@@ -4021,12 +4043,12 @@ th {
         </label>
     </div>
     <div class="profile-picture-field" style="display: flex; align-items: center; gap: 20px;">
-        <div class="profile-picture-preview" id="profileSettingsPreview" 
-             style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; cursor: pointer; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;">
-            <div class="profile-preview-placeholder" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
-                <i class="fas fa-user" style="font-size: 30px; color: rgba(255,255,255,0.5);"></i>
-            </div>
-        </div>
+<div class="profile-picture-preview" id="profileSettingsPreview" 
+     style="width: 80px; height: 80px; border-radius: 50%; overflow: hidden; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center;">
+    <div class="profile-preview-placeholder" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+        <i class="fas fa-user" style="font-size: 30px; color: rgba(255,255,255,0.5);"></i>
+    </div>
+</div>
         <div style="display: flex; flex-direction: column; gap: 10px; flex: 1;">
             <button class="profile-picture-btn" id="changeProfilePictureBtn" 
                     style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 10px 15px; border-radius: 8px; cursor: pointer; font-weight: 500; transition: all 0.3s ease;">
@@ -4226,7 +4248,9 @@ function updateProfileSettingsPreview() {
             }
             
             // Make preview clickable to open viewer
-            preview.onclick = function() {
+            preview.style.cursor = 'pointer';
+            preview.onclick = function(e) {
+                e.stopPropagation();
                 openProfileViewer(savedPicture);
             };
             
@@ -4242,13 +4266,9 @@ function updateProfileSettingsPreview() {
                 </div>
             `;
             
-            // Make preview clickable to open profile picture modal
-            preview.onclick = function() {
-                closeProfileSettingsModal();
-                setTimeout(() => {
-                    openProfileModal();
-                }, 300);
-            };
+            // Make preview NOT clickable when there's no picture
+            preview.style.cursor = 'default';
+            preview.onclick = null;
             
             // Hide remove button
             if (removeBtn) {
@@ -4267,88 +4287,109 @@ function setupProfilePictureInSettings() {
     if (!changeBtn || !removeBtn || !preview) return;
     
     // Change photo button
-    changeBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        closeProfileSettingsModal();
-        setTimeout(() => {
-            openProfileModal();
-        }, 300);
-    });
+changeBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
     
-    // Remove photo button
-    removeBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
+    // Close the profile settings modal
+    closeProfileSettingsModal();
+    
+    // Directly trigger the file input (bypass the profile modal)
+    setTimeout(() => {
+        if (profileUploadInput) {
+            profileUploadInput.click();
+        }
+    }, 300);
+});
+    
+// Remove photo button in settings
+removeBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    
+    // Show confirmation modal
+    const confirmationModal = document.getElementById('confirmationModal');
+    const confirmationModalContent = confirmationModal.querySelector('.confirmation-modal-content');
+    
+    if (confirmationModal) {
+        // Open confirmation modal
+        confirmationModal.classList.remove('fade-out');
+        confirmationModalContent.classList.remove('scale-out');
+        confirmationModal.style.display = 'block';
         
-        // Show confirmation modal
-        const confirmationModal = document.getElementById('confirmationModal');
-        const confirmationModalContent = confirmationModal.querySelector('.confirmation-modal-content');
+        void confirmationModal.offsetWidth;
         
-        if (confirmationModal) {
-            // Open confirmation modal
-            confirmationModal.classList.remove('fade-out');
-            confirmationModalContent.classList.remove('scale-out');
-            confirmationModal.style.display = 'block';
+        confirmationModal.classList.add('fade-in');
+        confirmationModalContent.classList.add('scale-in');
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+        
+        // Handle proceed button
+        const proceedBtn = document.getElementById('proceedRemoveBtn');
+        if (proceedBtn) {
+            // Store the current onclick handler to restore later
+            const originalClickHandler = proceedBtn.onclick;
             
-            void confirmationModal.offsetWidth;
-            
-            confirmationModal.classList.add('fade-in');
-            confirmationModalContent.classList.add('scale-in');
-            
-            // Prevent body scroll
-            document.body.style.overflow = 'hidden';
-            
-            // Handle proceed button
-            const proceedBtn = document.getElementById('proceedRemoveBtn');
-            if (proceedBtn) {
-                const originalClickHandler = proceedBtn.onclick;
-                proceedBtn.onclick = function() {
-                    // Remove profile picture
-                    localStorage.removeItem('userProfilePicture');
-                    
-                    // Update main profile picture
-                    updateProfilePicture(null);
-                    
-                    // Update preview in settings modal
-                    updateProfileSettingsPreview();
-                    
-                    // Clear session storage
-                    sessionStorage.removeItem('profilePicture');
-                    sessionStorage.removeItem('profilePictureURL');
-                    
-                    // Show notification
-                    showNotification('Profile picture removed successfully!', 'success');
-                    
-                    // Close confirmation modal
-                    closeModal(confirmationModal, confirmationModalContent);
-                    
-                    // Reopen profile settings modal after delay
-                    setTimeout(() => {
-                        openProfileSettingsModal();
-                    }, 300);
-                };
+            proceedBtn.onclick = function() {
+                // Remove profile picture
+                localStorage.removeItem('userProfilePicture');
                 
-                // Restore original handler after use
+                // Update main profile picture
+                updateProfilePicture(null);
+                
+                // Update preview in settings modal
+                updateProfileSettingsPreview();
+                
+                // Clear session storage
+                sessionStorage.removeItem('profilePicture');
+                sessionStorage.removeItem('profilePictureURL');
+                
+                // Show notification
+                showNotification('Profile picture removed successfully!', 'success');
+                
+                // Close confirmation modal
+                closeModal(confirmationModal, confirmationModalContent);
+                
+                // Return to profile settings modal
                 setTimeout(() => {
-                    proceedBtn.onclick = originalClickHandler;
-                }, 1000);
-            }
+                    openProfileSettingsModal();
+                }, 300);
+            };
         }
-    });
+        
+        // Handle cancel button
+        const cancelBtn = document.getElementById('cancelRemoveBtn');
+        if (cancelBtn) {
+            cancelBtn.onclick = function() {
+                closeModal(confirmationModal, confirmationModalContent);
+                
+                // Return to profile settings modal
+                setTimeout(() => {
+                    openProfileSettingsModal();
+                }, 300);
+            };
+        }
+    }
+});
     
-    // Preview click handler
-    preview.addEventListener('click', function() {
-        const savedPicture = localStorage.getItem('userProfilePicture');
-        if (savedPicture) {
-            // Open viewer if picture exists
-            openProfileViewer(savedPicture);
-        } else {
-            // Open profile modal if no picture
-            closeProfileSettingsModal();
-            setTimeout(() => {
-                openProfileModal();
-            }, 300);
-        }
-    });
+// Preview click handler in settings modal - ONLY open viewer if there's a saved picture
+preview.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const savedPicture = localStorage.getItem('userProfilePicture');
+    
+    if (savedPicture) {
+        // If there's a saved picture, open the profile viewer
+        openProfileViewer(savedPicture);
+    } else {
+        // If no picture, do NOT open anything - the placeholder should remain as is
+        // You can optionally show a message or do nothing
+        console.log('No profile picture to view');
+        // If you want to keep it clickable to open the upload modal:
+        // closeProfileSettingsModal();
+        // setTimeout(() => {
+        //     openProfileModal();
+        // }, 300);
+    }
+});
     
     // Initialize preview
     updateProfileSettingsPreview();
@@ -4873,6 +4914,19 @@ function openProfileViewer(imageSrc) {
     
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
+    
+    // Add a special class if it's the default placeholder
+    if (imageSrc.includes('data:image/svg+xml')) {
+        fullPicture.classList.add('default-placeholder');
+        fullPicture.style.borderRadius = '50%';
+        fullPicture.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+        fullPicture.style.padding = '20px';
+    } else {
+        fullPicture.classList.remove('default-placeholder');
+        fullPicture.style.borderRadius = '10px';
+        fullPicture.style.backgroundColor = 'transparent';
+        fullPicture.style.padding = '0';
+    }
 }
 
 // Function to close profile picture viewer
@@ -5402,6 +5456,23 @@ function startContentChecking() {
     }, 5 * 60 * 1000);
 }
 
+function saveProfilePicture(imageData) {
+    try {
+        // Save to localStorage
+        localStorage.setItem('userProfilePicture', imageData);
+        
+        // Also save to sessionStorage for faster loading
+        sessionStorage.setItem('profilePicture', imageData);
+        
+        console.log('Profile picture saved successfully');
+        return true;
+    } catch (error) {
+        console.error('Error saving profile picture:', error);
+        showNotification('Failed to save profile picture. Storage might be full.', 'error');
+        return false;
+    }
+}
+
 // Profile picture functionality with cropping
 let cropper = null;
 let originalImageData = null;
@@ -5439,11 +5510,17 @@ function setupProfilePicture() {
     const cancelRemoveBtn = document.getElementById('cancelRemoveBtn');
     const proceedRemoveBtn = document.getElementById('proceedRemoveBtn');
 
-    // Open modal when profile icon is clicked
-    profileIcon.addEventListener('click', function(e) {
-        e.stopPropagation();
-        openProfileModal();
-    });
+// Open modal when profile icon is clicked
+profileIcon.addEventListener('click', function(e) {
+    e.stopPropagation();
+    
+    // Get the current profile picture from localStorage
+    const savedPicture = localStorage.getItem('userProfilePicture');
+    
+    // ALWAYS open the profile viewer modal
+    // If there's a saved picture, show it. If not, show the default placeholder
+    openProfileViewer(savedPicture || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PGNpcmNsZSBjeD0iNTAiIGN5PSI0MCIgcj0iMjAiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC41KSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iODAiIHI9IjMwIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNSkiLz48L3N2Zz4=');
+});
 
     // Choose photo button
     if (choosePhotoBtn) {
@@ -5452,47 +5529,56 @@ function setupProfilePicture() {
         });
     }
 
-    // Handle file selection
-    if (profileUploadInput) {
-        profileUploadInput.addEventListener('change', function(e) {
-            if (e.target.files && e.target.files[0]) {
-                const file = e.target.files[0];
-                
-                // Validate file type
-                if (!file.type.match('image.*')) {
-                    showNotification('Please select a valid image file.', 'error');
-                    return;
-                }
-                
-                // Validate file size (max 5MB)
-                if (file.size > 5 * 1024 * 1024) {
-                    showNotification('Please select an image smaller than 5MB.', 'error');
-                    return;
-                }
-                
-                const reader = new FileReader();
-                
-                reader.onload = function(e) {
-                    // Store original image data
-                    originalImageData = e.target.result;
-                    
-                    // Load image into cropper
-                    cropperImage.src = e.target.result;
-                    
-                    // Close profile modal
-                    closeProfileModal();
-                    
-                    // Open cropping modal after a short delay
-                    setTimeout(() => {
-                        openModal(croppingModal, croppingModalContent);
-                        initCropper();
-                    }, 300);
-                };
-                
-                reader.readAsDataURL(file);
+// Handle file selection
+if (profileUploadInput) {
+    profileUploadInput.addEventListener('change', function(e) {
+        if (e.target.files && e.target.files[0]) {
+            const file = e.target.files[0];
+            
+            // Validate file type
+            if (!file.type.match('image.*')) {
+                showNotification('Please select a valid image file.', 'error');
+                this.value = ''; // Clear the input
+                return;
             }
-        });
-    }
+            
+            // Validate file size (max 5MB)
+            if (file.size > 5 * 1024 * 1024) {
+                showNotification('Please select an image smaller than 5MB.', 'error');
+                this.value = ''; // Clear the input
+                return;
+            }
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                // Store original image data
+                originalImageData = e.target.result;
+                
+                // Load image into cropper
+                cropperImage.src = e.target.result;
+                
+                // Ensure the cropping modal is properly closed first
+                if (croppingModal.style.display === 'block') {
+                    closeModal(croppingModal, croppingModalContent);
+                }
+                
+                // Open cropping modal directly
+                setTimeout(() => {
+                    openModal(croppingModal, croppingModalContent);
+                    initCropper();
+                }, 300);
+            };
+            
+            reader.onerror = function() {
+                showNotification('Error reading image file.', 'error');
+                profileUploadInput.value = ''; // Clear the input
+            };
+            
+            reader.readAsDataURL(file);
+        }
+    });
+}
 
     // Initialize Cropper.js
     function initCropper() {
@@ -5568,10 +5654,11 @@ function setupProfilePicture() {
         });
     });
 
-    // Apply crop button
-    if (applyCropBtn) {
-        applyCropBtn.addEventListener('click', function() {
-            if (cropper) {
+// Apply crop button
+if (applyCropBtn) {
+    applyCropBtn.addEventListener('click', function() {
+        if (cropper) {
+            try {
                 // Get cropped canvas
                 const canvas = cropper.getCroppedCanvas({
                     width: 300,
@@ -5580,51 +5667,82 @@ function setupProfilePicture() {
                     imageSmoothingQuality: 'high'
                 });
                 
+                if (!canvas) {
+                    throw new Error('Failed to create cropped canvas');
+                }
+                
                 // Convert to data URL
                 const croppedImage = canvas.toDataURL('image/jpeg', 0.9);
-                
-                // Update preview with clickable image
-                if (profilePreview) {
-                    profilePreview.innerHTML = `
-                        <img src="${croppedImage}" 
-                             class="profile-preview-img" 
-                             alt="Profile Preview"
-                             style="cursor: pointer;"
-                             onclick="openProfileViewer('${croppedImage}')">
-                    `;
-                }
                 
                 // Save to localStorage and update profile
                 saveProfilePicture(croppedImage);
                 updateProfilePicture(croppedImage);
                 
-                // Update button text and show remove button
-                if (choosePhotoBtn) choosePhotoBtn.textContent = 'Change Photo';
-                if (removePhotoBtn) {
-                    removePhotoBtn.style.display = 'block';
-                    removePhotoBtn.classList.add('remove');
-                }
+                // Also update the profile settings modal preview
+                updateProfileSettingsPreview();
                 
                 // Show success notification
                 showNotification('Profile picture updated successfully!', 'success');
                 
+                // Clear the file input
+                if (profileUploadInput) {
+                    profileUploadInput.value = '';
+                }
+                
                 // Close cropping modal
                 closeModal(croppingModal, croppingModalContent);
+                
+                // Clean up cropper
+                if (cropper) {
+                    cropper.destroy();
+                    cropper = null;
+                }
+                
+                // Return to profile settings modal
+                setTimeout(() => {
+                    openProfileSettingsModal();
+                }, 300);
+                
+            } catch (error) {
+                console.error('Error applying crop:', error);
+                showNotification('Failed to apply crop. Please try again.', 'error');
+                // Clear the file input on error too
+                if (profileUploadInput) {
+                    profileUploadInput.value = '';
+                }
             }
-        });
-    }
+        } else {
+            showNotification('Cropper not initialized. Please select an image again.', 'error');
+            // Clear the file input
+            if (profileUploadInput) {
+                profileUploadInput.value = '';
+            }
+        }
+    });
+}
 
-    // Cancel crop button
-    if (cancelCropBtn) {
-        cancelCropBtn.addEventListener('click', function() {
-            closeModal(croppingModal, croppingModalContent);
-            
-            // Reopen profile modal after delay
-            setTimeout(() => {
-                openProfileModal(); // Changed from openModal to openProfileModal
-            }, 300);
-        });
-    }
+// Cancel crop button
+if (cancelCropBtn) {
+    cancelCropBtn.addEventListener('click', function() {
+        closeModal(croppingModal, croppingModalContent);
+        
+        // Clean up cropper
+        if (cropper) {
+            cropper.destroy();
+            cropper = null;
+        }
+        
+        // Clear the file input so it can be used again
+        if (profileUploadInput) {
+            profileUploadInput.value = '';
+        }
+        
+        // Reopen profile settings modal
+        setTimeout(() => {
+            openProfileSettingsModal();
+        }, 300);
+    });
+}
 
     // Update zoom slider based on cropper zoom
     function updateZoomSlider() {
@@ -5682,7 +5800,13 @@ function setupProfilePicture() {
             closeProfileModal();
         });
     }
-
+// Function to clear all file inputs
+function clearFileInputs() {
+    const fileInputs = document.querySelectorAll('input[type="file"]');
+    fileInputs.forEach(input => {
+        input.value = '';
+    });
+}
     // Modal helper functions
     function openModal(modal, content) {
         if (!modal || !content) return;
@@ -5700,27 +5824,27 @@ function setupProfilePicture() {
         document.body.style.overflow = 'hidden';
     }
     
-    function closeModal(modal, content) {
-        if (!modal || !content) return;
-        
-        modal.classList.remove('fade-in');
-        content.classList.remove('scale-in');
-        modal.classList.add('fade-out');
-        content.classList.add('scale-out');
-        
-        setTimeout(() => {
-            if (modal.classList.contains('fade-out')) {
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
-                
-                // Clean up cropper if closing cropping modal
-                if (modal === croppingModal && cropper) {
-                    cropper.destroy();
-                    cropper = null;
-                }
+function closeModal(modal, content) {
+    if (!modal || !content) return;
+    
+    modal.classList.remove('fade-in');
+    content.classList.remove('scale-in');
+    modal.classList.add('fade-out');
+    content.classList.add('scale-out');
+    
+    setTimeout(() => {
+        if (modal.classList.contains('fade-out')) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+            
+            // Clean up cropper if closing cropping modal
+            if (modal === croppingModal && cropper) {
+                cropper.destroy();
+                cropper = null;
             }
-        }, 300);
-    }
+        }
+    }, 300);
+}
 
     // Close modals when clicking outside
     window.addEventListener('click', function(e) {
