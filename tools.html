@@ -3,278 +3,371 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HTML Code Parser - Hacker Tool</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>HTML Data Parser</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Courier New', monospace;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
         }
         
         body {
-            background-color: #0a0a0a;
-            color: #00ff00;
-            line-height: 1.6;
+            background-color: #f5f7fa;
+            color: #333;
             padding: 20px;
             min-height: 100vh;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
-        .header {
+        h1 {
             text-align: center;
             margin-bottom: 30px;
-            padding: 20px;
-            border-bottom: 1px solid #00ff00;
-            position: relative;
+            color: #2c3e50;
         }
         
-        .header h1 {
-            font-size: 2.5rem;
-            text-shadow: 0 0 10px #00ff00;
-            letter-spacing: 3px;
-        }
-        
-        .input-area {
+        .input-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
             margin-bottom: 30px;
         }
         
-        #html-input {
-            width: 100%;
-            height: 300px;
-            background: #000;
-            border: 2px solid #00ff00;
-            color: #00ff00;
-            font-size: 1rem;
-            padding: 15px;
-            border-radius: 5px;
-            resize: vertical;
-            outline: none;
+        .input-box {
+            display: flex;
+            flex-direction: column;
         }
         
-        .results {
+        .input-box label {
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 350px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            resize: vertical;
+            background-color: white;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        button {
+            padding: 12px 30px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        button:hover {
+            background-color: #2980b9;
+        }
+        
+        #checkAllBtn {
+            background-color: #2ecc71;
+        }
+        
+        #checkAllBtn:hover {
+            background-color: #27ae60;
+        }
+        
+        .results-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
         
-        .result-section {
-            border: 1px solid #00ff00;
-            border-radius: 5px;
-            padding: 15px;
-            background-color: rgba(0, 20, 0, 0.3);
+        .result-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
-        .result-section h2 {
-            text-align: center;
+        .result-box h2 {
             margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 2px solid #eee;
             padding-bottom: 10px;
-            border-bottom: 1px solid #00ff00;
         }
         
-        .result-item {
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #004400;
-            border-radius: 3px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .result-code {
-            flex-grow: 1;
+        .result-content {
+            height: 300px;
+            overflow-y: auto;
             font-family: monospace;
-            font-size: 0.9rem;
+            font-size: 14px;
+            white-space: pre;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #eee;
         }
         
         .copy-btn {
-            background: transparent;
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            padding: 5px 10px;
-            cursor: pointer;
-            margin-left: 10px;
-            border-radius: 3px;
-            transition: all 0.3s;
+            margin-top: 15px;
+            padding: 8px 15px;
+            font-size: 14px;
+            background-color: #95a5a6;
         }
         
         .copy-btn:hover {
-            background-color: #00ff00;
-            color: #000;
+            background-color: #7f8c8d;
         }
         
-        .scan-line {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(to bottom, rgba(0,255,0,0.1), rgba(0,255,0,0.8), rgba(0,255,0,0.1));
-            animation: scan 3s linear infinite;
-            pointer-events: none;
-            z-index: 9999;
-        }
-        
-        @keyframes scan {
-            0% { top: 0; }
-            100% { top: 100%; }
-        }
-        
-        .instructions {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #00aa00;
-        }
-        
-        @media (max-width: 768px) {
-            .results {
+        @media (max-width: 1024px) {
+            .input-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .results-section {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-
-        <div class="container">
-        <div class="header">
-            <h1>HTML CODE PARSER</h1>
-            <p class="instructions">Paste your HTML code and press Enter to extract data</p>
-        </div>
+    <div class="container">
+        <h1>HTML Data Parser</h1>
         
-        <div class="input-area">
-            <textarea id="html-input" placeholder="Paste your HTML code here..."></textarea>
-        </div>
-        
-        <div class="results">
-            <div class="result-section">
-                <h2>PDF DATA</h2>
-                <div id="pdf-results"></div>
+        <div class="input-section">
+            <div class="input-box">
+                <label for="htmlInput">Box 1: Full HTML Code</label>
+                <textarea id="htmlInput" placeholder="Paste full HTML code here..."></textarea>
             </div>
             
-            <div class="result-section">
-                <h2>VIDEO DATA</h2>
-                <div id="video-results"></div>
+            <div class="input-box">
+                <label for="videoInput">Box 2: Video Data (will extract videoId)</label>
+                <textarea id="videoInput" placeholder='Paste video data like:
+{ title: "Video 1", videoId: "abc123" },
+{ title: "Video 2", videoId: "def456" }, ...'></textarea>
+            </div>
+            
+            <div class="input-box">
+                <label for="pdfInput">Box 3: PDF Data (will extract url)</label>
+                <textarea id="pdfInput" placeholder='Paste PDF data like:
+{ title: "PDF 1", url: "http://example.com/1.pdf" },
+{ title: "PDF 2", url: "http://example.com/2.pdf" }, ...'></textarea>
+            </div>
+        </div>
+        
+        <div class="button-group">
+            <button id="checkMissingBtn">Check Missing</button>
+            <button id="checkAllBtn">Check All</button>
+        </div>
+        
+        <div class="results-section">
+            <div class="result-box">
+                <h2 id="missingVideoTitle">Missing Videos</h2>
+                <div id="missingVideoResult" class="result-content"></div>
+                <button class="copy-btn" onclick="copyResult('missingVideoResult')">Copy</button>
+            </div>
+            
+            <div class="result-box">
+                <h2 id="missingPdfTitle">Missing PDFs</h2>
+                <div id="missingPdfResult" class="result-content"></div>
+                <button class="copy-btn" onclick="copyResult('missingPdfResult')">Copy</button>
             </div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const htmlInput = document.getElementById('html-input');
-            const pdfResults = document.getElementById('pdf-results');
-            const videoResults = document.getElementById('video-results');
+        function parseHTML(htmlString) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlString, 'text/html');
             
-            // Function to parse HTML and extract data
-            function parseHTML(htmlString) {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(htmlString, 'text/html');
-                
-                // Extract PDF data
-                const pdfElements = doc.querySelectorAll('a[href*=".pdf"]');
-                const pdfData = [];
-                
-                pdfElements.forEach(element => {
-                    const title = element.textContent.trim();
-                    const url = element.getAttribute('href');
+            // Extract PDF data
+            const pdfElements = doc.querySelectorAll('a[href*=".pdf"]');
+            const pdfData = [];
+            
+            pdfElements.forEach(element => {
+                const title = element.textContent.trim();
+                const url = element.getAttribute('href');
+                if (title && url) {
                     pdfData.push({ title, url });
-                });
-                
-                // Extract video data
-                const videoElements = doc.querySelectorAll('[data-name][data-type="yt"]');
-                const videoData = [];
-                
-                videoElements.forEach(element => {
-                    const titleElement = element.querySelector('.font-light');
-                    const title = titleElement ? titleElement.textContent.trim() : '';
-                    const videoId = element.getAttribute('data-name');
+                }
+            });
+            
+            // Extract video data
+            const videoElements = doc.querySelectorAll('[data-name][data-type="yt"]');
+            const videoData = [];
+            
+            videoElements.forEach(element => {
+                const titleElement = element.querySelector('.font-light');
+                const title = titleElement ? titleElement.textContent.trim() : '';
+                const videoId = element.getAttribute('data-name');
+                if (title && videoId) {
                     videoData.push({ title, videoId });
-                });
-                
-                return { pdfData, videoData };
+                }
+            });
+            
+            return { pdfData, videoData };
+        }
+        
+        function extractVideoIds(videoInput) {
+            const videoIds = [];
+            // Match videoId patterns in the input
+            const regex = /videoId:\s*["']([^"']+)["']/g;
+            let match;
+            
+            while ((match = regex.exec(videoInput)) !== null) {
+                videoIds.push(match[1]);
             }
             
-            // Function to display results
-            function displayResults(pdfData, videoData) {
-                // Clear previous results
-                pdfResults.innerHTML = '';
-                videoResults.innerHTML = '';
-                
-                // Display PDF results
-                if (pdfData.length > 0) {
-                    pdfData.forEach(item => {
-                        const codeString = `{ title: "${item.title}", url: "${item.url}" }`;
-                        const resultItem = document.createElement('div');
-                        resultItem.className = 'result-item';
-                        resultItem.innerHTML = `
-                            <div class="result-code">${codeString}</div>
-                            <button class="copy-btn" data-code="${codeString.replace(/"/g, '&quot;')}">
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        `;
-                        pdfResults.appendChild(resultItem);
-                    });
-                } else {
-                    pdfResults.innerHTML = '<p>No PDF data found.</p>';
-                }
-                
-                // Display video results
-                if (videoData.length > 0) {
-                    videoData.forEach(item => {
-                        const codeString = `{ title: "${item.title}", videoId: "${item.videoId}" }`;
-                        const resultItem = document.createElement('div');
-                        resultItem.className = 'result-item';
-                        resultItem.innerHTML = `
-                            <div class="result-code">${codeString}</div>
-                            <button class="copy-btn" data-code="${codeString.replace(/"/g, '&quot;')}">
-                                <i class="fas fa-copy"></i>
-                            </button>
-                        `;
-                        videoResults.appendChild(resultItem);
-                    });
-                } else {
-                    videoResults.innerHTML = '<p>No video data found.</p>';
-                }
-                
-                // Add event listeners to copy buttons
-                document.querySelectorAll('.copy-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const code = this.getAttribute('data-code');
-                        navigator.clipboard.writeText(code).then(() => {
-                            // Show a brief visual feedback
-                            const originalColor = this.style.backgroundColor;
-                            this.style.backgroundColor = '#00ff00';
-                            this.style.color = '#000';
-                            setTimeout(() => {
-                                this.style.backgroundColor = originalColor;
-                                this.style.color = '#00ff00';
-                            }, 200);
-                        });
-                    });
-                });
+            return videoIds;
+        }
+        
+        function extractPdfUrls(pdfInput) {
+            const urls = [];
+            // Match url patterns in the input
+            const regex = /url:\s*["']([^"']+)["']/g;
+            let match;
+            
+            while ((match = regex.exec(pdfInput)) !== null) {
+                urls.push(match[1]);
             }
             
-            // Parse when Enter is pressed in textarea (without Shift)
-            htmlInput.addEventListener('keydown', function(e) {
-                if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    const htmlCode = htmlInput.value.trim();
+            return urls;
+        }
+        
+        function checkMissing() {
+            const htmlCode = document.getElementById('htmlInput').value.trim();
+            const videoInput = document.getElementById('videoInput').value;
+            const pdfInput = document.getElementById('pdfInput').value;
+            
+            if (!htmlCode) {
+                alert('Please paste HTML code in Box 1');
+                return;
+            }
+            
+            try {
+                const { pdfData, videoData } = parseHTML(htmlCode);
+                const existingVideoIds = extractVideoIds(videoInput);
+                const existingPdfUrls = extractPdfUrls(pdfInput);
+                
+                // Find missing videos
+                const missingVideos = videoData.filter(video => 
+                    !existingVideoIds.includes(video.videoId)
+                );
+                
+                // Find missing PDFs
+                const missingPdfs = pdfData.filter(pdf => 
+                    !existingPdfUrls.includes(pdf.url)
+                );
+                
+                // Display results
+                displayResult('missingVideoResult', missingVideos, 'video');
+                displayResult('missingPdfResult', missingPdfs, 'pdf');
+                
+                // Update titles
+                document.getElementById('missingVideoTitle').textContent = 
+                    `Missing Videos (${missingVideos.length} found)`;
+                document.getElementById('missingPdfTitle').textContent = 
+                    `Missing PDFs (${missingPdfs.length} found)`;
                     
-                    if (!htmlCode) {
-                        alert('Please paste some HTML code first.');
-                        return;
-                    }
+            } catch (error) {
+                alert('Error parsing HTML: ' + error.message);
+            }
+        }
+        
+        function checkAll() {
+            const htmlCode = document.getElementById('htmlInput').value.trim();
+            
+            if (!htmlCode) {
+                alert('Please paste HTML code in Box 1');
+                return;
+            }
+            
+            try {
+                const { pdfData, videoData } = parseHTML(htmlCode);
+                
+                // Display all videos
+                displayResult('missingVideoResult', videoData, 'video');
+                // Display all PDFs
+                displayResult('missingPdfResult', pdfData, 'pdf');
+                
+                // Update titles
+                document.getElementById('missingVideoTitle').textContent = 
+                    `All Videos (${videoData.length} found)`;
+                document.getElementById('missingPdfTitle').textContent = 
+                    `All PDFs (${pdfData.length} found)`;
                     
-                    try {
-                        const { pdfData, videoData } = parseHTML(htmlCode);
-                        displayResults(pdfData, videoData);
-                    } catch (error) {
-                        alert('Error parsing HTML: ' + error.message);
+            } catch (error) {
+                alert('Error parsing HTML: ' + error.message);
+            }
+        }
+        
+        function displayResult(elementId, data, type) {
+            const element = document.getElementById(elementId);
+            
+            if (data.length === 0) {
+                element.textContent = type === 'video' ? 'No videos found' : 'No PDFs found';
+                return;
+            }
+            
+            let resultText = '';
+            data.forEach(item => {
+                if (type === 'video') {
+                    resultText += `{ title: "${item.title}", videoId: "${item.videoId}" },\n`;
+                } else {
+                    resultText += `{ title: "${item.title}", url: "${item.url}" },\n`;
+                }
+            });
+            
+            element.textContent = resultText;
+        }
+        
+        function copyResult(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            if (!text || text.includes('No ') || text.includes('found')) {
+                alert('Nothing to copy');
+                return;
+            }
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+        
+        // Event listeners
+        document.getElementById('checkMissingBtn').addEventListener('click', checkMissing);
+        document.getElementById('checkAllBtn').addEventListener('click', checkAll);
+        
+        // Allow Ctrl+Enter in textareas to trigger actions
+        document.querySelectorAll('textarea').forEach(textarea => {
+            textarea.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && e.key === 'Enter') {
+                    if (this.id === 'htmlInput') {
+                        checkAll();
+                    } else {
+                        checkMissing();
                     }
                 }
             });
