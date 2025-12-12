@@ -330,7 +330,156 @@ function clearSearch() {
     }, 150);
 }
 
-// Advanced search function with fuzzy matching
+// Utility functions for enhanced search
+function escapeRegExp(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+// Check if text is likely Bangla
+function isLikelyBangla(text) {
+    // Bangla Unicode range: U+0980 to U+09FF
+    const banglaRegex = /[\u0980-\u09FF]/;
+    return banglaRegex.test(text);
+}
+
+// Get transliterations for a term
+function getTransliterations(term) {
+    const transliterations = [];
+    
+    if (isLikelyBangla(term)) {
+        // Bangla to English transliterations
+        transliterations.push(banglaToEnglishTransliteration(term));
+    } else {
+        // English to Bangla transliterations
+        transliterations.push(englishToBanglaTransliteration(term));
+    }
+    
+    return [...new Set(transliterations.filter(t => t && t !== term))];
+}
+
+// Simplified Bangla to English transliteration
+function banglaToEnglishTransliteration(text) {
+    const mapping = {
+        'া': 'a', 'ি': 'i', 'ী': 'i', 'ু': 'u', 'ূ': 'u', 'ৃ': 'ri', 'ে': 'e', 'ৈ': 'oi', 'ো': 'o', 'ৌ': 'ou',
+        'ক': 'k', 'খ': 'kh', 'গ': 'g', 'ঘ': 'gh', 'ঙ': 'ng',
+        'চ': 'ch', 'ছ': 'chh', 'জ': 'j', 'ঝ': 'jh', 'ঞ': 'n',
+        'ট': 't', 'ঠ': 'th', 'ড': 'd', 'ঢ': 'dh', 'ণ': 'n',
+        'ত': 't', 'থ': 'th', 'দ': 'd', 'ধ': 'dh', 'ন': 'n',
+        'প': 'p', 'ফ': 'ph', 'ব': 'b', 'ভ': 'bh', 'ম': 'm',
+        'য': 'j', 'র': 'r', 'ল': 'l', 'শ': 'sh', 'ষ': 'sh', 'স': 's', 'হ': 'h',
+        'ড়': 'r', 'ঢ়': 'rh', 'য়': 'y', 'ৎ': 't',
+        '০': '0', '১': '1', '২': '2', '৩': '3', '৪': '4', '৫': '5', '৬': '6', '৭': '7', '৮': '8', '৯': '9'
+    };
+    
+    return text.split('').map(char => mapping[char] || char).join('');
+}
+
+// Simplified English to Bangla transliteration
+function englishToBanglaTransliteration(text) {
+    const mapping = {
+        'a': 'এ', 'b': 'বি', 'c': 'সি', 'd': 'ডি', 'e': 'ই', 'f': 'এফ', 'g': 'জি', 'h': 'এইচ', 
+        'i': 'আই', 'j': 'জে', 'k': 'কে', 'l': 'এল', 'm': 'এম', 'n': 'এন', 'o': 'ও', 'p': 'পি',
+        'q': 'কিউ', 'r': 'আর', 's': 'এস', 't': 'টি', 'u': 'ইউ', 'v': 'ভি', 'w': 'ডব্লিউ', 'x': 'এক্স',
+        'y': 'ওয়াই', 'z': 'জেড'
+    };
+    
+    return text.toLowerCase().split('').map(char => mapping[char] || char).join('');
+}
+
+// Remove Bangla diacritics
+function removeBanglaDiacritics(text) {
+    const diacritics = ['া', 'ি', 'ী', 'ু', 'ূ', 'ৃ', 'ে', 'ৈ', 'ো', 'ৌ', 'ঁ', 'ঃ', 'ং', '়', '্'];
+    return text.split('').filter(char => !diacritics.includes(char)).join('');
+}
+
+// Simple Bangla word segmentation
+function segmentBanglaPhrase(phrase) {
+    const segments = [];
+    
+    for (let i = 0; i < phrase.length; i++) {
+        for (let j = 2; j <= 4; j++) {
+            if (i + j <= phrase.length) {
+                segments.push(phrase.substring(i, i + j));
+            }
+        }
+    }
+    
+    return [...new Set(segments)];
+}
+
+// Levenshtein distance for fuzzy matching
+function calculateLevenshteinSimilarity(str1, str2) {
+    const len1 = str1.length;
+    const len2 = str2.length;
+    
+    const matrix = [];
+    
+    for (let i = 0; i <= len1; i++) {
+        matrix[i] = [i];
+    }
+    
+    for (let j = 0; j <= len2; j++) {
+        matrix[0][j] = j;
+    }
+    
+    for (let i = 1; i <= len1; i++) {
+        for (let j = 1; j <= len2; j++) {
+            const cost = str1[i - 1] === str2[j - 1] ? 0 : 1;
+            matrix[i][j] = Math.min(
+                matrix[i - 1][j] + 1,
+                matrix[i][j - 1] + 1,
+                matrix[i - 1][j - 1] + cost
+            );
+        }
+    }
+    
+    const distance = matrix[len1][len2];
+    const maxLength = Math.max(len1, len2);
+    
+    return maxLength === 0 ? 1 : 1 - (distance / maxLength);
+}
+
+// Find closest matching substring
+function findClosestSubstring(text, pattern) {
+    const textLower = text.toLowerCase();
+    const patternLower = pattern.toLowerCase();
+    
+    let bestMatch = '';
+    let bestScore = 0;
+    
+    for (let i = 0; i < textLower.length; i++) {
+        for (let j = i + 1; j <= textLower.length; j++) {
+            const substring = textLower.substring(i, j);
+            const similarity = calculateLevenshteinSimilarity(substring, patternLower);
+            
+            if (similarity > bestScore && similarity > 0.6) {
+                bestScore = similarity;
+                bestMatch = text.substring(i, j);
+            }
+        }
+    }
+    
+    return bestMatch;
+}
+
+// Acronym matching
+function checkAcronymMatch(text, acronym) {
+    const words = text.toLowerCase().split(/[\s\-_]+/);
+    const acronymLetters = acronym.toLowerCase().split('');
+    
+    if (words.length < acronymLetters.length) return 0;
+    
+    let matchCount = 0;
+    for (let i = 0; i < acronymLetters.length; i++) {
+        if (words[i] && words[i][0] === acronymLetters[i]) {
+            matchCount++;
+        }
+    }
+    
+    return matchCount === acronymLetters.length ? 75 : 0;
+}
+
+// Enhanced search function with full Bangla/English support
 function performSearch(searchTerm) {
     const searchResults = document.getElementById('search-results');
     const subjectsList = document.getElementById('subjects-list');
@@ -341,17 +490,25 @@ function performSearch(searchTerm) {
         return;
     }
     
-    const normalizedSearch = searchTerm.toLowerCase().trim();
+    const normalizedSearch = searchTerm.trim();
     const results = [];
     
-    // Search through all lectures with advanced matching
+    // Get transliterated versions for cross-language search
+    const transliteratedSearches = getTransliterations(normalizedSearch);
+    
+    // Search through all lectures with enhanced matching
     subjectsData.forEach(subject => {
         subject.lectures.forEach((lecture, index) => {
-            const lectureTitle = lecture.title.toLowerCase();
-            const subjectName = subject.name.toLowerCase();
+            const lectureTitle = lecture.title;
+            const subjectName = subject.name;
             
-            // Advanced matching criteria
-            const matches = calculateMatchScore(lectureTitle, subjectName, normalizedSearch);
+            // Advanced matching with multiple algorithms
+            const matches = calculateEnhancedMatchScore(
+                lectureTitle, 
+                subjectName, 
+                normalizedSearch,
+                transliteratedSearches
+            );
             
             if (matches.score > 0) {
                 results.push({
@@ -361,7 +518,8 @@ function performSearch(searchTerm) {
                     lecture: lecture,
                     lectureIndex: index,
                     matchScore: matches.score,
-                    matchType: matches.type
+                    matchType: matches.type,
+                    matchedParts: matches.matchedParts || []
                 });
             }
         });
@@ -371,73 +529,179 @@ function performSearch(searchTerm) {
     results.sort((a, b) => b.matchScore - a.matchScore);
     
     currentSearchResults = results;
-    displaySearchResults(results);
+    displayEnhancedSearchResults(results, normalizedSearch);
 }
 
-// Advanced matching algorithm
-function calculateMatchScore(lectureTitle, subjectName, searchTerm) {
-    let score = 0;
-    let type = 'partial';
+// Enhanced matching algorithm with Bangla/English support
+function calculateEnhancedMatchScore(lectureTitle, subjectName, searchTerm, transliteratedSearches) {
+    let bestScore = 0;
+    let bestType = 'no-match';
+    let matchedParts = [];
     
-    // Exact match (highest priority)
+    // Test with original search term
+    let result = calculateMatchScoreForTerm(lectureTitle, subjectName, searchTerm);
+    if (result.score > bestScore) {
+        bestScore = result.score;
+        bestType = result.type;
+        matchedParts = result.matchedParts || [];
+    }
+    
+    // Test with transliterated versions
+    transliteratedSearches.forEach(transliteratedTerm => {
+        let result = calculateMatchScoreForTerm(lectureTitle, subjectName, transliteratedTerm);
+        if (result.score > bestScore) {
+            bestScore = result.score;
+            bestType = result.type + ' (transliterated)';
+            matchedParts = result.matchedParts || [];
+        }
+    });
+    
+    // Test with English versions of Bangla terms
+    if (isLikelyBangla(searchTerm)) {
+        const englishTerm = banglaToEnglishTransliteration(searchTerm);
+        let result = calculateMatchScoreForTerm(lectureTitle, subjectName, englishTerm);
+        if (result.score > bestScore) {
+            bestScore = result.score;
+            bestType = result.type + ' (english-transliterated)';
+            matchedParts = result.matchedParts || [];
+        }
+    }
+    
+    // Test with Bangla versions of English terms
+    if (!isLikelyBangla(searchTerm)) {
+        const banglaTerm = englishToBanglaTransliteration(searchTerm);
+        let result = calculateMatchScoreForTerm(lectureTitle, subjectName, banglaTerm);
+        if (result.score > bestScore) {
+            bestScore = result.score;
+            bestType = result.type + ' (bangla-transliterated)';
+            matchedParts = result.matchedParts || [];
+        }
+    }
+    
+    // Try without diacritics for Bangla
+    if (isLikelyBangla(searchTerm)) {
+        const withoutDiacritics = removeBanglaDiacritics(searchTerm);
+        let result = calculateMatchScoreForTerm(lectureTitle, subjectName, withoutDiacritics);
+        if (result.score > bestScore) {
+            bestScore = result.score;
+            bestType = result.type + ' (no-diacritics)';
+            matchedParts = result.matchedParts || [];
+        }
+    }
+    
+    // Word segmentation for Bangla
+    if (isLikelyBangla(searchTerm) && searchTerm.length > 2) {
+        const segmentedTerms = segmentBanglaPhrase(searchTerm);
+        segmentedTerms.forEach(segment => {
+            let result = calculateMatchScoreForTerm(lectureTitle, subjectName, segment);
+            if (result.score * 0.8 > bestScore) { // Weight factor for partial words
+                bestScore = result.score * 0.8;
+                bestType = result.type + ' (segmented)';
+                matchedParts = result.matchedParts || [];
+            }
+        });
+    }
+    
+    return { score: bestScore, type: bestType, matchedParts };
+}
+
+// Core matching algorithm for a single term
+function calculateMatchScoreForTerm(lectureTitle, subjectName, searchTerm) {
+    const lectureLower = lectureTitle.toLowerCase();
+    const subjectLower = subjectName.toLowerCase();
+    const searchLower = searchTerm.toLowerCase();
+    
+    let score = 0;
+    let type = 'no-match';
+    let matchedParts = [];
+    
+    // 1. Exact match (highest priority - 100 points)
     if (lectureTitle === searchTerm || subjectName === searchTerm) {
         score = 100;
         type = 'exact';
+        matchedParts = [searchTerm];
+        return { score, type, matchedParts };
     }
-    // Starts with search term
-    else if (lectureTitle.startsWith(searchTerm) || subjectName.startsWith(searchTerm)) {
+    
+    // 2. Case-insensitive exact match (95 points)
+    if (lectureLower === searchLower || subjectLower === searchLower) {
+        score = 95;
+        type = 'exact-case-insensitive';
+        matchedParts = [searchTerm];
+        return { score, type, matchedParts };
+    }
+    
+    // 3. Starts with (90 points)
+    if (lectureLower.startsWith(searchLower) || subjectLower.startsWith(searchLower)) {
         score = 90;
         type = 'starts-with';
+        matchedParts = [lectureTitle.substring(0, searchTerm.length)];
+        return { score, type, matchedParts };
     }
-    // Contains search term as whole word
-    else if (lectureTitle.includes(` ${searchTerm} `) || lectureTitle.endsWith(` ${searchTerm}`)) {
-        score = 80;
+    
+    // 4. Contains as whole word (85 points)
+    const wholeWordRegex = new RegExp(`\\b${escapeRegExp(searchLower)}\\b`, 'i');
+    if (wholeWordRegex.test(lectureLower) || wholeWordRegex.test(subjectLower)) {
+        score = 85;
         type = 'whole-word';
+        const match = lectureLower.match(wholeWordRegex) || subjectLower.match(wholeWordRegex);
+        matchedParts = match ? [match[0]] : [];
+        return { score, type, matchedParts };
     }
-    // Contains search term anywhere
-    else if (lectureTitle.includes(searchTerm) || subjectName.includes(searchTerm)) {
-        score = 70;
+    
+    // 5. Contains anywhere (70-80 points based on position)
+    const lectureIndex = lectureLower.indexOf(searchLower);
+    const subjectIndex = subjectLower.indexOf(searchLower);
+    
+    if (lectureIndex !== -1 || subjectIndex !== -1) {
+        score = 80 - Math.min(lectureIndex !== -1 ? lectureIndex : subjectIndex, 10);
         type = 'contains';
+        
+        // Find the matched part
+        if (lectureIndex !== -1) {
+            matchedParts = [lectureTitle.substring(lectureIndex, lectureIndex + searchTerm.length)];
+        } else {
+            matchedParts = [subjectName.substring(subjectIndex, subjectIndex + searchTerm.length)];
+        }
+        return { score, type, matchedParts };
     }
-    // Fuzzy matching for Bangla/English variations
-    else {
-        const fuzzyScore = calculateFuzzyScore(lectureTitle + ' ' + subjectName, searchTerm);
-        if (fuzzyScore > 0.6) {
-            score = Math.floor(fuzzyScore * 60);
-            type = 'fuzzy';
+    
+    // 6. Fuzzy matching with Levenshtein distance
+    const lectureFuzzyScore = calculateLevenshteinSimilarity(lectureLower, searchLower);
+    const subjectFuzzyScore = calculateLevenshteinSimilarity(subjectLower, searchLower);
+    const bestFuzzyScore = Math.max(lectureFuzzyScore, subjectFuzzyScore);
+    
+    if (bestFuzzyScore > 0.7) {
+        score = Math.floor(bestFuzzyScore * 70);
+        type = 'fuzzy';
+        
+        // Find which one matched better
+        if (lectureFuzzyScore >= subjectFuzzyScore) {
+            // Find closest matching substring
+            const closestMatch = findClosestSubstring(lectureTitle, searchTerm);
+            if (closestMatch) matchedParts = [closestMatch];
+        } else {
+            const closestMatch = findClosestSubstring(subjectName, searchTerm);
+            if (closestMatch) matchedParts = [closestMatch];
+        }
+        return { score, type, matchedParts };
+    }
+    
+    // 7. Acronym matching (for phrases like "HSC" matching "Higher Secondary Certificate")
+    if (searchLower.length <= 5 && searchLower === searchLower.toUpperCase()) {
+        const acronymScore = checkAcronymMatch(lectureTitle, searchLower);
+        if (acronymScore > 0) {
+            score = acronymScore;
+            type = 'acronym';
+            return { score, type, matchedParts };
         }
     }
     
-    // Bonus for subject name matches
-    if (subjectName.includes(searchTerm)) {
-        score += 10;
-    }
-    
-    return { score, type };
+    return { score, type, matchedParts };
 }
 
-// Fuzzy matching algorithm
-function calculateFuzzyScore(text, searchTerm) {
-    if (searchTerm.length === 0) return 1;
-    if (searchTerm.length > text.length) return 0;
-    
-    let runningScore = 0;
-    let searchIndex = 0;
-    
-    for (let i = 0; i < text.length; i++) {
-        if (text[i] === searchTerm[searchIndex]) {
-            runningScore += 1;
-            searchIndex++;
-            
-            if (searchIndex === searchTerm.length) break;
-        }
-    }
-    
-    return runningScore / searchTerm.length;
-}
-
-// Display search results in the subjects list area
-function displaySearchResults(results) {
+// Enhanced display with highlighting
+function displayEnhancedSearchResults(results, searchTerm) {
     const searchResults = document.getElementById('search-results');
     const subjectsList = document.getElementById('subjects-list');
     
@@ -448,13 +712,20 @@ function displaySearchResults(results) {
         searchResults.innerHTML = `
             <div class="no-results">
                 <i class="fas fa-search"></i>
-                <div>No lectures found matching your search</div>
+                <div>No lectures found for "${searchTerm}"</div>
+                <div style="font-size: 14px; margin-top: 10px; opacity: 0.7;">
+                    Try different spelling or transliteration
+                </div>
             </div>
         `;
     } else {
         searchResults.innerHTML = results.map((result, index) => {
             const isCompleted = completedLectures.includes(result.lecture.videoId);
             const completedClass = isCompleted ? 'completed' : '';
+            
+            // Highlight matched parts
+            const highlightedTitle = highlightMatches(result.lecture.title, result.matchedParts);
+            const highlightedSubject = highlightMatches(result.subject, result.matchedParts);
             
             return `
                 <div class="search-result-item ${completedClass}" 
@@ -465,8 +736,11 @@ function displaySearchResults(results) {
                     <div class="search-result-header">
                         <i class="search-result-icon ${result.subjectIcon}" style="color: ${result.subjectColor};"></i>
                         <div class="search-result-content">
-                            <div class="search-result-title">${result.lecture.title}</div>
-                            <div class="search-result-subject">${result.subject}</div>
+                            <div class="search-result-title">${highlightedTitle}</div>
+                            <div class="search-result-subject">${highlightedSubject}</div>
+                            <div class="search-match-type" style="font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px;">
+                                ${getMatchTypeBadge(result.matchType)}
+                            </div>
                         </div>
                         ${isCompleted ? '<span class="completion-status"><i class="fas fa-check"></i></span>' : ''}
                     </div>
@@ -484,6 +758,43 @@ function displaySearchResults(results) {
     
     // Add animation to results
     searchResults.style.animation = 'fadeIn 0.4s ease';
+}
+
+// Highlight matched parts in text
+function highlightMatches(text, matchedParts) {
+    if (!matchedParts || matchedParts.length === 0) return text;
+    
+    let highlighted = text;
+    
+    matchedParts.forEach(part => {
+        if (part && part.trim()) {
+            const escapedPart = escapeRegExp(part);
+            const regex = new RegExp(`(${escapedPart})`, 'gi');
+            highlighted = highlighted.replace(regex, '<span class="search-highlight" style="background: rgba(76, 175, 80, 0.3); padding: 1px 4px; border-radius: 3px;">$1</span>');
+        }
+    });
+    
+    return highlighted;
+}
+
+// Get badge for match type
+function getMatchTypeBadge(matchType) {
+    const badges = {
+        'exact': '<span style="color: #4CAF50;">✓ Exact match</span>',
+        'exact-case-insensitive': '<span style="color: #4CAF50;">✓ Match</span>',
+        'starts-with': '<span style="color: #2196F3;">→ Starts with</span>',
+        'whole-word': '<span style="color: #2196F3;">● Whole word</span>',
+        'contains': '<span style="color: #FF9800;">↪ Contains</span>',
+        'fuzzy': '<span style="color: #FF9800;">≈ Fuzzy match</span>',
+        'acronym': '<span style="color: #9C27B0;"># Acronym</span>',
+        'transliterated': '<span style="color: #00BCD4;">⇄ Transliterated</span>',
+        'english-transliterated': '<span style="color: #00BCD4;">⇄ English transliteration</span>',
+        'bangla-transliterated': '<span style="color: #00BCD4;">⇄ Bangla transliteration</span>',
+        'no-diacritics': '<span style="color: #607D8B;">⌫ Without diacritics</span>',
+        'segmented': '<span style="color: #607D8B;">✂ Segmented</span>'
+    };
+    
+    return badges[matchType] || '<span style="color: rgba(255,255,255,0.5);">Match</span>';
 }
 
 // Show search results
