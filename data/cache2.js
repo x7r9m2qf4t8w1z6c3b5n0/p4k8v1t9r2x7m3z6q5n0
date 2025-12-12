@@ -4,6 +4,7 @@ const subjectsData = [
         icon: "fas fa-play-circle",
         color: "#4CAF50",
         pdfs: [
+{ title: "PRACTICE SHEET (ALL IN ONE)", url: "https://drive.google.com/drive/folders/1NyGZW024VwiDGDmE4Hbod94IUVEI1rDc?usp=sharing" },
 { title: "সোনার তরী - বাক্যতত্ত্ব -আঠারো বছর বয়স", url: "https://pdf.bondipathshala.education/1763116435241.pdf" },
 { title: "তাপগতিবিদ্যা", url: "https://pdf.bondipathshala.education/1763464529676.pdf" },
 { title: "তাপগতিবিদ্যা", url: "https://pdf.bondipathshala.education/1763465281382.pdf" },
