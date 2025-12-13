@@ -6067,7 +6067,9 @@ function displayUserInfo() {
     const userEmail = localStorage.getItem('userGmail');
     
     const userNameEl = document.getElementById('userName');
+    const userMottoEl = document.querySelector('.short-text');
     
+    // Load name
     if (userName && userNameEl) {
         const userNameSpan = userNameEl.querySelector('span');
         if (userNameSpan) {
@@ -6075,6 +6077,32 @@ function displayUserInfo() {
         } else {
             userNameEl.innerHTML = `<span>${userName}</span>`;
         }
+    }
+    
+    // Load motto EARLY - check multiple sources
+    let motto = '';
+    
+    // First try: Check if profile data exists in localStorage
+    try {
+        const profileData = localStorage.getItem('profileSettings');
+        if (profileData) {
+            const parsedData = JSON.parse(profileData);
+            if (parsedData.motto) {
+                motto = parsedData.motto;
+            }
+        }
+    } catch (e) {
+        console.log('No profile data found');
+    }
+    
+    // Second try: Default motto
+    if (!motto) {
+        motto = 'A student who never gave up.';
+    }
+    
+    // Update the motto in user info section immediately
+    if (userMottoEl) {
+        userMottoEl.textContent = motto;
     }
 }
 
