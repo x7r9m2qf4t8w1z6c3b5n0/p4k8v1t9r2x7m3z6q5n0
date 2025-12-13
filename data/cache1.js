@@ -36,7 +36,8 @@ const subjectsData = [
 { title: "পরিবেশ রসায়ন (পর্ব-৪)", videoId: "Fb6nC_r5Gw8" },
 { title: "তড়িৎ রসায়ন (পর্ব-০১)", videoId: "-nJSVePnX88" },
 { title: "তড়িৎ রসায়ন (পর্ব-০২)", videoId: "94ZXf7N3DH4" },
-{ title: "অর্থনৈতিক রসায়ন", videoId: "xe-1-dPqyuc" },           
+{ title: "অর্থনৈতিক রসায়ন", videoId: "xe-1-dPqyuc" },
+{ title: "জৈব যৌগ (পর্ব-০১)", videoId: "Ph4a-bIdTMY" },
                 ]
             },
             {
@@ -68,6 +69,8 @@ const subjectsData = [
 { title: "শ্বসন ও শ্বাসক্রিয়া", videoId: "suTJQaWwGBE" },
 { title: "বর্জ্য ও নিষ্কাশন", videoId: "Bfjbhc1STMM" },
 { title: "রুই মাছ", videoId: "rIAEB5BxJWo" },
+{ title: "রুই মাছ (Patr-02)", videoId: "ChO1_fmOJZE" },
+{ title: "হাইড্রা", videoId: "RJ1nKupOc_c" },
                 ]
             },
             {
