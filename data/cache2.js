@@ -6,8 +6,8 @@ const subjectsData = [
                 color: "#ff6b6b",
                 isPCMB: true,
                 pdfs: [
-{ title: "তাপগতিবিদ্যা (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763188021935.pdf" },
 { title: "তাপগতিবিদ্যা (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763056876449.pdf" },
+{ title: "তাপগতিবিদ্যা (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763188021935.pdf" },
 { title: "তাপগতিবিদ্যা", url: "https://pdf.bondipathshala.education/1763464529676.pdf" },
 { title: "তাপগতিবিদ্যা", url: "https://pdf.bondipathshala.education/1763465281382.pdf" },
 { title: "চল তড়িৎ (পর্ব-০১)", url: "https://pdf.bondipathshala.education/1763706662406.pdf" },
@@ -514,9 +514,9 @@ const subjectsData = [
                 color: "#54a0ff",
                 isPCMB: false,
                 pdfs: [
-{ title: "সংখ্যাপদ্ধতি (পর্ব-০৩)", url: "https://pdf.bondipathshala.education/1763382953989.pdf" },
 { title: "সংখ্যাপদ্ধতি-০১", url: "https://pdf.bondipathshala.education/1762884933460.pdf" },
 { title: "সংখ্যাপদ্ধতি পর্ব-০২", url: "https://pdf.bondipathshala.education/1763211271973.pdf" },
+{ title: "সংখ্যাপদ্ধতি (পর্ব-০৩)", url: "https://pdf.bondipathshala.education/1763382953989.pdf" },
 { title: "সংখ্যাপদ্ধতি", url: "https://pdf.bondipathshala.education/1763464776253.pdf" },
 { title: "ডিজিটাল ডিভাইস (পর্ব-০১)", url: "https://pdf.bondipathshala.education/1763898420620.pdf" },
 { title: "ডিজিটাল ডিভাইস (পর্ব-০২)", url: "https://pdf.bondipathshala.education/1764074775351.pdf" },
@@ -561,8 +561,8 @@ const subjectsData = [
                 isPCMB: false,
                 pdfs: [
 { title: "BIOLOGY MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762187871688.pdf" },
-{ title: "MATH MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762358963901.pdf" },
 { title: "CHEMISTRY MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762367202708.pdf" },
+{ title: "MATH MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762358963901.pdf" },
 { title: "EBI Mentorship Class", url: "https://pdf.bondipathshala.education/1762496803180.pdf" },
 { title: "PHYSICS MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762583681705.pdf" },
                 ]
