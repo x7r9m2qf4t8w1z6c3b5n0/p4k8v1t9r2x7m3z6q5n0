@@ -3,7 +3,7 @@ const subjectsData = [
             {
                 name: "Extra Materials",
                 icon: "fas fa-folder-open",
-                color: "#d4af37"
+                color: "#d4af37",
                 isPCMB: false,
                 pdfs: [
 { title: "Practice Sheets (All in One)", url: "https://drive.google.com/drive/folders/1NyGZW024VwiDGDmE4Hbod94IUVEI1rDc" },
