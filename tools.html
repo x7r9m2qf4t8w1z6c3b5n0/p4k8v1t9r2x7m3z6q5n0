@@ -201,60 +201,45 @@
             const parser = new DOMParser();
             const doc = parser.parseFromString(htmlString, 'text/html');
             
-            // STEP 1: Find all subject containers
-            const subjectContainers = doc.querySelectorAll('[id^="js-subject-"], [id^="js-subject-subject"]');
-            const subjectsData = [];
+            // STEP 1: Extract videos in order with their data-tid and data-vid
+            const videoElements = doc.querySelectorAll('[data-name][data-type="yt"], [data-tid][data-vid]');
+            const videoData = [];
+            const videoOrderKeys = []; // Store keys in video appearance order
+            const topicOrder = []; // Store unique topics in order they appear in videos
             
-            subjectContainers.forEach(container => {
-                // Extract subject code from id
-                const subjectId = container.id;
-                const subjectCode = subjectId.replace('js-subject-', '').replace('js-subject-subject', '');
+            videoElements.forEach(element => {
+                const titleElement = element.querySelector('.font-light');
+                const title = titleElement ? titleElement.textContent.trim() : '';
                 
-                // Find subject name (inside .font-light within this container)
-                const subjectNameElement = container.querySelector('.font-light');
-                const subjectName = subjectNameElement ? subjectNameElement.textContent.trim() : `Subject ${subjectCode}`;
+                // Get videoId from data-name
+                const videoId = element.getAttribute('data-name');
                 
-                // Find all videos within this subject
-                const videoElements = container.querySelectorAll('[data-name][data-type="yt"], [data-tid][data-vid]');
-                const subjectVideos = [];
-                const topicOrder = []; // Store topics in order for this subject
+                // Get topicId and videoId for ordering
+                const topicId = element.getAttribute('data-tid');
+                const dataVid = element.getAttribute('data-vid');
                 
-                videoElements.forEach(element => {
-                    const titleElement = element.querySelector('.font-light');
-                    const title = titleElement ? titleElement.textContent.trim() : '';
-                    const videoId = element.getAttribute('data-name');
-                    const topicId = element.getAttribute('data-tid');
-                    const dataVid = element.getAttribute('data-vid');
+                if (title && videoId) {
+                    videoData.push({ title, videoId });
                     
-                    if (title && videoId) {
-                        subjectVideos.push({ 
-                            title, 
-                            videoId,
-                            topicId: topicId || null
-                        });
+                    // Store the order key: Topic{number}-video{number}
+                    if (topicId && dataVid) {
+                        // Extract just the numbers
+                        const topicNum = topicId.replace('Topic', '');
+                        const videoNum = dataVid.replace('video', '');
+                        const orderKey = `Topic${topicNum}-video${videoNum}`;
+                        videoOrderKeys.push(orderKey);
                         
-                        // Track topic for PDF arrangement
-                        if (topicId) {
-                            const topicNum = topicId.replace('Topic', '');
-                            if (!topicOrder.includes(topicNum)) {
-                                topicOrder.push(topicNum);
-                            }
+                        // Track topic order from videos
+                        if (!topicOrder.includes(topicNum)) {
+                            topicOrder.push(topicNum);
                         }
                     }
-                });
-                
-                if (subjectVideos.length > 0) {
-                    subjectsData.push({
-                        subjectCode,
-                        subjectName,
-                        videos: subjectVideos,
-                        topicOrder: topicOrder
-                    });
                 }
             });
             
             // STEP 2: Extract all PDFs and categorize them by topic
             const pdfElements = doc.querySelectorAll('a[href*=".pdf"]');
+            const pdfsWithVideo = new Map(); // Map: key (TopicX-videoY) -> PDF
             const pdfsByTopic = new Map(); // Map: topicNum -> {withVideo: [...], topicOnly: [...]}
             const unmatchedPdfs = []; // PDFs without any Topic pattern
             
@@ -274,18 +259,15 @@
                         const videoNum = fullMatch[2];
                         const key = `Topic${topicNum}-video${videoNum}`;
                         
+                        // Store in video map
+                        pdfsWithVideo.set(key, { title, url, topicNum, videoNum, key });
+                        
                         // Initialize topic group if needed
                         if (!pdfsByTopic.has(topicNum)) {
                             pdfsByTopic.set(topicNum, { withVideo: [], topicOnly: [] });
                         }
                         // Add to topic's withVideo array
-                        pdfsByTopic.get(topicNum).withVideo.push({ 
-                            title, 
-                            url, 
-                            topicNum, 
-                            videoNum, 
-                            key 
-                        });
+                        pdfsByTopic.get(topicNum).withVideo.push({ title, url, topicNum, videoNum, key });
                         
                     } else if (topicOnlyMatch) {
                         // PDF with only Topic (no video)
@@ -296,11 +278,7 @@
                             pdfsByTopic.set(topicNum, { withVideo: [], topicOnly: [] });
                         }
                         // Add to topic's topicOnly array
-                        pdfsByTopic.get(topicNum).topicOnly.push({ 
-                            title, 
-                            url, 
-                            topicNum 
-                        });
+                        pdfsByTopic.get(topicNum).topicOnly.push({ title, url, topicNum });
                     } else {
                         // PDF without any Topic pattern
                         unmatchedPdfs.push({ title, url });
@@ -308,76 +286,60 @@
                 }
             });
             
-            // STEP 3: Combine videos and PDFs by subject
-            const allVideos = [];
-            const allPdfs = [];
+            // STEP 3: Arrange PDFs by topic in video order
+            const arrangedPdfData = [];
+            const processedTopics = new Set();
             
-            subjectsData.forEach((subject, subjectIndex) => {
-                // Add separator between subjects (except first)
-                if (subjectIndex > 0) {
-                    allVideos.push('\n\n// ====== Next Subject ======\n\n');
-                    allPdfs.push('\n\n// ====== Next Subject ======\n\n');
-                }
-                
-                // Add subject comment
-                allVideos.push(`// ${subject.subjectName} (Subject${subject.subjectCode})\n`);
-                allPdfs.push(`// ${subject.subjectName} (Subject${subject.subjectCode})\n`);
-                
-                // Add videos for this subject
-                subject.videos.forEach(video => {
-                    allVideos.push(`{ title: "${video.title}", videoId: "${video.videoId}" },\n`);
-                });
-                
-                // Add PDFs for this subject (arranged by topic order)
-                subject.topicOrder.forEach(topicNum => {
-                    const topicPdfs = pdfsByTopic.get(topicNum);
-                    if (topicPdfs) {
-                        // First, add PDFs with video for this topic
-                        topicPdfs.withVideo.forEach(pdf => {
-                            allPdfs.push(`{ title: "${pdf.title}", url: "${pdf.url}" },\n`);
-                        });
-                        
-                        // Then add PDFs with only topic for this topic
-                        topicPdfs.topicOnly.forEach(pdf => {
-                            allPdfs.push(`{ title: "${pdf.title}", url: "${pdf.url}" },\n`);
-                        });
-                        
-                        // Remove from map so we don't add duplicates
-                        pdfsByTopic.delete(topicNum);
-                    }
-                });
-            });
-            
-            // STEP 4: Add PDFs from topics not in any subject
-            if (pdfsByTopic.size > 0) {
-                allPdfs.push('\n\n// ====== PDFs without Subject ======\n\n');
-                
-                pdfsByTopic.forEach((topicPdfs, topicNum) => {
-                    // Add PDFs with video
-                    topicPdfs.withVideo.forEach(pdf => {
-                        allPdfs.push(`{ title: "${pdf.title}", url: "${pdf.url}" },\n`);
+            // First, process topics that appear in videos (in video order)
+            topicOrder.forEach(topicNum => {
+                const topicPdfs = pdfsByTopic.get(topicNum);
+                if (topicPdfs) {
+                    // First, add PDFs with video in exact video order for this topic
+                    videoOrderKeys.forEach(key => {
+                        if (key.startsWith(`Topic${topicNum}-`)) {
+                            const pdf = pdfsWithVideo.get(key);
+                            if (pdf) {
+                                arrangedPdfData.push(pdf);
+                                // Remove from withVideo array so we don't add duplicates
+                                const index = topicPdfs.withVideo.findIndex(p => p.key === key);
+                                if (index > -1) {
+                                    topicPdfs.withVideo.splice(index, 1);
+                                }
+                            }
+                        }
                     });
                     
-                    // Add PDFs with only topic
-                    topicPdfs.topicOnly.forEach(pdf => {
-                        allPdfs.push(`{ title: "${pdf.title}", url: "${pdf.url}" },\n`);
-                    });
-                });
-            }
+                    // Then add remaining PDFs with video for this topic
+                    if (topicPdfs.withVideo.length > 0) {
+                        arrangedPdfData.push(...topicPdfs.withVideo);
+                    }
+                    
+                    // Finally add PDFs with only topic (no video) for this topic
+                    if (topicPdfs.topicOnly.length > 0) {
+                        arrangedPdfData.push(...topicPdfs.topicOnly);
+                    }
+                    
+                    processedTopics.add(topicNum);
+                }
+            });
             
-            // STEP 5: Add unmatched PDFs at the very end
-            if (unmatchedPdfs.length > 0) {
-                allPdfs.push('\n\n// ====== PDFs without Topic ======\n\n');
-                unmatchedPdfs.forEach(pdf => {
-                    allPdfs.push(`{ title: "${pdf.title}", url: "${pdf.url}" },\n`);
-                });
-            }
+            // Then process remaining topics that weren't in videos
+            pdfsByTopic.forEach((topicPdfs, topicNum) => {
+                if (!processedTopics.has(topicNum)) {
+                    // Add all PDFs for this topic
+                    if (topicPdfs.withVideo.length > 0) {
+                        arrangedPdfData.push(...topicPdfs.withVideo);
+                    }
+                    if (topicPdfs.topicOnly.length > 0) {
+                        arrangedPdfData.push(...topicPdfs.topicOnly);
+                    }
+                }
+            });
             
-            return { 
-                pdfData: allPdfs.join(''), 
-                videoData: allVideos.join(''),
-                structuredData: subjectsData 
-            };
+            // Finally, add PDFs without any Topic pattern
+            arrangedPdfData.push(...unmatchedPdfs);
+            
+            return { pdfData: arrangedPdfData, videoData };
         }
         
         function extractVideoIds(videoInput) {
@@ -417,36 +379,17 @@
             }
             
             try {
-                const { pdfData, videoData, structuredData } = parseHTML(htmlCode);
+                const { pdfData, videoData } = parseHTML(htmlCode);
                 const existingVideoIds = extractVideoIds(videoInput);
                 const existingPdfUrls = extractPdfUrls(pdfInput);
                 
-                // Parse the structured data to find missing videos
-                const allVideos = [];
-                structuredData.forEach(subject => {
-                    subject.videos.forEach(video => {
-                        allVideos.push(video);
-                    });
-                });
-                
-                const missingVideos = allVideos.filter(video => 
+                // Find missing videos
+                const missingVideos = videoData.filter(video => 
                     !existingVideoIds.includes(video.videoId)
                 );
                 
-                // Parse PDF data to find missing PDFs
-                const pdfLines = pdfData.split('\n').filter(line => 
-                    line.includes('{ title: ') && line.includes('url: ')
-                );
-                const allPdfs = pdfLines.map(line => {
-                    const titleMatch = line.match(/title: "([^"]+)"/);
-                    const urlMatch = line.match(/url: "([^"]+)"/);
-                    return {
-                        title: titleMatch ? titleMatch[1] : '',
-                        url: urlMatch ? urlMatch[1] : ''
-                    };
-                });
-                
-                const missingPdfs = allPdfs.filter(pdf => 
+                // Find missing PDFs
+                const missingPdfs = pdfData.filter(pdf => 
                     !existingPdfUrls.includes(pdf.url)
                 );
                 
@@ -476,19 +419,16 @@
             try {
                 const { pdfData, videoData } = parseHTML(htmlCode);
                 
-                // Display all videos (already formatted with separators)
-                document.getElementById('missingVideoResult').textContent = videoData;
-                // Display all PDFs (already formatted with separators)
-                document.getElementById('missingPdfResult').textContent = pdfData;
+                // Display all videos
+                displayResult('missingVideoResult', videoData, 'video');
+                // Display all PDFs (arranged by video order)
+                displayResult('missingPdfResult', pdfData, 'pdf');
                 
                 // Update titles
-                const videoCount = (videoData.match(/{ title:/g) || []).length;
-                const pdfCount = (pdfData.match(/{ title:/g) || []).length;
-                
                 document.getElementById('missingVideoTitle').textContent = 
-                    `All Videos (${videoCount} found)`;
+                    `All Videos (${videoData.length} found)`;
                 document.getElementById('missingPdfTitle').textContent = 
-                    `All PDFs (${pdfCount} found) - Grouped by Subject`;
+                    `All PDFs (${pdfData.length} found - Arranged by Video Sequence)`;
                     
             } catch (error) {
                 alert('Error parsing HTML: ' + error.message);
