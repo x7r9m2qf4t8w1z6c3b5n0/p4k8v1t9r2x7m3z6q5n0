@@ -342,6 +342,18 @@ function isLikelyBangla(text) {
     return banglaRegex.test(text);
 }
 
+// NEW FUNCTION: Clean Bangla text by removing invisible characters
+function cleanBanglaText(text) {
+    if (!text) return '';
+    
+    // Remove Zero Width Non-Joiner, Zero Width Space, and other invisible characters
+    // Also normalize Unicode composition
+    return text
+        .replace(/[\u200B-\u200D\uFEFF\u00AD\u2060]/g, '') // Remove invisible chars
+        .replace(/\u200C/g, '') // Specifically remove ZWNJ
+        .normalize('NFC'); // Normalize to composed form
+}
+
 // Get transliterations for a term
 function getTransliterations(term) {
     const transliterations = [];
@@ -490,7 +502,8 @@ function performSearch(searchTerm) {
         return;
     }
     
-    const normalizedSearch = searchTerm.trim();
+    // FIXED: Clean the search term
+    const normalizedSearch = cleanBanglaText(searchTerm.trim());
     const results = [];
     
     // Get transliterated versions for cross-language search
@@ -607,9 +620,10 @@ function calculateEnhancedMatchScore(lectureTitle, subjectName, searchTerm, tran
 
 // Core matching algorithm for a single term
 function calculateMatchScoreForTerm(lectureTitle, subjectName, searchTerm) {
-    const lectureLower = lectureTitle.toLowerCase();
-    const subjectLower = subjectName.toLowerCase();
-    const searchLower = searchTerm.toLowerCase();
+    // FIXED: Clean the texts before processing
+    const lectureLower = cleanBanglaText(lectureTitle).toLowerCase();
+    const subjectLower = cleanBanglaText(subjectName).toLowerCase();
+    const searchLower = cleanBanglaText(searchTerm).toLowerCase();
     
     let score = 0;
     let type = 'no-match';
@@ -723,9 +737,9 @@ function displayEnhancedSearchResults(results, searchTerm) {
             const isCompleted = completedLectures.includes(result.lecture.videoId);
             const completedClass = isCompleted ? 'completed' : '';
             
-            // Highlight matched parts
-            const highlightedTitle = highlightMatches(result.lecture.title, result.matchedParts);
-            const highlightedSubject = highlightMatches(result.subject, result.matchedParts);
+            // FIXED: Clean the texts before highlighting
+            const highlightedTitle = highlightMatches(cleanBanglaText(result.lecture.title), result.matchedParts);
+            const highlightedSubject = highlightMatches(cleanBanglaText(result.subject), result.matchedParts);
             
             return `
                 <div class="search-result-item ${completedClass}" 
@@ -768,7 +782,9 @@ function highlightMatches(text, matchedParts) {
     
     matchedParts.forEach(part => {
         if (part && part.trim()) {
-            const escapedPart = escapeRegExp(part);
+            // FIXED: Clean the part before highlighting
+            const cleanPart = cleanBanglaText(part);
+            const escapedPart = escapeRegExp(cleanPart);
             const regex = new RegExp(`(${escapedPart})`, 'gi');
             highlighted = highlighted.replace(regex, '<span class="search-highlight" style="background: rgba(76, 175, 80, 0.3); padding: 1px 4px; border-radius: 3px;">$1</span>');
         }
