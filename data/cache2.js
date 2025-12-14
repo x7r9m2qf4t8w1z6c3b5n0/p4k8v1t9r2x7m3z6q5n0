@@ -33,6 +33,136 @@ const subjectsData = [
                 ]
             },
             {
+                name: "Chemistry",
+                icon: "fas fa-flask",
+                color: "#4ecdc4",
+                isPCMB: true,
+                pdfs: [
+{ title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763227445862.pdf" },
+{ title: "পরিমাণগত রসায়ন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763322423543.pdf" },
+{ title: "পরিমাণগত রসায়ন (পর্ব ৩)", url: "https://pdf.bondipathshala.education/1763880211903.pdf" },
+{ title: "পরিমাণগত রসায়ন (পর্ব ৪)", url: "https://pdf.bondipathshala.education/1763925454247.pdf" },
+{ title: "পরিমাণগত রসায়ন", url: "https://pdf.bondipathshala.education/1764746170821.pdf" },
+{ title: "পরিবেশ রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1764009000407.pdf" },
+{ title: "পরিবেশ রসায়ন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1764140107313.pdf" },
+{ title: "পরিবেশ রসায়ন (পর্ব-০৩)", url: "https://pdf.bondipathshala.education/1765194739646.pdf" },
+{ title: "পরিবেশ রসায়ন (পর্ব-৪)", url: "https://pdf.bondipathshala.education/1765349701871.pdf" },
+{ title: "পরিবেশ রসায়ন", url: "https://pdf.bondipathshala.education/1764746215979.pdf" },
+{ title: "তড়িৎ রসায়ন (পর্ব-০১)", url: "https://pdf.bondipathshala.education/1765095307986.pdf" },
+{ title: "তড়িৎ রসায়ন (পর্ব-০২)", url: "https://pdf.bondipathshala.education/1765181738337.pdf" },
+{ title: "তড়িৎ রসায়ন", url: "https://pdf.bondipathshala.education/1765272039581.pdf" },
+{ title: "অর্থনৈতিক রসায়ন", url: "https://pdf.bondipathshala.education/1765260345341.pdf" },
+                ]
+            },
+            {
+                name: "Mathematics",
+                icon: "fas fa-square-root-alt",
+                color: "#45b7d1",
+                isPCMB: true,
+                pdfs: [
+{ title: "জটিল সংখ্যা", url: "https://pdf.bondipathshala.education/1763407233652.pdf" },
+{ title: "জটিল সংখ্যা", url: "https://pdf.bondipathshala.education/1763464645938.pdf" },
+{ title: "বহুপদী ও বহুপদী সমীকরণ (Part-1)", url: "https://pdf.bondipathshala.education/1764225114413.pdf" },
+{ title: "বহুপদী ও বহুপদী সমীকরণ (Part-2)", url: "https://pdf.bondipathshala.education/1764225138030.pdf" },
+{ title: "বহুপদী ও বহুপদী সমীকরণ", url: "https://pdf.bondipathshala.education/1764746291691.pdf" },
+{ title: "বিস্তার পরিমাপ ও সম্ভবনা", url: "https://pdf.bondipathshala.education/1764486880297.pdf" },
+{ title: "বিস্তার পরিমাপ ও সম্ভবনা(পর্ব-০২)", url: "https://pdf.bondipathshala.education/1764569739585.pdf" },
+{ title: "বাস্তব সংখ্যা ও অসমতা", url: "https://pdf.bondipathshala.education/1765011548594.pdf" },
+{ title: "কণিকস (পর্ব-০১)", url: "https://pdf.bondipathshala.education/1765348737284.pdf" },
+{ title: "কণিকস (পর্ব-০২)", url: "https://pdf.bondipathshala.education/1765426219347.pdf" },
+                ]
+            },
+            {
+                name: "Biology",
+                icon: "fas fa-dna",
+                color: "#96ceb4",
+                isPCMB: true,
+                pdfs: [
+{ title: "রক্ত ও সংবহন (পর্ব-০১)", url: "https://pdf.bondipathshala.education/1763534808594.pdf" },
+{ title: "রক্ত ও সংবহন (পর্ব-০২)", url: "https://pdf.bondipathshala.education/1763584843900.pdf" },
+{ title: "রক্ত ও সংবহন", url: "https://pdf.bondipathshala.education/1764746002684.pdf" },
+{ title: "জিনতত্ত্ব ও বিবর্তন (Part 1 )", url: "https://pdf.bondipathshala.education/1764314008901.pdf" },
+{ title: "জিনতত্ত্ব ও বিবর্তন (Part 2 )", url: "https://pdf.bondipathshala.education/1764314029543.pdf" },
+{ title: "জিনতত্ত্ব ও বিবর্তন", url: "https://pdf.bondipathshala.education/1764746103069.pdf" },
+{ title: "শ্বসন ও শ্বাসক্রিয়া", url: "https://pdf.bondipathshala.education/1764656265575.pdf" },
+{ title: "শ্বসন ও শ্বাসক্রিয়া", url: "https://pdf.bondipathshala.education/1764746052266.pdf" },
+{ title: "বর্জ্য ও নিষ্কাশন", url: "https://pdf.bondipathshala.education/1765374071640.pdf" },
+{ title: "রুই মাছ", url: "https://pdf.bondipathshala.education/1765611045209.pdf" },
+{ title: "হাইড্রা", url: "https://pdf.bondipathshala.education/1765611084625.pdf" },
+                ]
+            },
+            {
+                name: "English",
+                icon: "fas fa-book",
+                color: "#feca57",
+                isPCMB: false,
+                pdfs: [
+{ title: "Topic: Modifier", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
+{ title: "Modifier", url: "https://pdf.bondipathshala.education/1763464887090.pdf" },
+{ title: "Topic : Completing sentence & Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
+{ title: "Completing sentence", url: "https://pdf.bondipathshala.education/1763464989155.pdf" },
+{ title: "Completing Sentence", url: "https://pdf.bondipathshala.education/1763728012028.pdf" },
+{ title: "Completing Sentence", url: "https://pdf.bondipathshala.education/1764746682311.pdf" },
+{ title: "Topic: Correct Form of Verbs-Part 01", url: "https://pdf.bondipathshala.education/1763880535030.pdf" },
+{ title: "Topic: Correct Form of Verbs-Part 02", url: "https://pdf.bondipathshala.education/1764336296990.pdf" },
+{ title: "The basic discussion of Narration", url: "https://pdf.bondipathshala.education/1764493430797.pdf" },
+{ title: "Narration", url: "https://pdf.bondipathshala.education/1764746994250.pdf" },
+{ title: "Pronoun Reference", url: "https://pdf.bondipathshala.education/1765011829791.pdf" },
+{ title: "Sentence Connectors", url: "https://pdf.bondipathshala.education/1765113003160.pdf" },
+{ title: "Narration Lecture 2", url: "https://pdf.bondipathshala.education/1765200244889.pdf" },
+{ title: "Preposition", url: "https://pdf.bondipathshala.education/1765290552911.pdf" },
+{ title: "Preposition", url: "https://pdf.bondipathshala.education/1765365577107.pdf" },
+                ]
+            },
+            {
+                name: "Bangla",
+                icon: "fas fa-language",
+                color: "#ff9ff3",
+                isPCMB: false,
+                pdfs: [
+{ title: "তাহারেই পরে মনে", url: "https://pdf.bondipathshala.education/1762619703676.pdf" },
+{ title: "যৌবনের গান+ব্যাকরণিক শব্দশ্রেণি-২", url: "https://pdf.bondipathshala.education/1762707908751.pdf" },
+{ title: "অপপ্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
+{ title: "সোনার তরী - বাক্যতত্ত্ব -আঠারো বছর বয়স", url: "https://pdf.bondipathshala.education/1763116435241.pdf" },
+{ title: "বাক্যতত্ত্ব ও বিদ্রোহী", url: "https://pdf.bondipathshala.education/1763460159824.pdf" },
+{ title: "বাঙালা নব্য - প্রতিদান", url: "https://pdf.bondipathshala.education/1763546936166.pdf" },
+{ title: "সমাস", url: "https://pdf.bondipathshala.education/1763982612000.pdf" },
+{ title: "সমাস - পর্ব ০২", url: "https://pdf.bondipathshala.education/1764239717786.pdf" },
+{ title: "লালসালু", url: "https://pdf.bondipathshala.education/1764591444451.pdf" },
+{ title: "আমি কিংবদন্তির কথা বলছি ও মাসি পিসি", url: "https://pdf.bondipathshala.education/1764761970035.pdf" },
+                ]
+            },
+            {
+                name: "ICT",
+                icon: "fas fa-laptop-code",
+                color: "#54a0ff",
+                isPCMB: false,
+                pdfs: [
+{ title: "সংখ্যাপদ্ধতি-০১", url: "https://pdf.bondipathshala.education/1762884933460.pdf" },
+{ title: "সংখ্যাপদ্ধতি পর্ব-০২", url: "https://pdf.bondipathshala.education/1763211271973.pdf" },
+{ title: "সংখ্যাপদ্ধতি (পর্ব-০৩)", url: "https://pdf.bondipathshala.education/1763382953989.pdf" },
+{ title: "সংখ্যাপদ্ধতি", url: "https://pdf.bondipathshala.education/1763464776253.pdf" },
+{ title: "ডিজিটাল ডিভাইস (পর্ব-০১)", url: "https://pdf.bondipathshala.education/1763898420620.pdf" },
+{ title: "ডিজিটাল ডিভাইস (পর্ব-০২)", url: "https://pdf.bondipathshala.education/1764074775351.pdf" },
+{ title: "ডিজিটাল ডিভাইস (পর্ব-০৩)", url: "https://pdf.bondipathshala.education/1764506696198.pdf" },
+{ title: "ডিজিটাল ডিভাইস (পর্ব-০৪)", url: "https://pdf.bondipathshala.education/1764684859592.pdf" },
+{ title: "১ম অধ্যায়", url: "https://pdf.bondipathshala.education/1764851368958.pdf" },
+                ]
+            },
+                        {
+                name: "Mentorship Session",
+                icon: "fas fa-chalkboard-teacher",
+                color: "#9b59b6",
+                isPCMB: false,
+                pdfs: [
+{ title: "BIOLOGY MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762187871688.pdf" },
+{ title: "CHEMISTRY MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762367202708.pdf" },
+{ title: "MATH MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762358963901.pdf" },
+{ title: "EBI Mentorship Class", url: "https://pdf.bondipathshala.education/1762496803180.pdf" },
+{ title: "PHYSICS MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762583681705.pdf" },
+                ]
+            },
+            {
                 name: "Physics (Archive)",
                 icon: "fas fa-history",
                 color: "#ff6b6b",
@@ -122,28 +252,6 @@ const subjectsData = [
                 ]
             },
             {
-                name: "Chemistry",
-                icon: "fas fa-flask",
-                color: "#4ecdc4",
-                isPCMB: true,
-                pdfs: [
-{ title: "পরিমাণগত রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763227445862.pdf" },
-{ title: "পরিমাণগত রসায়ন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1763322423543.pdf" },
-{ title: "পরিমাণগত রসায়ন (পর্ব ৩)", url: "https://pdf.bondipathshala.education/1763880211903.pdf" },
-{ title: "পরিমাণগত রসায়ন (পর্ব ৪)", url: "https://pdf.bondipathshala.education/1763925454247.pdf" },
-{ title: "পরিমাণগত রসায়ন", url: "https://pdf.bondipathshala.education/1764746170821.pdf" },
-{ title: "পরিবেশ রসায়ন (পর্ব ১)", url: "https://pdf.bondipathshala.education/1764009000407.pdf" },
-{ title: "পরিবেশ রসায়ন (পর্ব ২)", url: "https://pdf.bondipathshala.education/1764140107313.pdf" },
-{ title: "পরিবেশ রসায়ন (পর্ব-০৩)", url: "https://pdf.bondipathshala.education/1765194739646.pdf" },
-{ title: "পরিবেশ রসায়ন (পর্ব-৪)", url: "https://pdf.bondipathshala.education/1765349701871.pdf" },
-{ title: "পরিবেশ রসায়ন", url: "https://pdf.bondipathshala.education/1764746215979.pdf" },
-{ title: "তড়িৎ রসায়ন (পর্ব-০১)", url: "https://pdf.bondipathshala.education/1765095307986.pdf" },
-{ title: "তড়িৎ রসায়ন (পর্ব-০২)", url: "https://pdf.bondipathshala.education/1765181738337.pdf" },
-{ title: "তড়িৎ রসায়ন", url: "https://pdf.bondipathshala.education/1765272039581.pdf" },
-{ title: "অর্থনৈতিক রসায়ন", url: "https://pdf.bondipathshala.education/1765260345341.pdf" },
-                ]
-            },
-            {
                 name: "Chemistry (Archive)",
                 icon: "fas fa-history",
                 color: "#4ecdc4",
@@ -214,24 +322,6 @@ const subjectsData = [
 { title: "জৈব যৌগ - পর্ব ১১ (অ্যামিন ও ডায়াজোনিয়াম লবণ)", url: "https://pdf.bondipathshala.education/1762096425094.pdf" },
 { title: "জৈব যৌগ - পর্ব ১২ (জৈব এসিড ও এর জাতক)", url: "https://pdf.bondipathshala.education/1762096383659.pdf" },
 { title: "জৈব যৌগ - পর্ব ১০", url: "https://pdf.bondipathshala.education/1762096536482.pdf" },
-                ]
-            },
-            {
-                name: "Mathematics",
-                icon: "fas fa-square-root-alt",
-                color: "#45b7d1",
-                isPCMB: true,
-                pdfs: [
-{ title: "জটিল সংখ্যা", url: "https://pdf.bondipathshala.education/1763407233652.pdf" },
-{ title: "জটিল সংখ্যা", url: "https://pdf.bondipathshala.education/1763464645938.pdf" },
-{ title: "বহুপদী ও বহুপদী সমীকরণ (Part-1)", url: "https://pdf.bondipathshala.education/1764225114413.pdf" },
-{ title: "বহুপদী ও বহুপদী সমীকরণ (Part-2)", url: "https://pdf.bondipathshala.education/1764225138030.pdf" },
-{ title: "বহুপদী ও বহুপদী সমীকরণ", url: "https://pdf.bondipathshala.education/1764746291691.pdf" },
-{ title: "বিস্তার পরিমাপ ও সম্ভবনা", url: "https://pdf.bondipathshala.education/1764486880297.pdf" },
-{ title: "বিস্তার পরিমাপ ও সম্ভবনা(পর্ব-০২)", url: "https://pdf.bondipathshala.education/1764569739585.pdf" },
-{ title: "বাস্তব সংখ্যা ও অসমতা", url: "https://pdf.bondipathshala.education/1765011548594.pdf" },
-{ title: "কণিকস (পর্ব-০১)", url: "https://pdf.bondipathshala.education/1765348737284.pdf" },
-{ title: "কণিকস (পর্ব-০২)", url: "https://pdf.bondipathshala.education/1765426219347.pdf" },
                 ]
             },
             {
@@ -312,25 +402,6 @@ const subjectsData = [
                 ]
             },
             {
-                name: "Biology",
-                icon: "fas fa-dna",
-                color: "#96ceb4",
-                isPCMB: true,
-                pdfs: [
-{ title: "রক্ত ও সংবহন (পর্ব-০১)", url: "https://pdf.bondipathshala.education/1763534808594.pdf" },
-{ title: "রক্ত ও সংবহন (পর্ব-০২)", url: "https://pdf.bondipathshala.education/1763584843900.pdf" },
-{ title: "রক্ত ও সংবহন", url: "https://pdf.bondipathshala.education/1764746002684.pdf" },
-{ title: "জিনতত্ত্ব ও বিবর্তন (Part 1 )", url: "https://pdf.bondipathshala.education/1764314008901.pdf" },
-{ title: "জিনতত্ত্ব ও বিবর্তন (Part 2 )", url: "https://pdf.bondipathshala.education/1764314029543.pdf" },
-{ title: "জিনতত্ত্ব ও বিবর্তন", url: "https://pdf.bondipathshala.education/1764746103069.pdf" },
-{ title: "শ্বসন ও শ্বাসক্রিয়া", url: "https://pdf.bondipathshala.education/1764656265575.pdf" },
-{ title: "শ্বসন ও শ্বাসক্রিয়া", url: "https://pdf.bondipathshala.education/1764746052266.pdf" },
-{ title: "বর্জ্য ও নিষ্কাশন", url: "https://pdf.bondipathshala.education/1765374071640.pdf" },
-{ title: "রুই মাছ", url: "https://pdf.bondipathshala.education/1765611045209.pdf" },
-{ title: "হাইড্রা", url: "https://pdf.bondipathshala.education/1765611084625.pdf" },
-                ]
-            },
-            {
                 name: "Biology (Archive)",
                 icon: "fas fa-history",
                 color: "#96ceb4",
@@ -406,29 +477,6 @@ const subjectsData = [
                 ]
             },
             {
-                name: "English",
-                icon: "fas fa-book",
-                color: "#feca57",
-                isPCMB: false,
-                pdfs: [
-{ title: "Topic: Modifier", url: "https://pdf.bondipathshala.education/1762843091091.pdf" },
-{ title: "Modifier", url: "https://pdf.bondipathshala.education/1763464887090.pdf" },
-{ title: "Topic : Completing sentence & Paragraph Writing", url: "https://pdf.bondipathshala.education/1762968603302.pdf" },
-{ title: "Completing sentence", url: "https://pdf.bondipathshala.education/1763464989155.pdf" },
-{ title: "Completing Sentence", url: "https://pdf.bondipathshala.education/1763728012028.pdf" },
-{ title: "Completing Sentence", url: "https://pdf.bondipathshala.education/1764746682311.pdf" },
-{ title: "Topic: Correct Form of Verbs-Part 01", url: "https://pdf.bondipathshala.education/1763880535030.pdf" },
-{ title: "Topic: Correct Form of Verbs-Part 02", url: "https://pdf.bondipathshala.education/1764336296990.pdf" },
-{ title: "The basic discussion of Narration", url: "https://pdf.bondipathshala.education/1764493430797.pdf" },
-{ title: "Narration", url: "https://pdf.bondipathshala.education/1764746994250.pdf" },
-{ title: "Pronoun Reference", url: "https://pdf.bondipathshala.education/1765011829791.pdf" },
-{ title: "Sentence Connectors", url: "https://pdf.bondipathshala.education/1765113003160.pdf" },
-{ title: "Narration Lecture 2", url: "https://pdf.bondipathshala.education/1765200244889.pdf" },
-{ title: "Preposition", url: "https://pdf.bondipathshala.education/1765290552911.pdf" },
-{ title: "Preposition", url: "https://pdf.bondipathshala.education/1765365577107.pdf" },
-                ]
-            },
-            {
                 name: "English (Archive)",
                 icon: "fas fa-history",
                 color: "#feca57",
@@ -469,24 +517,6 @@ const subjectsData = [
                 ]
             },
             {
-                name: "Bangla",
-                icon: "fas fa-language",
-                color: "#ff9ff3",
-                isPCMB: false,
-                pdfs: [
-{ title: "তাহারেই পরে মনে", url: "https://pdf.bondipathshala.education/1762619703676.pdf" },
-{ title: "যৌবনের গান+ব্যাকরণিক শব্দশ্রেণি-২", url: "https://pdf.bondipathshala.education/1762707908751.pdf" },
-{ title: "অপপ্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
-{ title: "সোনার তরী - বাক্যতত্ত্ব -আঠারো বছর বয়স", url: "https://pdf.bondipathshala.education/1763116435241.pdf" },
-{ title: "বাক্যতত্ত্ব ও বিদ্রোহী", url: "https://pdf.bondipathshala.education/1763460159824.pdf" },
-{ title: "বাঙালা নব্য - প্রতিদান", url: "https://pdf.bondipathshala.education/1763546936166.pdf" },
-{ title: "সমাস", url: "https://pdf.bondipathshala.education/1763982612000.pdf" },
-{ title: "সমাস - পর্ব ০২", url: "https://pdf.bondipathshala.education/1764239717786.pdf" },
-{ title: "লালসালু", url: "https://pdf.bondipathshala.education/1764591444451.pdf" },
-{ title: "আমি কিংবদন্তির কথা বলছি ও মাসি পিসি", url: "https://pdf.bondipathshala.education/1764761970035.pdf" },
-                ]
-            },
-            {
                 name: "Bangla (Archive)",
                 icon: "fas fa-history",
                 color: "#ff9ff3",
@@ -518,23 +548,6 @@ const subjectsData = [
                 ]
             },
             {
-                name: "ICT",
-                icon: "fas fa-laptop-code",
-                color: "#54a0ff",
-                isPCMB: false,
-                pdfs: [
-{ title: "সংখ্যাপদ্ধতি-০১", url: "https://pdf.bondipathshala.education/1762884933460.pdf" },
-{ title: "সংখ্যাপদ্ধতি পর্ব-০২", url: "https://pdf.bondipathshala.education/1763211271973.pdf" },
-{ title: "সংখ্যাপদ্ধতি (পর্ব-০৩)", url: "https://pdf.bondipathshala.education/1763382953989.pdf" },
-{ title: "সংখ্যাপদ্ধতি", url: "https://pdf.bondipathshala.education/1763464776253.pdf" },
-{ title: "ডিজিটাল ডিভাইস (পর্ব-০১)", url: "https://pdf.bondipathshala.education/1763898420620.pdf" },
-{ title: "ডিজিটাল ডিভাইস (পর্ব-০২)", url: "https://pdf.bondipathshala.education/1764074775351.pdf" },
-{ title: "ডিজিটাল ডিভাইস (পর্ব-০৩)", url: "https://pdf.bondipathshala.education/1764506696198.pdf" },
-{ title: "ডিজিটাল ডিভাইস (পর্ব-০৪)", url: "https://pdf.bondipathshala.education/1764684859592.pdf" },
-{ title: "১ম অধ্যায়", url: "https://pdf.bondipathshala.education/1764851368958.pdf" },
-                ]
-            },
-            {
                 name: "ICT (Archive)",
                 icon: "fas fa-history",
                 color: "#54a0ff",
@@ -561,19 +574,6 @@ const subjectsData = [
 { title: "কমিউনিকেশন সিস্টেম ও নেটওয়ার্কিং", url: "https://pdf.bondipathshala.education/1758707400969.pdf" },
 { title: "ডেটাবেজ ম্যানেজমেন্ট সিস্টেম - পর্ব ০১", url: "https://pdf.bondipathshala.education/1761122196927.pdf" },
 { title: "ডেটাবেজ ম্যানেজমেন্ট সিস্টেম - পর্ব ০২", url: "https://pdf.bondipathshala.education/1761122235753.pdf" },
-                ]
-            },
-                        {
-                name: "Mentorship Session",
-                icon: "fas fa-chalkboard-teacher",
-                color: "#9b59b6",
-                isPCMB: false,
-                pdfs: [
-{ title: "BIOLOGY MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762187871688.pdf" },
-{ title: "CHEMISTRY MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762367202708.pdf" },
-{ title: "MATH MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762358963901.pdf" },
-{ title: "EBI Mentorship Class", url: "https://pdf.bondipathshala.education/1762496803180.pdf" },
-{ title: "PHYSICS MENTORSHIP SESSION", url: "https://pdf.bondipathshala.education/1762583681705.pdf" },
                 ]
             }
         ];
