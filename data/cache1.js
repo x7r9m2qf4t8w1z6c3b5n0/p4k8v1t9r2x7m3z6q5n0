@@ -18,6 +18,8 @@ const subjectsData = [
 { title: "স্থির তড়িৎ (পর্ব ১, Part 2)", videoId: "B0fAqaBE6XM" },
 { title: "স্থির তড়িৎ (পর্ব ১, Part 3)", videoId: "tkuMsIO0c0E" },
 { title: "স্থির তড়িৎ (পর্ব ২)", videoId: "9ip85af8gJk" },
+{ title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (পর্ব ১)", videoId: "FGNKmFfQeMQ" },
+{ title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (পর্ব ২)", videoId: "PDpsQWNGuVg" },
                 ]
             },
             {
@@ -38,6 +40,8 @@ const subjectsData = [
 { title: "তড়িৎ রসায়ন (পর্ব ২)", videoId: "94ZXf7N3DH4" },
 { title: "অর্থনৈতিক রসায়ন", videoId: "xe-1-dPqyuc" },
 { title: "জৈব যৌগ (পর্ব ১)", videoId: "Ph4a-bIdTMY" },
+{ title: "জৈব যৌগ (পর্ব ২)", videoId: "spdbyCTg4_4" },
+{ title: "জৈব যৌগ (পর্ব ৩)", videoId: "uuCU9KfRqvo" },
                 ]
             },
             {
@@ -49,8 +53,8 @@ const subjectsData = [
 { title: "জটিল সংখ্যা", videoId: "dtj4kGIKa2M" },
 { title: "বহুপদী ও বহুপদী সমীকরণ (Part 1)", videoId: "csDRee8Tp_s" },
 { title: "বহুপদী ও বহুপদী সমীকরণ (Part 2)", videoId: "IraIKpoDT9M" },
-{ title: "বিস্তার পরিমাপ ও সম্ভবনা(পর্ব ১)", videoId: "vvO2V2PvGRc" },
-{ title: "বিস্তার পরিমাপ ও সম্ভবনা(পর্ব ২)", videoId: "TRCXgal2ySk" },
+{ title: "বিস্তার পরিমাপ ও সম্ভবনা (পর্ব ১)", videoId: "vvO2V2PvGRc" },
+{ title: "বিস্তার পরিমাপ ও সম্ভবনা (পর্ব ২)", videoId: "TRCXgal2ySk" },
 { title: "বাস্তব সংখ্যা ও অসমতা", videoId: "joSj_l2jbyE" },
 { title: "কণিকস (পর্ব ১)", videoId: "9WTcqtKY0uA" },
 { title: "কণিকস (পর্ব ২)", videoId: "-Kt5yJSEbA8" },
@@ -71,6 +75,7 @@ const subjectsData = [
 { title: "রুই মাছ (Part 1)", videoId: "rIAEB5BxJWo" },
 { title: "রুই মাছ (Part 2)", videoId: "ChO1_fmOJZE" },
 { title: "হাইড্রা", videoId: "RJ1nKupOc_c" },
+{ title: "ঘাসফড়িং", videoId: "gmbqyIp9q9A" },
                 ]
             },
             {
@@ -80,14 +85,14 @@ const subjectsData = [
                 isPCMB: false,
                 lectures: [
 { title: "Modifier", videoId: "AWV1ro6RGs0" },
-{ title: "Completing Sentence & Paragraph Writing", videoId: "Aqx-UhthZUc" },
-{ title: "Completing Sentence", videoId: "OHuxXa1jA0U" },
-{ title: "Right Form of Verbs-Part 01", videoId: "KStQbCt68Cc" },
-{ title: "Right Form of Verbs-Part 02", videoId: "9w9vlPPuwDU" },
-{ title: "The basic discussion of Narration", videoId: "hQyBo-MVZqs" },
+{ title: "Completing Sentence (Part 1) & Paragraph Writing", videoId: "Aqx-UhthZUc" },
+{ title: "Completing Sentence (Part 2)", videoId: "OHuxXa1jA0U" },
+{ title: "Right Form of Verbs (Part 1)", videoId: "KStQbCt68Cc" },
+{ title: "Right Form of Verbs (Part 2)", videoId: "9w9vlPPuwDU" },
+{ title: "Narration (Part 1)", videoId: "hQyBo-MVZqs" },
 { title: "Pronoun Reference", videoId: "4_bHsco2tC4" },
 { title: "Sentence Connectors", videoId: "V4cePIPuMkw" },
-{ title: "Narration (Lecture 2)", videoId: "78wDRipAhcc" },
+{ title: "Narration (Part 2)", videoId: "78wDRipAhcc" },
 { title: "Preposition", videoId: "ga8m4-xztbg" },
                 ]
             },
@@ -97,8 +102,8 @@ const subjectsData = [
                 color: "#ff9ff3",
                 isPCMB: false,
                 lectures: [
-{ title: "ব্যাকরণিক শব্দশ্রেণি ১ + তাহারেই পড়ে মনে", videoId: "PVcJjU8tdtY" },
-{ title: "যৌবনের গান + ব্যাকরণিক শব্দশ্রেণি ২", videoId: "2jTgvYrtNgM" },
+{ title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ১) + তাহারেই পড়ে মনে", videoId: "PVcJjU8tdtY" },
+{ title: "যৌবনের গান + ব্যাকরণিক শব্দশ্রেণি (পর্ব ২)", videoId: "2jTgvYrtNgM" },
 { title: "অপপ্রয়োগ", videoId: "7GK3_s7RMMY" },
 { title: "সোনার তরী + বাক্যতত্ত্ব + আঠারো বছর বয়স", videoId: "KGlHm2zZQeA" },
 { title: "বাক্যতত্ত্ব ও বিদ্রোহী", videoId: "G28XEYXk54I" },
