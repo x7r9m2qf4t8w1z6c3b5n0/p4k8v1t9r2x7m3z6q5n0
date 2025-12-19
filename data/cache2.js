@@ -7,6 +7,9 @@ const subjectsData = [
                 isPCMB: false,
                 pdfs: [
 { title: "Practice Sheets (All in One)", url: "https://drive.google.com/drive/folders/1NyGZW024VwiDGDmE4Hbod94IUVEI1rDc" },
+{ title: "Target DMC (Marked Book)", url: "https://drive.google.com/drive/folders/1z-9yAOmVYmIcB4RhtEnO1YatCBoXUYq6" },
+{ title: "Botany Hand Note", url: "https://drive.google.com/drive/folders/1ggRDAV42Gfce86GcQdbI5fMu5oZaxXIi" },
+{ title: "Zoology Hand Note", url: "https://drive.google.com/drive/folders/1oQEiF6YcxjeKRblgO6ZZd4ukRBdkNDAC" },
                 ]
             },
             {
