@@ -20,6 +20,7 @@ const subjectsData = [
 { title: "স্থির তড়িৎ (পর্ব ২)", videoId: "9ip85af8gJk" },
 { title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (পর্ব ১)", videoId: "FGNKmFfQeMQ" },
 { title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (পর্ব ২)", videoId: "PDpsQWNGuVg" },
+{ title: "আধুনিক পদার্থবিজ্ঞানের সূচনা", videoId: "s0wKAWzNDg4" },
                 ]
             },
             {
@@ -76,6 +77,7 @@ const subjectsData = [
 { title: "রুই মাছ (Part 2)", videoId: "ChO1_fmOJZE" },
 { title: "হাইড্রা", videoId: "RJ1nKupOc_c" },
 { title: "ঘাসফড়িং", videoId: "gmbqyIp9q9A" },
+{ title: "প্রাণীর বিভিন্নতা ও শ্রেণিবিন্যাস", videoId: "-z2RoldFtwg" },
                 ]
             },
             {
