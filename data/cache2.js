@@ -1,4 +1,3 @@
-
 const subjectsData = [
             {
                 name: "Extra Materials",
@@ -35,6 +34,7 @@ const subjectsData = [
 { title: "স্থির তড়িৎ (Practice Sheet)", url: "https://pdf.bondipathshala.education/1765272162023.pdf" },
 { title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (পর্ব ১)", url: "https://pdf.bondipathshala.education/1765958461123.pdf" },
 { title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (পর্ব ২)", url: "https://pdf.bondipathshala.education/1765958534738.pdf" },
+{ title: "আধুনিক পদার্থবিজ্ঞানের সূচনা", url: "https://pdf.bondipathshala.education/1766158127793.pdf" },
                 ]
             },
             {
@@ -99,6 +99,7 @@ const subjectsData = [
 { title: "রুই মাছ", url: "https://pdf.bondipathshala.education/1765611045209.pdf" },
 { title: "হাইড্রা", url: "https://pdf.bondipathshala.education/1765611084625.pdf" },
 { title: "ঘাসফড়িং", url: "https://pdf.bondipathshala.education/1766069391839.pdf" },
+{ title: "প্রাণীর বিভিন্নতা ও শ্রেণিবিন্যাস", url: "https://pdf.bondipathshala.education/1766157614002.pdf" },
                 ]
             },
             {
