@@ -756,7 +756,7 @@ function displayEnhancedSearchResults(results, searchTerm) {
                                 ${getMatchTypeBadge(result.matchType)}
                             </div>
                         </div>
-                        ${isCompleted ? '<span class="completion-status"><i class="fa-solid fa-hourglass-half"></i></span>' : ''}
+                        ${isCompleted ? '<span class="completion-status"><i class="fas fa-check-circle"></i></span>' : ''}
                     </div>
                 </div>
             `;
@@ -935,7 +935,7 @@ function updateCompletionButton(videoId) {
         completionBtn.title = 'Mark as not completed';
     } else {
         completionBtn.classList.remove('completed');
-        btnIcon.className = 'fas fa-check';
+        btnIcon.className = 'fa-solid fa-hourglass-half';
         completionBtn.title = 'Mark as completed';
     }
     
@@ -960,7 +960,7 @@ function updateLectureCompletionStatus(subjectName, lectureIndex, videoId) {
             if (!lectureItem.querySelector('.completion-status')) {
                 const statusIcon = document.createElement('span');
                 statusIcon.className = 'completion-status';
-                statusIcon.innerHTML = '<i class="fas fa-check"></i>';
+                statusIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
                 lectureItem.appendChild(statusIcon);
             }
         } else {
@@ -1568,6 +1568,7 @@ document.addEventListener('touchstart', (e) => {
 
 // Initialize the page when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializePage);
+
 
 
 
