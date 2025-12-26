@@ -756,7 +756,7 @@ function displayEnhancedSearchResults(results, searchTerm) {
                                 ${getMatchTypeBadge(result.matchType)}
                             </div>
                         </div>
-                        ${isCompleted ? '<span class="completion-status"><i class="fas fa-check"></i></span>' : ''}
+                        ${isCompleted ? '<span class="completion-status"><i class="fa-solid fa-hourglass-half"></i></span>' : ''}
                     </div>
                 </div>
             `;
@@ -1568,6 +1568,7 @@ document.addEventListener('touchstart', (e) => {
 
 // Initialize the page when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializePage);
+
 
 
 
