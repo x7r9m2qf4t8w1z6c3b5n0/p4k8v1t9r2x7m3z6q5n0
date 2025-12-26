@@ -21,6 +21,7 @@ const subjectsData = [
 { title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (পর্ব ১)", videoId: "FGNKmFfQeMQ" },
 { title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (পর্ব ২)", videoId: "PDpsQWNGuVg" },
 { title: "আধুনিক পদার্থবিজ্ঞানের সূচনা", videoId: "s0wKAWzNDg4" },
+{ title: "ভৌত আলোকবিজ্ঞান", videoId: "EMUCgx1E9_g" },
                 ]
             },
             {
@@ -43,6 +44,8 @@ const subjectsData = [
 { title: "জৈব যৌগ (পর্ব ১)", videoId: "Ph4a-bIdTMY" },
 { title: "জৈব যৌগ (পর্ব ২)", videoId: "spdbyCTg4_4" },
 { title: "জৈব যৌগ (পর্ব ৩)", videoId: "uuCU9KfRqvo" },
+{ title: "জৈব যৌগ (পর্ব ৪)", videoId: "nHuLe7OGKW0" },
+{ title: "জৈব যৌগ (পর্ব ৫)", videoId: "xiYu6xgFvf0" },
                 ]
             },
             {
@@ -59,6 +62,11 @@ const subjectsData = [
 { title: "বাস্তব সংখ্যা ও অসমতা", videoId: "joSj_l2jbyE" },
 { title: "কণিকস (পর্ব ১)", videoId: "9WTcqtKY0uA" },
 { title: "কণিকস (পর্ব ২)", videoId: "-Kt5yJSEbA8" },
+{ title: "যোগাশ্রয়ী প্রোগ্রামিং", videoId: "j41Ty1QTc88" },
+{ title: "বিপরীত ত্রিকোণমিতিক ফাংশন ও  ত্রিকোণমিতিক সমীকরণ (পর্ব ১)", videoId: "ae4p5nblUZI" },
+{ title: "বিপরীত ত্রিকোণমিতিক ফাংশন ও ত্রিকোণমিতিক সমীকরণ (পর্ব ২)", videoId: "fYQbl42BQcY" },
+{ title: "স্থিতিবিদ্যা (পর্ব ১)", videoId: "TkXHtWHqApo" },
+{ title: "স্থিতিবিদ্যা (পর্ব ২)", videoId: "bHE0UIAH62A" },
                 ]
             },
             {
@@ -78,6 +86,9 @@ const subjectsData = [
 { title: "হাইড্রা", videoId: "RJ1nKupOc_c" },
 { title: "ঘাসফড়িং", videoId: "gmbqyIp9q9A" },
 { title: "প্রাণীর বিভিন্নতা ও শ্রেণিবিন্যাস", videoId: "-z2RoldFtwg" },
+{ title: "চলন ও অঙ্গচালনা (Part 1)", videoId: "6m4CqqkqahU" },
+{ title: "চলন ও অঙ্গচালনা (Part 2)", videoId: "QrVALrrOtsM" },
+{ title: "পরিপাক ও শোষণ", videoId: "fMldMnswD5M" },
                 ]
             },
             {
