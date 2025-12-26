@@ -34,7 +34,10 @@ const subjectsData = [
 { title: "স্থির তড়িৎ (Practice Sheet)", url: "https://pdf.bondipathshala.education/1765272162023.pdf" },
 { title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (পর্ব ১)", url: "https://pdf.bondipathshala.education/1765958461123.pdf" },
 { title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (পর্ব ২)", url: "https://pdf.bondipathshala.education/1765958534738.pdf" },
+{ title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (Practice Sheet)", url: "https://pdf.bondipathshala.education/1766496261052.pdf" },
 { title: "আধুনিক পদার্থবিজ্ঞানের সূচনা", url: "https://pdf.bondipathshala.education/1766158127793.pdf" },
+{ title: "ভৌত আলোকবিজ্ঞান", url: "https://pdf.bondipathshala.education/1766496086109.pdf" },
+{ title: "ভৌত আলোকবিজ্ঞান (Practice Sheet)", url: "https://pdf.bondipathshala.education/1766496346406.pdf" },
                 ]
             },
             {
@@ -60,6 +63,8 @@ const subjectsData = [
 { title: "জৈব যৌগ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1765692959503.pdf" },
 { title: "জৈব যৌগ (পর্ব ২)", url: "https://pdf.bondipathshala.education/1765779371295.pdf" },
 { title: "জৈব যৌগ (পর্ব ৩)", url: "https://pdf.bondipathshala.education/1765974276336.pdf" },
+{ title: "জৈব যৌগ (পর্ব ৪)", url: "https://pdf.bondipathshala.education/1766330751216.pdf" },
+{ title: "জৈব যৌগ (পর্ব ৫)", url: "https://pdf.bondipathshala.education/1766558474734.pdf" },
                 ]
             },
             {
@@ -79,6 +84,13 @@ const subjectsData = [
 { title: "কণিকস (পর্ব ১)", url: "https://pdf.bondipathshala.education/1765348737284.pdf" },
 { title: "কণিকস (পর্ব ২)", url: "https://pdf.bondipathshala.education/1765426219347.pdf" },
 { title: "কণিকস (পর্ব ২)", url: "https://pdf.bondipathshala.education/1765696949369.pdf" },
+{ title: "বিস্তার পরিমাপ ও সম্ভবনা CQ", url: "https://pdf.bondipathshala.education/1766401063158.pdf" },
+{ title: "বিস্তার পরিমাপ ও সম্ভবনা MCQ", url: "https://pdf.bondipathshala.education/1766401111704.pdf" },
+{ title: "যোগাশ্রয়ী প্রোগ্রামিং", url: "https://pdf.bondipathshala.education/1766214180933.pdf" },
+{ title: "বিপরীত ত্রিকোণমিতিক ফাংশন ও ত্রিকোণমিতিক সমীকরণ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1766400855545.pdf" },
+{ title: "বিপরীত ত্রিকোণমিতিক ফাংশন ও ত্রিকোণমিতিক সমীকরণ (পর্ব ২)", url: "https://pdf.bondipathshala.education/1766400736353.pdf" },
+{ title: "স্থিতিবিদ্যা (পর্ব ১)", url: "https://pdf.bondipathshala.education/1766577782719.pdf" },
+{ title: "স্থিতিবিদ্যা (পর্ব ২)", url: "https://pdf.bondipathshala.education/1766645520258.pdf" },
                 ]
             },
             {
@@ -95,11 +107,16 @@ const subjectsData = [
 { title: "জিনতত্ত্ব ও বিবর্তন (Practice Sheet)", url: "https://pdf.bondipathshala.education/1764746103069.pdf" },
 { title: "শ্বসন ও শ্বাসক্রিয়া", url: "https://pdf.bondipathshala.education/1764656265575.pdf" },
 { title: "শ্বসন ও শ্বাসক্রিয়া (Practice Sheet)", url: "https://pdf.bondipathshala.education/1764746052266.pdf" },
-{ title: "বর্জ্য ও নিষ্কাশন", url: "https://pdf.bondipathshala.education/1765374071640.pdf" },
+{ title: "বর্জ্য ও নিষ্কাশন", url: "https://pdf.bondipathshala.education/1765374071640.pdf" },4
+{ title: "বর্জ্য ও নিষ্কাশন (Practice Sheet)", url: "https://pdf.bondipathshala.education/1766496560757.pdf" },
 { title: "রুই মাছ", url: "https://pdf.bondipathshala.education/1765611045209.pdf" },
+{ title: "রুই মাছ (Practice Sheet)", url: "https://pdf.bondipathshala.education/1766496628818.pdf" },
 { title: "হাইড্রা", url: "https://pdf.bondipathshala.education/1765611084625.pdf" },
+{ title: "হাইড্রা (Practice Sheet)", url: "https://pdf.bondipathshala.education/1766496728336.pdf" },
 { title: "ঘাসফড়িং", url: "https://pdf.bondipathshala.education/1766069391839.pdf" },
 { title: "প্রাণীর বিভিন্নতা ও শ্রেণিবিন্যাস", url: "https://pdf.bondipathshala.education/1766157614002.pdf" },
+{ title: "চলন ও অঙ্গচালনা (Part 1)", url: "https://pdf.bondipathshala.education/1766416395159.pdf" },
+{ title: "পরিপাক ও শোষণ", url: "https://pdf.bondipathshala.education/1766479233918.pdf" },
                 ]
             },
             {
@@ -135,6 +152,7 @@ const subjectsData = [
 { title: "যৌবনের গান + ব্যাকরণিক শব্দশ্রেণি (পর্ব ২)", url: "https://pdf.bondipathshala.education/1762707908751.pdf" },
 { title: "অপপ্রয়োগ", url: "https://pdf.bondipathshala.education/1763035748580.pdf" },
 { title: "সোনার তরী + বাক্যতত্ত্ব + আঠারো বছর বয়স", url: "https://pdf.bondipathshala.education/1763116435241.pdf" },
+{ title: "সোনার তরী + বাক্যতত্ত্ব + আঠারো বছর বয়স", url: "https://pdf.bondipathshala.education/1766229042383.pdf" },
 { title: "বাক্যতত্ত্ব + বিদ্রোহী", url: "https://pdf.bondipathshala.education/1763460159824.pdf" },
 { title: "বাঙালা নব্য + প্রতিদান", url: "https://pdf.bondipathshala.education/1763546936166.pdf" },
 { title: "সমাস (পর্ব ১)", url: "https://pdf.bondipathshala.education/1763982612000.pdf" },
