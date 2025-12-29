@@ -935,7 +935,7 @@ function updateCompletionButton(videoId) {
         completionBtn.title = 'Mark as not completed';
     } else {
         completionBtn.classList.remove('completed');
-        btnIcon.className = 'fa-solid fa-hourglass-half';
+        btnIcon.className = 'far fa-check-circle';
         completionBtn.title = 'Mark as completed';
     }
     
@@ -1568,6 +1568,7 @@ document.addEventListener('touchstart', (e) => {
 
 // Initialize the page when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializePage);
+
 
 
 
