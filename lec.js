@@ -1195,7 +1195,7 @@ function loadVideo(videoId, lectureTitle, subjectName = '') {
     const newIframe = document.createElement('iframe');
     newIframe.id = 'lecture-video';
     newIframe.className = 'plyr__video-embed';
-    newIframe.src = `https://www.youtube.com/embed/${videoId}?controls=1&rel=0`;
+    newIframe.src = `https://www.youtube.com/embed/${videoId}?origin=https://plyr.io&enablejsapi=1&rel=0&playsinline=1&cc_load_policy=1&autoplay=1&controls=0&fs=0`;
     newIframe.frameBorder = '0';
     newIframe.allowFullscreen = true;
     newIframe.allow = 'autoplay';
@@ -1568,6 +1568,7 @@ document.addEventListener('touchstart', (e) => {
 
 // Initialize the page when DOM is loaded
 document.addEventListener('DOMContentLoaded', initializePage);
+
 
 
 
