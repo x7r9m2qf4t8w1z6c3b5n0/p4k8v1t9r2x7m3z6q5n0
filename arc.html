@@ -1074,9 +1074,9 @@ body::before {
 }
 
 .completion-btn {
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(239, 68, 68, 0.15)); /* Red gradient for incomplete */
-    border: 1px solid rgba(239, 68, 68, 0.4); /* Red border */
-    color: rgba(255, 255, 255, 0.9);
+    background: linear-gradient(135deg,rgba(255, 255, 255, 0.85),rgba(255, 255, 255, 0.65));
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #000000;
     width: 50px; /* Fixed width for circle */
     height: 50px; /* Fixed height for circle */
     border-radius: 50%; /* Makes it circular */
@@ -1094,6 +1094,23 @@ body::before {
     overflow: hidden;
     flex-shrink: 0;
     padding: 0; /* Remove padding since we're using fixed dimensions */
+}
+
+/* When completed, change the icon color to green */
+.completion-btn.completed {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15));
+    border-color: rgba(34, 197, 94, 0.4);
+    color: #22c55e; /* Green color for completed state */
+}
+
+.completion-btn.completed:hover {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.35), rgba(34, 197, 94, 0.2));
+    border-color: rgba(34, 197, 94, 0.6);
+}
+
+/* Specifically target the icon inside the completed button */
+.completion-btn.completed i {
+    color: #22c55e !important; /* Force green color for the icon */
 }
 
 /* Hide text, show only icon */
@@ -1117,10 +1134,9 @@ body::before {
 }
 
 .completion-btn:hover {
-    background: linear-gradient(135deg, rgba(239, 68, 68, 0.35), rgba(239, 68, 68, 0.2)); /* Darker red on hover */
+    background: linear-gradient(135deg,rgba(255, 255, 255, 0.85),rgba(255, 255, 255, 0.65));
     border-color: rgba(239, 68, 68, 0.6);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
 }
 
 .completion-btn:active {
@@ -1137,7 +1153,6 @@ body::before {
 .completion-btn.completed:hover {
     background: linear-gradient(135deg, rgba(34, 197, 94, 0.35), rgba(34, 197, 94, 0.2)); /* Darker green on hover */
     border-color: rgba(34, 197, 94, 0.6);
-    box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
 }
 .completion-btn i {
     font-size: 16px;
@@ -1228,7 +1243,6 @@ body::before {
     transform: scale(0.9) translateY(20px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     backdrop-filter: blur(20px);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
     position: relative;
     overflow: hidden;
 }
@@ -1298,16 +1312,15 @@ body::before {
 }
 
 .modal-btn.proceed {
-    background: linear-gradient(135deg, rgba(33, 150, 243, 0.25), rgba(33, 150, 243, 0.15));
-    color: #2196F3;
-    border: 1px solid rgba(33, 150, 243, 0.4);
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15));
+    color: #22c55e;
+    border: rgba(34, 197, 94, 0.6);
 }
 
 .modal-btn.proceed:hover {
-    background: linear-gradient(135deg, rgba(33, 150, 243, 0.35), rgba(33, 150, 243, 0.2));
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15));
     border-color: rgba(33, 150, 243, 0.6);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.3);
 }
 
 .modal-btn.cancel {
@@ -1320,7 +1333,6 @@ body::before {
     background: linear-gradient(135deg, rgba(244, 67, 54, 0.25), rgba(244, 67, 54, 0.15));
     border-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
 /* Mobile responsive adjustments */
@@ -1408,8 +1420,8 @@ body::before {
 }
 
 .completion-btn.completed {
-    background: linear-gradient(135deg, rgba(33, 150, 243, 0.25), rgba(33, 150, 243, 0.15));
-    border-color: rgba(33, 150, 243, 0.4);
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.35), rgba(34, 197, 94, 0.2));
+    border-color: rgba(34, 197, 94, 0.6);
     color: #2196F3;
 }
 /* Search Bar Styles - PROFESSIONAL */
@@ -1438,7 +1450,6 @@ body::before {
 .search-box:focus {
     background: rgba(255, 255, 255, 0.12);
     border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
     transform: translateY(-2px);
 }
 
@@ -1768,6 +1779,13 @@ body::before {
 
 .logo-text i {
     color: #FF9800;
+}
+
+/* Video Action Buttons Container */
+.video-action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
 }
 </style>
 </head>
