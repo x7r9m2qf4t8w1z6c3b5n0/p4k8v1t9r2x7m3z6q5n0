@@ -38,6 +38,8 @@ const subjectsData = [
 { title: "তড়িৎ প্রবাহে চৌম্বক ক্রিয়া (Practice Sheet)", url: "https://pdf.bondipathshala.education/1766496261052.pdf" },
 { title: "ভৌত আলোকবিজ্ঞান", url: "https://pdf.bondipathshala.education/1766496086109.pdf" },
 { title: "ভৌত আলোকবিজ্ঞান (Practice Sheet)", url: "https://pdf.bondipathshala.education/1766496346406.pdf" },
+{ title: "জ্যামিতিক আলোকবিজ্ঞান (পর্ব ১)", url: "https://pdf.bondipathshala.education/1766846322771.pdf" },
+{ title: "জ্যামিতিক আলোকবিজ্ঞান (পর্ব ২)", url: "https://pdf.bondipathshala.education/1766994161205.pdf" },
                 ]
             },
             {
@@ -65,6 +67,8 @@ const subjectsData = [
 { title: "জৈব যৌগ (পর্ব ৩)", url: "https://pdf.bondipathshala.education/1765974276336.pdf" },
 { title: "জৈব যৌগ (পর্ব ৪)", url: "https://pdf.bondipathshala.education/1766330751216.pdf" },
 { title: "জৈব যৌগ (পর্ব ৫)", url: "https://pdf.bondipathshala.education/1766558474734.pdf" },
+{ title: "জৈব যৌগ (পর্ব ৬)", url: "https://pdf.bondipathshala.education/1766824882115.pdf" },
+{ title: "জৈব যৌগ (পর্ব ৭)", url: "https://pdf.bondipathshala.education/1766824809542.pdf" },
                 ]
             },
             {
@@ -91,6 +95,8 @@ const subjectsData = [
 { title: "বিপরীত ত্রিকোণমিতিক ফাংশন ও ত্রিকোণমিতিক সমীকরণ (পর্ব ২)", url: "https://pdf.bondipathshala.education/1766400736353.pdf" },
 { title: "স্থিতিবিদ্যা (পর্ব ১)", url: "https://pdf.bondipathshala.education/1766577782719.pdf" },
 { title: "স্থিতিবিদ্যা (পর্ব ২)", url: "https://pdf.bondipathshala.education/1766645520258.pdf" },
+{ title: "সমতলে বস্তুকণার গতি (পর্ব ১)", url: "https://pdf.bondipathshala.education/1766909170991.pdf" },
+{ title: "সমতলে বস্তুকণার গতি (পর্ব ২)", url: "https://pdf.bondipathshala.education/1766994220239.pdf" },
                 ]
             },
             {
@@ -117,6 +123,7 @@ const subjectsData = [
 { title: "প্রাণীর বিভিন্নতা ও শ্রেণিবিন্যাস", url: "https://pdf.bondipathshala.education/1766157614002.pdf" },
 { title: "চলন ও অঙ্গচালনা (Part 1)", url: "https://pdf.bondipathshala.education/1766416395159.pdf" },
 { title: "পরিপাক ও শোষণ", url: "https://pdf.bondipathshala.education/1766479233918.pdf" },
+{ title: "সমন্বয় ও নিয়ন্ত্রণ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1766907763505.pdf" },
                 ]
             },
             {
