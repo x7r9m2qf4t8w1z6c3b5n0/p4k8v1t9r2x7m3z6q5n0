@@ -40,6 +40,8 @@ const subjectsData = [
 { title: "ভৌত আলোকবিজ্ঞান (Practice Sheet)", url: "https://pdf.bondipathshala.education/1766496346406.pdf" },
 { title: "জ্যামিতিক আলোকবিজ্ঞান (পর্ব ১)", url: "https://pdf.bondipathshala.education/1766846322771.pdf" },
 { title: "জ্যামিতিক আলোকবিজ্ঞান (পর্ব ২)", url: "https://pdf.bondipathshala.education/1766994161205.pdf" },
+{ title: "সেমিকন্ডাক্টর ও ইলেকটনিক্স", url: "https://pdf.bondipathshala.education/1767100345988.pdf" },
+{ title: "পরমাণুর মডেল ও নিউক্লিয়ার পদার্থবিজ্ঞান (পর্ব ১)", url: "https://pdf.bondipathshala.education/1767171672238.pdf" },
                 ]
             },
             {
@@ -125,6 +127,7 @@ const subjectsData = [
 { title: "চলন ও অঙ্গচালনা (Part 1)", url: "https://pdf.bondipathshala.education/1766416395159.pdf" },
 { title: "পরিপাক ও শোষণ", url: "https://pdf.bondipathshala.education/1766479233918.pdf" },
 { title: "সমন্বয় ও নিয়ন্ত্রণ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1766907763505.pdf" },
+{ title: "মানবদেহের প্রতিরক্ষা", url: "https://pdf.bondipathshala.education/1767087187481.pdf" },
                 ]
             },
             {
