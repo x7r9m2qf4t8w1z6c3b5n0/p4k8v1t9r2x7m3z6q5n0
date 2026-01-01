@@ -126,8 +126,8 @@ const subjectsData = [
                 color: "#ff9ff3",
                 isPCMB: false,
                 lectures: [
-{ title: "তাহারেই পড়ে মনে + ব্যাকরণিক শব্দশ্রেণি (পর্ব ১)", videoId: "PVcJjU8tdtY" },
-{ title: "যৌবনের গান + ব্যাকরণিক শব্দশ্রেণি (পর্ব ২)", videoId: "2jTgvYrtNgM" },
+{ title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ১) + তাহারেই পরে মনে", videoId: "PVcJjU8tdtY" },
+{ title: "ব্যাকরণিক শব্দশ্রেণি (পর্ব ২) + যৌবনের গান", videoId: "2jTgvYrtNgM" },
 { title: "বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধ প্রয়োগ", videoId: "7GK3_s7RMMY" },
 { title: "বাক্যতত্ত্ব (পর্ব ১) + সোনার তরী + আঠারো বছর বয়স", videoId: "KGlHm2zZQeA" },
 { title: "বাক্যতত্ত্ব (পর্ব ২) + বিদ্রোহী", videoId: "G28XEYXk54I" },
