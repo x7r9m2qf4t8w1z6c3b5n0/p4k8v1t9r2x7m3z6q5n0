@@ -51,6 +51,7 @@ const subjectsData = [
 { title: "জৈব যৌগ (পর্ব ৫)", videoId: "xiYu6xgFvf0" },
 { title: "জৈব যৌগ (পর্ব ৬)", videoId: "q0CUgCSDNw4" },
 { title: "জৈব যৌগ (পর্ব ৭)", videoId: "KHDcEr5yMoE" },
+{ title: "Organic Chemistry - Lecture 1", videoId: "ChNGe-Lkj_c" },
                 ]
             },
             {
