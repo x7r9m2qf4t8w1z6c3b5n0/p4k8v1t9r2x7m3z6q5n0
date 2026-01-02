@@ -1,7 +1,7 @@
 
 const subjectsData = [
             {
-                name: "Physics",
+                name: "Physics (Part 1)",
                 icon: "fas fa-history",
                 color: "#ff6b6b",
                 isPCMB: true,
@@ -35,6 +35,14 @@ const subjectsData = [
 { title: "পর্যাবৃত্তিক গতি - পর্ব ২.৩", videoId: "_SOb8hch3Oo" },
 { title: "নিউক্লিয়ার পদার্থ বিজ্ঞান - পর্ব ০১", videoId: "FCdmmUniof4" },
 { title: "নিউক্লিয়ার পদার্থ বিজ্ঞান - পর্ব ০২", videoId: "UfH8fV8WmSM" },
+                ]
+            },
+            {
+                name: "Physics (Part 2)",
+                icon: "fas fa-history",
+                color: "#ff6b6b",
+                isPCMB: true,
+                lectures: [
 { title: "চলতড়িৎ - পর্ব ০১", videoId: "jwBAoQiXxmU" },
 { title: "চল তড়িৎ - পর্ব ০২", videoId: "eY_s08UzCCo" },
 { title: "ভৌত আলোকবিজ্ঞান - পর্ব ০১", videoId: "m9mz0-6cRBw" },
@@ -156,7 +164,7 @@ const subjectsData = [
                 ]
             },
             {
-                name: "Mathematics",
+                name: "Mathematics (Part 1)",
                 icon: "fas fa-history",
                 color: "#45b7d1",
                 isPCMB: true,
@@ -197,6 +205,14 @@ const subjectsData = [
 { title: "ত্রিকোণমিতিক অনুপাত - পর্ব ০১", videoId: "2RIRgj2US8A" },
 { title: "ত্রিকোণমিতিক অনুপাত - পর্ব ০২", videoId: "UhBqd2hPLjA" },
 { title: "ত্রিকোণমিতিক অনুপাত - পর্ব ০৩", videoId: "f75_Pl6tV-M" },
+                ]
+            },
+            {
+                name: "Mathematics (Part 2)",
+                icon: "fas fa-history",
+                color: "#45b7d1",
+                isPCMB: true,
+                lectures: [
 { title: "বিন্যাস ও সমাবেশ - পর্ব ০১", videoId: "Y5YVtnaXAFE" },
 { title: "বিন্যাস ও সমাবেশ - পর্ব ০২", videoId: "H3_-SKvzkhg" },
 { title: "বিন্যাস ও সমাবেশ - পর্ব ০৩", videoId: "9KoqXDfk3iE" },
@@ -233,7 +249,7 @@ const subjectsData = [
                 ]
             },
             {
-                name: "Biology",
+                name: "Biology (Part 1)",
                 icon: "fas fa-history",
                 color: "#96ceb4",
                 isPCMB: true,
@@ -278,6 +294,14 @@ const subjectsData = [
 { title: "কোষ রসায়ন - পর্ব ৫.১", videoId: "26788gbIqPU" },
 { title: "কোষ রসায়ন - পর্ব ৫.২", videoId: "GYnfs4KJfUg" },
 { title: "কোষ রসায়ন - পর্ব ০৬", videoId: "dauGNaS91L8" },
+                ]
+            },
+            {
+                name: "Biology (Part 2)",
+                icon: "fas fa-history",
+                color: "#96ceb4",
+                isPCMB: true,
+                lectures: [
 { title: "শৈবাল ছত্রাক - পর্ব ০১", videoId: "5BeVBBCQX9A" },
 { title: "শৈবাল ছত্রাক - পর্ব ০২", videoId: "0EZ8oE97OMY" },
 { title: "শৈবাল ও ছত্রাক - পর্ব ০৩", videoId: "1vesKcPd8ZA" },
