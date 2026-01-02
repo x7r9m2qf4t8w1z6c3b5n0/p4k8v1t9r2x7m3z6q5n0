@@ -205,7 +205,7 @@ const subjectsData = [
                 ]
             },
             {
-                name: "Physics (Archive)",
+                name: "Physics (Part 1, Archive)",
                 icon: "fas fa-history",
                 color: "#ff6b6b",
                 isPCMB: true,
@@ -243,6 +243,14 @@ const subjectsData = [
 { title: "পর্যাবৃত্তিক গতি - পর্ব ২.৩", url: "https://pdf.bondipathshala.education/1758881646203.pdf" },
 { title: "নিউক্লিয়ার পদার্থ বিজ্ঞান - পর্ব ০১", url: "https://pdf.bondipathshala.education/1758881678499.pdf" },
 { title: "নিউক্লিয়ার পদার্থ বিজ্ঞান - পর্ব ০২", url: "https://pdf.bondipathshala.education/1758881711304.pdf" },
+                ]
+            },
+            {
+                name: "Physics (Part 2, Archive)",
+                icon: "fas fa-history",
+                color: "#ff6b6b",
+                isPCMB: true,
+                pdfs: [
 { title: "চলতড়িৎ - পর্ব ০১", url: "https://pdf.bondipathshala.education/1758881740108.pdf" },
 { title: "চল তড়িৎ - পর্ব ০২", url: "https://pdf.bondipathshala.education/1758881780367.pdf" },
 { title: "ভৌত আলোকবিজ্ঞান - পর্ব ০১", url: "https://pdf.bondipathshala.education/1758881811557.pdf" },
