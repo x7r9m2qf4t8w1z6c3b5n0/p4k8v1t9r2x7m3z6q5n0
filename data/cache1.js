@@ -75,7 +75,9 @@ const subjectsData = [
 { title: "সমতলে বস্তুকণার গতি (পর্ব ১, Part 1)", videoId: "9uxKbMfT7CY" },
 { title: "সমতলে বস্তুকণার গতি (পর্ব ১, Part 2)", videoId: "eL6lCW8nzVQ" },
 { title: "সমতলে বস্তুকণার গতি (পর্ব ২)", videoId: "0Tyr0oUjg5g" },
-{ title: "দ্বিপদী বিস্তৃতি - পর্ব ০১", videoId: "YEKaZqT5538" },
+{ title: "দ্বিপদী বিস্তৃতি (পর্ব ১)", videoId: "YEKaZqT5538" },
+{ title: "দ্বিপদী বিস্তৃতি (পর্ব ২, Part 1)", videoId: "bwWkzVXO4YA" },
+{ title: "দ্বিপদী বিস্তৃতি (পর্ব ২, Part 2)", videoId: "k4BoVRrnlkA" },
                 ]
             },
             {
