@@ -100,6 +100,8 @@ const subjectsData = [
 { title: "সমতলে বস্তুকণার গতি (পর্ব ১)", url: "https://pdf.bondipathshala.education/1766909170991.pdf" },
 { title: "সমতলে বস্তুকণার গতি (পর্ব ২)", url: "https://pdf.bondipathshala.education/1766994220239.pdf" },
 { title: "দ্বিপদী বিস্তৃতি (পর্ব ১)", url: "https://pdf.bondipathshala.education/1767248549288.pdf" },
+{ title: "দ্বিপদী বিস্তৃতি (পর্ব ২, Part 1)", url: "https://pdf.bondipathshala.education/1767342954444.pdf" },
+{ title: "দ্বিপদী বিস্তৃতি (পর্ব ২, Part 2)", url: "https://pdf.bondipathshala.education/1767343838178.pdf" },
                 ]
             },
             {
