@@ -71,6 +71,9 @@ const subjectsData = [
 { title: "জৈব যৌগ (পর্ব ৫)", url: "https://pdf.bondipathshala.education/1766558474734.pdf" },
 { title: "জৈব যৌগ (পর্ব ৬)", url: "https://pdf.bondipathshala.education/1766824882115.pdf" },
 { title: "জৈব যৌগ (পর্ব ৭)", url: "https://pdf.bondipathshala.education/1766824809542.pdf" },
+{ title: "জৈব যৌগ (পর্ব ৮)", url: "https://pdf.bondipathshala.education/1767449061666.pdf" },
+{ title: "জৈব যৌগ (পর্ব ৯)", url: "https://pdf.bondipathshala.education/1767509874085.pdf" },
+{ title: "জৈব যৌগ (পর্ব ১০)", url: "https://pdf.bondipathshala.education/1767599321062.pdf" },
                 ]
             },
             {
@@ -129,7 +132,9 @@ const subjectsData = [
 { title: "চলন ও অঙ্গচালনা (Part 1)", url: "https://pdf.bondipathshala.education/1766416395159.pdf" },
 { title: "পরিপাক ও শোষণ", url: "https://pdf.bondipathshala.education/1766479233918.pdf" },
 { title: "সমন্বয় ও নিয়ন্ত্রণ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1766907763505.pdf" },
+{ title: "সমন্বয় ও নিয়ন্ত্রণ (পর্ব ১)", url: "https://pdf.bondipathshala.education/1767537214674.pdf" },
 { title: "মানবদেহের প্রতিরক্ষা", url: "https://pdf.bondipathshala.education/1767087187481.pdf" },
+{ title: "মানবজীবনের ধারাবাহিকতা", url: "https://pdf.bondipathshala.education/1767622125606.pdf" },
                 ]
             },
             {
