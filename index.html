@@ -3929,7 +3929,90 @@ th {
     </div>
 </header>
 <br>
+
 <div class="container">
+
+    <!-- Buttons Section -->
+    <section class="buttons-section">
+        <div class="buttons-grid">
+            <a href="lec.html" class="cube-button" id="classroomBtn">
+                <div class="button-icon">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <div class="button-name">Lectures</div>
+            </a>
+            
+            <a href="mat.html" class="cube-button" id="materialsBtn">
+                <div class="button-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="button-name">Materials</div>
+            </a>
+            
+            <a href="arc.html" class="cube-button" id="archivesBtn">
+                <div class="button-icon">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div class="button-name">Archives</div>
+            </a>
+        </div>
+        <div class="buttons-grid">
+            <a href="lec.html" class="cube-button" id="extraboosterBtn">
+                <div class="button-icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <div class="button-name">Coming Soon...</div>
+            </a>
+            
+            <a href="lec.html" class="cube-button" id="aiBtn">
+                <div class="button-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="button-name">Coming Soon...</div>
+            </a>
+            
+            <a href="lec.html" class="cube-button" id="examBtn">
+                <div class="button-icon">
+                    <i class="fas fa-list"></i>
+                </div>
+                <div class="button-name">Coming Soon...</div>
+            </a>
+        </div>
+    </section>
+    <!-- Routine Section -->
+    <section class="routine-section">
+        <h2 class="section-title">Class Routine</h2>
+        
+        <!-- Routine Navigation -->
+        <div class="routine-navigation">
+            <button class="routine-nav-btn" id="prevDayBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="routine-date-display">
+                <div class="routine-date-title" id="currentDayTitle">
+                    <i class="far fa-calendar"></i>
+                    <span id="dayDisplay">Today</span>
+                </div>
+                <div class="routine-nav-dots" id="routineNavDots">
+                    <div class="routine-nav-dot active" data-day="0"></div>
+                    <div class="routine-nav-dot" data-day="1"></div>
+                </div>
+            </div>
+            
+            <button class="routine-nav-btn" id="nextDayBtn">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        <!-- Routine Cards Container -->
+        <div class="routine-cards-container" id="routineCardsContainer">
+            <!-- Today's classes will be inserted here by JavaScript -->
+        </div>
+        
+        <button class="expand-btn" id="expandRoutineBtn">Check Routine</button>
+    </section>
+
 <!-- User Info Section -->
 <section class="user-info-section">
     <div class="time-date">
@@ -4148,92 +4231,6 @@ th {
         </div>
     </div>
 </div>
-    <!-- PCMB Timer Section -->
-    <div class="pcmb-timer" id="pcmbTimer">
-        Loading...
-    </div>
-
-    <!-- Buttons Section -->
-    <section class="buttons-section">
-        <div class="buttons-grid">
-            <a href="lec.html" class="cube-button" id="classroomBtn">
-                <div class="button-icon">
-                    <i class="fas fa-play-circle"></i>
-                </div>
-                <div class="button-name">Lectures</div>
-            </a>
-            
-            <a href="mat.html" class="cube-button" id="materialsBtn">
-                <div class="button-icon">
-                    <i class="fas fa-file-pdf"></i>
-                </div>
-                <div class="button-name">Materials</div>
-            </a>
-            
-            <a href="arc.html" class="cube-button" id="archivesBtn">
-                <div class="button-icon">
-                    <i class="fas fa-history"></i>
-                </div>
-                <div class="button-name">Archives</div>
-            </a>
-        </div>
-        <div class="buttons-grid">
-            <a href="lec.html" class="cube-button" id="extraboosterBtn">
-                <div class="button-icon">
-                    <i class="fas fa-fire"></i>
-                </div>
-                <div class="button-name">Coming Soon...</div>
-            </a>
-            
-            <a href="lec.html" class="cube-button" id="aiBtn">
-                <div class="button-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="button-name">Coming Soon...</div>
-            </a>
-            
-            <a href="lec.html" class="cube-button" id="examBtn">
-                <div class="button-icon">
-                    <i class="fas fa-list"></i>
-                </div>
-                <div class="button-name">Coming Soon...</div>
-            </a>
-        </div>
-    </section>
-
-    <!-- Routine Section -->
-    <section class="routine-section">
-        <h2 class="section-title">Class Routine</h2>
-        
-        <!-- Routine Navigation -->
-        <div class="routine-navigation">
-            <button class="routine-nav-btn" id="prevDayBtn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            
-            <div class="routine-date-display">
-                <div class="routine-date-title" id="currentDayTitle">
-                    <i class="far fa-calendar"></i>
-                    <span id="dayDisplay">Today</span>
-                </div>
-                <div class="routine-nav-dots" id="routineNavDots">
-                    <div class="routine-nav-dot active" data-day="0"></div>
-                    <div class="routine-nav-dot" data-day="1"></div>
-                </div>
-            </div>
-            
-            <button class="routine-nav-btn" id="nextDayBtn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-        
-        <!-- Routine Cards Container -->
-        <div class="routine-cards-container" id="routineCardsContainer">
-            <!-- Today's classes will be inserted here by JavaScript -->
-        </div>
-        
-        <button class="expand-btn" id="expandRoutineBtn">Check Routine</button>
-    </section>
 
 <!-- Modal for expanded routine view -->
 <div class="modal" id="routineModal">
@@ -6186,8 +6183,7 @@ function updatePCMBTimer() {
     
     const hours = Math.floor(timeLeft / (1000 * 60 * 60));
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-    
-    pcmbTimerEl.innerHTML = `<span class="limited-time-icon"><i class="fas fa-clock"></i></span> Friday`;
+
 }
 
 // Populate routine tables for both views
