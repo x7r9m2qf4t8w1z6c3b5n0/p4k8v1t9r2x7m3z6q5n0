@@ -1,7 +1,7 @@
 const subjectsData = [
     {
         name: "Organic Zero to Pro",
-        icon: "fas fa-dot-circle",
+        icon: "fa fa-bullseye",
         color: "#FFFFFF",
         isPCMB: true,
         lectures: [
@@ -35,7 +35,7 @@ const subjectsData = [
     },
     {
         name: "ICT Oneshot Series (Rakibul)",
-        icon: "fas fa-dot-circle",
+        icon: "fa fa-bullseye",
         color: "#FFFFFF",
         isPCMB: true,
         lectures: [
@@ -48,3 +48,4 @@ const subjectsData = [
         ]
     }
 ];
+
