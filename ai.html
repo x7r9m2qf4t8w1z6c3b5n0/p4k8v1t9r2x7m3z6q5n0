@@ -39,7 +39,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 15px;
         }
@@ -93,8 +93,8 @@
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 30px;
-            height: 65vh;
+            margin-bottom: 20px;
+            height: 70vh;
             display: flex;
             flex-direction: column;
         }
@@ -200,6 +200,12 @@
             border-radius: 15px;
             padding: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .input-container:focus-within {
+            border-color: rgba(76, 175, 80, 0.4);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.2);
         }
 
         .message-input {
@@ -239,6 +245,7 @@
         .send-button:hover:not(:disabled) {
             background: rgba(76, 175, 80, 0.9);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
         }
 
         .send-button:disabled {
@@ -299,26 +306,6 @@
             background: rgba(255, 255, 255, 0.7);
         }
 
-        /* Chat History */
-        .history-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            justify-content: center;
-        }
-
-        .history-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
             body {
@@ -336,7 +323,7 @@
             
             .chat-container {
                 padding: 20px;
-                height: 70vh;
+                height: 75vh;
             }
             
             .message {
@@ -383,6 +370,7 @@
             
             .chat-container {
                 padding: 15px;
+                height: 80vh;
             }
             
             .message {
@@ -455,7 +443,7 @@
                 <textarea 
                     class="message-input" 
                     id="messageInput" 
-                    placeholder="Type your message... (Shift+Enter for new line)" 
+                    placeholder="Type your message... (Press Enter to send)" 
                     rows="1"
                 ></textarea>
                 <button class="send-button" id="sendButton">
@@ -463,12 +451,6 @@
                 </button>
             </div>
         </div>
-
-        <!-- Chat History Button -->
-        <button class="history-btn" id="historyBtn">
-            <i class="fas fa-history"></i>
-            View Chat History
-        </button>
     </div>
 
     <script>
@@ -477,21 +459,11 @@
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendButton');
         const typingIndicator = document.getElementById('typingIndicator');
-        const historyBtn = document.getElementById('historyBtn');
         const welcomeTime = document.getElementById('welcomeTime');
 
-        // Configuration
-        const API_KEY = 'AIzaSyANYeTInwCG9obngLbkdMwb0Gk790IdWzk';
-        const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+        // Configuration - YOUR GOOGLE APPS SCRIPT URL
+        const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbyIQrtfRKjd8ANNOaX7iaOfDPX6YePxvYoukXHQHkCRS_z-PwHtvJEVkjZAtaI20hX6/exec';
         
-        // Chat Management
-        let chats = JSON.parse(localStorage.getItem('arora_chats')) || [];
-        let currentChat = {
-            id: 'current_chat',
-            messages: [],
-            createdAt: new Date().toISOString()
-        };
-
         // Initialize
         initChat();
 
@@ -515,16 +487,8 @@
         // Send button click
         sendButton.addEventListener('click', sendMessage);
 
-        // History button click
-        historyBtn.addEventListener('click', showHistory);
-
         // Initialize Chat
         function initChat() {
-            // Load any existing chat
-            if (chats.length > 0) {
-                currentChat = chats[chats.length - 1];
-                loadMessages();
-            }
             messageInput.focus();
         }
 
@@ -548,11 +512,11 @@
             typingIndicator.classList.add('active');
             
             try {
-                // Get AI response
+                // Get AI response through BACKEND proxy
                 const aiResponse = await getAIResponse(message);
                 
                 // Simulate typing delay
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                await new Promise(resolve => setTimeout(resolve, 800));
                 
                 // Hide typing indicator
                 typingIndicator.classList.remove('active');
@@ -564,54 +528,72 @@
                 console.error('Error:', error);
                 typingIndicator.classList.remove('active');
                 
-                // Show error message
-                addMessage("I apologize, but I encountered an error. Please try again.", false);
+                // Show user-friendly error
+                let errorMsg = "I'm having trouble connecting right now. ";
+                
+                if (error.message.includes('Failed to fetch')) {
+                    errorMsg += "Please check your internet connection.";
+                } else if (error.message.includes('429')) {
+                    errorMsg += "Too many requests. Please wait a moment.";
+                } else if (error.message.includes('quota')) {
+                    errorMsg += "API quota might be exceeded. Try again later.";
+                } else {
+                    errorMsg += "Please try again in a moment.";
+                }
+                
+                addMessage(errorMsg, false);
             } finally {
                 // Re-enable input
                 messageInput.disabled = false;
                 sendButton.disabled = false;
                 messageInput.focus();
-                
-                // Save chat
-                saveChat();
             }
         }
 
-        // Get AI Response
+        // Get AI Response - THROUGH GOOGLE APPS SCRIPT BACKEND
         async function getAIResponse(prompt) {
             try {
-                const response = await fetch(`${GEMINI_API_URL}?key=${API_KEY}`, {
+                console.log('Sending request to backend...');
+                
+                const response = await fetch(BACKEND_URL, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        contents: [{
-                            parts: [{ text: prompt }]
-                        }]
+                        message: prompt
                     })
                 });
                 
+                console.log('Backend response status:', response.status);
+                
                 if (!response.ok) {
-                    throw new Error('API request failed');
+                    throw new Error(`Backend error: ${response.status}`);
                 }
                 
                 const data = await response.json();
-                return data.candidates?.[0]?.content?.parts?.[0]?.text || "I received an empty response.";
+                console.log('Backend response data:', data);
+                
+                if (data.success) {
+                    return data.response;
+                } else {
+                    throw new Error(data.error || 'Unknown error from backend');
+                }
                 
             } catch (error) {
+                console.error('Backend API Error:', error);
                 throw error;
             }
         }
 
-        // Add Message
+        // Add Message (No saving to localStorage)
         function addMessage(text, isUser) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user' : 'ai'}`;
             
             const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
             
-            // Format text (preserve line breaks)
+            // Format text
             const formattedText = text.replace(/\n/g, '<br>');
             
             messageDiv.innerHTML = `
@@ -626,74 +608,10 @@
             
             messagesArea.appendChild(messageDiv);
             
-            // Save to current chat
-            currentChat.messages.push({
-                text: text,
-                isUser: isUser,
-                timestamp: new Date().toISOString()
-            });
-            
             // Scroll to bottom
             setTimeout(() => {
                 messagesArea.scrollTop = messagesArea.scrollHeight;
             }, 100);
-        }
-
-        // Load Messages
-        function loadMessages() {
-            // Clear existing messages (except welcome)
-            const messages = messagesArea.querySelectorAll('.message:not(:first-child)');
-            messages.forEach(msg => msg.remove());
-            
-            // Add saved messages
-            currentChat.messages.forEach(msg => {
-                if (msg.text !== "👋 Hey! I'm Arora AI, your study helper! I can help you with...") {
-                    addMessage(msg.text, msg.isUser);
-                }
-            });
-        }
-
-        // Save Chat
-        function saveChat() {
-            // Update timestamp
-            currentChat.updatedAt = new Date().toISOString();
-            
-            // Check if this chat already exists
-            const existingIndex = chats.findIndex(chat => chat.id === currentChat.id);
-            
-            if (existingIndex > -1) {
-                // Update existing chat
-                chats[existingIndex] = currentChat;
-            } else {
-                // Add new chat
-                chats.push(currentChat);
-            }
-            
-            // Keep only last 10 chats
-            if (chats.length > 10) {
-                chats = chats.slice(-10);
-            }
-            
-            // Save to localStorage
-            localStorage.setItem('arora_chats', JSON.stringify(chats));
-        }
-
-        // Show History
-        function showHistory() {
-            if (chats.length === 0) {
-                alert('No chat history available.');
-                return;
-            }
-            
-            let historyText = 'Chat History:\n\n';
-            
-            chats.forEach((chat, index) => {
-                const date = new Date(chat.createdAt).toLocaleDateString();
-                const messageCount = chat.messages.length;
-                historyText += `${index + 1}. Chat from ${date} (${messageCount} messages)\n`;
-            });
-            
-            alert(historyText);
         }
     </script>
 </body>
