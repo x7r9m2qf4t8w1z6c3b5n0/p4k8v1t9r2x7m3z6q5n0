@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arora AI - Intelligent Assistant</title>
+    <title>Arora AI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -61,7 +61,8 @@
             padding: 0 20px;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center; /* Changed to center */
+            gap: 15px; /* Added gap for spacing */
         }
 
         .logo-container {
@@ -93,17 +94,14 @@
         }
 
         .tagline {
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 300;
-            margin-top: 2px;
+            display: none; /* Hidden as requested */
         }
 
         /* Main Container */
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 120px 20px 40px;
+            padding: 120px 20px 100px; /* Increased bottom padding for sticky input */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -126,31 +124,9 @@
             overflow: hidden;
         }
 
-        /* Welcome Banner */
+        /* Welcome Banner - Hidden */
         .welcome-banner {
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(33, 150, 243, 0.1));
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .welcome-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, #4CAF50, #2196F3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .welcome-subtitle {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 300;
+            display: none;
         }
 
         /* Messages Area */
@@ -165,7 +141,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Message Styles */
+        /* Message Styles - Fixed layout */
         .message {
             display: flex;
             gap: 16px;
@@ -174,6 +150,7 @@
             opacity: 0;
             transform: translateY(10px);
             animation-fill-mode: forwards;
+            align-items: flex-start; /* Align items to top */
         }
 
         .message.user {
@@ -219,12 +196,14 @@
             background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 18px 22px;
-            max-width: 100%;
+            max-width: calc(100% - 60px); /* Fixed width calculation */
             word-wrap: break-word;
             border: 1px solid rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(10px);
             position: relative;
             transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .message-content:hover {
@@ -247,6 +226,7 @@
             font-size: 16px;
             line-height: 1.7;
             color: rgba(255, 255, 255, 0.95);
+            width: 100%;
         }
 
         .ai .message-text {
@@ -259,6 +239,7 @@
             margin-top: 10px;
             text-align: right;
             font-weight: 300;
+            align-self: flex-end;
         }
 
         /* Typing Indicator */
@@ -290,16 +271,30 @@
         .typing-dot:nth-child(1) { animation-delay: -0.32s; }
         .typing-dot:nth-child(2) { animation-delay: -0.16s; }
 
-        /* Input Area */
+        /* Sticky Input Area */
+        .input-container-wrapper {
+            position: sticky;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 0 0;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9) 0%, transparent 100%);
+            z-index: 100;
+            margin-top: auto;
+        }
+
         .input-container {
             display: flex;
             gap: 16px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(20, 20, 30, 0.95);
             border-radius: 18px;
             padding: 18px;
             border: 1px solid rgba(255, 255, 255, 0.12);
             transition: all 0.3s ease;
             position: relative;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
         }
 
         .input-container:focus-within {
@@ -492,7 +487,7 @@
         @media (max-width: 1024px) {
             .container {
                 max-width: 90%;
-                padding: 110px 15px 30px;
+                padding: 110px 15px 100px;
             }
             
             .chat-container {
@@ -520,16 +515,12 @@
             }
             
             .container {
-                padding: 100px 12px 25px;
+                padding: 100px 12px 90px;
             }
             
             .chat-container {
                 padding: 20px;
                 border-radius: 20px;
-            }
-            
-            .welcome-title {
-                font-size: 20px;
             }
             
             .message {
@@ -546,10 +537,15 @@
             .message-content {
                 padding: 16px 18px;
                 border-radius: 18px;
+                max-width: calc(100% - 52px);
             }
             
             .message-text {
                 font-size: 15px;
+            }
+            
+            .input-container-wrapper {
+                padding: 15px 0 0;
             }
             
             .input-container {
@@ -583,30 +579,13 @@
                 font-size: 16px;
             }
             
-            .tagline {
-                font-size: 12px;
-            }
-            
             .container {
-                padding: 90px 10px 20px;
+                padding: 90px 10px 80px;
             }
             
             .chat-container {
                 padding: 16px;
                 border-radius: 18px;
-            }
-            
-            .welcome-banner {
-                padding: 15px;
-                margin-bottom: 20px;
-            }
-            
-            .welcome-title {
-                font-size: 18px;
-            }
-            
-            .welcome-subtitle {
-                font-size: 14px;
             }
             
             .message {
@@ -623,6 +602,7 @@
             .message-content {
                 padding: 14px 16px;
                 border-radius: 16px;
+                max-width: calc(100% - 46px);
             }
             
             .message-text {
@@ -631,6 +611,10 @@
             
             .message-time {
                 font-size: 11px;
+            }
+            
+            .input-container-wrapper {
+                padding: 12px 0 0;
             }
             
             .input-container {
@@ -676,52 +660,16 @@
             }
         }
 
-        /* Connection Status */
+        /* Connection Status - Hidden */
         .connection-status {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 10px 16px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 500;
-            z-index: 1001;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            animation: slideInRight 0.3s ease;
-            background: rgba(20, 20, 30, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: #4CAF50;
-            animation: pulse 2s infinite;
-        }
-
-        .status-dot.disconnected {
-            background: #f44336;
+            display: none;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header class="header">
+        <br>
         <div class="header-content">
             <div class="logo-container">
                 <div class="logo-icon">
@@ -729,22 +677,15 @@
                 </div>
                 <div>
                     <div class="logo-text">Arora AI</div>
-                    <div class="tagline">Intelligent Assistant powered by AI</div>
                 </div>
             </div>
         </div>
     </header>
-
+<br>
     <!-- Main Container -->
     <main class="container">
         <!-- Chat Container -->
         <div class="chat-container">
-            <!-- Welcome Banner -->
-            <div class="welcome-banner">
-                <div class="welcome-title">Welcome to Arora AI</div>
-                <div class="welcome-subtitle">Ask me anything - I'm here to help with knowledge, creativity, and problem-solving</div>
-            </div>
-
             <!-- Messages Area -->
             <div class="messages-area" id="messagesArea">
                 <!-- Messages will be added here -->
@@ -758,35 +699,27 @@
                 <span style="margin-left: 10px; color: rgba(255,255,255,0.7); font-size: 14px;">Arora AI is thinking...</span>
             </div>
 
-            <!-- Input Area -->
-            <div class="input-container">
-                <textarea 
-                    class="message-input" 
-                    id="messageInput" 
-                    placeholder="Type your message here... (Shift+Enter for new line)"
-                    rows="1"
-                    autocomplete="off"
-                    autocorrect="off"
-                    autocapitalize="off"
-                    spellcheck="true"
-                ></textarea>
-                <button class="send-button" id="sendButton" title="Send message">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
+            <!-- Sticky Input Area -->
+            <div class="input-container-wrapper">
+                <div class="input-container">
+                    <textarea 
+                        class="message-input" 
+                        id="messageInput" 
+                        placeholder="Type your message here..."
+                        rows="1"
+                        autocomplete="off"
+                        autocorrect="off"
+                        autocapitalize="off"
+                        spellcheck="true"
+                    ></textarea>
+                    <button class="send-button" id="sendButton" title="Send message">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Footer -->
-        <div class="footer">
-            <p>Powered by Puter.js AI • Real-time streaming responses • Secure & Private</p>
-        </div>
     </main>
-
-    <!-- Connection Status -->
-    <div class="connection-status" id="connectionStatus">
-        <div class="status-dot" id="statusDot"></div>
-        <span id="statusText">Connected to AI</span>
-    </div>
 
     <!-- Puter.js SDK -->
     <script src="https://js.puter.com/v2/"></script>
@@ -797,9 +730,6 @@
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendButton');
         const typingIndicator = document.getElementById('typingIndicator');
-        const connectionStatus = document.getElementById('connectionStatus');
-        const statusDot = document.getElementById('statusDot');
-        const statusText = document.getElementById('statusText');
 
         // Chat configuration
         const AI_MODEL = 'gpt-4.1-nano'; // Using GPT-4.1 Nano model
@@ -816,12 +746,9 @@
         // Test AI connection
         async function testAIConnection() {
             try {
-                updateConnectionStatus('Connecting to AI...', 'connecting');
-                
                 // Test with a simple request
                 await puter.ai.chat('Hello', { model: AI_MODEL, stream: false });
                 
-                updateConnectionStatus('Connected to AI', 'connected');
                 isConnected = true;
                 
                 // Add welcome message
@@ -831,7 +758,6 @@
                 
             } catch (error) {
                 console.error('AI Connection Error:', error);
-                updateConnectionStatus('AI Service Unavailable', 'disconnected');
                 isConnected = false;
                 
                 // Show error message
@@ -839,26 +765,12 @@
             }
         }
 
-        // Update connection status
-        function updateConnectionStatus(text, status) {
-            statusText.textContent = text;
-            statusDot.className = 'status-dot ' + status;
-            
-            if (status === 'connected') {
-                connectionStatus.style.borderColor = 'rgba(76, 175, 80, 0.3)';
-            } else if (status === 'disconnected') {
-                connectionStatus.style.borderColor = 'rgba(244, 67, 54, 0.3)';
-            } else {
-                connectionStatus.style.borderColor = 'rgba(255, 193, 7, 0.3)';
-            }
-        }
-
         // Add welcome message
         function addWelcomeMessage() {
             const welcomeMessages = [
-                "Hello! I'm Arora AI, your intelligent assistant. I'm powered by advanced AI models and ready to help you with any questions or tasks you have.",
-                "Hi there! 👋 I'm Arora AI. Whether you need help with research, creative writing, coding, or just want to chat, I'm here for you!",
-                "Welcome to Arora AI! I can help you with a wide range of topics including learning, problem-solving, content creation, and more. What would you like to explore today?"
+                "Hello! I'm Arora AI, your intelligent study assistant.",
+                "Hi there! I'm Arora AI.",
+                "Welcome to Arora AI!"
             ];
             
             const message = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
@@ -1007,7 +919,7 @@
             }
         }
 
-        // Create message container
+        // Create message container - Fixed layout
         function createMessageContainer(text, isUser, id = null) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user' : 'ai'}`;
