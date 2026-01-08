@@ -1,0 +1,1893 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Extra Booster</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Hind Siliguri', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: #0a0a0a;
+    color: #ffffff;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-bottom: 20px;
+    position: relative;
+    padding-top: 120px; /* Account for fixed header */
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(26, 26, 46, 0.5) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(15, 52, 96, 0.4) 0%, transparent 20%),
+        radial-gradient(circle at 50% 50%, rgba(22, 33, 62, 0.3) 0%, transparent 30%);
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header Styles */
+.header {
+    background: rgba(15, 15, 20, 0.9);
+    color: #ffffff;
+    padding: 15px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    width: 90%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    filter: blur(10px);
+    border-radius: 50%;
+}
+
+.back-button {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 24px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.logo-text {
+    font-size: 42px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    margin-left: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.logo-text i {
+    margin-right: 15px;
+    font-size: 36px;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.video-section {
+    flex: 2;
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeIn 0.5s ease;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.video-section::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    width: 90%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    filter: blur(10px);
+    border-radius: 50%;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    background: #000;
+    flex-shrink: 0;
+}
+
+/* Fix video container for fullscreen */
+#player-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.video-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideIn 0.5s ease;
+    font-size: 18px;
+    font-weight: 700;
+    flex-wrap: nowrap;
+    gap: 20px; /* Increased gap */
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subjects Section */
+.subjects-section {
+    flex: 1;
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-height: 560px; /* For desktop */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Add this media query for mobile */
+@media (max-width: 992px) {
+    .subjects-section {
+        max-height: 65vh; /* This will make it almost reach the screen end but not exactly */
+        height: auto; /* Allow it to grow naturally */
+        min-height: 400px; /* Minimum height so it doesn't get too small */
+    }
+}
+
+/* For very small mobile screens */
+@media (max-width: 480px) {
+    .subjects-section {
+        max-height: 60vh; /* Slightly smaller on very small screens */
+    }
+}
+
+.subjects-section::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 5%;
+    width: 90%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    filter: blur(10px);
+    border-radius: 50%;
+}
+
+.section-title {
+    font-size: 40px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    text-align: center;
+    position: relative;
+    padding-bottom: 10px;
+    flex-shrink: 0;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.7), rgba(160, 174, 192, 0.7));
+    border-radius: 3px;
+}
+
+.subjects-container {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.subjects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.subject-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subject-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.subject-header:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.subject-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    width: 30px;
+    text-align: center;
+}
+
+.subject-title {
+    font-size: 20px;
+    font-weight: 700;
+    flex-grow: 1;
+}
+
+.dropdown-icon {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.lectures-list {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: linear-gradient(135deg, rgba(15, 15, 20, 0.8), rgba(20, 20, 30, 0.9));
+    position: relative;
+}
+
+.lectures-list.open {
+    max-height: fit-content;
+}
+
+/* Also remove the scrollbar styling for this specific element */
+.lectures-list::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for Webkit browsers */
+}
+
+.lectures-list {
+    -ms-overflow-style: none; /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+}
+
+.lecture-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+.lecture-item:last-child {
+    border-bottom: none;
+}
+
+.lecture-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.lecture-item.active {
+    background: rgba(76, 175, 80, 0.2);
+}
+
+.lecture-icon {
+    font-size: 20px;
+    margin-right: 15px;
+    width: 25px;
+    text-align: center;
+}
+
+.lecture-title {
+    font-size: 16px;
+    font-weight: 700;
+    flex-grow: 1;
+}
+
+.lecture-badges {
+    display: flex;
+    gap: 5px;
+    margin-left: 10px;
+    align-items: center;
+}
+
+/* Plyr Override Styles */
+.plyr {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.plyr--video {
+    border-radius: 12px;
+}
+
+/* Fix Plyr fullscreen styles */
+.plyr--fullscreen-active {
+    border-radius: 0 !important;
+}
+
+.plyr--fullscreen-active .plyr__video-wrapper {
+    height: 100vh !important;
+    width: 100vw !important;
+}
+
+/* Custom Plyr controls for skip buttons */
+.plyr__controls button.plyr__control--rewind,
+.plyr__controls button.plyr__control--fast-forward {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    color: white;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.plyr__controls button.plyr__control--rewind:hover,
+.plyr__controls button.plyr__control--fast-forward:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+@media (max-width: 768px) {
+    .plyr--video .plyr__controls {
+        padding: 10px 5px;
+    }
+    
+    .plyr__controls .plyr__control {
+        margin: 0 2px;
+    }
+    
+    .plyr__time {
+        font-size: 12px;
+    }
+    
+    .plyr__menu__container {
+        bottom: 60px;
+    }
+}
+
+/* Custom Video Player Styles */
+.custom-player-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-player {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideIn {
+    from { transform: translateY(10px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .video-section, .subjects-section {
+        height: auto;
+    }
+    
+    /* Remove the max-height: 500px line completely from here */
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 110px;
+    }
+    
+    .logo-text {
+        font-size: 36px;
+    }
+    
+    .logo-text i {
+        font-size: 30px;
+    }
+    
+    .video-info {
+        font-size: 16px;
+        padding: 16px; /* Slightly reduce padding */
+        flex-wrap: nowrap; /* Ensure it stays in one line */
+    }
+    
+    .section-title {
+        font-size: 24px;
+    }
+    
+    .subject-title {
+        font-size: 18px;
+    }
+    
+    .lecture-title {
+        font-size: 16px;
+    }
+    
+    .completion-btn {
+        padding: 10px 18px; /* Slightly smaller on mobile */
+        font-size: 13px;
+    }
+    
+    /* Add subjects-section styling for tablet */
+    .subjects-section {
+        max-height: 65vh;
+        height: auto;
+        min-height: 450px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding-top: 100px;
+    }
+    
+    .logo-text {
+        font-size: 28px;
+    }
+    
+    .logo-text i {
+        font-size: 24px;
+        margin-right: 10px;
+    }
+    
+    .video-section, .subjects-section {
+        padding: 20px;
+    }
+    
+    .section-title {
+        font-size: 35px;
+    }
+    
+    .subject-header {
+        padding: 18px 20px;
+    }
+    
+    .subject-title {
+        font-size: 22px;
+    }
+    
+    .lecture-item {
+        padding: 15px 20px;
+    }
+    
+    .lecture-title {
+        font-size: 16px;
+    }
+    
+    .badge {
+        font-size: 9px;
+        padding: 1px 4px;
+    }
+    
+    .video-info {
+        padding: 14px;
+        font-size: 15px;
+        gap: 12px; /* Smaller gap on very small screens */
+    }
+    
+    .completion-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+        flex-shrink: 0; /* Ensure button doesn't shrink */
+    }
+    
+    .video-title {
+        font-size: 18px; /* Even smaller font on very small screens */
+        line-height: 1.2; /* Even tighter line spacing */
+    }
+    
+    .completion-btn i {
+        font-size: 14px; /* Smaller icon */
+    }
+    
+    /* Add subjects-section styling for mobile */
+    .subjects-section {
+        max-height: 1000vh;
+        height: auto;
+        min-height: 400px;
+    }
+}
+@media (max-width: 360px) {
+    .video-info {
+        padding: 12px;
+        gap: 10px; /* Minimal gap on compact screens */
+    }
+    
+    .video-title {
+        font-size: 18px; /* Smallest font size */
+    }
+    
+    .completion-btn {
+        width: 38px;
+        height: 38px;
+    }
+    
+    .completion-btn i {
+        font-size: 12px;
+        margin-right: 0; /* Remove gap and use padding instead */
+    }
+    
+    .completion-btn span {
+        display: none; /* Hide text on very small screens, show only icon */
+    }
+}
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(20, 20, 30, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(160, 174, 192, 0.5));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, rgba(160, 174, 192, 0.5), rgba(255, 255, 255, 0.5));
+}
+
+/* Placeholder for empty video */
+.video-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #aaa;
+    font-size: 18px;
+    background: #000;
+    border-radius: 12px;
+    z-index: 2;
+}
+
+.video-placeholder i {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+/* Hide player when placeholder is shown */
+#player {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Transparent overlay to block iframe interaction */
+.iframe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: transparent;
+    cursor: default;
+    pointer-events: none; /* Default: allow clicks to pass through */
+}
+
+/* Enable overlay blocking when video is playing */
+.plyr--playing .iframe-overlay {
+    pointer-events: auto; /* Block clicks when video is playing */
+}
+
+/* Fixed fullscreen overlay positioning */
+.plyr--fullscreen-active .iframe-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+}
+
+/* Make sure custom player controls are always accessible */
+.plyr__controls {
+    z-index: 20 !important;
+    position: relative;
+    pointer-events: auto !important;
+}
+
+.plyr__control {
+    z-index: 21 !important;
+    position: relative;
+    pointer-events: auto !important;
+}
+
+
+@media (max-width: 768px) {
+    /* Plyr Player Control Icons */
+    .plyr__control {
+        transform: scale(0.9);
+    }
+    
+    .plyr__control--overlaid {
+        transform: scale(0.8);
+    }
+    
+    .plyr__controls button {
+        padding: 8px;
+    }
+    
+    .plyr__controls button svg {
+        width: 16px;
+        height: 16px;
+    }
+    
+    .plyr__control--rewind,
+    .plyr__control--fast-forward {
+        padding: 6px;
+    }
+    
+    .plyr__control--rewind svg,
+    .plyr__control--fast-forward svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .plyr__menu__container .plyr__control svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Smaller icons for small mobile screens */
+    .plyr__control {
+        transform: scale(0.8);
+    }
+    
+    .plyr__control--overlaid {
+        transform: scale(0.7);
+    }
+    
+    .plyr__controls button {
+        padding: 6px;
+    }
+    
+    .plyr__controls button svg {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .plyr__control--rewind,
+    .plyr__control--fast-forward {
+        padding: 5px;
+    }
+    
+    .plyr__control--rewind svg,
+    .plyr__control--fast-forward svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .plyr__time {
+        font-size: 11px;
+    }
+    
+    .plyr__menu__container .plyr__control svg {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+@media (max-width: 360px) {
+    /* Even smaller icons for compact mobile screens */
+    .plyr__control {
+        transform: scale(0.75);
+    }
+    
+    .plyr__control--overlaid {
+        transform: scale(0.65);
+        padding: 12px;
+    }
+    
+    .plyr__controls button {
+        padding: 5px;
+    }
+    
+    .plyr__controls button svg {
+        width: 13px;
+        height: 13px;
+    }
+    
+    .plyr__control--rewind,
+    .plyr__control--fast-forward {
+        padding: 4px;
+    }
+    
+    .plyr__control--rewind svg,
+    .plyr__control--fast-forward svg {
+        width: 11px;
+        height: 11px;
+    }
+    
+    .plyr__time {
+        font-size: 10px;
+        margin: 0 3px;
+    }
+    
+    .plyr__menu__container .plyr__control svg {
+        width: 11px;
+        height: 11px;
+    }
+    
+    .plyr__volume {
+        min-width: 60px;
+    }
+}
+
+@media (max-width: 320px) {
+    /* Minimal icons for very small screens (iPhone SE, etc.) */
+    .plyr__control {
+        transform: scale(0.7);
+    }
+    
+    .plyr__control--overlaid {
+        transform: scale(0.6);
+        padding: 10px;
+    }
+    
+    .plyr__controls button {
+        padding: 4px;
+    }
+    
+    .plyr__controls button svg {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .plyr__control--rewind,
+    .plyr__control--fast-forward {
+        padding: 3px;
+        margin: 0 2px;
+    }
+    
+    .plyr__control--rewind svg,
+    .plyr__control--fast-forward svg {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .plyr__time {
+        font-size: 9px;
+        margin: 0 2px;
+    }
+    
+    .plyr__menu__container .plyr__control svg {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .plyr__volume {
+        min-width: 50px;
+    }
+    
+    .plyr__controls__item {
+        margin: 0 2px;
+    }
+}
+
+@media (max-width: 280px) {
+    /* Ultra-compact for smallest devices */
+    .plyr__control {
+        transform: scale(0.65);
+    }
+    
+    .plyr__control--overlaid {
+        transform: scale(0.55);
+        padding: 8px;
+    }
+    
+    .plyr__controls button {
+        padding: 3px;
+    }
+    
+    .plyr__controls button svg {
+        width: 11px;
+        height: 11px;
+    }
+    
+    .plyr__control--rewind,
+    .plyr__control--fast-forward {
+        padding: 2px;
+        margin: 0 1px;
+    }
+    
+    .plyr__control--rewind svg,
+    .plyr__control--fast-forward svg {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .plyr__time {
+        font-size: 8px;
+        margin: 0 1px;
+    }
+    
+    .plyr__menu__container .plyr__control svg {
+        width: 9px;
+        height: 9px;
+    }
+    
+    .plyr__volume {
+        min-width: 45px;
+        display: none; /* Hide volume on ultra-small screens */
+    }
+    
+    .plyr__controls__item {
+        margin: 0 1px;
+    }
+}
+/* Mobile Touch Controls - FIXED */
+.plyr--touch .plyr__controls {
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.plyr--touch .plyr__controls.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+}
+
+/* Touch overlay for mobile - FIXED */
+.touch-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    background: transparent;
+    display: none;
+    cursor: pointer;
+}
+
+.plyr--touch .touch-overlay {
+    display: block;
+}
+
+/* Improved hover effects for desktop */
+@media (hover: hover) {
+    .subject-header:hover {
+        background: rgba(255, 255, 255, 0.12);
+        transform: translateY(-1px);
+    }
+    
+    .lecture-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateX(8px);
+    }
+    
+    .back-button:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px) scale(1.05);
+    }
+}
+
+/* Touch-specific styles */
+@media (hover: none) {
+    .subject-header:active {
+        background: rgba(255, 255, 255, 0.15);
+        transform: scale(0.98);
+    }
+    
+    .lecture-item:active {
+        background: rgba(255, 255, 255, 0.12);
+        transform: scale(0.98);
+    }
+    
+    .back-button:active {
+        background: rgba(255, 255, 255, 0.25);
+        transform: scale(0.95);
+    }
+}
+
+/* Ensure controls are always accessible */
+.plyr__menu__container {
+    z-index: 25 !important;
+}
+
+.plyr__menu__container .plyr__control {
+    z-index: 26 !important;
+}
+/* Completion Status Styles - PROFESSIONAL */
+.video-info {
+    display: flex;
+    align-items: flex-start; /* Changed from center to flex-start */
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideIn 0.5s ease;
+    font-size: 18px;
+    font-weight: 700;
+    flex-wrap: nowrap;
+    gap: 20px;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.video-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    border-radius: 2px;
+}
+
+.video-title {
+    flex: 1;
+    min-width: 0;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.3px;
+    white-space: normal; /* Changed from nowrap to normal */
+    overflow: visible; /* Changed from hidden to visible */
+    text-overflow: unset; /* Remove ellipsis */
+    word-wrap: break-word; /* Allow text to wrap */
+    line-height: 1.4; /* Better line spacing */
+}
+
+.completion-btn {
+    background: linear-gradient(135deg,rgba(255, 255, 255, 0.85),rgba(255, 255, 255, 0.65));
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    color: #000000;
+    width: 50px; /* Fixed width for circle */
+    height: 50px; /* Fixed height for circle */
+    border-radius: 50%; /* Makes it circular */
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center the icon */
+    font-weight: 700;
+    backdrop-filter: blur(15px);
+    white-space: nowrap;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    padding: 0; /* Remove padding since we're using fixed dimensions */
+}
+
+/* When completed, change the icon color to green */
+.completion-btn.completed {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15));
+    border-color: rgba(34, 197, 94, 0.4);
+    color: #22c55e; /* Green color for completed state */
+}
+
+.completion-btn.completed:hover {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.35), rgba(34, 197, 94, 0.2));
+    border-color: rgba(34, 197, 94, 0.6);
+}
+
+/* Specifically target the icon inside the completed button */
+.completion-btn.completed i {
+    color: #22c55e !important; /* Force green color for the icon */
+}
+
+/* Hide text, show only icon */
+.completion-btn span {
+    display: none;
+}
+
+.completion-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.6s;
+}
+
+.completion-btn:hover::before {
+    left: 100%;
+}
+
+.completion-btn:hover {
+    background: linear-gradient(135deg,rgba(255, 255, 255, 0.85),rgba(255, 255, 255, 0.65));
+    border-color: rgba(239, 68, 68, 0.6);
+    transform: translateY(-2px);
+}
+
+.completion-btn:active {
+    transform: translateY(0);
+    transition: transform 0.1s;
+}
+
+.completion-btn.completed {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15)); /* Green gradient for completed */
+    border-color: rgba(34, 197, 94, 0.4); /* Green border */
+    color: #22c55e; /* Green text color */
+}
+
+.completion-btn.completed:hover {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.35), rgba(34, 197, 94, 0.2)); /* Darker green on hover */
+    border-color: rgba(34, 197, 94, 0.6);
+}
+.completion-btn i {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.completion-btn:hover i {
+    transform: scale(1.1);
+}
+        
+.completion-btn.completed i {
+    color: #2196F3;
+}
+
+/* Lecture completion status - ENHANCED */
+.lecture-item.completed {
+    border-left: none; /* Remove the left border */
+    position: relative;
+}
+
+.lecture-item.completed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lecture-item.completed:hover::before {
+    opacity: 1;
+}
+
+.completion-status {
+    color: #2196F3;
+    font-size: 14px;
+    margin-left: 8px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.lecture-item.completed .completion-status {
+    opacity: 1;
+    animation: fadeInScale 0.4s ease;
+}
+
+@keyframes fadeInScale {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Enhanced Confirmation Modal */
+.confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.confirmation-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, rgba(30, 30, 40, 0.98), rgba(20, 20, 30, 0.95));
+    padding: 35px;
+    border-radius: 20px;
+    max-width: 420px;
+    width: 90%;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transform: scale(0.9) translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+}
+
+.confirmation-modal.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.modal-message {
+    margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.modal-btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex: 1;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+}
+
+.modal-btn:hover::before {
+    left: 100%;
+}
+
+.modal-btn.proceed {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15));
+    color: #22c55e;
+    border: rgba(34, 197, 94, 0.6);
+}
+
+.modal-btn.proceed:hover {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.25), rgba(34, 197, 94, 0.15));
+    border-color: rgba(33, 150, 243, 0.6);
+    transform: translateY(-2px);
+}
+
+.modal-btn.cancel {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.15), rgba(244, 67, 54, 0.08));
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-btn.cancel:hover {
+    background: linear-gradient(135deg, rgba(244, 67, 54, 0.25), rgba(244, 67, 54, 0.15));
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .video-info {
+        flex-direction: row; /* Keep it in a row on mobile */
+        align-items: flex-start; /* Changed from center to flex-start */
+        padding: 18px;
+        gap: 15px; /* Slightly smaller gap on mobile */
+    }
+    
+    .completion-btn {
+        width: 45px;
+        height: 45px;
+        margin-top: 0;
+        align-self: flex-start; /* Align button to top */
+        flex-shrink: 0; /* Prevent button from shrinking */
+    }
+    
+    .video-title {
+        font-size: 18px; /* Slightly smaller font on mobile */
+        line-height: 1.3; /* Tighter line spacing on mobile */
+    }
+    
+    .modal-content {
+        padding: 28px 22px;
+        margin: 20px;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .modal-btn {
+        padding: 14px 20px;
+    }
+}
+
+/* Enhanced animations */
+@keyframes checkmarkPop {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.lecture-item.completed .completion-status i {
+    animation: checkmarkPop 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth state transitions */
+.completion-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.lecture-item {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes professionalSlideIn {
+    0% { 
+        opacity: 0; 
+        transform: translate(-50%, -40%) scale(0.9); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+}
+
+@keyframes professionalSlideOut {
+    0% { 
+        opacity: 1; 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+    100% { 
+        opacity: 0; 
+        transform: translate(-50%, -60%) scale(0.9); 
+    }
+}
+
+@keyframes buttonPulse {
+    0% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(33, 150, 243, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(33, 150, 243, 0); }
+}
+
+.completion-btn.completed {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.35), rgba(34, 197, 94, 0.2));
+    border-color: rgba(34, 197, 94, 0.6);
+    color: #2196F3;
+}
+/* Search Bar Styles - PROFESSIONAL */
+.search-container {
+    margin: 20px 0;
+    position: relative;
+    animation: fadeIn 0.6s ease;
+    flex-shrink: 0;
+}
+
+.search-box {
+    width: 100%;
+    padding: 16px 50px 16px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    backdrop-filter: blur(15px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    position: relative;
+}
+
+.search-box:focus {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.search-box::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 700;
+}
+
+.search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 18px;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+.search-box:focus + .search-icon {
+    color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Search Results Styles - Integrated into subjects list */
+.search-results {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.search-results.active {
+    display: flex;
+}
+
+.search-result-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    position: relative;
+}
+
+.search-result-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateX(5px);
+}
+
+.search-result-item.active {
+    background: rgba(76, 175, 80, 0.2);
+    border-left: 4px solid #4CAF50;
+}
+
+.search-result-item.completed {
+    background: linear-gradient(135deg, rgba(33, 150, 243, 0.15), rgba(33, 150, 243, 0.08)) !important;
+    border-left: none; /* Remove the left border */
+}
+
+.search-result-header {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.search-result-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    width: 30px;
+    text-align: center;
+}
+
+.search-result-content {
+    flex-grow: 1;
+}
+
+.search-result-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #ffffff;
+}
+
+.search-result-subject {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 700;
+}
+
+.completion-status {
+    color: #4CAF50;
+    font-size: 14px;
+    margin-left: 8px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.search-result-item.completed .completion-status {
+    opacity: 1;
+    animation: fadeInScale 0.4s ease;
+}
+
+.no-results {
+    padding: 30px 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 16px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.no-results i {
+    font-size: 32px;
+    margin-bottom: 10px;
+    display: block;
+    opacity: 0.7;
+}
+
+/* Search highlight animation */
+@keyframes highlightPulse {
+    0% { background-color: rgba(76, 175, 80, 0.3); }
+    50% { background-color: rgba(76, 175, 80, 0.1); }
+    100% { background-color: transparent; }
+}
+
+.search-highlight {
+    animation: highlightPulse 1s ease;
+}
+
+/* Responsive search */
+@media (max-width: 768px) {
+    .search-container {
+        margin: 15px 0;
+    }
+    
+    .search-box {
+        padding: 14px 45px 14px 16px;
+        font-size: 15px;
+    }
+    
+    .search-icon {
+        right: 16px;
+        font-size: 16px;
+    }
+    
+    .search-result-header {
+        padding: 12px 16px;
+    }
+    
+    .search-result-title {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-box {
+        padding: 12px 40px 12px 14px;
+        font-size: 14px;
+    }
+    
+    .search-icon {
+        right: 14px;
+        font-size: 15px;
+    }
+    
+    .search-result-header {
+        padding: 10px 14px;
+    }
+    
+    .search-result-title {
+        font-size: 15px;
+    }
+}
+/* Video Info Header Styles */
+.video-info-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    flex: 1;
+    min-width: 0;
+}
+
+.video-subject-icon {
+    font-size: 28px;
+    width: 35px;
+    text-align: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.video-info-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.video-subject-name {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 700;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .video-subject-icon {
+        font-size: 24px;
+        width: 30px;
+    }
+    
+    .video-subject-name {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-info-header {
+        gap: 12px;
+    }
+    
+    .video-subject-icon {
+        font-size: 22px;
+        width: 28px;
+    }
+    
+    .video-subject-name {
+        font-size: 13px;
+    }
+}
+/* Initially hide subject info when no video is selected */
+#video-subject-icon,
+#video-subject-name {
+    display: none;
+}
+/* Search Controls Container */
+.search-controls {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Clear Search Button */
+.clear-search {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    font-size: 14px;
+}
+
+.clear-search:hover {
+    background: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 1);
+    transform: scale(1.1);
+}
+
+.clear-search:active {
+    transform: scale(0.95);
+}
+
+/* Adjust search icon position when clear button is visible */
+.search-controls .search-icon {
+    position: static;
+    transform: none;
+    pointer-events: none;
+}
+
+/* Adjust search box padding to accommodate both icons */
+.search-box {
+    padding-right: 70px !important; /* Increased to fit both clear button and search icon */
+}
+
+/* Mobile responsive adjustments for clear button */
+@media (max-width: 768px) {
+    .search-controls {
+        right: 12px;
+        gap: 6px;
+    }
+    
+    .clear-search {
+        width: 26px;
+        height: 26px;
+        font-size: 13px;
+    }
+    
+    .search-box {
+        padding-right: 60px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-controls {
+        right: 10px;
+        gap: 5px;
+    }
+    
+    .clear-search {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+    
+    .search-box {
+        padding-right: 55px !important;
+    }
+}
+
+.logo-text i {
+    color: #FF0000;
+}
+
+/* Video Action Buttons Container */
+.video-action-buttons {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+</style>
+</head>
+<body>
+    <!-- Fixed Header -->
+    <header class="header">
+        <br>
+        <div class="header-content">
+            <button class="back-button" onclick="goToHome()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <div class="logo-container">
+                <div class="logo-text">
+                    <i class="fas fa-fire"></i>
+                    Extra Booster
+                </div>
+            </div>
+            <div style="width: 50px;"></div> <!-- Spacer for alignment -->
+        </div>
+    </header>
+<br>
+    <div class="container">
+        <div class="main-content">
+            <!-- Video Player Section -->
+            <section class="video-section">
+<div class="video-container">
+    <div id="player-container">
+        <div id="video-placeholder" class="video-placeholder">
+            <i class="fas fa-play-circle"></i>
+        </div>
+        <div id="player" class="plyr__video-embed" style="display: none;">
+            <!-- Transparent overlay to block iframe interaction -->
+            <div class="iframe-overlay" id="iframe-overlay"></div>
+            <iframe 
+                id="lecture-video" 
+                src="" 
+                frameborder="0" 
+                allowfullscreen
+                allow="autoplay"
+            ></iframe>
+        </div>
+    </div>
+</div>
+<div class="video-info">
+    <div class="video-info-header">
+        <i class="video-subject-icon" id="video-subject-icon"></i>
+        <div class="video-info-content">
+            <div class="video-title" id="lecture-name">Select a lecture</div>
+            <div class="video-subject-name" id="video-subject-name"></div>
+        </div>
+    </div>
+    <button class="completion-btn" id="completion-btn" style="display: none;" title="Toggle completion status">
+        <i class="far fa-check-circle" style="color:#000000;"></i>
+    </button>
+</div>
+            </section>
+
+            <!-- Subjects Section -->
+<section class="subjects-section">
+    <h2 class="section-title">Subjects</h2>
+    
+<!-- Search Bar -->
+<div class="search-container">
+    <input type="text" class="search-box" id="search-box" placeholder="Search">
+    <div class="search-controls">
+        <button class="clear-search" id="clear-search" style="display: none;">
+            <i class="fas fa-times"></i>
+        </button>
+        <i class="search-icon fas fa-search"></i>
+    </div>
+</div>
+    
+    <div class="subjects-container">
+        <!-- Search Results (hidden by default) -->
+        <div class="search-results" id="search-results">
+            <!-- Search results will be populated dynamically -->
+        </div>
+        
+        <!-- Normal Subjects List -->
+        <div class="subjects-list" id="subjects-list">
+            <!-- Subjects will be populated by JavaScript -->
+        </div>
+    </div>
+</section>
+        </div>
+    </div>
+<!-- Confirmation Modal -->
+<div class="confirmation-modal" id="confirmation-modal">
+    <div class="modal-content">
+        <h3 class="modal-title" id="modal-title">Confirm Action</h3>
+        <p class="modal-message" id="modal-message">Are you sure you want to proceed?</p>
+        <div class="modal-buttons">
+            <button class="modal-btn cancel" id="modal-cancel">Cancel</button>
+            <button class="modal-btn proceed" id="modal-proceed">Proceed</button>
+        </div>
+    </div>
+</div>
+    <!-- Plyr JS -->
+    <script src="https://cdn.plyr.io/3.7.8/plyr.js"></script>
+    <script src="data/cache5.js"></script>
+    <script src="lec.js"></script>
+</body>
+</html>
