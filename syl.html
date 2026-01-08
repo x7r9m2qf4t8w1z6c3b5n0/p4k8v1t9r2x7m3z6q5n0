@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coming Soon Game</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Arial', sans-serif;
+        background: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: 100vh;
+        text-align: center;
+        padding: 1em 0;
+    }
+
+    h1 {
+        font-size: 2em;
+        margin: 0.5em 0 0.2em 0;
+    }
+
+    p {
+        font-size: 1em;
+        margin: 0.2em 0 1em 0;
+    }
+
+    canvas {
+        border: 2px solid white;
+        width: 90%;
+        max-width: 380px;
+        height: 250px;
+        background: #111;
+        margin-top: 1em;
+        touch-action: none;
+        display: block;
+    }
+
+    #score {
+        font-size: 1em;
+        margin-top: 0.5em;
+    }
+</style>
+</head>
+<body>
+<h1>Developers are busy now!</h1>
+<h3>thedhannomorich</h3><h3>Porashona koro</h3>
+<p>Test your reflex! Click the square as fast as you can.</p>
+<canvas id="gameCanvas"></canvas>
+<div id="score">Score: 0</div>
+
+<script>
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+const scoreDisplay = document.getElementById('score');
+
+// Responsive canvas
+function resizeCanvas() {
+    canvas.width = Math.min(window.innerWidth * 0.9, 380);
+    canvas.height = 250;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+// Game variables
+let square = { size: 40, x: 0, y: 0 };
+let score = 0;
+let interval = 1000; // initial speed (ms)
+let timer;
+
+// Draw the square
+function drawSquare() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'white';
+    ctx.fillRect(square.x, square.y, square.size, square.size);
+}
+
+// Move square to random position
+function moveSquare() {
+    square.x = Math.random() * (canvas.width - square.size);
+    square.y = Math.random() * (canvas.height - square.size);
+    drawSquare();
+}
+
+// Click detection
+canvas.addEventListener('click', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    if (mouseX >= square.x && mouseX <= square.x + square.size &&
+        mouseY >= square.y && mouseY <= square.y + square.size) {
+        
+        score++;
+        scoreDisplay.textContent = "Score: " + score;
+
+        // Increase difficulty by reducing interval
+        interval = Math.max(300, interval - 30);
+
+        clearInterval(timer);
+        timer = setInterval(moveSquare, interval);
+
+        moveSquare(); // move immediately on correct click
+    }
+});
+
+// Touch support
+canvas.addEventListener('touchstart', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const touch = e.touches[0];
+    const touchX = touch.clientX - rect.left;
+    const touchY = touch.clientY - rect.top;
+
+    if (touchX >= square.x && touchX <= square.x + square.size &&
+        touchY >= square.y && touchY <= square.y + square.size) {
+        
+        score++;
+        scoreDisplay.textContent = "Score: " + score;
+        interval = Math.max(300, interval - 30);
+
+        clearInterval(timer);
+        timer = setInterval(moveSquare, interval);
+
+        moveSquare();
+    }
+});
+
+// Start game
+moveSquare();
+timer = setInterval(moveSquare, interval);
+</script>
+</body>
+</html>
