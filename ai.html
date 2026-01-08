@@ -40,6 +40,158 @@
             z-index: -1;
         }
 
+        /* Access Verification Modal */
+        .access-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .access-content {
+            background: linear-gradient(135deg, rgba(20, 20, 30, 0.98), rgba(15, 15, 20, 0.95));
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            animation: modalSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .access-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .access-title {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .access-subtitle {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .access-input {
+            width: 100%;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .access-input:focus {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: #4CAF50;
+            transform: translateY(-2px);
+        }
+
+        .access-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .access-button {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #4CAF50, #2196F3);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .access-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+        }
+
+        .access-button:active {
+            transform: translateY(-1px);
+        }
+
+        .access-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .access-button:hover::before {
+            left: 100%;
+        }
+
+        .access-error {
+            color: #ff6b6b;
+            font-size: 14px;
+            margin-top: 10px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .access-error.show {
+            display: block;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+
         /* Professional Header */
         .header {
             background: rgba(15, 15, 20, 0.95);
@@ -55,6 +207,7 @@
             width: 100%;
             z-index: 1000;
             animation: slideDown 0.5s ease-out;
+            display: none; /* Hidden until access granted */
         }
 
         .header-content {
@@ -63,14 +216,51 @@
             padding: 0 20px;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             gap: 15px;
+        }
+
+        /* Back Button Styles */
+        .back-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
+            animation: fadeInButton 0.5s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInButton {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .back-button:active {
+            transform: translateY(0) scale(0.95);
         }
 
         .logo-container {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 15px;
+            flex: 1;
         }
 
         .logo-icon {
@@ -81,6 +271,7 @@
             align-items: center;
             justify-content: center;
             font-size: 20px;
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(33, 150, 243, 0.2));
         }
 
         .logo-text {
@@ -101,6 +292,14 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        .container.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Chat Container */
@@ -655,6 +854,12 @@
                 font-size: 18px;
             }
             
+            .back-button {
+                width: 45px;
+                height: 45px;
+                font-size: 22px;
+            }
+            
             .container {
                 padding: 100px 12px 90px;
             }
@@ -698,6 +903,19 @@
                 height: 44px;
                 font-size: 16px;
             }
+            
+            /* Access Modal Responsive */
+            .access-content {
+                padding: 30px 25px;
+            }
+            
+            .access-title {
+                font-size: 24px;
+            }
+            
+            .access-subtitle {
+                font-size: 15px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -717,6 +935,12 @@
                 width: 32px;
                 height: 32px;
                 font-size: 16px;
+            }
+            
+            .back-button {
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
             }
             
             .container {
@@ -771,27 +995,102 @@
                 height: 40px;
                 font-size: 15px;
             }
+            
+            /* Access Modal Responsive */
+            .access-content {
+                padding: 25px 20px;
+            }
+            
+            .access-title {
+                font-size: 22px;
+            }
+            
+            .access-subtitle {
+                font-size: 14px;
+            }
+            
+            .access-input {
+                padding: 14px 16px;
+                font-size: 15px;
+            }
+            
+            .access-button {
+                padding: 14px;
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .access-content {
+                padding: 20px 15px;
+            }
+            
+            .access-icon {
+                font-size: 50px;
+            }
+            
+            .access-title {
+                font-size: 20px;
+            }
+            
+            .access-subtitle {
+                font-size: 13px;
+            }
+            
+            .access-input {
+                padding: 12px 14px;
+                font-size: 14px;
+            }
+            
+            .access-button {
+                padding: 12px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
+    <!-- Access Verification Modal -->
+    <div class="access-modal" id="access-modal">
+        <div class="access-content">
+            <div class="access-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2 class="access-title">Access Required</h2>
+            <p class="access-subtitle">Enter the password to access Arora AI</p>
+            <input type="password" class="access-input" id="access-password" placeholder="Enter password" autocomplete="off" autocapitalize="off">
+            <button class="access-button" id="access-submit">
+                <i class="fas fa-unlock"></i>
+                <span>Access AI</span>
+            </button>
+            <div class="access-error" id="access-error">
+                <i class="fas fa-exclamation-circle"></i>
+                Incorrect password. Please try again.
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header (hidden until access granted) -->
+    <header class="header" id="main-header">
         <br>
         <div class="header-content">
+            <button class="back-button" onclick="goToHome()">
+                <i class="fas fa-arrow-left"></i>
+            </button>
             <div class="logo-container">
                 <div class="logo-icon">
                     <i class="fas fa-robot"></i>
                 </div>
                 <div>
-                    <div class="logo-text">AI</div>
+                    <div class="logo-text">Arora AI</div>
                 </div>
             </div>
+            <div style="width: 50px;"></div> <!-- Spacer for alignment -->
         </div>
     </header>
 <br>
-    <!-- Main Container -->
-    <main class="container">
+    <!-- Main Container (hidden until access granted) -->
+    <main class="container" id="main-container">
         <!-- Chat Container -->
         <div class="chat-container">
             <!-- Messages Area -->
@@ -826,7 +1125,6 @@
                 </div>
             </div>
         </div>
-
     </main>
 
     <!-- Puter.js SDK -->
@@ -835,7 +1133,17 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 
     <script>
+        // Configuration - SET YOUR PASSWORD HERE
+        const ACCESS_PASSWORD = "arora123"; // Change this to your desired password
+        
         // DOM Elements
+        const accessModal = document.getElementById('access-modal');
+        const accessPasswordInput = document.getElementById('access-password');
+        const accessSubmitBtn = document.getElementById('access-submit');
+        const accessError = document.getElementById('access-error');
+        const mainHeader = document.getElementById('main-header');
+        const mainContainer = document.getElementById('main-container');
+        
         const messagesArea = document.getElementById('messagesArea');
         const messageInput = document.getElementById('messageInput');
         const sendButton = document.getElementById('sendButton');
@@ -845,6 +1153,7 @@
         const AI_MODEL = 'gpt-4.1-nano';
         let isConnected = false;
         let isProcessing = false;
+        let accessGranted = false;
 
         // Configure Marked
         marked.setOptions({
@@ -857,11 +1166,95 @@
             langPrefix: 'language-'
         });
 
-        // Initialize chat
-        document.addEventListener('DOMContentLoaded', () => {
-            initChat();
-            testAIConnection();
-        });
+        // Initialize access verification
+        function initAccessVerification() {
+            // Check if access was already granted (using localStorage)
+            const hasAccess = localStorage.getItem('aroraAI_access');
+            
+            if (hasAccess === 'true') {
+                grantAccess();
+                return;
+            }
+
+            // Show access modal
+            accessModal.style.display = 'flex';
+            
+            // Focus password input
+            setTimeout(() => {
+                accessPasswordInput.focus();
+            }, 100);
+
+            // Handle password submission
+            accessSubmitBtn.addEventListener('click', verifyAccess);
+            accessPasswordInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    verifyAccess();
+                }
+            });
+        }
+
+        // Verify access password
+        function verifyAccess() {
+            const password = accessPasswordInput.value.trim();
+            
+            if (!password) {
+                showAccessError('Please enter a password');
+                return;
+            }
+            
+            if (password === ACCESS_PASSWORD) {
+                // Grant access
+                grantAccess();
+                // Save access state
+                localStorage.setItem('aroraAI_access', 'true');
+            } else {
+                showAccessError('Incorrect password. Please try again.');
+                // Clear input and focus
+                accessPasswordInput.value = '';
+                accessPasswordInput.focus();
+            }
+        }
+
+        // Show access error
+        function showAccessError(message) {
+            accessError.textContent = message;
+            accessError.classList.add('show');
+            
+            // Auto-hide error after 3 seconds
+            setTimeout(() => {
+                accessError.classList.remove('show');
+            }, 3000);
+        }
+
+        // Grant access and show main interface
+        function grantAccess() {
+            // Hide access modal with animation
+            accessModal.style.opacity = '0';
+            accessModal.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                accessModal.style.display = 'none';
+                
+                // Show main interface
+                mainHeader.style.display = 'block';
+                mainContainer.classList.add('show');
+                
+                // Initialize chat
+                initChat();
+                testAIConnection();
+                
+                // Focus message input
+                setTimeout(() => {
+                    messageInput.focus();
+                }, 500);
+            }, 300);
+        }
+
+        // Navigation function - same as Lectures page
+        function goToHome() {
+            // Replace 'index.html' with your actual home page filename
+            window.location.href = 'index.html';
+        }
 
         // Test AI connection
         async function testAIConnection() {
@@ -891,7 +1284,7 @@
         // Add welcome message
         function addWelcomeMessage() {
             const welcomeMessages = [
-                "# Hello! I'm Arora AI 🤖"
+                "# Hello! I'm Arora AI 🤖\n\nWelcome to your personal AI assistant. I'm here to help you with any questions, tasks, or creative projects you have. Feel free to ask me anything!"
             ];
             
             const message = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
@@ -1206,7 +1599,11 @@
         document.addEventListener('submit', (e) => {
             e.preventDefault();
         });
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            initAccessVerification();
+        });
     </script>
 </body>
 </html>
-
