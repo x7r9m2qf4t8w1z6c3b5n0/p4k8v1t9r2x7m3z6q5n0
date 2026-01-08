@@ -520,20 +520,23 @@
                 addMessage(aiResponse, false);
                 
             } catch (error) {
-                console.error('Error:', error);
+                console.error('Error details:', error);
                 typingIndicator.classList.remove('active');
                 
-                // Show user-friendly error
-                let errorMsg = "I'm having trouble connecting right now. ";
+                // Show detailed error for debugging
+                let errorMsg = "I'm having trouble connecting to the AI service. ";
                 
                 if (error.message.includes('Failed to fetch')) {
-                    errorMsg += "Please check your internet connection.";
+                    errorMsg += "Network error. Please check:";
+                    errorMsg += "<br>• Google Apps Script deployment";
+                    errorMsg += "<br>• CORS settings";
+                    errorMsg += "<br>• Script permissions";
                 } else if (error.message.includes('429')) {
                     errorMsg += "Too many requests. Please wait a moment.";
                 } else if (error.message.includes('quota')) {
-                    errorMsg += "API quota might be exceeded. Try again later.";
+                    errorMsg += "API quota exceeded. Try again later.";
                 } else {
-                    errorMsg += "Please try again in a moment.";
+                    errorMsg += "Error: " + error.message;
                 }
                 
                 addMessage(errorMsg, false);
@@ -545,29 +548,53 @@
             }
         }
 
-        // Get AI Response - THROUGH GOOGLE APPS SCRIPT BACKEND
+        // Get AI Response
         async function getAIResponse(prompt) {
+            console.log('Sending to Google Apps Script:', BACKEND_URL);
+            
+            // Use no-cors mode for Google Apps Script
+            const response = await fetch(BACKEND_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Try no-cors mode
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: prompt,
+                    timestamp: new Date().toISOString()
+                })
+            }).catch(err => {
+                console.error('Fetch error:', err);
+                throw err;
+            });
+            
+            // With no-cors, we can't read the response, but we know it was sent
+            // Let's try a different approach - use GET with parameters
+            return await getAIResponseAlt(prompt);
+        }
+
+        // Alternative method using GET
+        async function getAIResponseAlt(prompt) {
+            const encodedPrompt = encodeURIComponent(prompt);
+            const url = `${BACKEND_URL}?message=${encodedPrompt}&timestamp=${Date.now()}`;
+            
+            console.log('Trying GET request to:', url);
+            
             try {
-                console.log('Sending request to backend...');
-                
-                const response = await fetch(BACKEND_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        message: prompt
-                    })
+                const response = await fetch(url, {
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'no-cache'
                 });
                 
-                console.log('Backend response status:', response.status);
+                console.log('Response status:', response.status);
                 
                 if (!response.ok) {
-                    throw new Error(`Backend error: ${response.status}`);
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
                 const data = await response.json();
-                console.log('Backend response data:', data);
+                console.log('Response data:', data);
                 
                 if (data.success) {
                     return data.response;
@@ -576,12 +603,13 @@
                 }
                 
             } catch (error) {
-                console.error('Backend API Error:', error);
-                throw error;
+                console.error('GET request failed:', error);
+                // Fallback to a mock response for testing
+                return `I received your message: "${prompt}". This is a test response since the backend connection failed. Please check your Google Apps Script deployment.`;
             }
         }
 
-        // Add Message (No saving to localStorage)
+        // Add Message
         function addMessage(text, isUser) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user' : 'ai'}`;
@@ -611,5 +639,6 @@
     </script>
 </body>
 </html>
+
 
 
