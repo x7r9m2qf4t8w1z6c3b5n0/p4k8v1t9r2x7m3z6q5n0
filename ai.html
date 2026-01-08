@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +6,8 @@
     <title>Arora AI</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add DOMPurify for security (recommended by Marked) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -62,8 +63,8 @@
             padding: 0 20px;
             display: flex;
             align-items: center;
-            justify-content: center; /* Changed to center */
-            gap: 15px; /* Added gap for spacing */
+            justify-content: center;
+            gap: 15px;
         }
 
         .logo-container {
@@ -94,15 +95,11 @@
             background-clip: text;
         }
 
-        .tagline {
-            display: none; /* Hidden as requested */
-        }
-
         /* Main Container */
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 120px 20px 100px; /* Increased bottom padding for sticky input */
+            padding: 120px 20px 100px;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -124,11 +121,6 @@
             overflow: hidden;
         }
 
-        /* Welcome Banner - Hidden */
-        .welcome-banner {
-            display: none;
-        }
-
         /* Messages Area */
         .messages-area {
             flex: 1;
@@ -141,7 +133,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Message Styles - Fixed layout */
+        /* Message Styles */
         .message {
             display: flex;
             gap: 16px;
@@ -150,7 +142,7 @@
             opacity: 0;
             transform: translateY(10px);
             animation-fill-mode: forwards;
-            align-items: flex-start; /* Align items to top */
+            align-items: flex-start;
         }
 
         .message.user {
@@ -167,7 +159,7 @@
             background: rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 18px 22px;
-            max-width: calc(100% - 0px); /* Fixed width calculation */
+            max-width: calc(100% - 0px);
             word-wrap: break-word;
             border: 1px solid rgba(255, 255, 255, 0.12);
             backdrop-filter: blur(10px);
@@ -193,6 +185,7 @@
             border-bottom-left-radius: 6px;
         }
 
+        /* Markdown Styling */
         .message-text {
             font-size: 16px;
             line-height: 1.7;
@@ -200,17 +193,207 @@
             width: 100%;
         }
 
-        .ai .message-text {
-            animation: textReveal 0.5s ease-out;
+        /* Markdown-specific styles */
+        .message-text h1,
+        .message-text h2,
+        .message-text h3,
+        .message-text h4,
+        .message-text h5,
+        .message-text h6 {
+            color: #ffffff;
+            margin-top: 1em;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+        }
+
+        .message-text h1 {
+            font-size: 1.8em;
+            border-bottom: 2px solid rgba(33, 150, 243, 0.3);
+            padding-bottom: 0.3em;
+        }
+
+        .message-text h2 {
+            font-size: 1.5em;
+            border-bottom: 1px solid rgba(33, 150, 243, 0.2);
+            padding-bottom: 0.3em;
+        }
+
+        .message-text h3 { font-size: 1.3em; }
+        .message-text h4 { font-size: 1.2em; }
+        .message-text h5 { font-size: 1.1em; }
+        .message-text h6 { font-size: 1em; color: rgba(255, 255, 255, 0.7); }
+
+        .message-text p {
+            margin-bottom: 1em;
+        }
+
+        .message-text a {
+            color: #4CAF50;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(76, 175, 80, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .message-text a:hover {
+            color: #66BB6A;
+            border-bottom-color: #66BB6A;
+        }
+
+        .message-text strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .message-text em {
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+        }
+
+        .message-text code {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #FF9800;
+        }
+
+        .message-text pre {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1em 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .message-text pre code {
+            background: transparent;
+            padding: 0;
+            color: #e0e0e0;
+            font-size: 0.95em;
+            line-height: 1.4;
+        }
+
+        .message-text blockquote {
+            border-left: 4px solid #2196F3;
+            padding-left: 16px;
+            margin: 1em 0;
+            color: rgba(255, 255, 255, 0.8);
+            background: rgba(33, 150, 243, 0.1);
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .message-text ul,
+        .message-text ol {
+            margin: 1em 0;
+            padding-left: 24px;
+        }
+
+        .message-text li {
+            margin-bottom: 0.5em;
+        }
+
+        .message-text ul li::before {
+            content: "•";
+            color: #2196F3;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .message-text hr {
+            border: none;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 2em 0;
+        }
+
+        .message-text table {
+            border-collapse: collapse;
+            margin: 1em 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .message-text th,
+        .message-text td {
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .message-text th {
+            background: rgba(33, 150, 243, 0.2);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .message-text td {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .message-text img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 1em 0;
+        }
+
+        /* Message Actions */
+        .message-actions {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 10px;
+            gap: 8px;
+            align-items: center;
+            min-height: 24px;
+        }
+
+        .copy-button {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: rgba(255, 255, 255, 0.7);
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(5px);
+        }
+
+        .message-content:hover .copy-button {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .copy-button.copied {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+        }
+
+        .copy-button.copied i {
+            animation: copySuccess 0.5s ease;
         }
 
         .message-time {
             font-size: 12px;
             color: rgba(255, 255, 255, 0.5);
-            margin-top: 10px;
-            text-align: right;
             font-weight: 300;
-            align-self: flex-end;
+            margin-left: auto;
+            padding-left: 8px;
         }
 
         /* Typing Indicator */
@@ -336,17 +519,6 @@
             transform: none !important;
         }
 
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 14px;
-            font-weight: 300;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
         /* Animations */
         @keyframes slideDown {
             from {
@@ -429,6 +601,12 @@
             }
         }
 
+        @keyframes copySuccess {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
         /* Scrollbar */
         .messages-area::-webkit-scrollbar {
             width: 8px;
@@ -504,6 +682,11 @@
                 font-size: 15px;
             }
             
+            .copy-button {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
             .input-container-wrapper {
                 padding: 15px 0 0;
             }
@@ -567,6 +750,12 @@
                 font-size: 11px;
             }
             
+            .copy-button {
+                width: 26px;
+                height: 26px;
+                font-size: 12px;
+            }
+            
             .input-container-wrapper {
                 padding: 12px 0 0;
             }
@@ -585,38 +774,6 @@
                 height: 40px;
                 font-size: 15px;
             }
-            
-            .footer {
-                font-size: 12px;
-                padding: 15px;
-            }
-        }
-
-        /* Loading States */
-        .loading-shimmer {
-            background: linear-gradient(
-                90deg,
-                rgba(255, 255, 255, 0.05) 25%,
-                rgba(255, 255, 255, 0.1) 50%,
-                rgba(255, 255, 255, 0.05) 75%
-            );
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite;
-            border-radius: 8px;
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
-        }
-
-        /* Connection Status - Hidden */
-        .connection-status {
-            display: none;
         }
     </style>
 </head>
@@ -677,6 +834,8 @@
 
     <!-- Puter.js SDK -->
     <script src="https://js.puter.com/v2/"></script>
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 
     <script>
         // DOM Elements
@@ -686,10 +845,20 @@
         const typingIndicator = document.getElementById('typingIndicator');
 
         // Chat configuration
-        const AI_MODEL = 'gpt-4.1-nano'; // Using GPT-4.1 Nano model
+        const AI_MODEL = 'gpt-4.1-nano';
         let isConnected = false;
         let isProcessing = false;
-        let messageQueue = [];
+
+        // Configure Marked
+        marked.setOptions({
+            gfm: true, // GitHub Flavored Markdown
+            breaks: true, // Convert \n to <br>
+            highlight: function(code, lang) {
+                // Simple syntax highlighting
+                return `<code class="language-${lang}">${code}</code>`;
+            },
+            langPrefix: 'language-'
+        });
 
         // Initialize chat
         document.addEventListener('DOMContentLoaded', () => {
@@ -700,8 +869,11 @@
         // Test AI connection
         async function testAIConnection() {
             try {
-                // Test with a simple request
-                await puter.ai.chat('Hello', { model: AI_MODEL, stream: false });
+                // Ask AI to respond with formatted markdown for testing
+                await puter.ai.chat('Respond with "Hello! I can now format text with **bold**, *italics*, and `code`.', { 
+                    model: AI_MODEL, 
+                    stream: false 
+                });
                 
                 isConnected = true;
                 
@@ -722,9 +894,9 @@
         // Add welcome message
         function addWelcomeMessage() {
             const welcomeMessages = [
-                "Hello! I'm Arora AI, your intelligent study assistant.",
-                "Hi there! I'm Arora AI.",
-                "Welcome to Arora AI!"
+                "# Welcome to Arora AI! 👋\n\nI'm your intelligent assistant powered by **GPT-4.1 Nano**.\n\n## I can now format text with:\n\n* **Markdown** for rich text\n* *Italics* and **bold** text\n* `Code` snippets\n* Lists like this one\n* > Blockquotes\n* Tables\n* And much more!\n\nTry asking me something that would benefit from formatting!",
+                "# Hello! I'm Arora AI 🤖\n\nI'm now equipped with **Markdown formatting** capabilities!\n\n**Features include:**\n\n1. **Bold** and *italic* text\n2. Code formatting: `console.log('Hello')`\n3. Lists and tables\n4. Headers (like this one!)\n5. Links and images\n\nFeel free to ask me anything!",
+                "# Greetings! ✨\n\nWelcome to **Arora AI** - now with enhanced text formatting!\n\n### What's New:\n\n* **Rich text formatting** with Markdown\n* Clean **code display**\n* Organized **lists** and **tables**\n* Better **readability** for complex responses\n\nLet's have a conversation! What would you like to know?"
             ];
             
             const message = welcomeMessages[Math.floor(Math.random() * welcomeMessages.length)];
@@ -733,7 +905,7 @@
 
         // Show error message
         function showErrorMessage(message) {
-            addMessage(`⚠️ ${message} Please try again later.`, false);
+            addMessage(`⚠️ **Error**: ${message}\n\nPlease try again later or refresh the page.`, false);
         }
 
         // Initialize chat
@@ -744,7 +916,7 @@
                 this.style.height = (this.scrollHeight) + 'px';
             });
 
-            // Send message on Enter (Shift+Enter for new line)
+            // Send message on Enter
             messageInput.addEventListener('keydown', function(e) {
                 if (e.key === 'Enter' && !e.shiftKey) {
                     e.preventDefault();
@@ -772,32 +944,23 @@
             const message = messageInput.value.trim();
             if (!message || isProcessing) return;
 
-            // Disable input and button
             messageInput.disabled = true;
             sendButton.disabled = true;
             isProcessing = true;
 
-            // Add user message
             addMessage(message, true);
 
-            // Clear input
             messageInput.value = '';
             messageInput.style.height = 'auto';
 
-            // Show typing indicator
             typingIndicator.classList.add('active');
 
             try {
-                // Get AI response
                 await getAIResponseStream(message);
             } catch (error) {
                 console.error('Error getting AI response:', error);
                 typingIndicator.classList.remove('active');
-                
-                // Show error
-                addMessage(`I apologize, but I encountered an error: ${error.message}. Please try again.`, false);
-                
-                // Re-enable input
+                addMessage(`⚠️ **Error**: I encountered an issue: ${error.message}\n\nPlease try again.`, false);
                 messageInput.disabled = false;
                 sendButton.disabled = false;
                 isProcessing = false;
@@ -811,7 +974,6 @@
                 throw new Error('Not connected to AI service');
             }
 
-            // Create AI message container
             const messageId = Date.now().toString();
             const messageDiv = createMessageContainer('', false, messageId);
             messagesArea.appendChild(messageDiv);
@@ -820,7 +982,6 @@
             let isFirstChunk = true;
 
             try {
-                // Stream from AI
                 const response = await puter.ai.chat(prompt, { 
                     model: AI_MODEL, 
                     stream: true,
@@ -828,68 +989,139 @@
                     max_tokens: 2000
                 });
 
-                // Process stream
                 for await (const part of response) {
                     if (part?.text) {
                         if (isFirstChunk) {
-                            // Hide typing indicator when we start receiving
                             typingIndicator.classList.remove('active');
                             isFirstChunk = false;
                         }
-                        
                         fullResponse += part.text;
+                        // Parse markdown and update content
                         updateMessageContent(messageId, fullResponse);
                     }
                 }
 
-                // Add timestamp when done
                 if (!isFirstChunk) {
                     addMessageTime(messageId);
                 }
 
             } catch (error) {
                 console.error('Streaming error:', error);
-                
-                // Remove the empty message container if there was an error
                 if (isFirstChunk) {
                     messageDiv.remove();
                     typingIndicator.classList.remove('active');
                     throw error;
                 } else {
-                    // Update with error message
-                    updateMessageContent(messageId, fullResponse + '\n\n⚠️ Response was cut short due to an error.');
+                    updateMessageContent(messageId, fullResponse + '\n\n⚠️ **Note**: Response was interrupted. Please try again if you need more information.');
                 }
             } finally {
-                // Re-enable input
                 messageInput.disabled = false;
                 sendButton.disabled = false;
                 isProcessing = false;
                 messageInput.focus();
-
-                // Scroll to bottom
                 setTimeout(() => {
                     messagesArea.scrollTop = messagesArea.scrollHeight;
                 }, 100);
             }
         }
 
-        // Create message container - Fixed layout
+        // Create message container with markdown support
         function createMessageContainer(text, isUser, id = null) {
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${isUser ? 'user' : 'ai'}`;
             if (id) messageDiv.id = `msg-${id}`;
             
             const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-            const avatarIcon = isUser ? 'fa-user' : 'fa-robot';
+            
+            // Parse markdown for AI messages, keep plain text for user messages
+            let contentHtml = text;
+            if (!isUser && text) {
+                try {
+                    // Sanitize the markdown output using DOMPurify
+                    contentHtml = DOMPurify.sanitize(marked.parse(text));
+                } catch (e) {
+                    console.error('Markdown parsing error:', e);
+                    contentHtml = text.replace(/\n/g, '<br>');
+                }
+            } else if (isUser && text) {
+                contentHtml = text.replace(/\n/g, '<br>');
+            }
             
             messageDiv.innerHTML = `
                 <div class="message-content">
-                    <div class="message-text" id="text-${id || 'temp'}">${text.replace(/\n/g, '<br>')}</div>
-                    ${isUser ? `<div class="message-time">${time}</div>` : ''}
+                    <div class="message-text" id="text-${id || 'temp'}">${contentHtml}</div>
+                    <div class="message-actions">
+                        ${!isUser ? `
+                            <button class="copy-button" title="Copy text">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        ` : ''}
+                        ${isUser ? `<div class="message-time">${time}</div>` : ''}
+                    </div>
                 </div>
             `;
             
+            // Add copy functionality for AI messages
+            if (!isUser && id) {
+                setTimeout(() => {
+                    const copyBtn = messageDiv.querySelector('.copy-button');
+                    if (copyBtn) {
+                        copyBtn.addEventListener('click', () => copyMessageText(id));
+                    }
+                }, 100);
+            }
+            
             return messageDiv;
+        }
+
+        // Copy message text to clipboard
+        async function copyMessageText(messageId) {
+            const textElement = document.getElementById(`text-${messageId}`);
+            if (!textElement) return;
+            
+            // Get plain text version (strip HTML tags)
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = textElement.innerHTML;
+            const text = tempDiv.textContent || tempDiv.innerText;
+            
+            const copyBtn = document.querySelector(`#msg-${messageId} .copy-button`);
+            
+            if (!copyBtn) return;
+            
+            try {
+                await navigator.clipboard.writeText(text);
+                
+                // Visual feedback
+                const originalIcon = copyBtn.innerHTML;
+                copyBtn.classList.add('copied');
+                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                copyBtn.title = 'Copied!';
+                
+                // Revert after 2 seconds
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                    copyBtn.innerHTML = originalIcon;
+                    copyBtn.title = 'Copy text';
+                }, 2000);
+                
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                
+                // Still show feedback
+                copyBtn.classList.add('copied');
+                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                    copyBtn.innerHTML = '<i class="far fa-copy"></i>';
+                }, 2000);
+            }
         }
 
         // Add message
@@ -902,26 +1134,46 @@
             
             messagesArea.appendChild(messageDiv);
             
-            // Scroll to bottom
             setTimeout(() => {
                 messagesArea.scrollTop = messagesArea.scrollHeight;
                 messageDiv.style.opacity = '1';
-                messageDiv.style.transform = isUser ? 'translateX(0)' : 'translateX(0)';
+                messageDiv.style.transform = 'translateX(0)';
             }, 10);
             
             return messageDiv;
         }
 
-        // Update message content
+        // Update message content with markdown parsing
         function updateMessageContent(messageId, text) {
             const textElement = document.getElementById(`text-${messageId}`);
             if (textElement) {
-                textElement.innerHTML = text.replace(/\n/g, '<br>');
-                
-                // Scroll to keep visible
-                const messageDiv = document.getElementById(`msg-${messageId}`);
-                if (messageDiv) {
-                    messageDiv.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                try {
+                    // Parse markdown and sanitize
+                    const parsedHtml = DOMPurify.sanitize(marked.parse(text));
+                    textElement.innerHTML = parsedHtml;
+                    
+                    // Ensure copy button exists for AI messages
+                    const messageDiv = document.getElementById(`msg-${messageId}`);
+                    if (messageDiv && !messageDiv.querySelector('.copy-button')) {
+                        const actionsDiv = messageDiv.querySelector('.message-actions');
+                        if (actionsDiv) {
+                            actionsDiv.innerHTML = `
+                                <button class="copy-button" title="Copy text">
+                                    <i class="far fa-copy"></i>
+                                </button>
+                            `;
+                            const copyBtn = actionsDiv.querySelector('.copy-button');
+                            copyBtn.addEventListener('click', () => copyMessageText(messageId));
+                        }
+                    }
+                    
+                    const messageDivScroll = document.getElementById(`msg-${messageId}`);
+                    if (messageDivScroll) {
+                        messageDivScroll.scrollIntoView({ behavior: 'smooth', block: 'end' });
+                    }
+                } catch (error) {
+                    console.error('Error updating message content:', error);
+                    textElement.innerHTML = text.replace(/\n/g, '<br>');
                 }
             }
         }
@@ -935,9 +1187,9 @@
                 timeElement.className = 'message-time';
                 timeElement.textContent = time;
                 
-                const contentDiv = messageDiv.querySelector('.message-content');
-                if (contentDiv) {
-                    contentDiv.appendChild(timeElement);
+                const actionsDiv = messageDiv.querySelector('.message-actions');
+                if (actionsDiv) {
+                    actionsDiv.appendChild(timeElement);
                 }
             }
         }
