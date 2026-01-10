@@ -24,6 +24,7 @@ const subjectsData = [
 { title: "জ্যামিতিক আলোকবিজ্ঞান (পর্ব ১)", videoId: "IbYiNKU7pn0" },
 { title: "জ্যামিতিক আলোকবিজ্ঞান (পর্ব ২)", videoId: "PYqspDPANHM" },
 { title: "সেমিকন্ডাক্টর ও ইলেকটনিক্স", videoId: "CtD_P4dt_F4" },
+{ title: "পরমাণুর মডেল ও নিউক্লিয়ার পদার্থবিজ্ঞান (পর্ব ১)", videoId: "2N9tt0J43qw" },
                 ]
             },
             {
