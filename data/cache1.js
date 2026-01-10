@@ -156,4 +156,17 @@ const subjectsData = [
 { title: "বিশ্ব ও বাংলাদেশ প্রেক্ষিত", videoId: "c2tWGo6n4E8" },
                 ]
             },
+            {
+                name: "Mentorship Session",
+                icon: "fas fa-chalkboard-teacher",
+                color: "#9b59b6",
+                isPCMB: false,
+                lectures: [
+{ title: "Biology Mentorship Session", videoId: "uPM53Lax6Xg" },
+{ title: "Chemistry Mentorship Session", videoId: "JaWMEEB_iGc" },
+{ title: "Mathematics Mentorship Session", videoId: "olV8M7xp_sI" },
+{ title: "EBI Mentorship Session", videoId: "xPMUGXdgs1Y" },
+{ title: "Physics Mentorship Session", videoId: "TkVrn8T-ZlU" },
+                ]
+            },
         ];
